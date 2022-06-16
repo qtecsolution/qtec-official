@@ -10,23 +10,25 @@
 				<div class="desktopmenu">
 					<ul class="desktoplist">
 						<li class="desktoplist-item">
-							<a href="index.html" class="desktoplist-link active">Home</a>
+							<a href="{% url 'homepage:index_url' %}" class="desktoplist-link active">Home</a>
 						</li>
 
 						<li class="desktoplist-item">
-							<a href="about.html" class="desktoplist-link">About Us</a>
+							<a href="{% url 'homepage:about_us_url' %}" class="desktoplist-link">About Us</a>
 						</li>
 
 						<li class="desktoplist-item d-none">
-							<a href="services.html" class="desktoplist-link">Services</a>
+							<a href="{% url 'homepage:index_url' %}" class="desktoplist-link">Services</a>
 						</li>
 
 						<li class="desktoplist-item">
-							<a href="products.html" class="desktoplist-link">Products</a>
+							<a href="{% url 'homepage:product_url' %}" class="desktoplist-link">Products</a>
 						</li>
-
 						<li class="desktoplist-item">
-							<a href="contact.html" class="desktoplist-link">Contact Us</a>
+							<a href="{% url 'homepage:blog_url' %}" class="desktoplist-link">Blogs</a>
+						</li>
+						<li class="desktoplist-item">
+							<a href="{% url 'homepage:contact_us_url' %}" class="desktoplist-link">Contact Us</a>
 						</li>
 					</ul>
 				</div>
@@ -60,7 +62,7 @@
 					<div class="offcanvas-body">
 						<ul class="mobilelist">
 							<li class="mobilelist-item">
-								<a href="index.html" class="mobilelist-link active">Home</a>
+								<a href="{% url 'dashboard:dashboard_url' %}" class="mobilelist-link active">Home</a>
 							</li>
 
 							<li class="mobilelist-item">
@@ -73,6 +75,9 @@
 
 							<li class="mobilelist-item">
 								<a href="products.html" class="mobilelist-link">Products</a>
+							</li>
+							<li class="mobilelist-item">
+								<a href="products.html" class="mobilelist-link">Blogs</a>
 							</li>
 
 							<li class="mobilelist-item">
