@@ -13,18 +13,23 @@ BLOG_TYPE = (
     (TEXT_WITH_VIDEO, 'text with video')
 )
 
-
 TRANDY = 1
 BLOG_CONDITION_TYPE = (
     (TRANDY, 'TRANDY'),
 )
 
 
+class Technologies(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='technologies')
+
+
 class WhatProjectHaveWeDone(models.Model):
-    name = models.CharField(max_length= 150)
+    name = models.CharField(max_length=150)
     image = models.ImageField(upload_to='project_done/')
     technology = models.TextField()
-    slug = models.SlugField(null= True, blank= True)
+    slug = models.SlugField(null=True, blank=True)
 
     @property
     def split_technology(self):
@@ -33,6 +38,8 @@ class WhatProjectHaveWeDone(models.Model):
 
 @receiver(post_save, sender=WhatProjectHaveWeDone)
 def slug_generator(sender, instance, created, **kwargs):
+    if created:
+        CaseStudyDetails.objects.create(project_we_have_done=instance)
     if instance.slug is None:
         slug_object = SlugGeneratorMixin()
         slug = slug_object.unique_slug_generator(instance)
@@ -40,8 +47,27 @@ def slug_generator(sender, instance, created, **kwargs):
         instance.save()
 
 
+class CaseStudyDetails(models.Model):
+    project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
+                                                on_delete=models.CASCADE)
+    case_study_about = models.TextField(null=True, blank=True)
+    case_study_image = models.ImageField(upload_to='case_study/', null=True, blank=True)
+    client_requirement = models.TextField(null=True, blank=True)
+    how_we_build_it = models.TextField(null=True, blank=True)
+    how_we_build_image = models.ImageField(upload_to='how_we_build/', null=True, blank=True)
+    technology = models.ManyToManyField(Technologies)
+
+
+class KeyFeature(models.Model):
+    case_study_details = models.ForeignKey(CaseStudyDetails, related_name='key_features',
+                                             on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='key_feature')
+
+
 class Subscribe(models.Model):
-    email= models.CharField(max_length= 200)
+    email = models.CharField(max_length=200)
 
 
 class BlogAuthor(models.Model):
