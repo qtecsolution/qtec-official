@@ -1,0 +1,38 @@
+.preloader {
+	@include flex-center;
+	position: fixed;
+	@include w100;
+	min-height: 100vh;
+	overflow: hidden;
+	z-index: 10000;
+	background: $white;
+
+	.preload {
+		position: relative;
+		@include square(length(150));
+		@include flex-center;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include border(solid, 4, $gray-200);
+			border-left-color: $primary;
+			@include square(length(150));
+			@include flex-center;
+			@include circle;
+			animation: spinning 2s linear infinite;
+		}
+	}
+}
+
+@keyframes spinning {
+	0% {
+		@include transform(rotate(0deg));
+	}
+
+	100% {
+		@include transform(rotate(360deg));
+	}
+}

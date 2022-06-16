@@ -1,0 +1,88 @@
+/**=======================================================**
+                        ACCORDION START
+**=======================================================**/
+
+.accordion {
+	&-item {
+		border: none;
+
+		&:last-of-type {
+			.accordion-button {
+				&.collapsed {
+					@include radius(0);
+				}
+			}
+		}
+	}
+
+	&-button {
+		@include setBgColor($aboutBg, $gray-700);
+		@include font-face($primaryFont, style('normal'), size(18), weight('semibold'), line-height(25.3, 18));
+		@include radius(0);
+		padding: length(22) length(16) length(12);
+
+		@include breakpoint(mobile768) {
+			padding: length(22) length(24) length(12);
+			@include font-face($primaryFont, style('normal'), size(20), weight('semibold'), line-height(27.3, 20));
+		}
+
+		@include breakpoint(tab992) {
+			padding: length(22) length(32) length(12);
+		}
+
+		&:not(.collapsed) {
+			@include radius(0);
+			@include setBgColor($aboutBg, $gray-700);
+			box-shadow: none;
+
+			&::after {
+				background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+			}
+		}
+
+
+		&:focus {
+			box-shadow: none;
+			outline: none;
+		}
+	}
+
+	&-body {
+		background: $white;
+		@include flex-column;
+		gap: length(36);
+		padding: length(22) length(16) length(28);
+
+		@include breakpoint(mobile768) {
+			padding: length(22) length(24) length(28);
+		}
+
+		@include breakpoint(tab992) {
+			padding: length(22) length(32) length(28);
+		}
+
+		.servicetext {
+			color: $gray-600;
+			@include font-face($primaryFont, style('normal'), size(14), weight('normal'), line-height(24, 14));
+			letter-spacing: length(0.24);
+
+			@include breakpoint(mobile768) {
+				@include font-face($primaryFont, style('normal'), size(16), weight('normal'), line-height(26, 16));
+			}
+
+			@include breakpoint(tab992) {
+				@include font-face($primaryFont, style('normal'), size(18), weight('normal'), line-height(30, 18));
+			}
+		}
+
+		.service-buttons {
+			@include flex-center-vert;
+			gap: length(20);
+			flex-wrap: wrap;
+		}
+	}
+}
+
+/**=======================================================**
+                        ACCORDION END
+**=======================================================**/

@@ -1,0 +1,101 @@
+/**=====================================================
+                OFFCANVAS START
+=====================================================**/
+
+.offcanvas-top {
+	height: 100vh;
+	border-bottom: none;
+}
+
+.offcanvas-bottom {
+	height: 110vh;
+	border-top: none;
+}
+
+.offcanvas-start {
+	height: 100vh;
+	border-right: none;
+}
+
+.offcanvas-end {
+	height: 100vh;
+	border-left: 0;
+}
+
+.offcanvas {
+	@include w100;
+	background: $footerbg;
+	overflow: hidden;
+
+	@include breakpoint(mobile500) {
+		width: length(300);
+	}
+
+	&-header {
+		position: relative;
+
+		.logo {
+			@include square(length(60));
+			@include flex-center;
+			overflow: hidden;
+
+			img {
+				@include wh100;
+				object-fit: contain;
+			}
+		}
+
+		.btn-close {
+			@include square(length(24));
+			background: transparent;
+			margin: 0;
+			padding: 0;
+			padding: length(8);
+			@include flex-center;
+			@include circle;
+			opacity: 1;
+
+			svg {
+				@include wh100;
+				@include transitiontransform;
+
+				path {
+					fill: $primary;
+					@include transitionsall;
+				}
+			}
+
+			&:focus {
+				box-shadow: none;
+				outline: none;
+			}
+
+			@include hover {
+				svg {
+					path {
+						fill: $secondary;
+					}
+				}
+			}
+		}
+	}
+
+	&-body {
+		overflow-x: hidden;
+		padding-top: length(0);
+		@include flex-column;
+
+		&::-webkit-scrollbar {
+			background: transparent;
+			width: length(8);
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: $primary;
+		}
+	}
+}
+
+/**=====================================================
+                OFFCANVAS END
+=====================================================**/

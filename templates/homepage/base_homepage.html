@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'homepage/head_homepage.html' %}
+</head>
+
+<body>
+	<!--========== PRELOADER-START ==========-->
+	<div class="preloader" id="preloader">
+		<div class="preload">
+			<img src="assets/images/logo/logo.svg" alt="logo">
+		</div>
+	</div>
+	<!--========== PRELOADER-END ============-->
+    {% include 'homepage/navbar_homepage.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'homepage/footer_homepage.html' %}
+
+    {% include 'homepage/script_homepage.html' %}
+
+    {% block script %}
+    {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+/**=======================================================**
+                        TAB START
+**=======================================================**/
+
+.tabmenu {
+	max-width: 100%;
+
+	@include breakpoint(mobile576) {
+		max-width: 60%;
+	}
+
+	@include breakpoint(mobile768) {
+		max-width: 50%;
+	}
+
+	@include breakpoint(tab992) {
+		max-width: 35%;
+	}
+
+	@include breakpoint(desktop1200) {
+		max-width: 25%;
+	}
+}
+
+.nav-tabs {
+	border: none;
+	background: $gray-100;
+	padding: length(4);
+	@include radius(8);
+	width: auto;
+	max-width: 100%;
+	justify-content: space-between;
+
+	.nav-item {
+		&:last-of-type {
+			.nav-link {
+				border-right: 0;
+			}
+		}
+
+		@include hover {
+			.nav-link {
+				border: 0;
+			}
+		}
+	}
+
+	.nav-link {
+		padding: length(15) length(8);
+		border: none;
+		@include setBgColor(transparent, $gray-800);
+		@include font-face($primaryFont, style('normal'), size(14), weight('semibold'), line-height(14, 14));
+		margin: 0;
+		border-radius: 0;
+		width: length(72);
+
+		&:hover:not(.active) {
+			@include radius(8);
+			border: none;
+			outline: none;
+			background: $white;
+			box-shadow: $tab-shadow;
+			filter: $tab-shade;
+		}
+
+		&.active {
+			@include radius(8);
+			background: $white;
+			box-shadow: $tab-shadow;
+			filter: $tab-shade;
+		}
+	}
+}
+
+/**=======================================================**
+                        TAB END
+**=======================================================**/

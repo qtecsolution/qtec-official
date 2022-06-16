@@ -1,0 +1,356 @@
+@media screen and (max-width: 61.9375rem) {
+  .discussion-content-body .discussion-body .contentbox {
+	overflow: hidden;
+	max-height: 100%;
+  }
+}
+
+.discussion-content-body .discussion-body .contentbox .readbox {
+  margin-bottom: 1.5rem;
+}
+
+.discussion-content-body .discussion-body .contentbox .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.875rem;
+  padding: 0.625rem 1.875rem;
+  background: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 31.25rem) {
+  .discussion-content-body .discussion-body .contentbox .message {
+	padding: 0.625rem;
+  }
+}
+
+.discussion-content-body .discussion-body .contentbox .message-icon {
+  width: 3.375rem;
+  height: 3.375rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+	  -ms-flex-align: center;
+		  align-items: center;
+  -webkit-box-pack: center;
+	  -ms-flex-pack: center;
+		  justify-content: center;
+  border-radius: 100%;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-icon .name {
+  font-family: "Ruposhi Bangla Unicode";
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.33333;
+  text-align: center;
+}
+
+.discussion-content-body .discussion-body .contentbox .message.active {
+  background: #FCEBD2;
+}
+
+.discussion-content-body .discussion-body .contentbox .message.active .message-icon {
+  background: white;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-1 .message-icon {
+  background: #E0EFE4;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-2 .message-icon {
+  background: white;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-3 .message-icon {
+  background: #E0E2EF;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-4 .message-icon {
+  background: #E7E0EF;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-5 .message-icon {
+  background: #E3E2E5;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-6 .message-icon {
+  background: #EDE2D8;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-7 .message-icon {
+  background: #FFE6E7;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-8 .message-icon {
+  background: #E4FCFF;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-9 .message-icon {
+  background: #E4FFEA;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-details {
+  width: calc(100% - 3.375rem);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+	  -ms-flex-direction: column;
+		  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-details .details-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+	  -ms-flex-align: center;
+		  align-items: center;
+  -webkit-box-pack: justify;
+	  -ms-flex-pack: justify;
+		  justify-content: space-between;
+}
+
+@media screen and (max-width: 31.25rem) {
+  .discussion-content-body .discussion-body .contentbox .message-details .details-head {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+			flex-direction: column;
+	-webkit-box-align: start;
+		-ms-flex-align: start;
+			align-items: flex-start;
+	gap: 0.125rem;
+  }
+}
+
+.discussion-content-body .discussion-body .contentbox .message-details .details-head .name-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+	  -ms-flex-align: center;
+		  align-items: center;
+  gap: 0.625rem;
+}
+
+@media screen and (max-width: 31.25rem) {
+  .discussion-content-body .discussion-body .contentbox .message-details .details-head .name-time {
+	-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+			justify-content: space-between;
+	width: 100%;
+  }
+}
+
+.discussion-content-body .discussion-body .contentbox .message-details .details-head .name-time .name {
+  font-family: "Ruposhi Bangla Unicode";
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: black;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-details .details-head .name-time .time {
+  font-family: "Ruposhi Bangla Unicode";
+  font-style: normal;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1.36364;
+  color: #C4C4C4;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-details .details-head .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+	  -ms-flex-align: center;
+		  align-items: center;
+  gap: 1.5rem;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-details .details-head .icons .btn-icon {
+  background: transparent;
+  border: none;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-details .text {
+  font-family: "Ruposhi Bangla Unicode";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #575757;
+}
+
+.discussion-content-body .discussion-body .contentbox .message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.875rem;
+  padding: 0.625rem 1.875rem;
+  background: white;
+  cursor: pointer;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-icon {
+  width: 3.375rem;
+  height: 3.375rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+	  -ms-flex-align: center;
+		  align-items: center;
+  -webkit-box-pack: center;
+	  -ms-flex-pack: center;
+		  justify-content: center;
+  border-radius: 100%;
+}
+
+.discussion-content-body .discussion-body .contentbox .message-icon .name {
+  font-family: "Ruposhi Bangla Unicode";
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.33333;
+  text-align: center;
+}
+
+@media screen and (max-width: 31.25rem) {
+  .discussion-content-body .discussion-body .contentbox .message {
+	padding: 0.625rem;
+  }
+}
+
+.teachers-dashboard .dashboard-content .course-activity .allcourses .allcourse-body {
+  min-height: 240px;
+  max-height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.teachers-dashboard .dashboard-content .course-activity .allcourses .allcourse-body::-webkit-scrollbar-track {
+  border-radius: 0.625rem;
+}
+
+.teachers-dashboard .dashboard-content .course-activity .allcourses .allcourse-body::-webkit-scrollbar {
+  width: 0.5rem;
+  background: transparent;
+}
+
+.teachers-dashboard .dashboard-content .course-activity .allcourses .allcourse-body::-webkit-scrollbar-thumb {
+  border-radius: 0.625rem;
+  background-color: #A0A0A0;
+}
+
+.teachers-dashboard .dashboard-content .course-activity .activity .activitylist {
+  min-height: 240px;
+  max-height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.teachers-dashboard .dashboard-content .course-activity .activity .activitylist::-webkit-scrollbar-track {
+  border-radius: 0.625rem;
+}
+
+.teachers-dashboard .dashboard-content .course-activity .activity .activitylist::-webkit-scrollbar {
+  width: 0.5rem;
+  background: transparent;
+}
+
+.teachers-dashboard .dashboard-content .course-activity .activity .activitylist::-webkit-scrollbar-thumb {
+  border-radius: 0.625rem;
+  background-color: #A0A0A0;
+}
+
+.discussion-content-body .tab-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2.25rem;
+  background: white;
+}
+
+.discussion-content-body .tab-details .tab-pane,
+.discussion-content-body .tab-details .contentbox {
+  width: 50%;
+}
+
+.discussion-content-body .discussion-body .messagebox {
+  width: 100%;
+}
+
+.discussion-content-body .tab-details .tab-pane .discussion {
+  width: 100%;
+}
+
+.teachers-dashboard .dashboard-content .dashboard-header .headernav .profilelink .null-thumb {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background: #DF6812;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-width: 600;
+  text-align: center;
+}
+
+.teachers-dashboard .dashboard-content .dashboard-header .headernav .profile-dropdown {
+  position: relative;
+}
+
+.teachers-dashboard .dashboard-content .dashboard-header .headernav .profile-dropdown .profile-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 230px;
+  background: white;
+  box-shadow: 0.25rem 1.875rem 9.375rem rgba(85, 71, 65, 0.3);
+  display: none;
+}
+
+.teachers-dashboard .dashboard-content .dashboard-header .headernav .profile-dropdown .profile-dropdown-menu .dropdownlink {
+  font-family: "Ruposhi Bangla Unicode";
+  font-style: normal;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #232222;
+  -webkit-transition: color 350ms ease-in-out;
+  transition: color 350ms ease-in-out;
+  display: inline-block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+}
+
+.teachers-dashboard .dashboard-content .dashboard-header .headernav .profile-dropdown .profile-dropdown-menu .dropdownlink:hover {
+  color: #DF6812;
+}
+
+.teachers-dashboard .dashboard-content .dashboard-header .headernav .profile-dropdown:hover .profile-dropdown-menu {
+  display: block;
+}
+
