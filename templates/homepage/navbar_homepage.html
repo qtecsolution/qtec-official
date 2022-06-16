@@ -1,9 +1,10 @@
+{% load static %}
 	<!--========== HEADER-START ==========-->
 	<header class="header">
 		<div class="container">
 			<nav class="header-nav">
-				<a href="index.html" class="logo">
-					<img src="assets/images/logo/logo.svg" alt="logo">
+				<a href="{% url 'homepage:index_url' %}" class="logo">
+					<img src="{%  static 'homepage/assets/images/logo/logo.svg' %}" alt="logo">
 				</a>
 
 				<!-- DESKTOP-MENU START -->

@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from dashboard.utils import SlugGeneratorMixin
 
 TEXT = 1
 TEXT_WITH_VIDEO = 2
@@ -20,7 +21,23 @@ BLOG_CONDITION_TYPE = (
 
 
 class WhatProjectHaveWeDone(models.Model):
-    name = models.CharField
+    name = models.CharField(max_length= 150)
+    image = models.ImageField(upload_to='project_done/')
+    technology = models.TextField()
+    slug = models.SlugField(null= True, blank= True)
+
+    @property
+    def split_technology(self):
+        return self.technology.split(',')
+
+
+@receiver(post_save, sender=WhatProjectHaveWeDone)
+def slug_generator(sender, instance, created, **kwargs):
+    if instance.slug is None:
+        slug_object = SlugGeneratorMixin()
+        slug = slug_object.unique_slug_generator(instance)
+        instance.slug = slug
+        instance.save()
 
 
 class Subscribe(models.Model):
@@ -54,10 +71,6 @@ class BlogSubCategory(models.Model):
 
     def __str__(self):
         return str(self.name)
-
-
-class SlugGeneratorMixin:
-    pass
 
 
 @receiver(post_save, sender=BlogSubCategory)
