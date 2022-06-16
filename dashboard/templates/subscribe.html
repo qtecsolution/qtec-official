@@ -20,13 +20,13 @@
                         <div class="card-body table-responsive">
                             <table id="subscriber_list" class="table table-borderless table-striped table-hover">
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Name </th>
+                                    <th>Id </th>
+                                    <th>Email </th>
                                 </tr>
-                                {% for done in what_Done %}
+                                {% for subscribe in subscribers %}
                                 <tr id="subscriber_{{ subscribe.id }}">
-                                    <td>{{ done.id }}</td>
-                                    <td>{{ done.name }}</td>
+                                    <td>{{ subscribe.id }}</td>
+                                    <td>{{ subscribe.email }}</td>
 
                                 </tr>
                                 {% endfor %}

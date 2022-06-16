@@ -20,7 +20,7 @@ BLOG_CONDITION_TYPE = (
 
 
 class WhatProjectHaveWeDone(models.Model):
-    name = models.CharField
+    name = models.CharField(max_length=50)
 
 
 class Subscribe(models.Model):
