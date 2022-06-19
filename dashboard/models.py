@@ -44,6 +44,7 @@ class WhatProjectHaveWeDone(models.Model):
     @property
     def split_technology(self):
         return self.technology.split(',')
+        
 
 
 @receiver(post_save, sender=WhatProjectHaveWeDone)
