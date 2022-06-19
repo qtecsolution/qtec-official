@@ -15,7 +15,7 @@ urlpatterns= [
     path('product/', ProductsView.as_view(), name="product_url"),
 
     path('blog/', BlogsView.as_view(), name="blog_url"),
-    path('blog-details/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
+    path('blog-details/<str:category_slug>/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
 
     path('contact-us/', ContactUs.as_view(), name="contact_us_url"),
 
