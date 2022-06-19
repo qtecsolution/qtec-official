@@ -1,4 +1,5 @@
 {% extends 'homepage/base_homepage.html' %}
+{% load static %}
 
 {% block content %}
 	<section class="about-banner">
@@ -40,9 +41,8 @@
 			<div class="row">
 				<div class="col-md-9 col-12 mx-md-auto">
 					<div class="videobox">
-						<video id="about-player" class="video-js vjs-big-play-centered"
-							poster="assets/video-poster/video-poster.jpg">
-							<source src="assets/videos/video-1.mp4" type="video/mp4" />
+						<video id="about-player" class="video-js vjs-big-play-centered" poster="assets/video-poster/video-poster.jpg">
+							<source src="{% static 'homepage/assets/videos/q-video.mp4' %}" type="video/mp4" />
 
 							<p class="vjs-no-js">Your browser does not support video tag</p>
 						</video>
@@ -78,7 +78,7 @@
 				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
 					<div class="thumbnailbox">
 						<figure class="product-thumbnail">
-							<img src="assets/images/featured/featured-thumbnail.png" alt="featured-thumbnail">
+							<img src="{% static 'homepage/assets/images/featured/featured-thumbnail.png' %}" alt="featured-thumbnail">
 						</figure>
 					</div>
 				</div>

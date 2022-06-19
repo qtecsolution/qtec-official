@@ -11,25 +11,25 @@
 				<div class="desktopmenu">
 					<ul class="desktoplist">
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:index_url' %}" class="desktoplist-link active">Home</a>
+							<a href="{% url 'homepage:index_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'index_url' %} active {% endif %}">Home</a>
 						</li>
 
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:about_us_url' %}" class="desktoplist-link">About Us</a>
+							<a href="{% url 'homepage:about_us_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'about_us_url' %} active {% endif %}">About Us</a>
 						</li>
 
 						<li class="desktoplist-item d-none">
-							<a href="{% url 'homepage:index_url' %}" class="desktoplist-link">Services</a>
+							<a href="{% url 'homepage:index_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'index_url' %} active {% endif %}">Services</a>
 						</li>
 
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:product_url' %}" class="desktoplist-link">Products</a>
+							<a href="{% url 'homepage:product_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a>
 						</li>
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:blog_url' %}" class="desktoplist-link">Blogs</a>
+							<a href="{% url 'homepage:blog_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blogs</a>
 						</li>
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:contact_us_url' %}" class="desktoplist-link">Contact Us</a>
+							<a href="{% url 'homepage:contact_us_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'contact_us_url' %} active {% endif %}">Contact Us</a>
 						</li>
 					</ul>
 				</div>

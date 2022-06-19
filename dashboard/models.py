@@ -26,6 +26,23 @@ PROJECT_TYPE = (
     (UI_UX, 'Ui/Ux'),
 
 )
+BELOW_3000 = 1
+_3000_TO_10000 = 2
+_10000_TO_20000 = 3
+_20000_TO_30000 = 4
+_30000_TO_40000 = 5
+_40000_TO_50000 = 6
+OVER_50000 = 7
+
+BUDGET = (
+    (BELOW_3000, 'Below $3000'),
+    (_3000_TO_10000, '$3000 to $10000'),
+    (_10000_TO_20000, '$10000 to $20000'),
+    (_20000_TO_30000, '$20000 to $30000'),
+    (_30000_TO_40000, '$30000 to $40000'),
+    (_40000_TO_50000, '$40000 to $50000'),
+    (OVER_50000, 'Over $50000'),
+)
 
 
 class Technologies(models.Model):
@@ -45,7 +62,6 @@ class WhatProjectHaveWeDone(models.Model):
     def split_technology(self):
         return self.technology.split(',')
         
-
 
 @receiver(post_save, sender=WhatProjectHaveWeDone)
 def slug_generator(sender, instance, created, **kwargs):
@@ -128,3 +144,11 @@ class Blog(models.Model):
 
     def __str__(self):
         return str(self.blog_author.name) + '-' + str(self.title)
+
+
+class LetsTalk(models.Model):
+    name = models.CharField(max_length= 200, null= True)
+    email = models.CharField(null= True, max_length= 100)
+    phone_number = models.CharField(max_length= 30)
+    budget = models.PositiveSmallIntegerField( choices= BUDGET)
+    message = models.TextField(null= True)
