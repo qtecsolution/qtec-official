@@ -43,11 +43,76 @@
                                     </td>
                                     <td>{{ done.technology }}</td>
                                     <th>
-                                        <form action="{% url 'dashboard:delet_what_done_url' %}"method="POST" >
-                                            {% csrf_token %}
-                                            <input type="hidden" value="{{done.id}}" name="id">
-                                            <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
-                                        </form>  
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <form action="{% url 'dashboard:delet_what_done_url' %}"method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{done.id}}" name="id">
+                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form> 
+                                            </div>
+                                            <div class="col-2">
+                                                <button  data-toggle="modal"
+                                                data-target="#edit_what_project_done_add_modal_{{done.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
+                                                <div class="modal fade" id="edit_what_project_done_add_modal_{{done.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                            
+                                                        <form action="{% url 'dashboard:edit_what_project_done_url' %}" method="POST" enctype="multipart/form-data" >
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="id" value="{{ done.id }}">
+                                                            <div class="modal-body">
+                                                                <div class="error text-center" style="color: red;"></div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="name" class="col-sm-3 col-form-label">Name <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <input  required type="text" class="form-control" name="name" id="what_project_done_name"
+                                                                            value="{{ done.name }}">
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <div class="form-group row">
+                                                                    <label for="title" class="col-sm-3 col-form-label">Technology <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <textarea required class="form-control" name="technology">{{ done.technology }}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="image" class="col-sm-3 col-form-label">Image <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <div class="row">
+                                                                            <div class="col-md-8">
+                                                                                <input class="form-control" type="file" name="image" id="what_project_done_add_modal_image">
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <img style="width: 50px; margin-left: 50px; " src="/media/{{ done.image }}">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Save </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="{% url 'dashboard:case_study_edit_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i></button></a>
+                                            </div>
+                                        </div>
+                                         
                                     </th>
                                 </tr>
                                 {% endfor %}
