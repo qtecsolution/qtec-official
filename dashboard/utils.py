@@ -15,8 +15,10 @@ class SlugGeneratorMixin(object):
         if new_slug is not None:
             slug = new_slug
         else:
-            if klass_name == 'WhatProjectHaveWeDone':
+            if klass_name == 'WhatProjectHaveWeDone' or klass_name == 'BlogCategory':
                 slug = slugify(instance.name).replace("&", "and")
+            if klass_name == 'Blog':
+                slug = slugify(instance.title).replace("&", "and")
 
         qs_exists = Klass.objects.filter(slug=slug).exists()
 

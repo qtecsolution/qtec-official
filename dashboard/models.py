@@ -67,17 +67,6 @@ class WhatProjectHaveWeDone(models.Model):
     def split_technology(self):
         return self.technology.split(',')        
 
-@receiver(post_save, sender=WhatProjectHaveWeDone)
-def slug_generator(sender, instance, created, **kwargs):
-    if created:
-        CaseStudyDetails.objects.create(project_we_have_done=instance)
-    if instance.slug is None:
-        slug_object = SlugGeneratorMixin()
-        slug = slug_object.unique_slug_generator(instance)
-        instance.slug = slug
-        instance.save()
-
-
 class CaseStudyDetails(models.Model):
     project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
                                                 on_delete=models.CASCADE)
@@ -110,34 +99,17 @@ class BlogAuthor(models.Model):
         return str(self.name)
 
 
-# class BlogRootCategory(models.Model):
-#     name = models.CharField(max_length=50)
-#
-#     def __str__(self):
-#         return str(self.name)
-#
-#
-# class BlogSubCategory(models.Model):
-#     root = models.ForeignKey(BlogRootCategory, related_name='sub_categories', on_delete=models.CASCADE)
-#     slug = models.SlugField(null=True, blank=True)
-#     name = models.CharField(max_length=50)
-#
-#     def __str__(self):
-#         return str(self.name)
+class BlogCategory(models.Model):
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(null= True)
 
-
-# @receiver(post_save, sender=BlogSubCategory)
-# def create_video_blog(sender, instance, created, **kwargs):
-#     if created:
-#         if instance.slug is None:
-#             slug_object = SlugGeneratorMixin()
-#             slug = slug_object.unique_slug_generator(instance)
-#             instance.slug = slug
-#             instance.save()
+    def __str__(self):
+        return str(self.name)
 
 
 class Blog(models.Model):
     blog_author = models.ForeignKey(BlogAuthor, null=True, related_name='blogs', on_delete=models.CASCADE)
+    blog_category = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null= True)
     slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     title = models.TextField()
     description = models.TextField()
@@ -157,3 +129,22 @@ class LetsTalk(models.Model):
     budget = models.PositiveSmallIntegerField( choices= BUDGET)
     message = models.TextField(null= True)
     status = models.PositiveSmallIntegerField( choices= LETS_TAlK_STATUS, default=PENDING)
+
+
+@receiver(post_save, sender=BlogCategory)
+@receiver(post_save, sender=Blog)
+@receiver(post_save, sender=WhatProjectHaveWeDone)
+def slug_generator(sender, instance, created, **kwargs):
+    if created and sender == WhatProjectHaveWeDone:
+        CaseStudyDetails.objects.create(project_we_have_done=instance)
+    if instance.slug is None:
+        slug_object = SlugGeneratorMixin()
+        slug = slug_object.unique_slug_generator(instance)
+        instance.slug = slug
+        instance.save()
+
+
+class HandleBlog(models.Model):
+    top_4_blog = models.ManyToManyField(Blog)
+    highlight_blog= models.ForeignKey(Blog, related_name='handle_blog',on_delete= models.SET_NULL, null= True)
+

@@ -7,7 +7,7 @@
       <div class="blogdetails-content">
         <!-- BLOG-DETAILS THUMBNAIL START -->
         <div class="blogdetails-thumbnail">
-          <img src="assets/images/blog/blog-banner.jpg" alt="blog-thumbnail">
+          <img src="{{ blog.image.url }}" alt="blog-thumbnail">
         </div>
         <!-- BLOG-DETAILS THUMBNAIL END -->
 
@@ -21,8 +21,7 @@
                 <div class="blogdescriptions-header">
                   <!-- BLOG TITLE START -->
                   <div class="titlebox">
-                    <h1 class="title">Get our newsletter with the latest articles, data, and events. Delivered to your
-                      inbox weekly.</h1>
+                    <h1 class="title">{{ blog.updated_at }}</h1>
                   </div>
                   <!-- BLOG TITLE END -->
 
@@ -30,9 +29,9 @@
                   <div class="authorinfo-shareinfo">
                     <!-- AUTHOR-INFO START -->
                     <div class="authorinfo">
-                      <h5 class="authorname">By Nazmus Saleh Sakib, Co-founder &amp; CEO Mindly</h5>
+                      <h5 class="authorname">By {{ blog.blog_author.name }}, {{ blog.blog_author.qualification }}</h5>
 
-                      <p class="date">Monday Jan 20, 2020</p>
+                      <p class="date">{{ blog.updated_at }}</p>
                     </div>
                     <!-- AUTHOR-INFO END -->
 
@@ -152,80 +151,7 @@
                 <div class="blogdescriptions-body">
                   <div class="detail">
                     <div class="description">
-                      <p class="descriptiontext">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim malesuada lectus non
-                        penatibus aliquam iaculis mauris at. Vulputate ac pellentesque nec elementum ut eu massa tortor
-                        duis. Tempus, nisl nisi, egestas risus arcu scelerisque risus. Eget pulvinar eu nibh mauris
-                        libero facilisis integer lorem. Egestas tellus euismod orci, elementum. At lobortis hac tempor
-                        justo enim nec est ut. Condimentum purus sit in arcu gravida viverra felis volutpat. Elementum,
-                        urna, sollicitudin sed elementum purus. Eleifend id at velit, ultricies magna suspendisse
-                        pretium massa enim. Dictumst nulla scelerisque tortor arcu gravida diam. Diam quisque nunc,
-                        egestas velit dui proin enim ut.
-                      </p>
-
-                      <p class="descriptiontext">
-                        Nullam turpis morbi nam vitae fringilla libero quam eget leo. Volutpat accumsan vehicula quis
-                        magna sed facilisi tellus fermentum. Feugiat ut ac vestibulum pellentesque. Erat vehicula
-                        convallis semper non eu in ac tellus purus. Consectetur nec et id pretium quisque lobortis ut
-                        placerat cursus. Molestie eu vestibulum ut maecenas in turpis orci dictum diam. Adipiscing et ut
-                        hac vel. Ante at nunc, curabitur congue. Fermentum aliquet ipsum volutpat, tincidunt laoreet
-                        vel. Sed placerat donec dui enim velit. Lectus et scelerisque viverra ac lacus metus id quis
-                        quam. Eu semper mattis sit quam eget pellentesque. Enim cum platea rhoncus posuere ut egestas.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="detail">
-                    <h2 class="detail-title">Cursus et, viverra cum amet</h2>
-
-                    <div class="description">
-                      <p class="descriptiontext">
-                        risus aenean. Nunc pulvinar odio dictum faucibus suspendisse. Non aliquet a ut urna neque amet
-                        placerat nulla tellus. Tortor, urna ultrices id dui. Feugiat enim tristique integer ut facilisis
-                        mattis nisi, blandit purus. Convallis nibh nisi, risus nulla est. Pellentesque est, et
-                        suspendisse odio donec nec vitae sit. Cursus in nec, sit vulputate eleifend interdum eleifend
-                        convallis at. Pellentesque quis tempus elit tristique. Nisi, condimentum scelerisque dignissim
-                        justo ullamcorper mauris libero.
-                      </p>
-
-                      <p class="descriptiontext">
-                        Et, egestas amet lectus viverra. Bibendum accumsan in tellus nec dictum.Lorem ipsum dolor sit
-                        amet, consectetur adipiscing elit. Dignissim malesuada lectus non penatibus aliquam iaculis
-                        mauris at. Vulputate ac pellentesque nec elementum ut eu massa tortor duis. Tempus, nisl nisi,
-                        egestas risus arcu scelerisque risus. Eget pulvinar eu nibh mauris libero facilisis integer
-                        lorem. Egestas tellus euismod orci, elementum. At lobortis hac tempor justo enim nec est ut.
-                        Condimentum purus sit in arcu gravida viverra felis volutpat. Elementum, urna, sollicitudin sed
-                        elementum purus. Eleifend id at velit, ultricies magna suspendisse pretium massa enim. Dictumst
-                        nulla scelerisque tortor arcu gravida diam. Diam quisque nunc, egestas velit dui proin enim ut.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="detail">
-                    <h2 class="detail-title">Cursus et, viverra cum amet</h2>
-
-                    <div class="description">
-                      <p class="descriptiontext">
-                        Nullam turpis morbi nam vitae fringilla libero quam eget leo. Volutpat accumsan vehicula quis
-                        magna sed facilisi tellus fermentum. Feugiat ut ac vestibulum pellentesque. Erat vehicula
-                        convallis semper non eu in ac tellus purus. Consectetur nec et id pretium quisque lobortis ut
-                        placerat cursus. Molestie eu vestibulum ut maecenas in turpis orci dictum diam. Adipiscing et ut
-                        hac vel. Ante at nunc, curabitur congue. Fermentum aliquet ipsum volutpat, tincidunt laoreet
-                        vel. Sed placerat donec dui enim velit. Lectus et scelerisque viverra ac lacus metus id quis
-                        quam. Eu semper mattis sit quam eget pellentesque. Enim cum platea rhoncus posuere ut egestas.
-                      </p>
-
-                      <p class="descriptiontext">
-                        Cursus et, viverra cum amet risus aenean. Nunc pulvinar odio dictum faucibus suspendisse. Non
-                        aliquet a ut urna neque amet placerat nulla tellus. Tortor, urna ultrices id dui. Feugiat enim
-                        tristique integer ut facilisis mattis nisi, blandit purus. Convallis nibh nisi, risus nulla est.
-                        Pellentesque est, et suspendisse odio donec nec vitae sit. Cursus in nec, sit vulputate eleifend
-                        interdum eleifend convallis at. Pellentesque quis tempus elit tristique. Nisi, condimentum
-                        scelerisque dignissim justo ullamcorper mauris libero.
-                      </p>
-                      <p class="descriptiontext">
-                        Et, egestas amet lectus viverra. Bibendum accumsan in tellus nec dictum.
-                      </p>
+                        {{ blog.description|safe }}
                     </div>
                   </div>
                 </div>
@@ -256,115 +182,33 @@
         <div class="readnext-body">
           <div class="row g-lg-4 g-3">
             <!-- BLOG ITEM START -->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
-              <a href="blog-details.html" class="bloglink">
+              {% for i in random_blog %}
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
+              <a href="/blog-details/{{ i.blog_category.slug }}/{{ i.slug }}/" class="bloglink">
                 <div class="card-article">
                   <div class="card-article-header">
-                    <img src="assets/images/articles/article-1.svg" alt="card-thumbnail">
+                    <img src="{{ i.image.url }}" alt="card-thumbnail">
                   </div>
 
                   <div class="card-article-body">
                     <div class="title-date">
-                      <h4 class="title">Article Title 1</h4>
-                      <p class="date">Monday Jan 20, 2020</p>
+                      <h4 class="title">{{ i.title }}</h4>
+                      <p class="date">{{ i.updated_at }}</p>
                     </div>
 
                     <div class="articledescript">
                       <p class="articletext">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium
-                        placerat ut platea...
+                        {{ i.description }}
                       </p>
                     </div>
 
-                    <span class="articlelink">Read article -&gt;</span>
+                    <span class="articlelink">Read article</span>
                   </div>
                 </div>
               </a>
             </div>
+              {% endfor %}
             <!-- BLOG ITEM END -->
-
-            <!-- BLOG ITEM START -->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
-              <a href="blog-details.html" class="bloglink">
-                <div class="card-article">
-                  <div class="card-article-header">
-                    <img src="assets/images/articles/article-1.svg" alt="card-thumbnail">
-                  </div>
-
-                  <div class="card-article-body">
-                    <div class="title-date">
-                      <h4 class="title">Article Title 1</h4>
-                      <p class="date">Monday Jan 20, 2020</p>
-                    </div>
-
-                    <div class="articledescript">
-                      <p class="articletext">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium
-                        placerat ut platea...
-                      </p>
-                    </div>
-
-                    <span class="articlelink">Read article -&gt;</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <!-- BLOG ITEM END -->
-
-            <!-- BLOG ITEM START -->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
-              <a href="blog-details.html" class="bloglink">
-                <div class="card-article">
-                  <div class="card-article-header">
-                    <img src="assets/images/articles/article-1.svg" alt="card-thumbnail">
-                  </div>
-
-                  <div class="card-article-body">
-                    <div class="title-date">
-                      <h4 class="title">Article Title 1</h4>
-                      <p class="date">Monday Jan 20, 2020</p>
-                    </div>
-
-                    <div class="articledescript">
-                      <p class="articletext">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium
-                        placerat ut platea...
-                      </p>
-                    </div>
-
-                    <span class="articlelink">Read article -&gt;</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <!-- BLOG ITEM END -->
-
-            <!-- BLOG ITEM START -->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
-              <a href="blog-details.html" class="bloglink">
-                <div class="card-article">
-                  <div class="card-article-header">
-                    <img src="assets/images/articles/article-1.svg" alt="card-thumbnail">
-                  </div>
-
-                  <div class="card-article-body">
-                    <div class="title-date">
-                      <h4 class="title">Article Title 1</h4>
-                      <p class="date">Monday Jan 20, 2020</p>
-                    </div>
-
-                    <div class="articledescript">
-                      <p class="articletext">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium
-                        placerat ut platea...
-                      </p>
-                    </div>
-
-                    <span class="articlelink">Read article -&gt;</span>
-                  </div>
-                </div>
-              </a>
-            </div>
             <!-- BLOG ITEM END -->
           </div>
         </div>
@@ -373,7 +217,7 @@
         <!-- READ-NEXT FOOTER START -->
         <div class="readnext-footer">
           <div class="backinfo">
-            <a href="blog.html" class="btn-read">Go back to blog</a>
+            <a href="blog.html" class="btn-read">See All</a>
           </div>
         </div>
         <!-- READ-NEXT FOOTER END -->
