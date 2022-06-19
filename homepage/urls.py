@@ -19,6 +19,8 @@ urlpatterns= [
 
     path('contact-us/', ContactUs.as_view(), name="contact_us_url"),
 
-    path('case-study/<str:slug>/', CaseStudyDetails.as_view(), name="case_study_details_url")
+    path('case-study/<str:slug>/', CaseStudyDetails.as_view(), name="case_study_details_url"),
+
+    path('lets-talk-subscribe-save/', ContactUs.as_view(), name="lets_talk_subscribe_save_url"),
 
 ]

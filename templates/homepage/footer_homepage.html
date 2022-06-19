@@ -11,8 +11,8 @@
 								</div>
 
 								<div class="subscribe">
-									<input type="email" class="inputfield" placeholder="E-mail">
-									<button class="btn-subscibe" type="button">Subscribe</button>
+									<input id="subscribe_email" type="email" class="inputfield" placeholder="E-mail">
+									<button onclick="return saveSubscribe()"  class="btn-subscibe" type="button">Subscribe</button>
 								</div>
 							</div>
 						</div>
@@ -26,15 +26,11 @@
 								<div class="footerinfo-body">
 									<ul class="footerlist">
 										<li class="footerlist-item">
-											<a href="{% url 'homepage:about_us_url' %}" class="footerlist-link">About</a>
+											<a href="{% url 'homepage:about_us_url' %}" class="footerlist-link">About Us</a>
 										</li>
 
 										<li class="footerlist-item">
 											<a href="{% url 'homepage:blog_url' %}" class="footerlist-link">Blog</a>
-										</li>
-
-										<li class="footerlist-item">
-											<a href="case-study.html" class="footerlist-link">Case Study</a>
 										</li>
 
 										<li class="footerlist-item">
@@ -136,3 +132,4 @@
 				</div>
 		</div>
 	</footer>
+

@@ -28,6 +28,56 @@
     {% block script %}
     {% endblock %}
 
+<script>
+    function saveSubscribe(){
+          var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        let subscribe_email = $('#subscribe_email')
+
+
+
+          if (subscribe_email.val() == "") {
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Validation Error',
+                  text: 'Please, Input Your Email!'
+                })
+            return false;
+          }else{
+              if (!subscribe_email.val().match(validRegex)) {
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Validation Error',
+                  text: 'Please, Input Your Valid Email!'
+                })
+            subscribe_email.focus();
+            return false;
+        }
+          }
+
+            let data= {
+                "type": 1,
+                "email": subscribe_email.val(),
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            }
+            $.ajax({
+                url: "{% url 'homepage:lets_talk_subscribe_save_url' %}",
+                data: data,
+                type: "POST",
+                success: function (data) {
+                   if (data.success){
+                       subscribe_email.val('')
+                       Swal.fire({
+                              icon: 'success',
+                              text: 'Successfully Added, You will receive all our information by mail!',
+                            })
+                   }
+                },
+                error: function (data) {
+                }
+          });
+    }
+</script>
+
 </body>
 
 </html>

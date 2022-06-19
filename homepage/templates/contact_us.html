@@ -12,12 +12,12 @@
 						</div>
 
 						<div class="contact-body">
-							<form class="contactform">
+							<form class="contactform" name="myForm">
 								<div class="forminfo">
 									<div class="row g-4">
 										<div class="col-lg-6 col-12">
 											<div class="inputbox">
-												<label for="name" class="inputlabel">Enter Full Name</label>
+												<label for="name" class="inputlabel">Enter Full Name <small style="color: red">*</small></label>
 												<input type="text" class="inputfield" placeholder="Enter full name" id="name">
 											</div>
 										</div>
@@ -33,19 +33,18 @@
 									<div class="row g-4">
 										<div class="col-lg-6 col-12">
 											<div class="inputbox">
-												<label for="phone" class="inputlabel">Enter Phone Number</label>
+												<label for="phone" class="inputlabel">Enter Phone Number <small style="color: red">*</small> </label>
 												<input type="tel" class="inputfield" placeholder="Enter phone number" id="phone">
 											</div>
 										</div>
 
 										<div class="col-lg-6 col-12">
 											<div class="inputbox">
-												<label for="budget" class="inputlabel">Enter Your Budget</label>
+												<label for="budget" class="inputlabel">Enter Your Budget <small style="color: red">*</small> </label>
 												<select class="selectfield" id="budget">
-													<option value="">Below $3,000</option>
-													<option value="">$3,000 to $10,000</option>
-													<option value="">$10,000 to $40,000</option>
-													<option value="">$50,000+</option>
+                                                    {% for budget in BUDGET %}
+													<option value="{{ budget.0 }}">{{ budget.1 }}</option>
+                                                    {% endfor %}
 												</select>
 											</div>
 										</div>
@@ -62,7 +61,7 @@
 								</div>
 
 								<div class="formsubmit">
-									<button class="btn-submit" type="button">Send</button>
+									<button onclick="return validateForm()" class="btn-submit" type="button">Send</button>
 
 									<span class="or">Or</span>
 
@@ -165,4 +164,68 @@
 			</div>
 		</div>
 	</section>
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        function validateForm() {
+            let myForm = document.forms["myForm"]
+            let name = myForm["name"];
+            let phone = myForm["phone"];
+            let email = myForm["email"];
+            let budget = myForm["budget"];
+            let message = myForm["message"];
+
+          if (name.value == "") {
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Validation Error',
+                  text: 'Please, Input Your Name!'
+                })
+            return false;
+          }
+            if (phone.value == "") {
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Validation Error',
+                  text: 'Please, Input Your Phone Number!'
+                })
+            return false;
+          }
+            let data= {
+                "type": 2,
+                "name": name.value,
+                "phone": phone.value,
+                'email': email.value,
+                'message': message.value,
+                'budget': budget.value,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+
+
+            }
+            $.ajax({
+                url: "{% url 'homepage:lets_talk_subscribe_save_url' %}",
+                data: data,
+                type: "POST",
+                success: function (data) {
+                   if (data.success){
+                       name.value = ''
+                       message.value = ''
+                       budget.value = 1
+                       email.value = ''
+                       phone.value = ''
+
+                       Swal.fire({
+                              icon: 'success',
+                              text: 'Successfully Submitted, Our representative will contact you shortly!',
+                            })
+                   }
+                },
+                error: function (data) {
+                }
+          });
+
+        }
+    </script>
 {% endblock %}
