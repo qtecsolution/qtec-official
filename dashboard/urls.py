@@ -1,5 +1,6 @@
 from django.urls import path
 from dashboard.views.already_done_view import AlreadyDoneView, CaseStudyEditView
+from dashboard.views.blog_view import BlogView
 
 from dashboard.views.dashboard import DashboardView
 from dashboard.views.subscribe_view import SubscribeView
@@ -21,4 +22,10 @@ urlpatterns= [
     path('technologies/', TechnologiesView.as_view(), name= 'technologies_url'),
     path('technologies-save/', TechnologiesView.as_view(), name= 'save_technologies_url'),
     path('technologies-delete/', TechnologiesView.as_view(), name= 'delet_technologies_url'),    
+
+     # blog_blog_list_url
+    path('blog-list/', BlogView.as_view(), name="blog_blog_list_url"),
+    path('blog-list-save/', BlogView.as_view(), name="save_blog_url"),
+    path('blog-list-edit/', BlogView.as_view(), name="edit_blog_url"),
+    path('blog-list-delete/', BlogView.as_view(), name="delet_blog_row_url"),
 ]
