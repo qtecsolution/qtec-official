@@ -1,0 +1,101 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="" id="">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>Lets Talk List</h5>
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="subscriber_list" class="table table-borderless table-striped table-hover">
+                                <tr>
+                                    <th>Id </th>
+                                    <th>Name </th>
+                                    <th>Email</th>
+                                    <th>Phone Number</th>
+                                    <th>Budget</th>
+                                    <th>Message</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                {% for talk in lets_talk %}
+                                <tr id="what_done_{{ item.id }}">
+                                    <td>{{ talk.id }}</td>
+                                    <td>{{ talk.name }}</td>
+                                    <td>{{ talk.email }}</td>
+                                    <td>{{ talk.phone_number }}</td>
+                                    <td>{{ talk.budget }}</td>
+                                    <td>{{ talk.message }}</td>
+                                    <td>
+                                        <select id="talk_change_status_id_{{ talk.id}}" onchange="change_talk_status('{{ talk.id }}')">
+                                            {% for item in status %}
+                                                <option {% if item.0 == talk.status %} selected {% endif %} value="{{ item.0 }}">{{item.1}}</option>
+                                            {% endfor %}
+                                        </select>  
+                                    </td>
+                                    <th>
+                                        <form action="{% url 'dashboard:delet_lets_talk_url' %}"method="POST" >
+                                            {% csrf_token %}
+                                            <input type="hidden" value="{{ talk.id }}" name="id">
+                                            <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                        </form>  
+                                    </th>
+                                </tr>
+                                {% endfor %}
+                                
+                            </table>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+csrf = '{{ csrf_token }}';
+
+function change_talk_status(id){
+    let url =  "{% url 'dashboard:lets_talk_status_change_url' %}";
+    status = $("#talk_change_status_id_"+id).val()
+    $.ajax({
+        url: url,
+        data: {'id': id,'status' : status, 'csrfmiddlewaretoken': csrf},
+        type: "POST",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+        },
+        success: function (data) {
+            toastr.success('Status change successfully');
+            $('#speaker_'+id).html('');
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
+}
+
+</script>
+
+{% endblock %}

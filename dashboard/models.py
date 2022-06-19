@@ -1,3 +1,4 @@
+from telnetlib import STATUS
 from django.db import models
 
 # Create your models here.
@@ -43,8 +44,12 @@ BUDGET = (
     (_40000_TO_50000, '$40000 to $50000'),
     (OVER_50000, 'Over $50000'),
 )
-
-
+PENDING = 1
+CONTACTED = 2
+LETS_TAlK_STATUS = (
+    (PENDING, 'Pending'),
+    (CONTACTED, 'Contacted'),
+)
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
@@ -151,3 +156,4 @@ class LetsTalk(models.Model):
     phone_number = models.CharField(max_length= 30)
     budget = models.PositiveSmallIntegerField( choices= BUDGET)
     message = models.TextField(null= True)
+    status = models.PositiveSmallIntegerField( choices= LETS_TAlK_STATUS, default=PENDING)
