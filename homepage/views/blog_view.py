@@ -11,4 +11,4 @@ class BlogsView(View):
 class BlogDetails(View):
 
     def get(self, request, slug):
-        return render(request, 'blog_details.html')
+        return render(request, 'blog/blog_details.html')

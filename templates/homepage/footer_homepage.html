@@ -1,11 +1,13 @@
-	<footer class="footer">
+{% load static %}
+
+<footer class="footer">
 			<div class="footer-content">
 				<div class="container">
 					<div class="row g-5">
 						<div class="col-lg-4 col-12">
 							<div class="footlogo-subscribe">
 								<div class="footlogo">
-									<img src="assets/images/logo/logo.svg" alt="footer-logo">
+									<img src="{% static 'homepage/assets/images/logo/logo.svg' %}" alt="footer-logo">
 								</div>
 
 								<div class="subscribe">
@@ -24,11 +26,11 @@
 								<div class="footerinfo-body">
 									<ul class="footerlist">
 										<li class="footerlist-item">
-											<a href="about.html" class="footerlist-link">About</a>
+											<a href="{% url 'homepage:about_us_url' %}" class="footerlist-link">About</a>
 										</li>
 
 										<li class="footerlist-item">
-											<a href="blog.html" class="footerlist-link">Blog</a>
+											<a href="{% url 'homepage:blog_url' %}" class="footerlist-link">Blog</a>
 										</li>
 
 										<li class="footerlist-item">
@@ -36,11 +38,11 @@
 										</li>
 
 										<li class="footerlist-item">
-											<a href="contact.html" class="footerlist-link">Contact</a>
+											<a href="{% url 'homepage:contact_us_url' %}" class="footerlist-link">Contact</a>
 										</li>
 
 										<li class="footerlist-item">
-											<a href="products.html" class="footerlist-link">Products</a>
+											<a href="{% url 'homepage:product_url' %}" class="footerlist-link">Products</a>
 										</li>
 									</ul>
 								</div>

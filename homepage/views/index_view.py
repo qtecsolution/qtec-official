@@ -7,8 +7,8 @@ from dashboard.models import WhatProjectHaveWeDone
 class IndexView(View):
 
     def get(self, request):
-        project_done = WhatProjectHaveWeDone.objects.all()
-
+        project_done = WhatProjectHaveWeDone.objects.values()
+        print(project_done,'------------')
         context = {
             'project_done': project_done
         }
