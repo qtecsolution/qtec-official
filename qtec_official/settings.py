@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_social_share'
 ]
 PER_PAGE = 16
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'qtec_official.middleware.CustomMiddleware'
 ]
 
 ROOT_URLCONF = 'qtec_official.urls'
