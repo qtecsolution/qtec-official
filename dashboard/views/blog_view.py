@@ -4,6 +4,7 @@ from django.views import View
 from django.contrib import messages
 
 from dashboard.models import Blog, BlogAuthor, HandleBlog
+from django.contrib.auth.models import User
 
 
 
@@ -75,6 +76,8 @@ class BlogView(View):
     
 class HandleBlogView(View):
     def get(self, request):
+        request_user = request.user
+        print("user_type::::", request_user)
         blogs = Blog.objects.values('id','title')
         top_4_blog = HandleBlog.objects.first().top_4_blog.values_list('id',flat=True)
         highlight_blog = HandleBlog.objects.first().highlight_blog.id
