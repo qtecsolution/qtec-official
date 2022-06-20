@@ -1,4 +1,4 @@
-from telnetlib import STATUS
+import email
 from django.db import models
 
 # Create your models here.
@@ -43,6 +43,15 @@ BUDGET = (
     (_30000_TO_40000, '$30000 to $40000'),
     (_40000_TO_50000, '$40000 to $50000'),
     (OVER_50000, 'Over $50000'),
+)
+FULL_TIME = 1
+REMOTE =2 
+PART_TIME = 3
+APPLICENT_STATUS = (
+    (FULL_TIME, 'Full Time'),
+    (REMOTE, 'Remote'),
+    (PART_TIME, 'Part Time'),
+
 )
 PENDING = 1
 CONTACTED = 2
@@ -148,3 +157,21 @@ class HandleBlog(models.Model):
     top_4_blog = models.ManyToManyField(Blog)
     highlight_blog= models.ForeignKey(Blog, related_name='handle_blog',on_delete= models.SET_NULL, null= True)
 
+
+class ApplyForThisPosition(models.Model):
+    title = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    upload_cv = models.FileField(upload_to='apply_for_this_position/')
+class CurrentOpportunities(models.Model):
+    title = models.CharField(max_length=100)
+    applicent_type = models.PositiveSmallIntegerField( choices= APPLICENT_STATUS, default=FULL_TIME)
+    number_of_vacancy = models.CharField(max_length=50)
+    deadline = models.DateTimeField()
+    description = models.TextField()
+    apply_for_this_position = models.ForeignKey(ApplyForThisPosition,on_delete=models.CASCADE,related_name='apply_for_this_position')
+
+
+
+    
