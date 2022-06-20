@@ -1,6 +1,8 @@
 {% extends 'homepage/base_homepage.html' %}
 {% load  static %}
 {% block content %}
+{% load custom_tags %}
+
 
 	<section class="homebanner">
 		<div class="container">
@@ -746,7 +748,7 @@
 									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
 										<div class="card-project">
 											<div class="card-project-header">
-												<img src="{{ project.image.url }}" alt="project-thumbnail">
+												<img src="/media/{{ project.image }}" alt="project-thumbnail">
 											</div>
 
 											<div class="card-project-body">
@@ -761,9 +763,11 @@
 												</div>
 
 												<div class="tags">
-                                                    {% for i in project.split_technology %}
-													<span class="tag">{{ i }}</span>
-                                                        {% endfor %}
+
+                                                    {% for skill in project.technology|split:"," %}
+                                                        <span class="tag">{{ skill }}</span><br>
+                                                    {% endfor %}
+
 												</div>
 											</div>
 										</div>
@@ -777,17 +781,17 @@
 						<!-- WEB-TAB CONTENT START -->
 						<div class="tab-pane fade" id="web" role="tabpanel" aria-labelledby="web-tab">
 							<div class="row g-4">
-								<!-- BRIGHTSKILLS -->
+						            {% for project in web_project %}
 								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
+									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
 										<div class="card-project">
 											<div class="card-project-header">
-												<img src="assets/images/projects/brightskill.svg" alt="project-thumbnail">
+												<img src="/media/{{ project.image }}" alt="project-thumbnail">
 											</div>
 
 											<div class="card-project-body">
 												<div class="project-title">
-													<h2 class="title">BrightSkills</h2>
+													<h2 class="title">{{ project.name }}</h2>
 
 													<span class="icon">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -797,289 +801,16 @@
 												</div>
 
 												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
+                                                    {% for skill in project.technology|split:"," %}
+                                                        <span class="tag">{{ skill }}</span><br>
+                                                    {% endfor %}
 												</div>
 											</div>
 										</div>
 									</a>
 								</div>
-								<!-- BRIGHTSKILLS -->
+								    {% endfor %}
 
-								<!-- SUPPLYLINE -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/supplyline.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Supplyline</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- SUPPLYLINE -->
-
-								<!-- WEAR-SOHA -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/soha.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Wear Soha</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- WEAR-SOHA -->
-
-								<!-- LEX-INTELL -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/lex-intell.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Lex Intell</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- LEX-INTELL -->
-
-								<!-- DECORIS-DIAMONDS -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/decoris.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Decoris Diamonds</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- DECORIS-DIAMONDS -->
-
-								<!-- AION-TRIBUTE -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/aion.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">AION Tribute</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- AION-TRIBUTE -->
-
-								<!-- STECH -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/stech.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Stech</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- STECH -->
-
-								<!-- ALPHA (DMS) -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/alpha.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Alpha DMS</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- ALPHA (DMS) -->
-
-								<!-- ODOMMO PROKASH -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/odommo.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Odommo Prokash</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- ODOMMO PROKASH -->
 							</div>
 						</div>
 						<!-- WEB-TAB CONTENT END -->
@@ -1087,17 +818,17 @@
 						<!-- APP-TAB CONTENT START -->
 						<div class="tab-pane fade" id="app" role="tabpanel" aria-labelledby="app-tab">
 							<div class="row g-4">
-								<!-- BRIGHTSKILLS -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
+                                {% for project in app_project %}
+								    <div class="col-lg-4 col-sm-6 col-12">
+									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
 										<div class="card-project">
 											<div class="card-project-header">
-												<img src="assets/images/projects/brightskill.svg" alt="project-thumbnail">
+												<img src="/media/{{ project.image }}" alt="project-thumbnail">
 											</div>
 
 											<div class="card-project-body">
 												<div class="project-title">
-													<h2 class="title">BrightSkills</h2>
+													<h2 class="title">{{ project.name }}</h2>
 
 													<span class="icon">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1107,90 +838,15 @@
 												</div>
 
 												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
+                                                    {% for skill in project.technology|split:"," %}
+                                                        <span class="tag">{{ skill }}</span><br>
+                                                    {% endfor %}
 												</div>
 											</div>
 										</div>
 									</a>
 								</div>
-								<!-- BRIGHTSKILLS -->
-
-								<!-- SUPPLYLINE -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/supplyline.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Supplyline</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- SUPPLYLINE -->
-
-								<!-- WEAR-SOHA -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/soha.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Wear Soha</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- WEAR-SOHA -->
+                                {% endfor %}
 							</div>
 						</div>
 						<!-- APP-TAB CONTENT END -->
@@ -1198,17 +854,17 @@
 						<!-- UX-UI TAB CONTENT START -->
 						<div class="tab-pane fade" id="uxui" role="tabpanel" aria-labelledby="uxui-tab">
 							<div class="row g-4">
-								<!-- SUPPLYLINE -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
+                                {% for project in ui_ux %}
+								    <div class="col-lg-4 col-sm-6 col-12">
+									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
 										<div class="card-project">
 											<div class="card-project-header">
-												<img src="assets/images/projects/supplyline.svg" alt="project-thumbnail">
+												<img src="/media/{{ project.image }}" alt="project-thumbnail">
 											</div>
 
 											<div class="card-project-body">
 												<div class="project-title">
-													<h2 class="title">Supplyline</h2>
+													<h2 class="title">{{ project.name }}</h2>
 
 													<span class="icon">
 														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1218,89 +874,16 @@
 												</div>
 
 												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
+	                                                    {% for skill in project.technology|split:"," %}
+                                                        <span class="tag">{{ skill }}</span><br>
+                                                    {% endfor %}
 												</div>
 											</div>
 										</div>
 									</a>
 								</div>
-								<!-- SUPPLYLINE -->
+                                {% endfor%}
 
-								<!-- WEAR-SOHA -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/soha.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Wear Soha</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Flutter</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- WEAR-SOHA -->
-
-								<!-- STECH -->
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="assets/images/projects/stech.svg" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">Stech</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-													<span class="tag">Django</span>
-													<span class="tag">Python</span>
-													<span class="tag">Vuejs</span>
-													<span class="tag">NuxtJs</span>
-													<span class="tag">REST API</span>
-													<span class="tag">AWS</span>
-													<span class="tag">Figma</span>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<!-- STECH -->
 							</div>
 						</div>
 						<!-- UX-UI TAB CONTENT END -->
@@ -1319,7 +902,7 @@
 				<!-- HOME-ARTICLES HEADER START -->
 				<div class="testimonial-header">
 					<div class="row g-4 align-items-center">
-						<div class="col-lg-6 col-12">
+						<div class="col-lg-8 col-12">
 							<div class="testimonialinfo">
 								<h1 class="testimonial-title">What People are saying About Qtec?</h1>
 							</div>
@@ -1387,109 +970,32 @@
 				<!-- HOME-ARTICLES BODY START -->
 				<div class="home-article-body">
 					<div class="row g-4">
+                        {% for blog in blogs %}
 						<div class="col-lg-3 col-sm-6 col-12">
-							<a href="blog-details.html" class="articlelink">
+							<a href="/blog-details/{{ blog.blog_category.slug }}/{{ blog.slug }}/" class="articlelink">
 								<div class="card-article">
 									<div class="card-article-header">
-										<img src="assets/images/articles/article-1.svg" alt="card-thumbnail">
+										<img src="{{ blog.image.url }}" alt="card-thumbnail">
 									</div>
 
 									<div class="card-article-body">
 										<div class="title-date">
-											<h4 class="title">Article Title 1</h4>
-											<p class="date">Monday Jan 20, 2020</p>
+											<h4 class="title">{{ blog.title }}</h4>
+											<p class="date">{{ blog.updated_at }}</p>
 										</div>
 
 										<div class="articledescript">
 											<p class="articletext">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium
-												placerat ut platea...
+                                                {{ blog.description }}
 											</p>
 										</div>
 
-										<span class="articlelink">Read article -></span>
+										<span class="articlelink">Read article</span>
 									</div>
 								</div>
 							</a>
 						</div>
-
-						<div class="col-lg-3 col-sm-6 col-12">
-							<a href="blog-details.html" class="articlelink">
-								<div class="card-article">
-									<div class="card-article-header">
-										<img src="assets/images/articles/article-1.svg" alt="card-thumbnail">
-									</div>
-
-									<div class="card-article-body">
-										<div class="title-date">
-											<h4 class="title">Article Title 1</h4>
-											<p class="date">Monday Jan 20, 2020</p>
-										</div>
-
-										<div class="articledescript">
-											<p class="articletext">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium
-												placerat ut platea...
-											</p>
-										</div>
-
-										<span class="articlelink">Read article -></span>
-									</div>
-								</div>
-							</a>
-						</div>
-
-						<div class="col-lg-3 col-sm-6 col-12">
-							<a href="blog-details.html" class="articlelink">
-								<div class="card-article">
-									<div class="card-article-header">
-										<img src="assets/images/articles/article-1.svg" alt="card-thumbnail">
-									</div>
-
-									<div class="card-article-body">
-										<div class="title-date">
-											<h4 class="title">Article Title 1</h4>
-											<p class="date">Monday Jan 20, 2020</p>
-										</div>
-
-										<div class="articledescript">
-											<p class="articletext">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium
-												placerat ut platea...
-											</p>
-										</div>
-
-										<span class="articlelink">Read article -></span>
-									</div>
-								</div>
-							</a>
-						</div>
-
-						<div class="col-lg-3 col-sm-6 col-12">
-							<a href="blog-details.html" class="articlelink">
-								<div class="card-article">
-									<div class="card-article-header">
-										<img src="assets/images/articles/article-1.svg" alt="card-thumbnail">
-									</div>
-
-									<div class="card-article-body">
-										<div class="title-date">
-											<h4 class="title">Article Title 1</h4>
-											<p class="date">Monday Jan 20, 2020</p>
-										</div>
-
-										<div class="articledescript">
-											<p class="articletext">
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare pretium
-												placerat ut platea...
-											</p>
-										</div>
-
-										<span class="articlelink">Read article -></span>
-									</div>
-								</div>
-							</a>
-						</div>
+                        {% endfor %}
 					</div>
 				</div>
 				<!-- HOME-ARTICLES BODY END -->

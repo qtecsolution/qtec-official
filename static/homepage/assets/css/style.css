@@ -1,3 +1,4 @@
+
 /**=====================================================**
                     THEME-COLORS
 =======================================================**/
@@ -942,7 +943,7 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 2.5rem;
+  gap: 1rem;
 }
 
 @media screen and (min-width: 62rem) {
@@ -981,6 +982,26 @@ select {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.footer-content .footlogo-subscribe .subscribes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-content .footlogo-subscribe .subscribes-header .subscribetext {
+  color: #ffffff;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .footer-content .footlogo-subscribe .subscribe {
@@ -3389,6 +3410,79 @@ select {
 /**=====================================================**
                       COMING SOON END
 =======================================================**/
+/**=====================================================**
+                      PAGINATION START
+=======================================================**/
+.pagination {
+  gap: 0.125rem;
+  -webkit-box-shadow: 0 0 0.0625rem rgba(12, 26, 75, 0.24), 0 0.1875rem 0.5rem -0.0625rem rgba(50, 50, 71, 0.05);
+          box-shadow: 0 0 0.0625rem rgba(12, 26, 75, 0.24), 0 0.1875rem 0.5rem -0.0625rem rgba(50, 50, 71, 0.05);
+}
+
+.pagination .page-item.active .page-link {
+  background: #0876FC;
+  color: #ffffff;
+}
+
+.pagination .page-item:not(:first-child) .page-link {
+  margin-left: 0;
+}
+
+.pagination .page-item:first-child .page-link, .pagination .page-item:last-child .page-link {
+  border-radius: 0rem;
+  border-radius: 0rem;
+}
+
+.pagination .page-item:hover:not(.active) .page-link {
+  background: #0876FC;
+  color: #ffffff;
+}
+
+.pagination .page-item:hover:not(.active) .page-link svg path {
+  fill: #ffffff;
+}
+
+.pagination .page-link {
+  border: 0;
+  background: #ffffff;
+  color: #2D3748;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  -webkit-font-feature-settings: 'salt';
+          font-feature-settings: 'salt';
+  height: 2.25rem;
+  width: 2.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  border-radius: 0rem;
+  border-radius: 0rem;
+  padding: 0;
+}
+
+.pagination .page-link svg path {
+  fill: #2D3748;
+}
+
+.pagination .page-link:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+/**=====================================================**
+                      PAGINATION END
+=======================================================**/
 /**=======================================================**
                         ABOUT-BANNER START
 **=======================================================**/
@@ -3758,6 +3852,23 @@ select {
 **=======================================================**/
 .blog {
   padding: 5rem 0rem;
+}
+
+.blog-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.5rem;
 }
 
 /**=======================================================**
@@ -6374,4 +6485,3 @@ select {
 
 /**=======================================================**
                     PRODUCTS-SECTION END
-**=======================================================**/
