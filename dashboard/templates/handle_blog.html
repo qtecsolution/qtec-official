@@ -1,0 +1,140 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="" id="">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>Handle Blog</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                        
+                                <div class="form-group row">
+                                    <label for="leadership_team" class="col-sm-3 col-form-label">Top Four Blog <small style="color: red;">*</small></label>
+                                    <div class="col-sm-9">
+                                        <select multiple="multiple" name="top_4_blog" class="form-control" id="blog_slect_four_option">
+                                            {% for blog in blogs %}
+                                                <option {% if blog.id in top_4_blog %} selected {% endif %} value="{{ blog.id }}">{{ blog.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="leadership_team" class="col-sm-3 col-form-label">Highlight Blog <small style="color: red;">*</small></label>
+                                    <div class="col-sm-9">
+                                        <select multiple="multiple" name="highlight_blog" class="form-control" id="blog_slect_highlight_option">
+                                            {% for blog in blogs %}
+                                                <option {% if blog.id == highlight_blog %} selected {% endif %}  value="{{ blog.id }}">{{ blog.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>   
+                                    <br>                                          
+                                <input style="margin-top: 40px; margin-left: 1000px;" type="submit" name="Update" value="Update" class="btn btn-success">
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- technologies_add_modal-->
+                    <div class="modal fade" id="technologies_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                
+                            <form action="{% url 'dashboard:save_technologies_url' %}" method="POST" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <div class="error text-center" style="color: red;"></div>
+                                    <br>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3 col-form-label">Title <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="title" id=""
+                                                value="">
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-group row">
+                                        <label for="title" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <textarea required class="form-control" name="description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="image" class="col-sm-3 col-form-label">Image <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <input required class="form-control" type="file" name="image" id="what_project_done_add_modal_image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" >Save </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+      $(document).ready(function() {
+       
+        
+    });
+    $(document).ready(function() {
+        $('.textarea').summernote()
+        $("#blog_slect_four_option").select2({
+            allowClear: true
+        });
+        $("#blog_slect_four_option").select2({
+            maximumSelectionLength: 4
+        });
+        $("#blog_slect_highlight_option").select2({
+            allowClear: true
+        });
+        $("#blog_slect_highlight_option").select2({
+            maximumSelectionLength: 1
+        });
+        
+             
+    });
+
+    function blog_slect_count(){
+        alert("count")
+    }
+</script>
+
+{% endblock %}
