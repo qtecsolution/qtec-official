@@ -1,0 +1,137 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="" id="">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>Blog</h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-success" data-toggle="modal"
+                                        data-target="#blog_category_add_modal"><strong>+</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="subscriber_list" class="table table-borderless table-striped table-hover">
+                                <tr>
+                                    <th>Id </th>
+                                    <th>Name </th>
+                                    <th>Action</th>
+                                </tr>
+                                {% for category in blog_category %}
+                                <tr id="category_{{ blog.id }}">
+                                    <td>{{ category.id }}</td>
+                                    <td>{{ category.name }}</td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <div class="col-sm-1">
+                                                <form action="{% url 'dashboard:delete_blog_blog_category_url' %}"method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{ category.id }}" name="id">
+                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form> 
+                                            </div>
+                                            <div class="col-sm-1">
+                                                <button  data-toggle="modal"
+                                                data-target="#blog_edit_{{ blog.id }}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
+                                                <div class="modal fade" id="blog_edit_{{ blog.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                            
+                                                        <form id="myForm" action="{% url 'dashboard:edit_blog_blog_category_url' %}" method="POST" enctype="multipart/form-data" >
+                                                            {% csrf_token %}
+                                                            <input type="hidden" value="{{category.id}}" name="id">
+                                                            <div class="modal-body">
+                                                                <div class="error text-center" style="color: red;"></div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="name" class="col-sm-3 col-form-label">Name <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <input value="{{ category.name }}" required class="form-control" name="name">
+                                                                    </div>
+                                                                </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary"  >Save </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </td>      
+                                </tr>
+                                {% endfor %}
+                                
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Add what_project_done_add_modal -->
+                    <div class="modal fade" id="blog_category_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                
+                            <form id="myForm" action="{% url 'dashboard:save_blog_category_url' %}" method="POST" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <div class="error text-center" style="color: red;"></div>
+                                    <br>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3 col-form-label">Name <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <input required class="form-control" name="name">
+                                        </div>
+                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary"  >Save </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+
+</script>
+
+{% endblock %}

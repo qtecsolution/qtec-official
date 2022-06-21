@@ -5,8 +5,6 @@
 <div class="container-fluid mt-2">
     <div class="row">
         <div class="col">
-            <div class="card mt-3">
-            </div>
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="" id="">
                     <div class="card mt-3">
@@ -14,6 +12,9 @@
                             <div class="row">
                                 <div class="col-md-9">
                                     <h5>Handle Blog</h5>
+                                </div>
+                                <div class="col-md-3">
+                                   
                                 </div>
                             </div>
                         </div>
@@ -24,7 +25,7 @@
                                 <div class="form-group row">
                                     <label for="leadership_team" class="col-sm-3 col-form-label">Top Four Blog <small style="color: red;">*</small></label>
                                     <div class="col-sm-9">
-                                        <select multiple="multiple" name="top_4_blog" class="form-control" id="blog_slect_four_option">
+                                        <select required multiple="multiple" name="top_4_blog" class="form-control" id="blog_slect_four_option">
                                             {% for blog in blogs %}
                                                 <option {% if blog.id in top_4_blog %} selected {% endif %} value="{{ blog.id }}">{{ blog.title }}</option>
                                             {% endfor %}
@@ -34,13 +35,13 @@
                                 <div class="form-group row">
                                     <label for="leadership_team" class="col-sm-3 col-form-label">Highlight Blog <small style="color: red;">*</small></label>
                                     <div class="col-sm-9">
-                                        <select multiple="multiple" name="highlight_blog" class="form-control" id="blog_slect_highlight_option">
+                                        <select required multiple="multiple" name="highlight_blog" class="form-control" id="blog_slect_highlight_option">
                                             {% for blog in blogs %}
                                                 <option {% if blog.id == highlight_blog %} selected {% endif %}  value="{{ blog.id }}">{{ blog.title }}</option>
                                             {% endfor %}
                                         </select>
-                                    </div>   
-                                    <br>                                          
+                                    </div>  
+                                </div>                           
                                 <input style="margin-top: 40px; margin-left: 1000px;" type="submit" name="Update" value="Update" class="btn btn-success">
                             </form>
                         </div>
@@ -49,8 +50,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 {% endblock %}

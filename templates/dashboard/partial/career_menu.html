@@ -1,0 +1,25 @@
+<li class="nav-item has-treeview">
+    <a href="" class="nav-link">
+        <i class="nav-icon fa fa-users"></i>
+        <p> Career </p>
+        <i class="right fas fa-angle-left"></i>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item active">
+          <a href="{% url 'dashboard:current_opportunities_url' %}"
+             class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Opportunities</p>
+          </a>
+        </li>
+    </ul>
+    <ul class="nav nav-treeview">
+      <li class="nav-item active">
+        <a href="{% url 'dashboard:apply_for_this_position_url' %}"
+           class="nav-link">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Applications</p>
+        </a>
+      </li>
+  </ul>
+  </li>
