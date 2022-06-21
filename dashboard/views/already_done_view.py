@@ -72,10 +72,10 @@ class CaseStudyEditView(View):
         case_study_details.how_we_build_it = data.get('how_we_build_it')
         case_study_details.how_we_build_image = file.get('how_we_build_image')
         case_study_details.save()
-        technology = data.get('technology')
+        technology = data.getlist('technology')
         case_study_details.technology.clear()
         if technology:
-            case_study_details.technology.add(*technology.split(','))
+            case_study_details.technology.add(*technology)
         messages.success(request, 'Case Study Details save successful')
         return redirect('dashboard:already_done_url')
 

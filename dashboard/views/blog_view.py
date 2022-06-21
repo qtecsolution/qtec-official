@@ -1,8 +1,10 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.views import View
 from django.contrib import messages
 
-from dashboard.models import Blog, BlogAuthor
+from dashboard.models import Blog, BlogAuthor, HandleBlog
+from django.contrib.auth.models import User
 
 
 
@@ -38,7 +40,6 @@ class BlogView(View):
                 blog_object.updated_at = updated_at
                 blog_object.save()
                 messages.success(request, 'Data save successful!')
-
             return self.get(request)
             
         if request.resolver_match.url_name == "edit_blog_url":
@@ -72,4 +73,28 @@ class BlogView(View):
             request_id = data.get('id')
             blog = Blog.objects.filter(id=request_id).first().delete()
             return self.get(request)
-            
+    
+class HandleBlogView(View):
+    def get(self, request):
+        request_user = request.user
+        print("user_type::::", request_user)
+        blogs = Blog.objects.values('id','title')
+        top_4_blog = HandleBlog.objects.first().top_4_blog.values_list('id',flat=True)
+        highlight_blog = HandleBlog.objects.first().highlight_blog.id
+        context = {
+            'blogs': blogs,
+            'top_4_blog': top_4_blog,
+            'highlight_blog':highlight_blog,
+        }
+        return render(request, 'handle_blog.html', context)
+    def post(self, request):
+        data = request.POST
+        handle_blog = HandleBlog.objects.first()
+        highlight_blog = data.get('highlight_blog')
+        handle_blog.highlight_blog = Blog.objects.filter(id=highlight_blog).first()
+        handle_blog.save()
+        top_4_blog = request.POST.getlist('top_4_blog')
+        handle_blog.top_4_blog.clear()
+        handle_blog.top_4_blog.add(*top_4_blog)
+        messages.success(request, 'Data updated successful!')
+        return self.get(request)
