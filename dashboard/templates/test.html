@@ -1,0 +1,27 @@
+<div class="card-body table-responsive">
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="form-group row">
+            <label for="leadership_team" class="col-sm-3 col-form-label">Top Four Blog <small style="color: red;">*</small></label>
+            <div class="col-sm-9">
+                <select required multiple="multiple" name="top_4_blog" class="form-control" id="blog_slect_four_option">
+                    {% for blog in blogs %}
+                        <option {% if blog.id in top_4_blog %} selected {% endif %} value="{{ blog.id }}">{{ blog.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="leadership_team" class="col-sm-3 col-form-label">Highlight Blog <small style="color: red;">*</small></label>
+            <div class="col-sm-9">
+                <select required multiple="multiple" name="highlight_blog" class="form-control" id="blog_slect_highlight_option">
+                    {% for blog in blogs %}
+                        <option {% if blog.id == highlight_blog %} selected {% endif %}  value="{{ blog.id }}">{{ blog.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>   
+            <br>                                          
+        <input style="margin-top: 40px; margin-left: 1000px;" type="submit" name="Update" value="Update" class="btn btn-success">
+    </form>
+</div>

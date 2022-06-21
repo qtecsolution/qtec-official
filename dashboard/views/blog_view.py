@@ -84,8 +84,12 @@ class BlogView(View):
 class HandleBlogView(View):
     def get(self, request):
         blogs = Blog.objects.values('id','title')
-        top_4_blog = HandleBlog.objects.first().top_4_blog.values_list('id',flat=True)
-        highlight_blog = HandleBlog.objects.first().highlight_blog.id
+        if HandleBlog.objects.exists():
+            top_4_blog = HandleBlog.objects.first().top_4_blog.values_list('id',flat=True)
+            highlight_blog = HandleBlog.objects.first().highlight_blog.id
+        else:
+           top_4_blog =""
+           highlight_blog = ""
         context = {
             'blogs': blogs,
             'top_4_blog': top_4_blog,
@@ -96,12 +100,20 @@ class HandleBlogView(View):
         data = request.POST
         handle_blog = HandleBlog.objects.first()
         highlight_blog = data.get('highlight_blog')
-        handle_blog.highlight_blog = Blog.objects.filter(id=highlight_blog).first()
-        handle_blog.save()
         top_4_blog = request.POST.getlist('top_4_blog')
-        handle_blog.top_4_blog.clear()
-        handle_blog.top_4_blog.add(*top_4_blog)
-        messages.success(request, 'Data updated successful!')
+        
+        if HandleBlog.objects.exists():
+            handle_blog = HandleBlog.objects.first()
+            handle_blog.top_4_blog.clear()
+        else:
+            handle_blog = HandleBlog()
+            handle_blog.highlight_blog = Blog.objects.filter(id=highlight_blog).first()
+            handle_blog.save()
+            top_4_blog = request.POST.getlist('top_4_blog')
+           
+            handle_blog.top_4_blog.add(*top_4_blog)
+            messages.success(request, 'Data updated successful!')
+       
         return self.get(request)
 
 class BlogAuthorView(View):
