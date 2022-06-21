@@ -1,0 +1,213 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="" id="">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>Current Opportunities</h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-success" data-toggle="modal"
+                                        data-target="#current_opportunities_add_modal"><strong>+</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="subscriber_list" class="table table-borderless table-striped table-hover">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Title</th>
+                                    <th>Applicent Type</th>
+                                    <th>Number Of Vacancy</th>
+                                    <th>Deadline</th>
+                                    <th>description</th>
+                                    <th>Action</th>
+                                </tr>
+                                {% for item in current_opportunities %}
+                                <tr id="item_{{ item.id }}">
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.title }}</td>
+                                    <td>{{ item.get_applicent_type_display }}</td>
+                                    <td>{{ item.number_of_vacancy }}</td>
+                                    <td>{{ item.deadline }}</td>
+                                    <td>{{ item.description }}</td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <div class="col-5">
+                                                <form action="{% url 'dashboard:delet_current_opportunities_url' %}"method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{ item.id }}" name="id">
+                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form> 
+                                            </div>
+                                            <div class="col-3">
+                                                <button  data-toggle="modal"
+                                                data-target="#current_opportunities_edit_{{ item.id }}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
+                                                <div class="modal fade" id="current_opportunities_edit_{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                            
+                                                        <form id="myForm" action="{% url 'dashboard:current_opportunities_edit_url' %}" method="POST" enctype="multipart/form-data" >
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="id" value="{{ item.id }}">
+                                                            <div class="modal-body">
+                                                                <div class="error text-center" style="color: red;"></div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="name" class="col-sm-3 col-form-label">Title <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9" class="form-control" >
+                                                                        <input value="{{ item.title }}" required name="title" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="name" class="col-sm-3 col-form-label">Type <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9" class="form-control" >
+                                                                        <select required class="form-control" name="applicent_type">
+                                                                            {% for type in applicent_type %}
+                                                                                <option {% if type.0 == item.applicent_type %} selected {% endif %} value="{{ type.0 }}">{{ type.1 }}</option>
+                                                                            {% endfor %}
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                                <div class="form-group row">
+                                                                    <label for="number_of_vacancy" class="col-sm-3 col-form-label">Number Of Vacancy <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <input value="{{ item.number_of_vacancy }}" type="number" required class="form-control" name="number_of_vacancy">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="deadline" class="col-sm-3 col-form-label">Deadline <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-sm-8">
+                                                                                <input type="datetime-local" class="form-control" name="deadline">
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                {{item.deadline}}
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="descriptions" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <textarea required  id="textarea" class="form-control" name="description">{{ item.description }}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary" >Save </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </td>      
+                                </tr>
+                                {% endfor %}
+                                
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Add what_project_done_add_modal -->
+                    <div class="modal fade" id="current_opportunities_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                
+                            <form id="myForm" action="{% url 'dashboard:save_current_opportunities_url' %}" method="POST" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <div class="error text-center" style="color: red;"></div>
+                                    <br>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3 col-form-label">Title <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9" class="form-control" >
+                                            <input required name="title" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-3 col-form-label">Type <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9" class="form-control" >
+                                            <select required class="form-control" name="applicent_type">
+                                                {% for type in applicent_type %}
+                                                    <option value="{{ type.0 }}">{{ type.1 }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-group row">
+                                        <label for="number_of_vacancy" class="col-sm-3 col-form-label">Number Of Vacancy <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <input type="number" required class="form-control" name="number_of_vacancy">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="deadline" class="col-sm-3 col-form-label">Deadline <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <input type="datetime-local" required class="form-control" name="deadline">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="descriptions" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <textarea required  id="textarea" class="form-control" name="description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary"  >Save </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+ 
+</script>
+
+{% endblock %}

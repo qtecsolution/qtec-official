@@ -1,9 +1,10 @@
 from multiprocessing import context
+from django import views
 from django.shortcuts import render
 from django.views import View
 from django.contrib import messages
 
-from dashboard.models import Blog, BlogAuthor, HandleBlog
+from dashboard.models import Blog, BlogAuthor, BlogCategory, HandleBlog
 from django.contrib.auth.models import User
 
 
@@ -12,15 +13,18 @@ class BlogView(View):
     def get(self, request):
         blogs = Blog.objects.order_by("-id").all()
         blog_author = BlogAuthor.objects.values('id','name')
+        blog_category = BlogCategory.objects.values('id','name')
         context = {
             "blogs" : blogs,
             'blog_author' :blog_author,
+            'blog_category' : blog_category
         }
         return render(request, 'blog.html', context)
     def post(self, request):
         data =request.POST
         if request.resolver_match.url_name == "save_blog_url":
             blog_author = data.get('blog_author')
+            blog_category = data.get('blog_category')
             title = data.get('title')
             description = data.get('description')
             image = request.FILES.get('image')
@@ -32,6 +36,7 @@ class BlogView(View):
             else:
                 blog_object = Blog()
                 blog_object.blog_author_id = blog_author
+                blog_object.blog_category_id = blog_category
                 blog_object.title = title
                 blog_object.description = description
                 blog_object.tags = tags
@@ -44,6 +49,7 @@ class BlogView(View):
             
         if request.resolver_match.url_name == "edit_blog_url":
             blog_author = data.get('blog_author')
+            blog_category = data.get('blog_category')
             title = data.get('title')
             description = data.get('description')
             image = request.FILES.get('image')
@@ -56,6 +62,7 @@ class BlogView(View):
                 request_id = data.get('id')
                 blog_object = Blog.objects.filter(id=request_id).first()
                 blog_object.blog_author_id = blog_author
+                blog_object.blog_category_id = blog_category
                 blog_object.title = title
                 blog_object.description = description
                 blog_object.tags = tags
@@ -76,8 +83,6 @@ class BlogView(View):
     
 class HandleBlogView(View):
     def get(self, request):
-        request_user = request.user
-        print("user_type::::", request_user)
         blogs = Blog.objects.values('id','title')
         top_4_blog = HandleBlog.objects.first().top_4_blog.values_list('id',flat=True)
         highlight_blog = HandleBlog.objects.first().highlight_blog.id
@@ -98,3 +103,13 @@ class HandleBlogView(View):
         handle_blog.top_4_blog.add(*top_4_blog)
         messages.success(request, 'Data updated successful!')
         return self.get(request)
+
+class BlogAuthorView(View):
+    def get(self, request):
+        blogs = Blog.objects.values('id','title')
+    
+        context = {
+            'blogs': blogs,
+        }
+        return render(request, 'blog_author.html', context)
+  

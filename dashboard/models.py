@@ -109,7 +109,7 @@ class BlogAuthor(models.Model):
 
     def __str__(self):
         return str(self.name)
-
+  
 
 class BlogCategory(models.Model):
     name = models.CharField(max_length=50)
