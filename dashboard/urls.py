@@ -1,7 +1,7 @@
 from django.urls import path
 from dashboard.views.already_done_view import AlreadyDoneView, CaseStudyEditView
 from dashboard.views.authenticate_view import AuthenticationView
-from dashboard.views.blog_view import BlogView
+from dashboard.views.blog_view import BlogView, HandleBlogView
 
 from dashboard.views.dashboard import DashboardView
 from dashboard.views.lets_talk_view import LetsTalkView
@@ -37,6 +37,7 @@ urlpatterns= [
     path('blog-list-save/', BlogView.as_view(), name="save_blog_url"),
     path('blog-list-edit/', BlogView.as_view(), name="edit_blog_url"),
     path('blog-list-delete/', BlogView.as_view(), name="delet_blog_row_url"),
+    path('handle-blog/', HandleBlogView.as_view(), name="handle_blog_url"),
 
     # LetsTalk
     path('lets-talk/', LetsTalkView.as_view(), name="lets_talk_url"),
