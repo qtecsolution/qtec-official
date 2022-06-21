@@ -10,6 +10,7 @@ class CaseStudyDetails(View):
         we_have_done = WhatProjectHaveWeDone.objects.get(slug= slug)
         case_study_details = we_have_done.case_study_details
         context = {
+            'title': "Case Study",
             'we_have_done': we_have_done,
             'case_study_details': case_study_details
         }

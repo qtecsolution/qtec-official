@@ -59,6 +59,8 @@ LETS_TAlK_STATUS = (
     (PENDING, 'Pending'),
     (CONTACTED, 'Contacted'),
 )
+
+
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
@@ -75,6 +77,7 @@ class WhatProjectHaveWeDone(models.Model):
     @property
     def split_technology(self):
         return self.technology.split(',')        
+
 
 class CaseStudyDetails(models.Model):
     project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
@@ -129,6 +132,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return str(self.blog_author.name) + '-' + str(self.title)
+
+    def get_absolute_url(self):
+        return
 
 
 class LetsTalk(models.Model):

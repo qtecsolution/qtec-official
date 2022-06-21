@@ -1,6 +1,8 @@
 from django.urls import path
 from dashboard.views.already_done_view import AlreadyDoneView, CaseStudyEditView
 from dashboard.views.blog_view import BlogView, HandleBlogView
+from dashboard.views.authenticate_view import AuthenticationView
+from dashboard.views.blog_view import BlogView
 
 from dashboard.views.dashboard import DashboardView
 from dashboard.views.lets_talk_view import LetsTalkView
@@ -10,7 +12,11 @@ from dashboard.views.technologies_view import TechnologiesView
 app_name= 'dashboard'
 
 urlpatterns= [
-    path('dashboard/', DashboardView.as_view(), name= 'dashboard_url'),
+
+    path('login/', AuthenticationView.as_view(), name='dashboard_login_url'),
+    path('logout/', AuthenticationView.as_view(), name="logout_dashboard_url"),
+
+    path('', DashboardView.as_view(), name= 'dashboard_url'),
 
     # already-done
     path('already-done/', AlreadyDoneView.as_view(), name= 'already_done_url'),

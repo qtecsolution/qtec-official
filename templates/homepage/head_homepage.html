@@ -6,19 +6,24 @@
 	<meta name="description" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
 	<meta name="author" content="Qtec Solution Limited">
 	<meta name="keywords" content="Software development company, flutter team, django team, python team, remote team, remote software development team, remote flutter team, remote django team, remote flutter team, remote ui ux team, ui ux outsource, dhaka based software company, company like Brain Station 23, Company like DataSoft, Company like Gigster, Company like Audacity IT Solution, Company like Reve Systems">
-
-	<!-- OPEN-GRAPH META TAGS -->
 	<meta property="og:locale" content="en_US">
 	<meta property="og:type" content="article">
+	<!-- OPEN-GRAPH META TAGS -->
+
+    {% if request.resolver_match.url_name == 'blog_details_url' %}
+	<meta property="og:title" content="{{ blog.title }}">
+	<meta property="og:description" content="{{ blog.description }}">
+	<meta property="og:image" content="{{ blog.image.url }}">
+	<!-- OPEN-GRAPH META TAGS -->
+    {% else %}
+
 	<meta property="og:title" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
 	<meta property="og:description" content="Qtec Solution Limited Software Development company delivers enterprise applications in planned time based on the requirements by the finest software developers, ui ux designers and devops and fully managed service.">
 	<meta property="og:image" content="">
-	<!-- OPEN-GRAPH META TAGS -->
-
+    {% endif %}
 	<!-- SITE-TITLE -->
 	<title>
-		Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development, Machine
-		Learning, UI UX Design Android and iOS mobile application development
+        QTEC - {{ title }}
 	</title>
 	<!-- SITE-TITLE -->
 
