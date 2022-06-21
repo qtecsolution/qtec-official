@@ -107,9 +107,69 @@ class HandleBlogView(View):
 class BlogAuthorView(View):
     def get(self, request):
         blogs = Blog.objects.values('id','title')
+        blog_author = BlogAuthor.objects.values()
     
         context = {
+            'blog_author': blog_author,
             'blogs': blogs,
         }
         return render(request, 'blog_author.html', context)
-  
+
+    def post(self, request):
+        data =request.POST
+        if request.resolver_match.url_name == "save_blog_blog_author_url":
+            blog_author = BlogAuthor()
+            blog_author.name = data.get('name')
+            blog_author.qualification = data.get('qualification')
+            blog_author.image = request.FILES.get('image')
+            blog_author.save()
+            messages.success(request, 'Data save successful!')
+            return self.get(request)
+        if request.resolver_match.url_name == "delete_blog_blog_author_url":
+            request_id = data.get('id')
+            BlogAuthor.objects.filter(id=request_id).first().delete()
+            messages.success(request, 'Delete successful!')
+            return self.get(request)
+        if request.resolver_match.url_name == "edit_blog_blog_author_url":
+            request_id = data.get('id')
+            blog_author = BlogAuthor.objects.filter(id=request_id).first()
+            blog_author.name = data.get('name')
+            blog_author.qualification = data.get('qualification')
+            image = request.FILES.get('image')
+            if image:
+                blog_author.image = image
+            blog_author.save()
+            messages.success(request, 'Data updated successful!')
+            return self.get(request)
+            BlogCategoryView
+class BlogCategoryView(View):
+        def get(self, request):
+            blog_category = BlogCategory.objects.values('id','name')
+        
+            context = {
+                'blog_category': blog_category,
+            }
+            return render(request, 'blog_category.html', context)
+
+        def post(self, request):
+            data =request.POST
+            if request.resolver_match.url_name == "save_blog_category_url":
+                blog_category = BlogCategory()
+                print("data.get('name')::::",data)
+                blog_category.name = data.get('name')
+                blog_category.save()
+                messages.success(request, 'Data save successful!')
+                return self.get(request)
+            if request.resolver_match.url_name == "delete_blog_blog_category_url":
+                request_id = data.get('id')
+                BlogCategory.objects.filter(id=request_id).first().delete()
+                messages.success(request, 'Delete successful!')
+                return self.get(request)
+            if request.resolver_match.url_name == "edit_blog_blog_category_url":
+                request_id = data.get('id')
+                blog_category = BlogCategory.objects.filter(id=request_id).first()
+                blog_category.name = data.get('name')
+                blog_category.save()
+                messages.success(request, 'Data updated successful!')
+                return self.get(request)
+                BlogCategoryView

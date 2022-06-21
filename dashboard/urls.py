@@ -1,6 +1,6 @@
 from django.urls import path
 from dashboard.views.already_done_view import AlreadyDoneView, CaseStudyEditView
-from dashboard.views.blog_view import BlogAuthorView, BlogView, HandleBlogView
+from dashboard.views.blog_view import BlogAuthorView, BlogCategoryView, BlogView, HandleBlogView
 from dashboard.views.authenticate_view import AuthenticationView
 from dashboard.views.blog_view import BlogView
 from dashboard.views.career_view import ApplyForThisPositionView, CurrentOpportunitiesView
@@ -39,8 +39,18 @@ urlpatterns= [
     path('blog-list-save/', BlogView.as_view(), name="save_blog_url"),
     path('blog-list-edit/', BlogView.as_view(), name="edit_blog_url"),
     path('blog-list-delete/', BlogView.as_view(), name="delet_blog_row_url"),
+
     path('handle-blog/', HandleBlogView.as_view(), name="handle_blog_url"),
+
     path('blog-author/', BlogAuthorView.as_view(), name="blog_blog_author_url"),
+    path('blog-author-save/', BlogAuthorView.as_view(), name="save_blog_blog_author_url"),
+    path('blog-author-delete/', BlogAuthorView.as_view(), name="delete_blog_blog_author_url"),
+    path('blog-author-edit/', BlogAuthorView.as_view(), name="edit_blog_blog_author_url"),
+    
+    path('blog-blog-category/', BlogCategoryView.as_view(), name="blog_blog_category_url"),
+    path('blog-blog-category-save/', BlogCategoryView.as_view(), name="save_blog_category_url"),
+    path('blog-blog-category-delete/', BlogCategoryView.as_view(), name="delete_blog_blog_category_url"),
+    path('blog-blog-category-update/', BlogCategoryView.as_view(), name="edit_blog_blog_category_url"),
 
 
     # LetsTalk
