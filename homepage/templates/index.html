@@ -702,197 +702,199 @@
 	<!--========== OUR-SERVICES-END ==============-->
 
 	<!--========== OUR-PROJECTS-START ============-->
-	<section class="ourprojects">
-		<div class="container">
-			<div class="ourprojects-content">
-				<!-- OUR-PROJECTS HEADER START -->
-				<div class="ourprojects-header">
-					<div class="row g-4">
-						<div class="col-lg-8 col-12">
-							<div class="projectsinfo">
-								<h1 class="projects-title">What projects have we done so far?</h1>
+	{% if project_done_exists %}
+		<section class="ourprojects">
+			<div class="container">
+				<div class="ourprojects-content">
+					<!-- OUR-PROJECTS HEADER START -->
+					<div class="ourprojects-header">
+						<div class="row g-4">
+							<div class="col-lg-8 col-12">
+								<div class="projectsinfo">
+									<h1 class="projects-title">What projects have we done so far?</h1>
+								</div>
 							</div>
 						</div>
 					</div>
+					<!-- OUR-PROJECTS HEADER END -->
+
+					<!-- OUR-PROJECTS BODY START -->
+					<div class="ourprojects-body">
+						<div class="tabmenu">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="web-tab" data-bs-toggle="tab" data-bs-target="#web" type="button" role="tab" aria-controls="web" aria-selected="false">Web</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="app-tab" data-bs-toggle="tab" data-bs-target="#app" type="button" role="tab" aria-controls="app" aria-selected="false">App</button>
+								</li>
+
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="uxui-tab" data-bs-toggle="tab" data-bs-target="#uxui" type="button" role="tab" aria-controls="uxui" aria-selected="false">UX/UI</button>
+								</li>
+							</ul>
+						</div>
+
+						<div class="tab-content" id="myTabContent">
+							<!-- ALL-TAB CONTENT START -->
+							<div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+								<div class="row g-4">
+									{% for project in project_done %}
+									<div class="col-lg-4 col-sm-6 col-12">
+										<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
+											<div class="card-project">
+												<div class="card-project-header">
+													<img src="/media/{{ project.image }}" alt="project-thumbnail">
+												</div>
+
+												<div class="card-project-body">
+													<div class="project-title">
+														<h2 class="title">{{ project.name }}</h2>
+
+														<span class="icon">
+															<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
+															</svg>
+														</span>
+													</div>
+
+													<div class="tags">
+
+														{% for skill in project.technology|split:"," %}
+															<span class="tag">{{ skill }}</span><br>
+														{% endfor %}
+
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+							<!-- ALL-TAB CONTENT END -->
+
+							<!-- WEB-TAB CONTENT START -->
+							<div class="tab-pane fade" id="web" role="tabpanel" aria-labelledby="web-tab">
+								<div class="row g-4">
+										{% for project in web_project %}
+									<div class="col-lg-4 col-sm-6 col-12">
+										<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
+											<div class="card-project">
+												<div class="card-project-header">
+													<img src="/media/{{ project.image }}" alt="project-thumbnail">
+												</div>
+
+												<div class="card-project-body">
+													<div class="project-title">
+														<h2 class="title">{{ project.name }}</h2>
+
+														<span class="icon">
+															<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
+															</svg>
+														</span>
+													</div>
+
+													<div class="tags">
+														{% for skill in project.technology|split:"," %}
+															<span class="tag">{{ skill }}</span><br>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+										{% endfor %}
+
+								</div>
+							</div>
+							<!-- WEB-TAB CONTENT END -->
+
+							<!-- APP-TAB CONTENT START -->
+							<div class="tab-pane fade" id="app" role="tabpanel" aria-labelledby="app-tab">
+								<div class="row g-4">
+									{% for project in app_project %}
+										<div class="col-lg-4 col-sm-6 col-12">
+										<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
+											<div class="card-project">
+												<div class="card-project-header">
+													<img src="/media/{{ project.image }}" alt="project-thumbnail">
+												</div>
+
+												<div class="card-project-body">
+													<div class="project-title">
+														<h2 class="title">{{ project.name }}</h2>
+
+														<span class="icon">
+															<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
+															</svg>
+														</span>
+													</div>
+
+													<div class="tags">
+														{% for skill in project.technology|split:"," %}
+															<span class="tag">{{ skill }}</span><br>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+							<!-- APP-TAB CONTENT END -->
+
+							<!-- UX-UI TAB CONTENT START -->
+							<div class="tab-pane fade" id="uxui" role="tabpanel" aria-labelledby="uxui-tab">
+								<div class="row g-4">
+									{% for project in ui_ux %}
+										<div class="col-lg-4 col-sm-6 col-12">
+										<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
+											<div class="card-project">
+												<div class="card-project-header">
+													<img src="/media/{{ project.image }}" alt="project-thumbnail">
+												</div>
+
+												<div class="card-project-body">
+													<div class="project-title">
+														<h2 class="title">{{ project.name }}</h2>
+
+														<span class="icon">
+															<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
+															</svg>
+														</span>
+													</div>
+
+													<div class="tags">
+															{% for skill in project.technology|split:"," %}
+															<span class="tag">{{ skill }}</span><br>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>
+									{% endfor%}
+
+								</div>
+							</div>
+							<!-- UX-UI TAB CONTENT END -->
+						</div>
+					</div>
+					<!-- OUR-PROJECTS BODY END -->
 				</div>
-				<!-- OUR-PROJECTS HEADER END -->
-
-				<!-- OUR-PROJECTS BODY START -->
-				<div class="ourprojects-body">
-					<div class="tabmenu">
-						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							<li class="nav-item" role="presentation">
-								<button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
-							</li>
-
-							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="web-tab" data-bs-toggle="tab" data-bs-target="#web" type="button" role="tab" aria-controls="web" aria-selected="false">Web</button>
-							</li>
-
-							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="app-tab" data-bs-toggle="tab" data-bs-target="#app" type="button" role="tab" aria-controls="app" aria-selected="false">App</button>
-							</li>
-
-							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="uxui-tab" data-bs-toggle="tab" data-bs-target="#uxui" type="button" role="tab" aria-controls="uxui" aria-selected="false">UX/UI</button>
-							</li>
-						</ul>
-					</div>
-
-					<div class="tab-content" id="myTabContent">
-						<!-- ALL-TAB CONTENT START -->
-						<div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-							<div class="row g-4">
-								{% for project in project_done %}
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="/media/{{ project.image }}" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">{{ project.name }}</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-
-                                                    {% for skill in project.technology|split:"," %}
-                                                        <span class="tag">{{ skill }}</span><br>
-                                                    {% endfor %}
-
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-                                {% endfor %}
-							</div>
-						</div>
-						<!-- ALL-TAB CONTENT END -->
-
-						<!-- WEB-TAB CONTENT START -->
-						<div class="tab-pane fade" id="web" role="tabpanel" aria-labelledby="web-tab">
-							<div class="row g-4">
-						            {% for project in web_project %}
-								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="/media/{{ project.image }}" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">{{ project.name }}</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-                                                    {% for skill in project.technology|split:"," %}
-                                                        <span class="tag">{{ skill }}</span><br>
-                                                    {% endfor %}
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								    {% endfor %}
-
-							</div>
-						</div>
-						<!-- WEB-TAB CONTENT END -->
-
-						<!-- APP-TAB CONTENT START -->
-						<div class="tab-pane fade" id="app" role="tabpanel" aria-labelledby="app-tab">
-							<div class="row g-4">
-                                {% for project in app_project %}
-								    <div class="col-lg-4 col-sm-6 col-12">
-									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="/media/{{ project.image }}" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">{{ project.name }}</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-                                                    {% for skill in project.technology|split:"," %}
-                                                        <span class="tag">{{ skill }}</span><br>
-                                                    {% endfor %}
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-                                {% endfor %}
-							</div>
-						</div>
-						<!-- APP-TAB CONTENT END -->
-
-						<!-- UX-UI TAB CONTENT START -->
-						<div class="tab-pane fade" id="uxui" role="tabpanel" aria-labelledby="uxui-tab">
-							<div class="row g-4">
-                                {% for project in ui_ux %}
-								    <div class="col-lg-4 col-sm-6 col-12">
-									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
-										<div class="card-project">
-											<div class="card-project-header">
-												<img src="/media/{{ project.image }}" alt="project-thumbnail">
-											</div>
-
-											<div class="card-project-body">
-												<div class="project-title">
-													<h2 class="title">{{ project.name }}</h2>
-
-													<span class="icon">
-														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-														</svg>
-													</span>
-												</div>
-
-												<div class="tags">
-	                                                    {% for skill in project.technology|split:"," %}
-                                                        <span class="tag">{{ skill }}</span><br>
-                                                    {% endfor %}
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-                                {% endfor%}
-
-							</div>
-						</div>
-						<!-- UX-UI TAB CONTENT END -->
-					</div>
-				</div>
-				<!-- OUR-PROJECTS BODY END -->
 			</div>
-		</div>
-	</section>
+		</section>
+	{% endif %}
 	<!--========== OUR-PROJECTS-END ==============-->
 
 	<!--========== TESTIMONIAL-SECTION-START ============-->

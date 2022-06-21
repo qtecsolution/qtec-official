@@ -10,15 +10,24 @@ class BlogsView(View):
 
     def get(self, request):
         handle_blog= HandleBlog.objects.first()
-        top_4_blog = handle_blog.top_4_blog.select_related('blog_author').select_related('blog_category').all()
-        random_blog = Blog.objects.exclude(id__in=top_4_blog.values_list('id', flat= True)).order_by('?')
+        handle_blog_exists = HandleBlog.objects.exists()
+        top_4_blog = None
+        random_blog = None
+        highlight_blog = None
+        if handle_blog_exists:
+            top_4_blog = handle_blog.top_4_blog.select_related('blog_author').select_related('blog_category').all()
+            random_blog = Blog.objects.exclude(id__in=top_4_blog.values_list('id', flat= True)).order_by('?')
+            highlight_blog = handle_blog.highlight_blog
         context = {
+            'handle_blog_exists' : handle_blog_exists,
             'title': 'Blog',
-            'highlight_blog': handle_blog.highlight_blog,
+            'highlight_blog': highlight_blog,
             'top_4_blog': top_4_blog,
             'random_blog': random_blog
         }
         return render(request, 'blog/blog.html', context)
+        
+
 
 
 class BlogDetails(View):

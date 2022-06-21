@@ -13,9 +13,11 @@
   <!--========== BLOG-BANNER END ============-->
 
   <!--========== BLOG-SECTION START ==========-->
+ {% if handle_blog_exists %}
   <section class="blog">
     <div class="container">
       <div class="row g-lg-4 g-3">
+        
         <!-- BLOG ITEM START -->
           {% for i in top_4_blog %}
                 <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
@@ -33,7 +35,7 @@
 
                 <div class="articledescript">
                   <p class="articletext">
-                    {{ i.description }}
+                    {{ i.description|safe  }}
                   </p>
                 </div>
 
@@ -47,6 +49,7 @@
       </div>
     </div>
   </section>
+
   <!--========== BLOG-SECTION END ============-->
 
   <!--========== BLOG-DESCRIPT START ==========-->
@@ -70,7 +73,7 @@
 
                 <div class="info-body">
                   <p class="blogtext">
-                    {{ highlight_blog.description }}
+                    {{ highlight_blog.description|safe  }}
                   </p>
                 </div>
               </div>
@@ -119,6 +122,7 @@
           </div>
             {% endfor %}
         </div>
+{% endif %}
         <!-- ALL BLOGS END -->
 
         <!-- SEE ALL START -->
