@@ -164,13 +164,14 @@ class ApplyForThisPosition(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
     upload_cv = models.FileField(upload_to='apply_for_this_position/')
+    current_opportnities = models.ForeignKey("CurrentOpportunities",on_delete=models.CASCADE,related_name='current_opportnities')
 class CurrentOpportunities(models.Model):
     title = models.CharField(max_length=100)
     applicent_type = models.PositiveSmallIntegerField( choices= APPLICENT_STATUS, default=FULL_TIME)
     number_of_vacancy = models.CharField(max_length=50)
     deadline = models.DateTimeField()
     description = models.TextField()
-    apply_for_this_position = models.ForeignKey(ApplyForThisPosition,on_delete=models.CASCADE,related_name='apply_for_this_position')
+    
 
 
 
