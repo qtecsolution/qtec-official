@@ -25,7 +25,7 @@ class AlreadyDoneView(View):
             request_id = request.POST.get('id')
             what_Done = WhatProjectHaveWeDone.objects.filter(id=request_id).delete()
             messages.success(request, 'Delete successful')
-            return self.get(request)
+            return redirect('dashboard:already_done_url')
             
         if request.resolver_match.url_name == "save_what_done_url":
             what_Done = WhatProjectHaveWeDone()
@@ -35,7 +35,7 @@ class AlreadyDoneView(View):
             what_Done.project_type = data.get('project_type')
             what_Done.save()
             messages.success(request, 'Data save successful!')
-            return self.get(request)
+            return redirect('dashboard:already_done_url')
 
         if request.resolver_match.url_name == "edit_what_project_done_url":
             request_id = data.get('id')
@@ -48,7 +48,7 @@ class AlreadyDoneView(View):
                 what_Done.image = image
             what_Done.save()
             messages.success(request, 'Edit successful')
-            return self.get(request)
+            return redirect('dashboard:already_done_url')
             
 
 class CaseStudyEditView(View):

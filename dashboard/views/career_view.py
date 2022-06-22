@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib import messages
-from dashboard.models import APPLICENT_STATUS, ApplyForThisPosition, CurrentOpportunities
+from dashboard.models import APPLICENT_STATUS, APPLY_STATUS, ApplyForThisPosition, CurrentOpportunities
 
 
 class CurrentOpportunitiesView(View):
@@ -28,7 +28,7 @@ class CurrentOpportunitiesView(View):
             current_opportunities.image = request.FILES.get('image')
             current_opportunities.save()
             messages.success(request, 'Data save successful!')
-            return self.get(request)
+            return redirect('dashboard:blog_blog_list_url')
             
         if request.resolver_match.url_name == "current_opportunities_edit_url":
             request_id = data.get('id')
@@ -60,8 +60,23 @@ class ApplyForThisPositionView(View):
         positions = ApplyForThisPosition.objects.order_by("-id").all()
         context = {
             "positions" : positions,
+            "apply_status" : APPLY_STATUS,
         }
         return render(request, 'apply_for_this_position.html', context)
+
+    def post(self, request):
+        data = request.POST
+        if request.resolver_match.url_name == "apply_for_this_position_status_url":
+            request_id = data.get('id')
+            position = ApplyForThisPosition.objects.filter(id=request_id).first()
+            position.status = data.get('status')
+            position.save()
+            return redirect('dashboard:apply_for_this_position_url')
+
+        if request.resolver_match.url_name == "apply_for_this_position_delete_url":
+            request_id = data.get('id')
+            ApplyForThisPosition.objects.filter(id=request_id).first().delete()
+            return redirect('dashboard:apply_for_this_position_url')
             
         
             

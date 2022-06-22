@@ -28,6 +28,7 @@
                                     <th>Email</th>
                                     <th>CV</th>
                                     <th>Current Opportnities</th>
+                                    <th>Status</th>
                                 </tr>
                                 {% for position in positions %}
                                 <tr id="what_done_{{ item.id }}">
@@ -39,6 +40,23 @@
                                         <a target="_blank" href="{{ position.upload_cv.url }}"><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-file"></i></button></a>     
                                     </td>
                                     <td>{{ position.current_opportunities.title }}</td>
+                                    <td>
+                                        <select onchange="change_apply_status('{{ position.id }}')" class="form-control" id="apply_status_id_{{ position.id }}">
+                                            {% for status in apply_status %}
+                                                <option {% if status.0 == position.status %} selected {% endif %} value="{{ status.0 }}">{{ status.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="form-group row">
+                                            <div class="col-sm-1">
+                                                <form action="{% url 'dashboard:apply_for_this_position_delete_url' %}"method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{ position.id }}" name="id">
+                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form> 
+                                            </div>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                                 
@@ -61,6 +79,22 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function change_apply_status(id){
+    var status = $("#apply_status_id_"+id).val()
+    var csrf= '{{ csrf_token }}'
+    let url = "{% url 'dashboard:apply_for_this_position_status_url' %}";
+    var data = {'id': id, 'status': status, 'csrfmiddlewaretoken': csrf}
+    $.ajax({
+        url: url,
+        data: data,
+        type: "POST",
+        success: function (data) {
+            toastr.success('Status changed successfully')
+        },
+        error: function (data) {
+        }
+    });
+}
 
 
 

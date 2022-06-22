@@ -44,6 +44,20 @@ BUDGET = (
     (_40000_TO_50000, '$40000 to $50000'),
     (OVER_50000, 'Over $50000'),
 )
+UNSEEN = 1
+SEEN = 2
+PENDING = 3
+SELECTED = 4
+REJECTED = 5
+
+APPLY_STATUS = (
+    (UNSEEN, 'Unseen'),
+    (SEEN, 'Seen'),
+    (PENDING, 'Pending'),
+    (SELECTED, 'Selected'),
+    (REJECTED, 'Rejected'),
+
+)
 FULL_TIME = 1
 REMOTE =2 
 PART_TIME = 3
@@ -157,6 +171,7 @@ class ApplyForThisPosition(models.Model):
     email = models.EmailField()
     upload_cv = models.FileField(upload_to='apply_for_this_position/')
     current_opportunities = models.ForeignKey("CurrentOpportunities",on_delete=models.CASCADE, related_name='apply_for_positions')
+    status = models.PositiveSmallIntegerField( choices= APPLY_STATUS, default=UNSEEN)
 
 
 class CurrentOpportunities(models.Model):

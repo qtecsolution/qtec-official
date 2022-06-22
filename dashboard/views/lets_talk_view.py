@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 
 from dashboard.models import BUDGET, LETS_TAlK_STATUS, LetsTalk
@@ -24,7 +24,8 @@ class LetsTalkView(View):
             request_id = request.POST.get('id')
             lets_talk = LetsTalk.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Data deleted successful!')
-            return self.get(request)
+            return redirect('dashboard:lets_talk_url')
+
         if request.resolver_match.url_name == "lets_talk_status_change_url":
             request_id = request.POST.get('id') 
             lets_talk = LetsTalk.objects.filter(id=request_id).first()

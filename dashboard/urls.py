@@ -63,5 +63,7 @@ urlpatterns= [
     path('current-opportunities-delete/', CurrentOpportunitiesView.as_view(), name="delete_current_opportunities_url"),
     
     path('career-apply_for_this_position/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_url"),
+    path('career-apply_for_this_position-satus/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_status_url"),
+     path('career-apply_for_this_position_delete/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_delete_url"),
         
 ]

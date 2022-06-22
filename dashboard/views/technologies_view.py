@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 
 from dashboard.models import Technologies
@@ -32,11 +32,11 @@ class TechnologiesView(View):
                 technologies.save()
                 messages.success(request, 'Data save successful!')
 
-            return self.get(request)
+            return redirect('dashboard:technologies_url')
 
         if request.resolver_match.url_name == "delete_technologies_url":
             request_id = data.get('id')
             technologies = Technologies.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Delete successful')
-            return self.get(request)
+            return redirect('dashboard:technologies_url')
         

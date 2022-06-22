@@ -1,6 +1,6 @@
 from multiprocessing import context
 from django import views
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib import messages
 
@@ -46,7 +46,7 @@ class BlogView(View):
                 blog_object.updated_at = updated_at
                 blog_object.save()
                 messages.success(request, 'Data save successful!')
-            return self.get(request)
+            return redirect('dashboard:blog_blog_list_url')
             
         if request.resolver_match.url_name == "edit_blog_url":
             blog_author = data.get('blog_author')
@@ -76,11 +76,11 @@ class BlogView(View):
                 blog_object.save()
                 messages.success(request, 'Data updated successful!')
 
-            return self.get(request)
+            return redirect('dashboard:blog_blog_list_url')
         if request.resolver_match.url_name == "delete_blog_row_url":
             request_id = data.get('id')
-            blog = Blog.objects.filter(id=request_id).first().delete()
-            return self.get(request)
+            Blog.objects.filter(id=request_id).first().delete()
+            return redirect('dashboard:blog_blog_list_url')
     
 class HandleBlogView(View):
     def get(self, request):
@@ -102,21 +102,18 @@ class HandleBlogView(View):
         data = request.POST
         handle_blog = HandleBlog.objects.first()
         highlight_blog = data.get('highlight_blog')
-        top_4_blog = request.POST.getlist('top_4_blog')
-        
         if HandleBlog.objects.exists():
             handle_blog = HandleBlog.objects.first()
             handle_blog.top_4_blog.clear()
         else:
             handle_blog = HandleBlog()
-            handle_blog.highlight_blog = Blog.objects.filter(id=highlight_blog).first()
-            handle_blog.save()
-            top_4_blog = request.POST.getlist('top_4_blog')
-           
-            handle_blog.top_4_blog.add(*top_4_blog)
-            messages.success(request, 'Data updated successful!')
+        handle_blog.highlight_blog = Blog.objects.filter(id=highlight_blog).first()
+        handle_blog.save()
+        top_4_blog = request.POST.getlist('top_4_blog')
+        handle_blog.top_4_blog.add(*top_4_blog)
+        messages.success(request, 'Data updated successful!')
        
-        return self.get(request)
+        return redirect('dashboard:handle_blog_url')
 
 class BlogAuthorView(View):
     def get(self, request):
@@ -138,14 +135,14 @@ class BlogAuthorView(View):
             blog_author.image = request.FILES.get('image')
             blog_author.save()
             messages.success(request, 'Data save successful!')
-            return self.get(request)
+            return redirect('dashboard:blog_blog_author_url')
 
         if request.resolver_match.url_name == "delete_blog_blog_author_url":
             request_id = data.get('id')
             BlogAuthor.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Delete successful!')
-            return self.get(request)
-            
+            return redirect('dashboard:blog_blog_author_url')
+
         if request.resolver_match.url_name == "edit_blog_blog_author_url":
             request_id = data.get('id')
             blog_author = BlogAuthor.objects.filter(id=request_id).first()
@@ -156,8 +153,7 @@ class BlogAuthorView(View):
                 blog_author.image = image
             blog_author.save()
             messages.success(request, 'Data updated successful!')
-            return self.get(request)
-            BlogCategoryView
+            return redirect('dashboard:blog_blog_author_url')
 class BlogCategoryView(View):
         def get(self, request):
             blog_category = BlogCategory.objects.values('id','name')
@@ -174,17 +170,19 @@ class BlogCategoryView(View):
                 blog_category.name = data.get('name')
                 blog_category.save()
                 messages.success(request, 'Data save successful!')
-                return self.get(request)
+                return redirect('dashboard:blog_blog_category_url')
+
             if request.resolver_match.url_name == "delete_blog_blog_category_url":
                 request_id = data.get('id')
                 BlogCategory.objects.filter(id=request_id).first().delete()
                 messages.success(request, 'Delete successful!')
-                return self.get(request)
+                return redirect('dashboard:blog_blog_category_url')
+
             if request.resolver_match.url_name == "edit_blog_blog_category_url":
                 request_id = data.get('id')
                 blog_category = BlogCategory.objects.filter(id=request_id).first()
                 blog_category.name = data.get('name')
                 blog_category.save()
                 messages.success(request, 'Data updated successful!')
-                return self.get(request)
+                return redirect('dashboard:blog_blog_category_url')
             
