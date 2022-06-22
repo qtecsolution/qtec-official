@@ -21,7 +21,7 @@ class AlreadyDoneView(View):
 
     def post(self, request):
         data = request.POST
-        if request.resolver_match.url_name == "delet_what_done_url":
+        if request.resolver_match.url_name == "delete_what_done_url":
             request_id = request.POST.get('id')
             what_Done = WhatProjectHaveWeDone.objects.filter(id=request_id).delete()
             messages.success(request, 'Delete successful')

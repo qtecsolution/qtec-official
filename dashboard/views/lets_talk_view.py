@@ -20,7 +20,7 @@ class LetsTalkView(View):
         return render(request, 'lets_talk.html', context)
 
     def post(self, request):
-        if request.resolver_match.url_name == "delet_lets_talk_url":
+        if request.resolver_match.url_name == "delete_lets_talk_url":
             request_id = request.POST.get('id')
             lets_talk = LetsTalk.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Data deleted successful!')

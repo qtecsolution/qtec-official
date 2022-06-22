@@ -47,7 +47,7 @@
                                     <th>
                                         <div class="form-group row">
                                             <div class="col-2">
-                                                <form action="{% url 'dashboard:delet_what_done_url' %}"method="POST" >
+                                                <form action="{% url 'dashboard:delete_what_done_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{done.id}}" name="id">
                                                     <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>

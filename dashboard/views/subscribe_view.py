@@ -5,7 +5,6 @@ from dashboard.models import Subscribe
 
 
 class SubscribeView(View):
-
     def get(self, request):
         subscribers = Subscribe.objects.values('id','email')
         context = {

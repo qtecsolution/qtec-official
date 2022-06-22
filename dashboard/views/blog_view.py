@@ -20,6 +20,7 @@ class BlogView(View):
             'blog_category' : blog_category
         }
         return render(request, 'blog.html', context)
+
     def post(self, request):
         data =request.POST
         if request.resolver_match.url_name == "save_blog_url":
@@ -76,7 +77,7 @@ class BlogView(View):
                 messages.success(request, 'Data updated successful!')
 
             return self.get(request)
-        if request.resolver_match.url_name == "delet_blog_row_url":
+        if request.resolver_match.url_name == "delete_blog_row_url":
             request_id = data.get('id')
             blog = Blog.objects.filter(id=request_id).first().delete()
             return self.get(request)
@@ -96,6 +97,7 @@ class HandleBlogView(View):
             'highlight_blog':highlight_blog,
         }
         return render(request, 'handle_blog.html', context)
+
     def post(self, request):
         data = request.POST
         handle_blog = HandleBlog.objects.first()
@@ -137,11 +139,13 @@ class BlogAuthorView(View):
             blog_author.save()
             messages.success(request, 'Data save successful!')
             return self.get(request)
+
         if request.resolver_match.url_name == "delete_blog_blog_author_url":
             request_id = data.get('id')
             BlogAuthor.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Delete successful!')
             return self.get(request)
+            
         if request.resolver_match.url_name == "edit_blog_blog_author_url":
             request_id = data.get('id')
             blog_author = BlogAuthor.objects.filter(id=request_id).first()
@@ -167,7 +171,6 @@ class BlogCategoryView(View):
             data =request.POST
             if request.resolver_match.url_name == "save_blog_category_url":
                 blog_category = BlogCategory()
-                print("data.get('name')::::",data)
                 blog_category.name = data.get('name')
                 blog_category.save()
                 messages.success(request, 'Data save successful!')

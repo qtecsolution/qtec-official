@@ -53,7 +53,7 @@
                                     <td>
                                         <div class="form-group row">
                                             <div class="col-5">
-                                                <form action="{% url 'dashboard:delet_blog_row_url' %}"method="POST" >
+                                                <form action="{% url 'dashboard:delete_blog_row_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{ blog.id }}" name="id">
                                                     <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
