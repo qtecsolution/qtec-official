@@ -2,7 +2,7 @@ from django.urls import path
 
 from homepage.views.about_us_view import AboutUsView
 from homepage.views.blog_view import BlogsView, BlogDetails, AllBlogView
-from homepage.views.career_view import CareerView
+from homepage.views.career_view import CareerView, CareerDetailsView
 from homepage.views.case_study_view import CaseStudyDetails
 from homepage.views.contact_us_view import ContactUs
 from homepage.views.index_view import IndexView
@@ -26,5 +26,8 @@ urlpatterns= [
     path('lets-talk-subscribe-save/', ContactUs.as_view(), name="lets_talk_subscribe_save_url"),
 
     path('career/', CareerView.as_view(), name="career_url"),
+    path('career/<str:slug>/', CareerDetailsView.as_view(), name="career_details_url"),
+
+    path('apply/job/', CareerDetailsView.as_view(), name="apply_for_job_url"),
 
 ]

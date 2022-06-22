@@ -1,0 +1,198 @@
+{% extends 'homepage/base_homepage.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="career-banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-12 mx-lg-auto">
+					<div class="career-banner-content">
+						<figure class="career-thumbnail">
+							<img width="100%" height="100%" src="{{ career.image.url }}">
+						</figure>
+
+						<div class="bannerinfo">
+							<div class="bannerinfo-header">
+								<h4 class="banner-title">{{ career.title }}</h4>
+
+								<div class="info">
+									<p>Vacancy : {{ career.number_of_vacancy}}</p>
+									<p>Job Type : {{ career.get_applicant_type_display }}</p>
+									<p>Deadline : {{ career.deadline }}</p>
+								</div>
+							</div>
+
+							<div class="bannerinfo-body">
+								<a href="#applysection" class="btn-explore">Apply Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--========== CAREER-BANNER END ============-->
+
+	<!--========== CAREER-DETAILS START ============-->
+	<section class="career-details">
+		<div class="container">
+			<div class="col-lg-8 mx-lg-auto">
+				<div class="career-details-content">
+                    {{ career.description }}
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--========== CAREER-DETAILS END ==============-->
+
+	<!--========== CAREER-APPLY START ==============-->
+	<section class="career-apply" id="applysection">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-xl-6 mx-lg-auto col-12">
+					<div class="apply">
+						<div class="apply-header">
+							<h2 class="apply-title">Please enter your personal information</h2>
+						</div>
+
+						<div class="apply-body">
+							<form id="applyform" class="applyform">
+								<div class="row g-4">
+									<div class="col-md-6 col-12">
+										<div class="inputbox">
+											<label for="firstname" class="inputlabel">First Name *</label>
+											<input type="text" id="firstname" class="inputfield">
+										</div>
+									</div>
+
+									<div class="col-md-6 col-12">
+										<div class="inputbox">
+											<label for="lastname" class="inputlabel">Last Name *</label>
+											<input type="text" id="lastname" class="inputfield">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-12">
+										<div class="inputbox">
+											<label for="careeremail" class="inputlabel">E-mail *</label>
+											<input type="email" id="careeremail" class="inputfield">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-12">
+										<div class="inputbox">
+											<label class="inputlabel">Upload CV *</label>
+
+											<div class="upload">
+												<p id="file_name" class="upload-text">No file chosen</p>
+
+												<div class="upload-info">
+													<input accept=".doc,.docx,.pptx,.pdf" onchange="return validateSize(this)" type="file" id="uploadcv" class="inputfield" hidden>
+													<label for="uploadcv" role="button" class="btn-choose">Choose File</label>
+												</div>
+											</div>
+
+											<p class="info">only doc, pdf or docx file allowed and file size will be less than 2MB</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-12">
+										<div class="inputbox">
+											<label id="mathQuestion" for="capcha" class="inputlabel"></label>
+											<input type="text" id="capcha" class="inputfield">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-12">
+										<div class="d-flex justify-content-end">
+											<button onclick="SaveObject()" class="btn-detail" type="button">Apply For This Position</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+
+{% block script %}
+
+    <script>
+        number_1 = Math.floor(Math.random() * (99 - 1 + 1) + 1)
+        number_2 = Math.floor(Math.random() * (99 - 1 + 1) + 1)
+
+        answer = number_1 + number_2
+
+        $('#mathQuestion').html(`What's ${number_1} + ${number_2} = ? *`)
+
+        function validateSize(input) {
+          const fileSize = input.files[0].size / 1024 / 1024; // in MiB
+            let fileName = input.value.split("\\").pop()
+            var re = /(\.pdf|\.doc|\.pptx|\.docx)$/i;
+            if (!re.exec(fileName)) {
+              alert("File extension not supported!");
+            }
+          if (fileSize > 2) {
+            alert('File size exceeds 2 MiB');
+          } else {
+            $('#file_name').html(fileName)
+              return true
+          }
+          return false
+        }
+
+
+        function SaveObject() {
+            let myForm = document.forms["applyform"]
+            let image =  $('#uploadcv')[0].files;
+            let firstname = myForm["firstname"];
+            let lastname = myForm["lastname"];
+            let careeremail = myForm["careeremail"];
+            let capcha = myForm["capcha"];
+
+            if (Number(capcha.value) != answer){
+                alert('Sum Wrong!')
+            }
+
+            let formData = new FormData();
+            formData.append('firstname', firstname.value)
+            formData.append('lastname', lastname.value)
+            formData.append('careeremail', careeremail.value)
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+            formData.append('career_id', '{{ career.id }}')
+            formData.append('image', image[0])
+
+            console.log(formData)
+            $.ajax({
+                url: "{% url 'homepage:apply_for_job_url' %}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function (data) {
+                    $('#applyform').trigger("reset");
+                    $('#file_name').html('No file chosen')
+
+                },
+                error: function (data) {
+                }
+          });
+
+        }
+
+
+    </script>
+
+{% endblock %}

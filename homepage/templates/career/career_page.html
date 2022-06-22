@@ -9,7 +9,7 @@
 
         <div class="info">
           <p class="infotext">
-            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+            It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
           </p>
         </div>
 			</div>
@@ -261,19 +261,19 @@
               <div class="card-opportunities">
                 <div class="card-opportunities-header">
                   <div class="titlebox">
-                    <h4 class="card-opportunities-title">UI & UX Designer</h4>
+                    <h4 class="card-opportunities-title">{{ career.title }}</h4>
                   </div>
 
-                  <span class="badge-opportunities">Full Time</span>
+                  <span class="badge-opportunities">{{ career.get_applicant_type_display }}</span>
                 </div>
 
                 <div class="card-opportunities-body">
                   <div class="deadline">
-                    <p class="text">Vacancy : 2</p>
-                    <p class="text">Deadline : 30 June, 2022</p>
+                    <p class="text">Vacancy : {{ career.number_of_vacancy }}</p>
+                    <p class="text">Deadline : {{ career.deadline }}</p>
                   </div>
 
-                  <a href="career-details.html" class="link">View &amp; Apply</a>
+                  <a href="{% url 'homepage:career_details_url' career.slug %}" class="link">View &amp; Apply</a>
                 </div>
               </div>
             </div>

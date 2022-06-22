@@ -146,6 +146,30 @@ class LetsTalk(models.Model):
     status = models.PositiveSmallIntegerField( choices= LETS_TAlK_STATUS, default=PENDING)
 
 
+class HandleBlog(models.Model):
+    top_4_blog = models.ManyToManyField(Blog)
+    highlight_blog= models.ForeignKey(Blog, related_name='handle_blog',on_delete= models.SET_NULL, null= True)
+
+
+class ApplyForThisPosition(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    upload_cv = models.FileField(upload_to='apply_for_this_position/')
+    current_opportunities = models.ForeignKey("CurrentOpportunities",on_delete=models.CASCADE, related_name='apply_for_positions')
+
+
+class CurrentOpportunities(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to= 'opportunities/', null= True)
+    slug = models.SlugField(null=True, allow_unicode=True, blank=True)
+    applicant_type = models.PositiveSmallIntegerField( choices= APPLICENT_STATUS, default=FULL_TIME)
+    number_of_vacancy = models.CharField(max_length=50)
+    deadline = models.DateField()
+    description = models.TextField()
+
+
+@receiver(post_save, sender=CurrentOpportunities)
 @receiver(post_save, sender=BlogCategory)
 @receiver(post_save, sender=Blog)
 @receiver(post_save, sender=WhatProjectHaveWeDone)
@@ -157,30 +181,3 @@ def slug_generator(sender, instance, created, **kwargs):
         slug = slug_object.unique_slug_generator(instance)
         instance.slug = slug
         instance.save()
-
-
-class HandleBlog(models.Model):
-    top_4_blog = models.ManyToManyField(Blog)
-    highlight_blog= models.ForeignKey(Blog, related_name='handle_blog',on_delete= models.SET_NULL, null= True)
-
-
-class ApplyForThisPosition(models.Model):
-    title = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    upload_cv = models.FileField(upload_to='apply_for_this_position/')
-    current_opportunities = models.ForeignKey("CurrentOpportunities",on_delete=models.CASCADE, related_name='apply_for_positions')
-
-
-class CurrentOpportunities(models.Model):
-    title = models.CharField(max_length=100)
-    applicant_type = models.PositiveSmallIntegerField( choices= APPLICENT_STATUS, default=FULL_TIME)
-    number_of_vacancy = models.CharField(max_length=50)
-    deadline = models.DateTimeField()
-    description = models.TextField()
-    
-
-
-
-    

@@ -192,7 +192,18 @@
                   text: 'Please, Input Your Phone Number!'
                 })
             return false;
-          }
+          }else{
+                let valid_number = phone.value.match(/\+?(88)?0?1[356789][0-9]{8}\b/)
+                if (!valid_number){
+                    Swal.fire({
+                  icon: 'error',
+                  title: 'Validation Error',
+                  text: 'Please, Input Your Phone Valid Number!'
+                })
+                    return false;
+                }
+
+            }
             let data= {
                 "type": 2,
                 "name": name.value,
