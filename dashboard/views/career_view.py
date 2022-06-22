@@ -25,6 +25,7 @@ class CurrentOpportunitiesView(View):
             current_opportunities.number_of_vacancy = data.get('number_of_vacancy')
             current_opportunities.deadline = data.get('deadline')
             current_opportunities.description = data.get('description')
+            current_opportunities.image = request.FILES.get('image')
             current_opportunities.save()
             messages.success(request, 'Data save successful!')
             return self.get(request)
@@ -35,6 +36,9 @@ class CurrentOpportunitiesView(View):
             current_opportunities.title = data.get('title')
             current_opportunities.applicant_type = data.get('applicant_type')
             current_opportunities.number_of_vacancy = data.get('number_of_vacancy')
+            image = image = request.FILES.get('image')
+            if image:
+                current_opportunities.image = image
             deadline = data.get('deadline')
             if deadline:
                 current_opportunities.deadline = deadline
