@@ -187,4 +187,4 @@ class BlogCategoryView(View):
                 blog_category.save()
                 messages.success(request, 'Data updated successful!')
                 return self.get(request)
-                BlogCategoryView
+            

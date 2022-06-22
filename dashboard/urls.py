@@ -51,19 +51,17 @@ urlpatterns= [
     path('blog-blog-category-delete/', BlogCategoryView.as_view(), name="delete_blog_blog_category_url"),
     path('blog-blog-category-update/', BlogCategoryView.as_view(), name="edit_blog_blog_category_url"),
 
-
     # LetsTalk
     path('lets-talk/', LetsTalkView.as_view(), name="lets_talk_url"),
     path('lets-talk-delete/', LetsTalkView.as_view(), name="delete_lets_talk_url"),
     path('lets-talk-status/', LetsTalkView.as_view(), name="lets_talk_status_change_url"),
 
+    # opportunities
     path('current-opportunities/', CurrentOpportunitiesView.as_view(), name="current_opportunities_url"),
     path('current-opportunities-save/', CurrentOpportunitiesView.as_view(), name="save_current_opportunities_url"),
     path('current-opportunities-edit/', CurrentOpportunitiesView.as_view(), name="current_opportunities_edit_url"),
     path('current-opportunities-delete/', CurrentOpportunitiesView.as_view(), name="delete_current_opportunities_url"),
     
     path('career-apply_for_this_position/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_url"),
-    
-
-    
+        
 ]
