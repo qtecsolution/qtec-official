@@ -1,4 +1,3 @@
-
 /**=====================================================**
                     THEME-COLORS
 =======================================================**/
@@ -588,7 +587,6 @@ body {
 
 a {
   text-decoration: none;
-  display: inline-block;
 }
 
 figure {
@@ -1388,7 +1386,7 @@ select {
 }
 
 .btn-explore:not([disabled]):hover {
-  background: #02D7F8;
+  background: #0253b5;
   color: #ffffff;
 }
 
@@ -1418,7 +1416,7 @@ select {
 }
 
 .btn-service:not([disabled]):hover {
-  background: #02D7F8;
+  background: #0253b5;
   color: #ffffff;
 }
 
@@ -1448,7 +1446,7 @@ select {
 }
 
 .btn-detail:not([disabled]):hover {
-  background: #02D7F8;
+  background: #0253b5;
   color: #ffffff;
 }
 
@@ -1488,7 +1486,7 @@ select {
 }
 
 .btn-getintouch:not([disabled]):hover {
-  background: #02D7F8;
+  background: #0253b5;
   color: #ffffff;
 }
 
@@ -1605,7 +1603,7 @@ select {
 }
 
 .btn-contact:not([disabled]):hover .icon {
-  background: #02D7F8;
+  background: #0253b5;
 }
 
 .btn-play {
@@ -1709,7 +1707,7 @@ select {
 }
 
 .btn-submit:not([disabled]):hover {
-  background: #02D7F8;
+  background: #0253b5;
 }
 
 .btn-link {
@@ -2642,7 +2640,7 @@ select {
 }
 
 .card-blog-details {
-  padding: 2.75rem 2.75rem 2.75rem 0rem;
+  padding: 1.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2650,7 +2648,14 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 2.75rem;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .card-blog-details {
+    gap: 2.75rem;
+    padding: 2.75rem 2.75rem 2.75rem 0rem;
+  }
 }
 
 @media screen and (min-width: 87.5rem) {
@@ -2773,6 +2778,224 @@ select {
 
 .card-blog-details .readinfo {
   width: 12.5rem;
+}
+
+.cardwork {
+  padding: 2rem 1.5rem 4rem;
+  border-radius: 1rem;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+}
+
+.cardwork-header .card-thumbnail {
+  height: 3.5rem;
+  width: 3.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+.cardwork-header .card-thumbnail svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cardwork-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardwork-body .cardwork-title {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.89321;
+}
+
+.cardwork-body .cardwork-text {
+  color: #718096;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .cardwork-body .cardwork-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .cardwork-body .cardwork-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+.cardwork-1 {
+  background: #F7FAFF;
+}
+
+.cardwork-2 {
+  background: rgba(180, 220, 98, 0.08);
+}
+
+.cardwork-3 {
+  background: rgba(255, 219, 204, 0.3);
+}
+
+.card-opportunities {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.5rem;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  border: solid 0.0625rem #E2E8F0;
+  padding: 1.25rem 1.5rem;
+  height: 100%;
+}
+
+.card-opportunities-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  align-items: center;
+}
+
+.card-opportunities-header .titlebox {
+  width: calc(100% - 5rem);
+}
+
+.card-opportunities-header .titlebox .card-opportunities-title {
+  color: #2D3748;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5625;
+}
+
+.card-opportunities-header .badge-opportunities {
+  background: #E4ECF7;
+  color: #505780;
+  display: inline-block;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.33333;
+  border-radius: 0.3125rem;
+  border-radius: 0.3125rem;
+  padding: 0.375rem 0.75rem;
+  text-align: center;
+  width: 5rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .card-opportunities-header .badge-opportunities {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.42857;
+  }
+}
+
+.card-opportunities-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.card-opportunities-body .deadline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.card-opportunities-body .deadline .text {
+  color: #718096;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.42857;
+  -webkit-font-feature-settings: 'salt';
+          font-feature-settings: 'salt';
+}
+
+.card-opportunities-body .link {
+  color: #0876FC;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.42857;
+  -webkit-transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
+}
+
+.card-opportunities-body .link:not([disabled]):hover {
+  color: #0253b5;
 }
 
 .modal-content {
@@ -5009,15 +5232,1060 @@ select {
                         SUBSCRIBE END
 **=======================================================**/
 /**=======================================================**
+                    CAREER-BANNER START
+**=======================================================**/
+.career-hero {
+  position: relative;
+}
+
+.career-hero .career-thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.career-hero .career-thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.career-hero-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 15rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .career-hero-content {
+    min-height: 40rem;
+    gap: 1.5rem;
+  }
+}
+
+.career-hero-content .career-title {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-hero-content .career-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-hero-content .career-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.15385;
+  }
+}
+
+@media screen and (min-width: 87.5rem) {
+  .career-hero-content .career-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+}
+
+.career-hero-content .info {
+  max-width: 40.25rem;
+}
+
+.career-hero-content .info .infotext {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-hero-content .info .infotext {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-hero-content .info .infotext {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+/**=======================================================**
+                    CAREER-BANNER START
+**=======================================================**/
+/**=======================================================**
+                    WHY WORK WITH US START
+**=======================================================**/
+.whywork {
+  background: #ffffff;
+  padding: 3rem 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .whywork {
+    padding: 3.75rem 0rem 7.5rem;
+  }
+}
+
+.whywork-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 3rem;
+}
+
+.whywork-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.whywork-header .whywork-title {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@media screen and (min-width: 48rem) {
+  .whywork-header .whywork-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .whywork-header .whywork-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.15385;
+  }
+}
+
+.whywork-body {
+  width: 100%;
+}
+
+/**=======================================================**
+                    WHY WORK WITH US END
+**=======================================================**/
+/**=======================================================**
+                    CAREER-OPPORTUNITIES START
+**=======================================================**/
+.opportunities {
+  padding: 3rem 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .opportunities {
+    padding: 3.75rem 0rem 7.5rem;
+  }
+}
+
+.opportunities-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 3rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .opportunities-content {
+    gap: 5rem;
+  }
+}
+
+.opportunities-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.opportunities-header .opportunities-title {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@media screen and (min-width: 48rem) {
+  .opportunities-header .opportunities-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .opportunities-header .opportunities-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.15385;
+  }
+}
+
+.opportunities-body {
+  width: 100%;
+}
+
+/**=======================================================**
+                    CAREER-OPPORTUNITIES END
+**=======================================================**/
+/**=======================================================**
+                    CAREER-BANNER START
+**=======================================================**/
+.career-banner {
+  padding: 1.5rem 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .career-banner {
+    padding: 3rem 0rem;
+  }
+}
+
+.career-banner-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .career-banner-content {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.career-banner-content .career-thumbnail {
+  height: 16.5rem;
+  width: 16.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+@media screen and (min-width: 36rem) {
+  .career-banner-content .career-thumbnail {
+    height: 22.75rem;
+    width: 22.75rem;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-banner-content .career-thumbnail {
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+  }
+}
+
+.career-banner-content .career-thumbnail svg {
+  width: 100%;
+  height: 100%;
+}
+
+.career-banner-content .bannerinfo {
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .career-banner-content .bannerinfo {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-banner-content .bannerinfo {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+}
+
+.career-banner-content .bannerinfo-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 62rem) {
+  .career-banner-content .bannerinfo-header {
+    text-align: left;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+.career-banner-content .bannerinfo-header .banner-title {
+  color: #2D3748;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.52107;
+}
+
+.career-banner-content .bannerinfo-header .info p {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.125rem;
+  font-weight: normal;
+  line-height: 1.66667;
+  -webkit-font-feature-settings: 'salt';
+          font-feature-settings: 'salt';
+}
+
+/**=======================================================**
+                    CAREER-BANNER END
+**=======================================================**/
+/**=======================================================**
+                    CAREER-DETAILS START
+**=======================================================**/
+.career-details {
+  background: #ffffff;
+  padding: 2.5rem 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .career-details {
+    padding: 5rem 0rem;
+  }
+}
+
+.career-details-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 3rem;
+}
+
+.career-details-content .article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.25rem;
+}
+
+.career-details-content .article-header .article-title {
+  color: #2D3748;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.365;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-details-content .article-header .article-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.36;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-details-content .article-header .article-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.36;
+  }
+}
+
+.career-details-content .article-body .article-text {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-details-content .article-body .article-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-details-content .article-body .article-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+.career-details-content .article-body .article-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.625rem;
+}
+
+.career-details-content .article-body .article-list-item {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-details-content .article-body .article-list-item {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-details-content .article-body .article-list-item {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+.career-details-content .article-body .article-list-item strong {
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+}
+
+.career-details-content .article-body .joblist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.625rem;
+}
+
+.career-details-content .article-body .joblist-item {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  letter-spacing: 0.015rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.career-details-content .article-body .joblist-item::before {
+  content: '';
+  height: 0.5rem;
+  width: 0.5rem;
+  background: #4A5568;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-details-content .article-body .joblist-item {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-details-content .article-body .joblist-item {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+.career-details-content .article-body .location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.625rem;
+}
+
+.career-details-content .article-body .location-text {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-details-content .article-body .location-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-details-content .article-body .location-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+.career-details-content .article-body .location-info {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-details-content .article-body .location-info {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-details-content .article-body .location-info {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+/**=======================================================**
+                    CAREER-DETAILS END
+**=======================================================**/
+/**=======================================================**
+                    CAREER-APPLY START
+**=======================================================**/
+.career-apply {
+  padding: 2.5rem 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .career-apply {
+    padding: 5rem 0rem;
+  }
+}
+
+.career-apply .apply {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.75rem;
+}
+
+.career-apply .apply-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.career-apply .apply-header .apply-title {
+  color: #2D3748;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.365;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-apply .apply-header .apply-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.36;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-apply .apply-header .apply-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.36;
+  }
+}
+
+.career-apply .apply-body .applyform {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.25rem;
+}
+
+.career-apply .apply-body .applyform .inputbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.75rem;
+}
+
+.career-apply .apply-body .applyform .inputbox .inputlabel {
+  color: #718096;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-apply .apply-body .applyform .inputbox .inputlabel {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-apply .apply-body .applyform .inputbox .inputlabel {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+.career-apply .apply-body .applyform .inputbox .inputfield {
+  background: #ffffff;
+  color: #2D3748;
+  border: solid 0.0625rem #E2E8F0;
+  border-radius: 0.625rem;
+  border-radius: 0.625rem;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  padding: 0.5rem 1rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-apply .apply-body .applyform .inputbox .inputfield {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-apply .apply-body .applyform .inputbox .inputfield {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+.career-apply .apply-body .applyform .inputbox .upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border: solid 0.0625rem #E2E8F0;
+  border-radius: 0.625rem;
+  border-radius: 0.625rem;
+  padding: 0.4375rem 0.75rem 0.4375rem 1.25rem;
+}
+
+.career-apply .apply-body .applyform .inputbox .upload-text {
+  color: #B5B5BD;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+}
+
+.career-apply .apply-body .applyform .inputbox .upload-info .btn-choose {
+  background: #E4ECF7;
+  color: #505780;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.66667;
+  padding: 0.375rem 1.25rem;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.career-apply .apply-body .applyform .inputbox .upload-info .btn-choose:not([disabled]):hover {
+  background: #505780;
+  color: #E4ECF7;
+}
+
+.career-apply .apply-body .applyform .inputbox .info {
+  color: #718096;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+}
+
+@media screen and (min-width: 48rem) {
+  .career-apply .apply-body .applyform .inputbox .info {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.625;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .career-apply .apply-body .applyform .inputbox .info {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+/**=======================================================**
+                    CAREER-APPLY END
+**=======================================================**/
+/**=======================================================**
+                      APPLIED START
+**=======================================================**/
+.applied {
+  padding: 5rem 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .applied {
+    padding: 10rem 0rem;
+  }
+}
+
+.applied-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.applied-content .confirm {
+  max-width: 34.375rem;
+  margin-inline: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.75rem;
+}
+
+.applied-content .confirm .appliedicon {
+  height: 17.5rem;
+  width: 17.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 36rem) {
+  .applied-content .confirm .appliedicon {
+    height: 20.3125rem;
+    width: 20.3125rem;
+  }
+}
+
+.applied-content .confirm .appliedicon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.applied-content .confirm .confirmed-text {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.015rem;
+  text-align: center;
+}
+
+/**=======================================================**
+                      APPLIED END
+**=======================================================**/
+/**=======================================================**
                     CONTACT-SECTION START
 **=======================================================**/
 .contact {
-  padding: 3rem 0.5rem 0rem;
+  padding: 2.5rem 0.5rem 0rem;
 }
 
 @media screen and (min-width: 62rem) {
   .contact {
-    padding: 5rem 0rem;
+    padding: 2.5rem 0rem;
   }
 }
 
@@ -5036,21 +6304,7 @@ select {
 
 @media screen and (min-width: 36rem) {
   .contact-details {
-    padding: 2.5rem;
-  }
-}
-
-@media screen and (min-width: 48rem) {
-  .contact-details {
-    padding: 2.5rem 3.4375rem;
-    gap: 4rem;
-  }
-}
-
-@media screen and (min-width: 62rem) {
-  .contact-details {
-    padding: 5rem 6.875rem;
-    gap: 5rem;
+    padding: 3rem;
   }
 }
 
@@ -5233,7 +6487,7 @@ select {
 
 @media screen and (min-width: 62rem) {
   .getintouch {
-    padding: 5rem 0rem 10rem;
+    padding: 2.5rem 0rem 10rem;
   }
 }
 
@@ -5489,7 +6743,7 @@ select {
                     HOME-BANNER SECTION START
 **=======================================================**/
 .homebanner {
-  background: url(../images/home-banner/banner-bg-1.svg) no-repeat;
+  background: url(../images/home-banner/home-banner.png) no-repeat;
   background-position: left;
   background-size: cover;
   padding: 1.5rem 0.5rem 0rem;
@@ -6485,3 +7739,4 @@ select {
 
 /**=======================================================**
                     PRODUCTS-SECTION END
+**=======================================================**/

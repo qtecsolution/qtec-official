@@ -36,14 +36,14 @@
                                 <tr id="item_{{ item.id }}">
                                     <td>{{ item.id }}</td>
                                     <td>{{ item.title }}</td>
-                                    <td>{{ item.get_applicent_type_display }}</td>
+                                    <td>{{ item.get_applicant_type_display }}</td>
                                     <td>{{ item.number_of_vacancy }}</td>
                                     <td>{{ item.deadline }}</td>
                                     <td>{{ item.description }}</td>
                                     <td>
                                         <div class="form-group row">
                                             <div class="col-5">
-                                                <form action="{% url 'dashboard:delet_current_opportunities_url' %}"method="POST" >
+                                                <form action="{% url 'dashboard:delete_current_opportunities_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{ item.id }}" name="id">
                                                     <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
@@ -78,9 +78,9 @@
                                                                 <div class="form-group row">
                                                                     <label for="name" class="col-sm-3 col-form-label">Type <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9" class="form-control" >
-                                                                        <select required class="form-control" name="applicent_type">
-                                                                            {% for type in applicent_type %}
-                                                                                <option {% if type.0 == item.applicent_type %} selected {% endif %} value="{{ type.0 }}">{{ type.1 }}</option>
+                                                                        <select required class="form-control" name="applicant_type">
+                                                                            {% for type in applicant_type %}
+                                                                                <option {% if type.0 == item.applicant_type %} selected {% endif %} value="{{ type.0 }}">{{ type.1 }}</option>
                                                                             {% endfor %}
                                                                         </select>
                                                                     </div>
@@ -158,8 +158,8 @@
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-3 col-form-label">Type <small style="color: red">*</small> </label>
                                         <div class="col-sm-9" class="form-control" >
-                                            <select required class="form-control" name="applicent_type">
-                                                {% for type in applicent_type %}
+                                            <select required class="form-control" name="applicant_type">
+                                                {% for type in applicant_type %}
                                                     <option value="{{ type.0 }}">{{ type.1 }}</option>
                                                 {% endfor %}
                                             </select>
