@@ -156,7 +156,6 @@ class BlogAuthorView(View):
             BlogCategoryView
 class BlogCategoryView(View):
         def get(self, request):
-            print("someting::::")
             blog_category = BlogCategory.objects.values('id','name')
         
             context = {
