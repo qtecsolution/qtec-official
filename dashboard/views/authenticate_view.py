@@ -5,7 +5,6 @@ from django.views import View
 
 
 class AuthenticationView(View):
-
     def get(self, request):
         if request.resolver_match.url_name == 'dashboard_login_url':
             return render(request, 'login.html', {'page_title': 'Login'})
@@ -15,7 +14,6 @@ class AuthenticationView(View):
             return redirect('dashboard:dashboard_login_url')
 
     def post(self, request):
-
         if request.resolver_match.url_name == 'dashboard_login_url':
             username = request.POST['username'].strip()
             password = request.POST['password'].strip()

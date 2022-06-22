@@ -57,7 +57,7 @@ class ApplyForThisPositionView(View):
         context = {
             "positions" : positions,
         }
-        return render(request, 'appply_for_this_position.html', context)
+        return render(request, 'apply_for_this_position.html', context)
             
         
             

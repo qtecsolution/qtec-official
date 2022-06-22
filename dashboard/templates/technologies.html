@@ -43,7 +43,7 @@
                                         {% endif %}
                                     </td>
                                     <th>
-                                        <form action="{% url 'dashboard:delet_technologies_url' %}"method="POST" >
+                                        <form action="{% url 'dashboard:delete_technologies_url' %}"method="POST" >
                                             {% csrf_token %}
                                             <input type="hidden" value="{{technologie.id}}" name="id">
                                             <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>

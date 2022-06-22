@@ -13,6 +13,7 @@ class TechnologiesView(View):
             "technologies" : technologies,
         }
         return render(request, 'technologies.html', context)
+        
     def post(self, request):
         data = request.POST
         file = request.FILES
@@ -32,7 +33,8 @@ class TechnologiesView(View):
                 messages.success(request, 'Data save successful!')
 
             return self.get(request)
-        if request.resolver_match.url_name == "delet_technologies_url":
+
+        if request.resolver_match.url_name == "delete_technologies_url":
             request_id = data.get('id')
             technologies = Technologies.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Delete successful')
