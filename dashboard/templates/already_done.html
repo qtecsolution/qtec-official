@@ -28,6 +28,7 @@
                                     <th>Name </th>
                                     <th>Image</th>
                                     <th>Technology</th>
+                                    <th>Project Type</th>
                                     <th>Action</th>
                                 </tr>
                                 {% for done in what_Done %}
@@ -42,6 +43,7 @@
                                         {% endif %}
                                     </td>
                                     <td>{{ done.technology }}</td>
+                                    <th> {{done.get_project_type_display}}</th>
                                     <th>
                                         <div class="form-group row">
                                             <div class="col-2">
@@ -83,6 +85,16 @@
                                                                     <label for="title" class="col-sm-3 col-form-label">Technology <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
                                                                         <textarea required class="form-control" name="technology">{{ done.technology }}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="title" class="col-sm-3 col-form-label">Project Type <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                       <select class="form-control" required name="project_type" id="">
+                                                                            {% for type in project_type %}
+                                                                                <option {% if type.0 == done.project_type %} selected {% endif %} value="{{ type.0 }}">{{ type.1 }}</option>
+                                                                            {% endfor %}
+                                                                       </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -153,6 +165,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="title" class="col-sm-3 col-form-label">Project Type <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                           <select class="form-control" required name="project_type" id="">
+                                                {% for type in project_type %}
+                                                    <option value="{{ type.0 }}">{{ type.1 }}</option>
+                                                {% endfor %}
+                                           </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="image" class="col-sm-3 col-form-label">Image <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
                                             <div class="row">
@@ -162,6 +184,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                   
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

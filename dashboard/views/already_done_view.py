@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 
-from dashboard.models import CaseStudyDetails, Technologies, WhatProjectHaveWeDone
+from dashboard.models import PROJECT_TYPE, CaseStudyDetails, Technologies, WhatProjectHaveWeDone
 from django.contrib import messages
 
 
@@ -11,9 +11,11 @@ class AlreadyDoneView(View):
 
     def get(self, request):
     
-        what_Done = WhatProjectHaveWeDone.objects.order_by("-id").values()
+        what_Done = WhatProjectHaveWeDone.objects.order_by("-id").all()
+       
         context = {
             "what_Done" : what_Done,
+             "project_type" : PROJECT_TYPE
         }
         return render(request, 'already_done.html', context)
 
@@ -27,18 +29,12 @@ class AlreadyDoneView(View):
             
         if request.resolver_match.url_name == "save_what_done_url":
             what_Done = WhatProjectHaveWeDone()
-            name = data.get('name')
-            technology = data.get('technology')
-            image =  request.FILES.get('image')
-            if not name or not technology or not image:
-                messages.error(request, 'Invalid input!')
-              
-            else:
-                what_Done.name = name
-                what_Done.technology = technology
-                what_Done.image = image
-                what_Done.save()
-                messages.success(request, 'Data save successful!')
+            what_Done.name = data.get('name')
+            what_Done.technology = data.get('technology')
+            what_Done.image =  request.FILES.get('image')
+            what_Done.project_type = data.get('project_type')
+            what_Done.save()
+            messages.success(request, 'Data save successful!')
             return self.get(request)
 
         if request.resolver_match.url_name == "edit_what_project_done_url":
@@ -46,6 +42,7 @@ class AlreadyDoneView(View):
             what_Done = WhatProjectHaveWeDone.objects.filter(id=request_id).first()
             what_Done.name = data.get('name')
             what_Done.technology = data.get('technology')
+            what_Done.project_type = data.get('project_type')
             image =  request.FILES.get('image')
             if image:
                 what_Done.image = image
