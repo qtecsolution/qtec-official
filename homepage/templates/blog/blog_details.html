@@ -59,8 +59,8 @@
                             {% send_email "{{ blog.title }}" "{{ blog.description }}" abs_uri "E-mail" %}
                         </li>
 
-                        <li class="sociallist-item">
-                          <a href="#" target="_blank" class="sociallist-link" data-bs-toggle="tooltip"
+                        <li return false" class="sociallist-item">
+                          <a  href="" target="_blank" class="sociallist-link" data-bs-toggle="tooltip"
                             data-bs-placement="top" title="Copy Link">
                             <span class="icon">
                               <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -165,4 +165,15 @@
       <!-- READ-NEXT CONTENT END -->
     </div>
   </section>
+{% endblock %}
+{% block script %}
+<script>
+
+
+function gotoUrl() {
+       window.location.assign("https://www.google.com/");
+    }
+
+</script>
+
 {% endblock %}
