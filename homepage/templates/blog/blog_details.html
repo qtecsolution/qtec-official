@@ -41,6 +41,7 @@
                       <p class="sharetitle">Share with </p>
 
                       <!-- SHARE SOCIAL LIST START -->
+                        <input id="foo" type="text" class="d-none" value="{{ abs_uri }}">
                       <ul class="sociallist">
                         <li class="sociallist-item">
                             {% post_to_facebook abs_uri "Facebook" %}
@@ -59,8 +60,8 @@
                             {% send_email "{{ blog.title }}" "{{ blog.description }}" abs_uri "E-mail" %}
                         </li>
 
-                        <li return false" class="sociallist-item">
-                          <a  href="" target="_blank" class="sociallist-link" data-bs-toggle="tooltip"
+                        <li onclick="myFunction()" style="cursor: pointer" class="sociallist-item ">
+                          <a id="copyTexta" class="sociallist-link" data-bs-toggle="tooltip"
                             data-bs-placement="top" title="Copy Link">
                             <span class="icon">
                               <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -167,13 +168,18 @@
   </section>
 {% endblock %}
 {% block script %}
-<script>
 
+    <script>
 
-function gotoUrl() {
-       window.location.assign("https://www.google.com/");
-    }
+        function myFunction() {
+          var copyText = document.getElementById("foo");
 
-</script>
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
+          navigator.clipboard.writeText(copyText.value);
+        $('#copyTexta').attr('data-bs-original-title', 'Copied');
+
+        }
+    </script>
 {% endblock %}
