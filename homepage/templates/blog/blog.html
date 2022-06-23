@@ -53,40 +53,44 @@
   <!--========== BLOG-SECTION END ============-->
 
   <!--========== BLOG-DESCRIPT START ==========-->
-  <section class="blogdescript">
-    <div class="container">
-      <div class="card-blog">
-        <div class="row g-4">
-          <div class="col-lg-6 col-12">
-            <div class="card-blog-thumbnail">
-              <img src="{{ highlight_blog.image.url }}" alt="blog-thumbnail">
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-12">
-            <div class="card-blog-details">
-              <div class="info">
-                <div class="info-head">
-                  <h1 class="blogtitle">{{ highlight_blog.title }}</h1>
-                  <p class="date">{{ highlight_blog.updated_at }}</p>
-                </div>
-
-                <div class="info-body">
-                  <p class="blogtext">
-                    {{ highlight_blog.description|safe  }}
-                  </p>
-                </div>
+  {% if highlight_blog %}
+    <section class="blogdescript">
+      <div class="container">
+        <div class="card-blog">
+          <div class="row g-4">
+            <div class="col-lg-6 col-12">
+              <div class="card-blog-thumbnail">
+                {% if highlight_blog.image %}
+                  <img src="{{ highlight_blog.image.url }}" alt="blog-thumbnail">
+                {% endif %}
               </div>
+            </div>
 
-              <div class="readinfo">
-                <a href="/blog-details/{{ highlight_blog.blog_category.slug }}/{{ highlight_blog.slug }}/" class="btn-read">Read More</a>
+            <div class="col-lg-6 col-12">
+              <div class="card-blog-details">
+                <div class="info">
+                  <div class="info-head">
+                    <h1 class="blogtitle">{{ highlight_blog.title }}</h1>
+                    <p class="date">{{ highlight_blog.updated_at }}</p>
+                  </div>
+
+                  <div class="info-body">
+                    <p class="blogtext">
+                      {{ highlight_blog.description|safe  }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="readinfo">
+                  <a href="/blog-details/{{ highlight_blog.blog_category.slug }}/{{ highlight_blog.slug }}/" class="btn-read">Read More</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  {% endif %}
   <!--========== BLOG-DESCRIPT END ============-->
 
   <!--========== ALL BLOGS START ==========-->
