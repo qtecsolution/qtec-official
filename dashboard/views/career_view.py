@@ -28,7 +28,7 @@ class CurrentOpportunitiesView(View):
             current_opportunities.image = request.FILES.get('image')
             current_opportunities.save()
             messages.success(request, 'Data save successful!')
-            return redirect('dashboard:blog_blog_list_url')
+            return redirect('dashboard:current_opportunities_url')
             
         if request.resolver_match.url_name == "current_opportunities_edit_url":
             request_id = data.get('id')
@@ -45,14 +45,14 @@ class CurrentOpportunitiesView(View):
             current_opportunities.description = data.get('description')
             current_opportunities.save()
             messages.success(request, 'Data Update successful!')
-            return self.get(request)
+            return redirect('dashboard:current_opportunities_url')
             
         if request.resolver_match.url_name == "delete_current_opportunities_url":
             request_id = data.get('id')
             current_opportunities = CurrentOpportunities.objects.filter(id=request_id).first()
             current_opportunities.delete()
             messages.success(request, 'Delete successful!')
-            return self.get(request)
+            return redirect('dashboard:current_opportunities_url')
 
  
 class ApplyForThisPositionView(View):
