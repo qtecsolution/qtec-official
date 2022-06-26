@@ -7,6 +7,7 @@ from homepage.views.case_study_view import CaseStudyDetails
 from homepage.views.contact_us_view import ContactUs
 from homepage.views.index_view import IndexView
 from homepage.views.product_view import ProductsView
+from homepage.views.service_view import ServiceView, ServiceDetailsView
 
 app_name= 'homepage'
 
@@ -29,5 +30,8 @@ urlpatterns= [
     path('career/<str:slug>/', CareerDetailsView.as_view(), name="career_details_url"),
 
     path('apply/job/', CareerDetailsView.as_view(), name="apply_for_job_url"),
+
+    path('service/', ServiceView.as_view(), name="service_url"),
+    path('service-details/<str:slug>/', ServiceDetailsView.as_view(), name="service_details_url"),
 
 ]

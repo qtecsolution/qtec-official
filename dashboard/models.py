@@ -185,6 +185,11 @@ class CurrentOpportunities(models.Model):
     description = models.TextField()
 
 
+class ServiceDetailsProject(models.Model):
+    slug = models.SlugField(null= True)
+    project = models.ManyToManyField(WhatProjectHaveWeDone)
+
+
 @receiver(post_save, sender=Technologies)
 @receiver(post_save, sender=CurrentOpportunities)
 @receiver(post_save, sender=BlogCategory)

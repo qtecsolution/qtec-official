@@ -1,0 +1,182 @@
+{% extends 'homepage/base_homepage.html' %}
+{% load static %}
+
+{% block content %}
+    	<section class="servicebanner">
+		<div class="container">
+			<div class="servicebanner-content">
+				<h1 class="servicebanner-title">Our Services</h1>
+			</div>
+		</div>
+    <div class="overlay"></div>
+	</section>
+	<!--========== SERVICE-BANNER END ============-->
+
+	<!--========== SERVICES SECTION START ============-->
+	<section class="ourservice">
+		<div class="container">
+			<div class="ourservice-content">
+				<div class="col-lg-8 mx-lg-auto col-12">
+					<div class="ourservice-header">
+						<h1 class="ourservice-title">What Services we provide?</h1>
+
+						<p class="ourservice-text">
+							It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it.
+						</p>
+					</div>
+				</div>
+
+				<div class="ourservices-body">
+					<div class="row justify-content-center g-4">
+						<div class="col-md-6 col-lg-4">
+							<a href="{% url 'homepage:service_details_url' 'software-solutions-development' %}" class="servicelink">
+								<div class="service">
+									<div class="service-header">
+										<figure class="service-icon">
+											<img src="{% static 'homepage/assets/images/services/software-development.svg' %}" alt="service-icon">
+										</figure>
+
+										<h5 class="service-title">Software Solutions Development</h5>
+									</div>
+
+									<div class="service-body">
+										<p class="servicetext">
+											We keep looking towards the future, at the same time recognizing awareness  that behavior change takes place only with a clear awareness of the current state.
+										</p>
+
+										<span class="learnmore">Learn more </span>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="servicelink">
+								<div class="service">
+									<div class="service-header">
+										<figure class="service-icon">
+											<img src="{% static 'homepage/assets/images/services/ui-ux.svg' %}" alt="service-icon">
+										</figure>
+
+										<h5 class="service-title">UI UX Design</h5>
+									</div>
+
+									<div class="service-body">
+										<p class="servicetext">
+											We keep looking towards the future, at the same time recognizing awareness  that behavior change takes place only with a clear awareness of the current state.
+										</p>
+
+										<span class="learnmore">Learn more </span>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<a href="{% url 'homepage:service_details_url' 'mobile-application-development' %}" class="servicelink">
+								<div class="service">
+									<div class="service-header">
+										<figure class="service-icon">
+											<img src="{% static 'homepage/assets/images/services/mobile-application.svg' %}" alt="service-icon">
+										</figure>
+
+										<h5 class="service-title">Mobile Application Development</h5>
+									</div>
+
+									<div class="service-body">
+										<p class="servicetext">
+											We keep looking towards the future, at the same time recognizing awareness  that behavior change takes place only with a clear awareness of the current state.
+										</p>
+
+										<span class="learnmore">Learn more </span>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="servicelink">
+								<div class="service">
+									<div class="service-header">
+										<figure class="service-icon">
+											<img src="{% static 'homepage/assets/images/services/ecommerce.svg' %}" alt="service-icon">
+										</figure>
+
+										<h5 class="service-title">E-Commerce Solutions</h5>
+									</div>
+
+									<div class="service-body">
+										<p class="servicetext">
+											We keep looking towards the future, at the same time recognizing awareness  that behavior change takes place only with a clear awareness of the current state.
+										</p>
+
+										<span class="learnmore">Learn more </span>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<a href="{% url 'homepage:service_details_url' 'lms-solutions' %}" class="servicelink">
+								<div class="service">
+									<div class="service-header">
+										<figure class="service-icon">
+											<img src="{% static 'homepage/assets/images/services/lms.svg' %}" alt="service-icon">
+										</figure>
+
+										<h5 class="service-title">LMS Solutions</h5>
+									</div>
+
+									<div class="service-body">
+										<p class="servicetext">
+											We keep looking towards the future, at the same time recognizing awareness  that behavior change takes place only with a clear awareness of the current state.
+										</p>
+
+										<span class="learnmore">Learn more </span>
+									</div>
+								</div>
+							</a>
+						</div>
+
+						<div class="col-md-6 col-lg-4">
+							<a href="{% url 'homepage:service_details_url' 'logistics-solutions' %}" class="servicelink">
+								<div class="service">
+									<div class="service-header">
+										<figure class="service-icon">
+											<img src="{% static 'homepage/assets/images/services/logistic.sv' %}g" alt="service-icon">
+										</figure>
+
+										<h5 class="service-title">Logistics Solutions</h5>
+									</div>
+
+									<div class="service-body">
+										<p class="servicetext">
+											We keep looking towards the future, at the same time recognizing awareness  that behavior change takes place only with a clear awareness of the current state.
+										</p>
+
+										<span class="learnmore">Learn more </span>
+									</div>
+								</div>
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--========== SERVICES SECTION END ==============-->
+
+	<!--========== SUBSCRIBE-START ==============-->
+	<section class="subscribe">
+		<div class="container">
+			<div class="subscribe-content">
+				<h1 class="subscribe-title">Want to buid your one? <br> We are here for you!</h1>
+
+				<a href="{% url 'homepage:contact_us_url' %}" class="btn-getintouch">Contact us</a>
+			</div>
+		</div>
+	</section>
+	<!--========== SUBSCRIBE-END ================-->
+
+{% endblock %}

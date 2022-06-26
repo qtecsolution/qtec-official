@@ -25,6 +25,10 @@
 						<li class="desktoplist-item">
 							<a href="{% url 'homepage:product_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a>
 						</li>
+
+						<li class="desktoplist-item">
+							<a href="{% url 'homepage:service_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
+						</li>
 						<li class="desktoplist-item">
 							<a href="{% url 'homepage:blog_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blogs</a>
 						</li>
@@ -79,6 +83,9 @@
 
 							<li class="mobilelist-item">
 								<a href="{% url 'homepage:product_url' %}" class="mobilelist-link">Products</a>
+							</li>
+                            <li class="mobilelist-item">
+								<a href="{% url 'homepage:service_url' %}" class="mobilelist-link">Services</a>
 							</li>
 							<li class="mobilelist-item">
 								<a href="{% url 'homepage:blog_url' %}" class="mobilelist-link">Blogs</a>
