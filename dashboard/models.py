@@ -77,6 +77,7 @@ LETS_TAlK_STATUS = (
 
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
+    slug= models.SlugField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='technologies')
 
@@ -184,6 +185,7 @@ class CurrentOpportunities(models.Model):
     description = models.TextField()
 
 
+@receiver(post_save, sender=Technologies)
 @receiver(post_save, sender=CurrentOpportunities)
 @receiver(post_save, sender=BlogCategory)
 @receiver(post_save, sender=Blog)
