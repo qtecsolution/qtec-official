@@ -13,7 +13,7 @@
 
 						<div class="casestudydetetail">
 							<p class="casestudy-text">
-                                {{ case_study_details.case_study_about }}
+                                {{ case_study_details.case_study_about|safe }}
 							</p>
 						</div>
 					</div>
@@ -43,7 +43,7 @@
 
 						<div class="requirements-body">
 							<p class="requirements-text">
-								{{ case_study_details.client_requirement }}
+								{{ case_study_details.client_requirement|safe }}
 							</p>
 						</div>
 					</div>
@@ -125,7 +125,7 @@
 
 						<div class="builddetetail">
 							<p class="build-text">
-								{{ case_study_details.how_we_build_it }}
+								{{ case_study_details.how_we_build_it|safe }}
 							</p>
 						</div>
 					</div>
