@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashboard',
     'homepage',
-    'django_social_share'
+    'django_social_share',
+    'multiselectfield'
 ]
 PER_PAGE = 16
 

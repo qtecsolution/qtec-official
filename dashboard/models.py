@@ -1,6 +1,6 @@
 import email
 from django.db import models
-
+from multiselectfield import MultiSelectField
 # Create your models here.
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -59,7 +59,7 @@ APPLY_STATUS = (
 
 )
 FULL_TIME = 1
-REMOTE =2 
+REMOTE =2
 PART_TIME = 3
 APPLICENT_STATUS = (
     (FULL_TIME, 'Full Time'),
@@ -84,13 +84,13 @@ class Technologies(models.Model):
 class WhatProjectHaveWeDone(models.Model):
     name = models.CharField(max_length=150)
     image = models.ImageField(upload_to='project_done/')
-    technology = models.TextField()
+    technology = models.ManyToManyField(Technologies)
     slug = models.SlugField(null=True, blank=True)
-    project_type = models.PositiveSmallIntegerField(choices=PROJECT_TYPE)
+    project_type = MultiSelectField(choices=PROJECT_TYPE)
 
     @property
     def split_technology(self):
-        return self.technology.split(',')        
+        return self.technology.split(',')
 
 
 class CaseStudyDetails(models.Model):
@@ -123,7 +123,7 @@ class BlogAuthor(models.Model):
 
     def __str__(self):
         return str(self.name)
-  
+
 
 class BlogCategory(models.Model):
     name = models.CharField(max_length=50)

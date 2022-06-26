@@ -22,7 +22,7 @@
 				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
 					<div class="thumbnailbox">
 						<figure class="product-thumbnail">
-							<img src="{{ case_study_details.case_study_image.url }}" alt="case-study-thumbnail">
+							<img {% if case_study_details.case_study_image %} src="{{ case_study_details.case_study_image.url }}" {% endif %} alt="case-study-thumbnail">
 						</figure>
 					</div>
 				</div>
@@ -134,7 +134,7 @@
 				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
 					<div class="thumbnailbox">
 						<figure class="product-thumbnail">
-							<img src="{{ case_study_details.how_we_build_image.url }}" alt="hwo-build-thumbnail">
+							<img {% if case_study_details.how_we_build_image %} src="{{ case_study_details.how_we_build_image.url }}" {% endif %} alt="hwo-build-thumbnail">
 						</figure>
 					</div>
 				</div>

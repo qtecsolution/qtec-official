@@ -1,5 +1,3 @@
-from email import message
-from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 
@@ -10,11 +8,12 @@ from django.contrib import messages
 class AlreadyDoneView(View):
 
     def get(self, request):
-    
-        what_Done = WhatProjectHaveWeDone.objects.order_by("-id").all()
-       
+        technology = Technologies.objects.all()
+        what_Done = WhatProjectHaveWeDone.objects.order_by("-id")
+
         context = {
             "what_Done" : what_Done,
+            'technology': technology,
              "project_type" : PROJECT_TYPE
         }
         return render(request, 'already_done.html', context)
@@ -23,17 +22,18 @@ class AlreadyDoneView(View):
         data = request.POST
         if request.resolver_match.url_name == "delete_what_done_url":
             request_id = request.POST.get('id')
-            what_Done = WhatProjectHaveWeDone.objects.filter(id=request_id).delete()
+            WhatProjectHaveWeDone.objects.filter(id=request_id).delete()
             messages.success(request, 'Delete successful')
             return redirect('dashboard:already_done_url')
-            
+
         if request.resolver_match.url_name == "save_what_done_url":
             what_Done = WhatProjectHaveWeDone()
             what_Done.name = data.get('name')
-            what_Done.technology = data.get('technology')
-            what_Done.image =  request.FILES.get('image')
-            what_Done.project_type = data.get('project_type')
+            technology_id = data.getlist('technology')
+            what_Done.image = request.FILES.get('image')
+            what_Done.project_type = data.getlist('project_type')
             what_Done.save()
+            what_Done.technology.add(*technology_id)
             messages.success(request, 'Data save successful!')
             return redirect('dashboard:already_done_url')
 
@@ -41,15 +41,17 @@ class AlreadyDoneView(View):
             request_id = data.get('id')
             what_Done = WhatProjectHaveWeDone.objects.filter(id=request_id).first()
             what_Done.name = data.get('name')
-            what_Done.technology = data.get('technology')
-            what_Done.project_type = data.get('project_type')
-            image =  request.FILES.get('image')
+            technology_id = data.getlist('technology')
+            what_Done.project_type = data.getlist('project_type')
+            image = request.FILES.get('image')
             if image:
                 what_Done.image = image
             what_Done.save()
+            what_Done.technology.clear()
+            what_Done.technology.add(*technology_id)
             messages.success(request, 'Edit successful')
             return redirect('dashboard:already_done_url')
-            
+
 
 class CaseStudyEditView(View):
 
@@ -59,6 +61,7 @@ class CaseStudyEditView(View):
             "technologies" : technologies,
         }
         return render(request, 'partial/case_study_details.html', context)
+
     def post(self, request, id):
         data = request.POST
         file = request.FILES
@@ -76,4 +79,3 @@ class CaseStudyEditView(View):
         messages.success(request, 'Case Study Details save successful')
         return redirect('dashboard:already_done_url')
 
-     

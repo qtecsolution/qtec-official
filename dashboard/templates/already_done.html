@@ -42,7 +42,11 @@
                                         </div>
                                         {% endif %}
                                     </td>
-                                    <td>{{ done.technology }}</td>
+                                    <td>
+                                        {% for tech in done.technology.all %}
+                                            {{ tech.title }},
+                                            {% endfor %}
+                                    </td>
                                     <th> {{done.get_project_type_display}}</th>
                                     <th>
                                         <div class="form-group row">
@@ -51,7 +55,7 @@
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{done.id}}" name="id">
                                                     <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
-                                                </form> 
+                                                </form>
                                             </div>
                                             <div class="col-2">
                                                 <button  data-toggle="modal"
@@ -66,7 +70,7 @@
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                            
+
                                                         <form action="{% url 'dashboard:edit_what_project_done_url' %}" method="POST" enctype="multipart/form-data" >
                                                             {% csrf_token %}
                                                             <input type="hidden" name="id" value="{{ done.id }}">
@@ -80,19 +84,23 @@
                                                                             value="{{ done.name }}">
                                                                     </div>
                                                                 </div>
-                                                            
+
                                                                 <div class="form-group row">
                                                                     <label for="title" class="col-sm-3 col-form-label">Technology <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea required class="form-control" name="technology">{{ done.technology }}</textarea>
+                                                                        <select multiple class="form-control" required name="technology" id="">
+                                                                            {% for tech in technology %}
+                                                                                <option {% if tech in done.technology.all %} selected {% endif %} value="{{ tech.id }}">{{ tech.title }}</option>
+                                                                            {% endfor %}
+                                                                       </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="title" class="col-sm-3 col-form-label">Project Type <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                       <select class="form-control" required name="project_type" id="">
+                                                                       <select multiple class="form-control" required name="project_type" id="">
                                                                             {% for type in project_type %}
-                                                                                <option {% if type.0 == done.project_type %} selected {% endif %} value="{{ type.0 }}">{{ type.1 }}</option>
+                                                                                <option {% if type.0|stringformat:'s' in done.project_type %} selected {% endif %} value="{{ type.0 }}">{{ type.1 }}</option>
                                                                             {% endfor %}
                                                                        </select>
                                                                     </div>
@@ -124,11 +132,11 @@
                                                 <a href="{% url 'dashboard:case_study_edit_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i></button></a>
                                             </div>
                                         </div>
-                                         
+
                                     </th>
                                 </tr>
                                 {% endfor %}
-                                
+
                             </table>
                         </div>
                     </div>
@@ -144,7 +152,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                
+
                             <form action="{% url 'dashboard:save_what_done_url' %}" method="POST" enctype="multipart/form-data" >
                                 {% csrf_token %}
                                 <div class="modal-body">
@@ -157,17 +165,21 @@
                                                 value="{{content.title}}">
                                         </div>
                                     </div>
-                                   
+
                                     <div class="form-group row">
                                         <label for="title" class="col-sm-3 col-form-label">Technology <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <textarea required class="form-control" name="technology"></textarea>
+                                            <select multiple class="form-control" required name="technology" id="">
+                                                {% for tech in technology %}
+                                                    <option value="{{ tech.id }}">{{ tech.title }}</option>
+                                                {% endfor %}
+                                           </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="title" class="col-sm-3 col-form-label">Project Type <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                           <select class="form-control" required name="project_type" id="">
+                                           <select multiple class="form-control" required name="project_type" id="">
                                                 {% for type in project_type %}
                                                     <option value="{{ type.0 }}">{{ type.1 }}</option>
                                                 {% endfor %}
@@ -184,7 +196,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
