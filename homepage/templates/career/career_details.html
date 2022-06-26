@@ -59,14 +59,14 @@
 							<form id="applyform" class="applyform">
 								<div class="row g-4">
 									<div class="col-md-6 col-12">
-										<div class="inputbox">
+										<div class="inputbox inputerror">
 											<label for="firstname" class="inputlabel">First Name *</label>
 											<input type="text" id="firstname" class="inputfield">
 										</div>
 									</div>
 
 									<div class="col-md-6 col-12">
-										<div class="inputbox">
+										<div class="inputbox inputerror">
 											<label for="lastname" class="inputlabel">Last Name *</label>
 											<input type="text" id="lastname" class="inputfield">
 										</div>
@@ -75,16 +75,17 @@
 
 								<div class="row">
 									<div class="col-12">
-										<div class="inputbox">
+										<div id="email_apend_id" class="inputbox ">
 											<label for="careeremail" class="inputlabel">E-mail *</label>
-											<input type="email" id="careeremail" class="inputfield">
+											<input type="email" id="careeremail" class="inputfield ">
+											<p class="error-message">Email is invailed</p>
 										</div>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-12">
-										<div class="inputbox">
+										<div class="inputbox inputerror">
 											<label class="inputlabel">Upload CV *</label>
 
 											<div class="upload">
@@ -95,7 +96,6 @@
 													<label for="uploadcv" role="button" class="btn-choose">Choose File</label>
 												</div>
 											</div>
-
 											<p class="info">only doc, pdf or docx file allowed and file size will be less than 2MB</p>
 										</div>
 									</div>
@@ -103,9 +103,10 @@
 
 								<div class="row">
 									<div class="col-12">
-										<div class="inputbox">
+										<div id="capcha_apend_id" class="inputbox">
 											<label id="mathQuestion" for="capcha" class="inputlabel"></label>
 											<input type="text" id="capcha" class="inputfield">
+											<p class="error-message">Capcha is invailed</p>
 										</div>
 									</div>
 								</div>
@@ -142,10 +143,10 @@
             let fileName = input.value.split("\\").pop()
             var re = /(\.pdf|\.doc|\.pptx|\.docx)$/i;
             if (!re.exec(fileName)) {
-              alert("File extension not supported!");
+              return false;
             }
           if (fileSize > 2) {
-            alert('File size exceeds 2 MiB');
+            return false
           } else {
             $('#file_name').html(fileName)
               return true
@@ -161,34 +162,47 @@
             let lastname = myForm["lastname"];
             let careeremail = myForm["careeremail"];
             let capcha = myForm["capcha"];
-
-            if (Number(capcha.value) != answer){
-                alert('Sum Wrong!')
+			sixe = validateSize(uploadcv)
+			filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			if (!filter.test(careeremail.value)) {
+				$("#email_apend_id").addClass("inputerror");
+			}
+            else if (Number(capcha.value) != answer){
+                $("#capcha_apend_id").addClass("inputerror");
             }
+			else if(!validateSize(uploadcv))
+			{
+				 $("#capcha_apend_id").addClass("inputerror");
+			}
+			else{
+				let formData = new FormData();
+				formData.append('firstname', firstname.value)
+				formData.append('lastname', lastname.value)
+				formData.append('careeremail', careeremail.value)
+				formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+				formData.append('career_id', '{{ career.id }}')
+				formData.append('image', image[0])
 
-            let formData = new FormData();
-            formData.append('firstname', firstname.value)
-            formData.append('lastname', lastname.value)
-            formData.append('careeremail', careeremail.value)
-            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
-            formData.append('career_id', '{{ career.id }}')
-            formData.append('image', image[0])
+				console.log(formData)
+				$.ajax({
+					url: "{% url 'homepage:apply_for_job_url' %}",
+					data: formData,
+					processData: false,
+					contentType: false,
+					type: "POST",
+					success: function (data) {
+						$('#applyform').trigger("reset");
+						$('#file_name').html('No file chosen')
+						
 
-            console.log(formData)
-            $.ajax({
-                url: "{% url 'homepage:apply_for_job_url' %}",
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: "POST",
-                success: function (data) {
-                    $('#applyform').trigger("reset");
-                    $('#file_name').html('No file chosen')
+					},
+					error: function (data) {
+					}
+			});
 
-                },
-                error: function (data) {
-                }
-          });
+			}
+
+           
 
         }
 

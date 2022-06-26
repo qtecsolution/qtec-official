@@ -37,7 +37,9 @@
                                     <td>{{ position.last_name }}</td>
                                     <td>{{ position.email }}</td>
                                     <td>
-                                        <a target="_blank" href="{{ position.upload_cv.url }}"><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-file"></i></button></a>     
+                                        {% if  position.upload_cv%}
+                                            <a target="_blank" href="{{ position.upload_cv.url }}"><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-file"></i></button></a>    
+                                        {% endif  %} 
                                     </td>
                                     <td>{{ position.current_opportunities.title }}</td>
                                     <td>
