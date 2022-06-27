@@ -9,9 +9,11 @@ class CareerView(View):
 
     def get(self, request):
         careers = CurrentOpportunities.objects.all()
+        is_careers = CurrentOpportunities.objects.exists()
         context = {
             'title': "Career",
-            'careers': careers
+            'careers': careers,
+            'is_careers' : is_careers
         }
         return render(request, 'career/career_page.html', context)
 

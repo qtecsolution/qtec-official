@@ -58,7 +58,7 @@
                                                 </form>
                                             </div>
                                             <div class="col-2">
-                                                <button  data-toggle="modal"
+                                                <button  onclick="get_id('{{done.id}}')" data-toggle="modal"
                                                 data-target="#edit_what_project_done_add_modal_{{done.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
                                                 <div class="modal fade" id="edit_what_project_done_add_modal_{{done.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">
@@ -88,7 +88,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="title" class="col-sm-3 col-form-label">Technology <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <select multiple class="form-control" required name="technology" id="">
+                                                                        <select multiple class="form-control" required name="technology" id="technologie_selct_id_{{done.id}}">
                                                                             {% for tech in technology %}
                                                                                 <option {% if tech in done.technology.all %} selected {% endif %} value="{{ tech.id }}">{{ tech.title }}</option>
                                                                             {% endfor %}
@@ -98,7 +98,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="title" class="col-sm-3 col-form-label">Project Type <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                       <select multiple class="form-control" required name="project_type" id="">
+                                                                       <select multiple class="form-control" required name="project_type" id="project_type_id_{{done.id}}">
                                                                             {% for type in project_type %}
                                                                                 <option {% if type.0|stringformat:'s' in done.project_type %} selected {% endif %} value="{{ type.0 }}">{{ type.1 }}</option>
                                                                             {% endfor %}
@@ -129,7 +129,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <a href="{% url 'dashboard:case_study_edit_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i></button></a>
+                                                <a href="{% url 'dashboard:case_study_edit_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-info-circle"></i></button></a>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="{% url 'dashboard:key_feature_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i></button></a>
                                             </div>
                                         </div>
 
@@ -142,7 +145,7 @@
                     </div>
 
                     <!-- Add what_project_done_add_modal -->
-                    <div class="modal fade" id="what_project_done_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    <div  class="modal fade" id="what_project_done_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -161,7 +164,7 @@
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-3 col-form-label">Name <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <input required type="text" class="form-control" name="name" id="what_project_done_name"
+                                            <input required type="text" class="form-control" name="name" id=""
                                                 value="{{content.title}}">
                                         </div>
                                     </div>
@@ -169,7 +172,7 @@
                                     <div class="form-group row">
                                         <label for="title" class="col-sm-3 col-form-label">Technology <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <select multiple class="form-control" required name="technology" id="">
+                                            <select multiple class="form-control" required name="technology" id="technology_select">
                                                 {% for tech in technology %}
                                                     <option value="{{ tech.id }}">{{ tech.title }}</option>
                                                 {% endfor %}
@@ -179,7 +182,7 @@
                                     <div class="form-group row">
                                         <label for="title" class="col-sm-3 col-form-label">Project Type <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                           <select multiple class="form-control" required name="project_type" id="">
+                                           <select multiple class="form-control" required name="project_type" id="project_type_select">
                                                 {% for type in project_type %}
                                                     <option value="{{ type.0 }}">{{ type.1 }}</option>
                                                 {% endfor %}
@@ -221,6 +224,25 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+$(document).ready(function() {
+        $('.textarea').summernote()
+        $("#technology_select").select2({
+            allowClear: true
+        });
+        $("#project_type_select").select2({
+            allowClear: true
+        }); 
+       
+         
+    });
+    function get_id(id){
+        $("#technologie_selct_id_"+id).select2({
+            allowClear: true
+        }); 
+        $("#project_type_id_"+id).select2({
+            allowClear: true
+        }); 
+    }
 
 </script>
 

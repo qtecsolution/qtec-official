@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views import View
 
-from dashboard.models import PROJECT_TYPE, CaseStudyDetails, Technologies, WhatProjectHaveWeDone
+from dashboard.models import PROJECT_TYPE, CaseStudyDetails, KeyFeature, Technologies, WhatProjectHaveWeDone
 from django.contrib import messages
 
 
@@ -56,9 +56,11 @@ class AlreadyDoneView(View):
 class CaseStudyEditView(View):
 
     def get(self, request, id):
-        technologies = Technologies.objects.values('id','title')
+        case_study = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
+        technologies = Technologies.objects.all()
         context = {
             "technologies" : technologies,
+            "case_study" : case_study,
         }
         return render(request, 'partial/case_study_details.html', context)
 
@@ -78,4 +80,29 @@ class CaseStudyEditView(View):
             case_study_details.technology.add(*technology)
         messages.success(request, 'Case Study Details save successful')
         return redirect('dashboard:already_done_url')
+
+class KeyFeatureView(View):
+    def get(self, request, id= None):
+        case_study = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
+        key_features = KeyFeature.objects.filter(case_study_details=case_study.id).all()
+        context = {
+            "key_features" : key_features,
+            'id_': id
+        }
+        return render(request, 'partial/key_feature.html', context)
+    def post(self, request, id = None):
+        data = request.POST
+        if request.resolver_match.url_name == "delete_key_feature_url":
+            _id = data.get('already_done_id')
+            KeyFeature.objects.filter(id=id).first().delete()
+            return redirect('dashboard:key_feature_url', id=_id)
+        else:
+            key_features = KeyFeature()
+            case_study = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
+            key_features.case_study_details = case_study
+            key_features.title = data.get('title')
+            key_features.description = data.get('description')
+            key_features.image = request.FILES.get('image')
+            key_features.save()
+            return redirect('dashboard:key_feature_url', id=id)
 

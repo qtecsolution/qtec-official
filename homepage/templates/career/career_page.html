@@ -255,29 +255,43 @@
         </div>
 
         <div class="opportunities-body">
-          <div class="row g-4">
-              {% for career in careers %}
-                    <div class="col-lg-3 col-sm-6 col-12">
-              <div class="card-opportunities">
-                <div class="card-opportunities-header">
-                  <div class="titlebox">
-                    <h4 class="card-opportunities-title">{{ career.title }}</h4>
+              <div class="row g-4">
+                 <!-- IF JOB AVAILABLE -->
+                {%if is_careers %}
+                  {% for career in careers %}
+                        <div class="col-lg-3 col-sm-6 col-12">
+                  <div class="card-opportunities">
+                    <div class="card-opportunities-header">
+                      <div class="titlebox">
+                        <h4 class="card-opportunities-title">{{ career.title }}</h4>
+                      </div>
+
+                      <span class="badge-opportunities">{{ career.get_applicant_type_display }}</span>
+                    </div>
+
+                    <div class="card-opportunities-body">
+                      <div class="deadline">
+                        <p class="text">Vacancy : {{ career.number_of_vacancy }}</p>
+                        <p class="text">Deadline : {{ career.deadline }}</p>
+                      </div>
+
+                      <a href="{% url 'homepage:career_details_url' career.slug %}" class="link">View &amp; Apply</a>
+                    </div>
+                  </div>
+                </div>
+                  {% endfor %}
+                  {% else %}
+                <!-- IF JOB IS NOT AVAILABLE -->
+                <div class="emptyscreen">
+                  <div class="icon">
+                    <svg width="204" height="204" viewBox="0 0 204 204" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M176.953 33.0564L194.259 15.759C195.917 14.1015 195.917 11.4069 194.259 9.74937C192.602 8.09187 189.907 8.09187 188.249 9.74937L170.952 27.0467C152.77 10.3104 128.596 0 102 0C45.7554 0 0 45.7554 0 102C0 128.596 10.3104 152.771 27.0471 170.944L9.74977 188.241C8.09227 189.898 8.09227 192.593 9.74977 194.251C10.5741 195.084 11.6623 195.5 12.7504 195.5C13.8385 195.5 14.9263 195.084 15.7594 194.259L33.0568 176.962C51.2295 193.69 75.4035 204 102 204C158.245 204 204 158.245 204 102C204 75.4035 193.69 51.2295 176.953 33.0564ZM8.49987 102C8.49987 50.4474 50.4474 8.49987 102 8.49987C126.25 8.49987 148.3 17.8584 164.934 33.0564L33.0564 164.934C17.8584 148.3 8.49987 126.25 8.49987 102ZM102 195.5C77.7495 195.5 55.7004 186.142 39.066 170.944L170.944 39.066C186.142 55.7004 195.5 77.7495 195.5 102C195.5 153.553 153.553 195.5 102 195.5Z" fill="#FF0000" fill-opacity="0.3"/>
+                    </svg>
                   </div>
 
-                  <span class="badge-opportunities">{{ career.get_applicant_type_display }}</span>
+                  <p class="text">No opportunity available right now!</p>
                 </div>
-
-                <div class="card-opportunities-body">
-                  <div class="deadline">
-                    <p class="text">Vacancy : {{ career.number_of_vacancy }}</p>
-                    <p class="text">Deadline : {{ career.deadline }}</p>
-                  </div>
-
-                  <a href="{% url 'homepage:career_details_url' career.slug %}" class="link">View &amp; Apply</a>
-                </div>
-              </div>
-            </div>
-              {% endfor %}
+            {% endif %}
           </div>
         </div>
       </div>

@@ -46,22 +46,16 @@
 
 
           if (subscribe_email.val() == "") {
-            Swal.fire({
-                  icon: 'error',
-                  title: 'Validation Error',
-                  text: 'Please, Input Your Email!'
-                })
+            $("#subscribe_error_field_id").addClass("errorfield");
+            $('.error-message').text('Email is required!')
             return false;
           }else{
               if (!subscribe_email.val().match(validRegex)) {
-            Swal.fire({
-                  icon: 'error',
-                  title: 'Validation Error',
-                  text: 'Please, Input Your Valid Email!'
-                })
-            subscribe_email.focus();
-            return false;
-        }
+                $("#subscribe_error_field_id").addClass("errorfield");
+                $('.error-message').text('Email is wrong!')
+
+                  return false;
+                }
           }
 
             let data= {
@@ -76,10 +70,9 @@
                 success: function (data) {
                    if (data.success){
                        subscribe_email.val('')
-                       Swal.fire({
-                              icon: 'success',
-                              text: 'Successfully Added, You will receive all our information by mail!',
-                            })
+                       let toastSubscribe = document.getElementById('subscribeToast');
+                       let toast = new bootstrap.Toast(toastSubscribe);
+                       toast.show();
                    }
                 },
                 error: function (data) {

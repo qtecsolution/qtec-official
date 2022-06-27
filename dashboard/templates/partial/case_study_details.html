@@ -32,24 +32,45 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label>About </label>
-                                                <textarea  class="textarea" name="case_study_about"  ></textarea>
+                                                <textarea  class="textarea" name="case_study_about" >{{ case_study.case_study_about }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Case Study Image  </label>
-                                                <input type="file" name="case_study_image"  class="form-control" > 
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <input type="file" name="case_study_image"  class="form-control" > 
+                                                    </div>
+                                                    <div class="col-4">
+                                                        {% if case_study.case_study_image %}
+                                                            <img style="width: 50px; height: 50px; margin-left: 100px;" src="/media/{{ case_study.case_study_image }}">
+                                                        {% endif %}
+                                                    </div>
+
+                                                </div>
+                                                
                                             </div>
                                             <div class="form-group">
                                                 <label>Client Requirement  </label>
-                                                <textarea  class="textarea" name="client_requirement"  ></textarea>
+                                                <textarea  class="textarea" name="client_requirement" >{{ case_study.client_requirement }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>How We Build It </label>
-                                                <textarea  class="textarea" name="how_we_build_it"  ></textarea>
+                                                <textarea  class="textarea" name="how_we_build_it" >{{ case_study.how_we_build_it }}</textarea>
                                     
                                     
                                             <div class="form-group">
                                                 <label>How We Build Image </label>
-                                                <input type="file" name="how_we_build_image"  class="form-control" >
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <input type="file" name="how_we_build_image"  class="form-control" >
+                                                    </div>
+                                                    <div class="col-4">
+                                                        {% if case_study.case_study_image %}
+                                                            <img style="width: 50px; height: 50px; margin-left: 100px;" src="/media/{{ case_study.how_we_build_image }}">
+                                                        {% endif %}
+                                                    </div>
+
+                                                </div>
                                             </div>
                             
                                             <div class="form-group">
@@ -58,7 +79,7 @@
                                                         id="exampleFormControlSelect1">
                                                     <option value="" selected disabled >Select Technology</option>
                                                     {% for technologie in technologies %}
-                                                        <option value="{{ technologie.id }}">{{ technologie.title }}</option>
+                                                        <option {% if technologie in  case_study.technology.all %} selected {% endif %} value="{{ technologie.id }}">{{ technologie.title  }}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>

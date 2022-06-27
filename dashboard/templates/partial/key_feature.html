@@ -1,0 +1,149 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="" id="">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>Key Feature</h5> 
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-success" data-toggle="modal"
+                                        data-target="#key_feature_add_modal"><strong>+</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="subscriber_list" class="table table-borderless table-striped table-hover">
+                                <tr>
+                                    <th>Id </th>
+                                    <th>Project Name </th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Image </th>
+                                    <th>Action</th>
+                                </tr>
+                                {% for key_feature in key_features %}
+                                <tr id="what_done_{{ item.id }}">
+                                    <td>{{ key_feature.id }}</td>
+                                    <td>{{ key_feature.case_study_details.project_we_have_done.name }}</td>
+                                    <td>{{ key_feature.title }}</td>
+                                    <td>{{ key_feature.description }}</td>
+                                    <td>
+                                        {% if key_feature.image %}
+                                        <div>
+                                            <img style="width: 50px; height: 50px; " src="{{ key_feature.image.url }}">
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <th>
+                                        <div class="form-group row">
+                                            <div class="col-2">
+                                                <form action="{% url 'dashboard:delete_key_feature_url' key_feature.id %}" method="post">
+                                                    <input type="hidden" value="{{ id_ }}" name="already_done_id">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </th>
+                                </tr>
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Add what_project_done_add_modal -->
+                    <div  class="modal fade" id="key_feature_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <form action="" method="POST" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <div class="error text-center" style="color: red;"></div>
+                                    <br>
+                                    <div class="form-group row">
+                                        <label for="title" class="col-sm-3 col-form-label">Title <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" class="form-control" name="title" id="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <textarea  name="description" class="form-control" ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="description" class="col-sm-3 col-form-label">Image <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <input required class="form-control" type="file" name="image" id="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" >Save </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+csrf = '{{ csrf_token }}';
+$(document).ready(function() {
+        $('.textarea').summernote()
+        $("#technology_select").select2({
+            allowClear: true
+        });
+        $("#project_type_select").select2({
+            allowClear: true
+        }); 
+       
+         
+    });
+    function get_id(id){
+        $("#technologie_selct_id_"+id).select2({
+            allowClear: true
+        }); 
+        $("#project_type_id_"+id).select2({
+            allowClear: true
+        }); 
+    }
+
+</script>
+
+{% endblock %}

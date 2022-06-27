@@ -50,6 +50,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-xl-6 mx-lg-auto col-12">
+					
 					<div class="apply">
 						<div class="apply-header">
 							<h2 class="apply-title">Please enter your personal information</h2>
@@ -59,14 +60,14 @@
 							<form id="applyform" class="applyform">
 								<div class="row g-4">
 									<div class="col-md-6 col-12">
-										<div class="inputbox inputerror">
+										<div class="inputbox">
 											<label for="firstname" class="inputlabel">First Name *</label>
 											<input type="text" id="firstname" class="inputfield">
 										</div>
 									</div>
 
 									<div class="col-md-6 col-12">
-										<div class="inputbox inputerror">
+										<div class="inputbox ">
 											<label for="lastname" class="inputlabel">Last Name *</label>
 											<input type="text" id="lastname" class="inputfield">
 										</div>
@@ -85,7 +86,7 @@
 
 								<div class="row">
 									<div class="col-12">
-										<div class="inputbox inputerror">
+										<div id="update_cv_apend_id" class="inputbox">
 											<label class="inputlabel">Upload CV *</label>
 
 											<div class="upload">
@@ -93,10 +94,10 @@
 
 												<div class="upload-info">
 													<input accept=".doc,.docx,.pptx,.pdf" onchange="return validateSize(this)" type="file" id="uploadcv" class="inputfield" hidden>
-													<label for="uploadcv" role="button" class="btn-choose">Choose File</label>
+													<label for="uploadcv" role="button" class="btn-choose">Choose File</label>	
 												</div>
 											</div>
-											<p class="info">only doc, pdf or docx file allowed and file size will be less than 2MB</p>
+											<p class="error-message">‘ document.pdf ‘ file size exceed maximum limit. Maximum allowed file size is 2 mb. invailed Input</p>
 										</div>
 									</div>
 								</div>
@@ -125,6 +126,50 @@
 			</div>
 		</div>
 	</section>
+
+
+
+	<div class="modal fade" id="confirmedModal" tabindex="-1" aria-labelledby="confirmedModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+							<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+						</svg>
+					</button>
+					<!--========== APPLIED-START ==============-->
+					<section class="applied">
+						<div class="container">
+							<div class="applied-content">
+								<div class="confirm">
+									<figure class="appliedicon">
+										<svg width="357" height="325" viewBox="0 0 357 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M164.867 30.4102H189.132V325H164.867V30.4102Z" fill="#FECA9C"/>
+											<path d="M57.7754 29H296.224V171.54H57.7754V29Z" fill="#6FD7A3"/>
+											<path d="M272.402 29H296.225V171.54H272.402V29Z" fill="#3EC3A4"/>
+											<path d="M160.533 133.948C159.39 133.948 158.246 133.513 157.375 132.64L131.881 107.148C130.136 105.404 130.136 102.576 131.88 100.831C133.625 99.0869 136.453 99.0863 138.198 100.831L160.533 123.165L215.802 67.8982C217.546 66.1534 220.375 66.154 222.119 67.8982C223.864 69.643 223.864 72.4706 222.119 74.2154L163.691 132.64C162.819 133.513 161.675 133.948 160.533 133.948V133.948Z" fill="white"/>
+											<path d="M57.7754 283.458H123.131L130.14 289.944C135.889 295.19 143.416 298.101 151.228 298.101C161.939 298.101 174.43 298.072 190.415 298.067C199.784 298.064 207.374 290.478 207.374 281.122V236.419C207.374 227.051 199.768 219.461 190.387 219.47L164.765 219.476V197.061C149.851 197.101 136.26 205.612 129.727 219.002L123.13 232.523H57.7754V283.458Z" fill="#FFE3CB"/>
+											<path d="M190.388 219.47L166.999 219.475C176.178 219.696 183.552 227.196 183.552 236.419V281.122C183.552 290.478 175.962 298.064 166.593 298.067C160.63 298.069 155.154 298.074 150.074 298.08C150.459 298.094 150.844 298.101 151.229 298.101C161.94 298.101 174.431 298.072 190.416 298.067C199.785 298.064 207.376 290.478 207.376 281.122V236.419C207.375 227.051 199.768 219.46 190.388 219.47V219.47Z" fill="#FEDBBD"/>
+											<path d="M259.362 234.428C264.361 235.698 268.297 239.637 269.567 244.638C269.685 245.121 270.305 245.121 270.433 244.638C271.703 239.637 275.639 235.698 280.638 234.428C281.121 234.31 281.121 233.69 280.638 233.562C275.629 232.302 271.693 228.363 270.433 223.362C270.315 222.879 269.695 222.879 269.567 223.362C268.297 228.363 264.361 232.302 259.362 233.572C258.879 233.69 258.879 234.31 259.362 234.428V234.428Z" fill="#6FD7A3"/>
+											<path d="M329.459 134.509C335.809 136.122 340.809 141.122 342.422 147.472C342.572 148.084 343.359 148.084 343.522 147.472C345.134 141.122 350.134 136.122 356.484 134.509C357.097 134.359 357.097 133.572 356.484 133.409C350.122 131.809 345.122 126.809 343.522 120.459C343.372 119.847 342.584 119.847 342.422 120.459C340.809 126.809 335.809 131.809 329.459 133.422C328.847 133.572 328.847 134.359 329.459 134.509V134.509Z" fill="#6FD7A3"/>
+											<path d="M21.2625 8.225C24.8625 9.1375 27.6875 11.9625 28.6 15.5625C28.6875 15.9125 29.1375 15.9125 29.225 15.5625C30.1375 11.9625 32.9625 9.1375 36.5625 8.225C36.9125 8.1375 36.9125 7.6875 36.5625 7.6C32.9625 6.6875 30.1375 3.8625 29.225 0.2625C29.1375 -0.0875 28.6875 -0.0875 28.6 0.2625C27.6875 3.8625 24.8625 6.6875 21.2625 7.6C20.9125 7.6875 20.9125 8.1375 21.2625 8.225Z" fill="#3EC3A4"/>
+											<path d="M0.684375 184.709C10.1844 187.122 17.6719 194.597 20.0719 204.097C20.3094 205.009 21.4844 205.009 21.7094 204.097C24.1219 194.597 31.5969 187.109 41.0969 184.709C42.0094 184.472 42.0094 183.297 41.0969 183.072C31.5969 180.659 24.1094 173.184 21.7094 163.684C21.4719 162.772 20.2969 162.772 20.0719 163.684C17.6594 173.184 10.1844 180.672 0.684375 183.072C-0.228125 183.297 -0.228125 184.472 0.684375 184.709V184.709Z" fill="#A6FFD2"/>
+										</svg>
+									</figure>
+					
+									<div class="confirmed">
+										<p class="confirmed-text">Thank you! <br> We received your application. You will hear from us soon. 🙂</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--========== APPLIED-END ================-->
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 
@@ -146,12 +191,12 @@
               return false;
             }
           if (fileSize > 2) {
-            return false
+            return false;
           } else {
             $('#file_name').html(fileName)
-              return true
+              return true;
           }
-          return false
+          return false;
         }
 
 
@@ -162,7 +207,6 @@
             let lastname = myForm["lastname"];
             let careeremail = myForm["careeremail"];
             let capcha = myForm["capcha"];
-			sixe = validateSize(uploadcv)
 			filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 			if (!filter.test(careeremail.value)) {
 				$("#email_apend_id").addClass("inputerror");
@@ -172,7 +216,8 @@
             }
 			else if(!validateSize(uploadcv))
 			{
-				 $("#capcha_apend_id").addClass("inputerror");
+				alert("size")
+				 $("#update_cv_apend_id").addClass("inputerror");
 			}
 			else{
 				let formData = new FormData();
@@ -193,8 +238,13 @@
 					success: function (data) {
 						$('#applyform').trigger("reset");
 						$('#file_name').html('No file chosen')
+						$("#email_apend_id").removeClass("inputerror");
+						$("#capcha_apend_id").removeClass("inputerror");
+						$("#update_cv_apend_id").removeClass("inputerror");
+						$("#confirmedModal").modal('show');
 						
-
+						
+						
 					},
 					error: function (data) {
 					}

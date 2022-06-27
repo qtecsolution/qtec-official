@@ -1,5 +1,5 @@
 from django.urls import path
-from dashboard.views.already_done_view import AlreadyDoneView, CaseStudyEditView
+from dashboard.views.already_done_view import AlreadyDoneView, CaseStudyEditView, KeyFeatureView
 from dashboard.views.authenticate_view import AuthenticationView
 from dashboard.views.blog_view import BlogAuthorView, BlogCategoryView, BlogView, HandleBlogView
 from dashboard.views.career_view import ApplyForThisPositionView, CurrentOpportunitiesView
@@ -24,6 +24,9 @@ urlpatterns= [
     path('already-done-edit/', AlreadyDoneView.as_view(), name= 'edit_what_project_done_url'),
     path('already-done-save/', AlreadyDoneView.as_view(), name= 'save_what_done_url'),
     path('case-study-edit/<int:id>/', CaseStudyEditView.as_view(), name= 'case_study_edit_url'),
+    path('key-feature/<int:id>/', KeyFeatureView.as_view(), name= 'key_feature_url'),
+    path('key-feature-delete/<int:id>/', KeyFeatureView.as_view(), name= 'delete_key_feature_url'),
+   
 
     # subscribe
     path('subscribe/', SubscribeView.as_view(), name= 'subscribe_url'),
