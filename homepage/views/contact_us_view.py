@@ -18,7 +18,6 @@ class ContactUs(View):
         message = data.get('message')
         budget = data.get('budget')
         phone = data.get('phone')
-        print("Type:::::::::::::;;type_",type_)
         if type_ == 2:
             LetsTalk.objects.create(name= name, phone_number= phone, email= email, message= message, budget= int(budget))
         

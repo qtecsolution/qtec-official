@@ -73,10 +73,12 @@
                       return false;
                     }
                     else{
+                      $("#subscribe_error_field_id").removeClass("errorfield");
                       let toastSubscribe = document.getElementById('subscribeToast');
                       let toast = new bootstrap.Toast(toastSubscribe);
                       toast.show();
                     }
+                    
                   
                 }
             },
