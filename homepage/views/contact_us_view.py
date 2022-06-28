@@ -18,9 +18,16 @@ class ContactUs(View):
         message = data.get('message')
         budget = data.get('budget')
         phone = data.get('phone')
+        print("Type:::::::::::::;;type_",type_)
         if type_ == 2:
             LetsTalk.objects.create(name= name, phone_number= phone, email= email, message= message, budget= int(budget))
+        
+            return JsonResponse({'success': True,})
         else:
-            Subscribe.objects.create(email= email)
-
-        return JsonResponse({'success': True})
+            already_existes = Subscribe.objects.filter(email=email).first()
+            email_existes = False
+            if already_existes:
+                email_existes = True
+            else:
+                Subscribe.objects.create(email= email)
+            return JsonResponse({'success': True, 'email_existes': email_existes })
