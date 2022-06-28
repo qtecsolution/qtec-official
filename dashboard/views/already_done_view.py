@@ -69,10 +69,14 @@ class CaseStudyEditView(View):
         file = request.FILES
         case_study_details = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
         case_study_details.case_study_about = data.get('case_study_about')
-        case_study_details.case_study_image = file.get('case_study_image')
+        case_study_image = file.get('case_study_image')
+        if  case_study_image:
+            case_study_details.case_study_image = file.get('case_study_image')
         case_study_details.client_requirement = data.get('client_requirement')
         case_study_details.how_we_build_it = data.get('how_we_build_it')
-        case_study_details.how_we_build_image = file.get('how_we_build_image')
+        how_we_build_image = file.get('how_we_build_image')
+        if how_we_build_image:
+            case_study_details.how_we_build_image = how_we_build_image
         case_study_details.save()
         technology = data.getlist('technology')
         case_study_details.technology.clear()
