@@ -18,9 +18,9 @@
         <div class="row g-lg-4 g-3">
          {% for blog in blogs %}
           <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
-            <a href="/blog-details/{{ blog.blog_category.slug }}/{{ blog.slug }}/" class="bloglink">
-              <div class="card-article">
-                <div class="card-article-header">
+            <a href="/blog-details/{{ blog.blog_category.slug }}/{{ blog.slug }}/" class="bloglink" style="width: 1000px;">
+              <div class="card-article ">
+                <div class="card-article-header " style="width: 100px;">
                   <img src="{{ blog.image.url }}" alt="card-thumbnail">
                 </div>
 
@@ -35,7 +35,6 @@
                     {{ i.description }}
                     </p>
                   </div>
-
                   <span class="articlelink">Read article</span>
                 </div>
               </div>

@@ -20,7 +20,7 @@ class BlogsView(View):
             highlight_blog = handle_blog.highlight_blog
         context = {
             'handle_blog_exists' : handle_blog_exists,
-            'title': 'Blog',
+            'title': 'BLOGS',
             'highlight_blog': highlight_blog,
             'top_4_blog': top_4_blog,
             'random_blog': random_blog
@@ -38,7 +38,7 @@ class BlogDetails(View):
         random_blog = random_blog[:5] if random_blog.count() > 4 else random_blog
         return render(request, 'blog/blog_details.html' ,{'blog': blog, 'random_blog': random_blog,
                                                           'abs_uri': request.build_absolute_uri,
-                                                          'title': 'Blog Details'
+                                                          'title': 'BLOG DETAILS'
                                                           })
 
 
@@ -56,4 +56,4 @@ class AllBlogView(View):
         except EmptyPage:
             blogs = paginator.page(paginator.num_pages)
 
-        return render(request, 'blog/all_blogs.html', {'blogs': blogs, 'title': 'ALl Blogs'})
+        return render(request, 'blog/all_blogs.html', {'blogs': blogs, 'title': 'ALL BLOGS'})

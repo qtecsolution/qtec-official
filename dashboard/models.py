@@ -163,7 +163,7 @@ class LetsTalk(models.Model):
 
 class HandleBlog(models.Model):
     top_4_blog = models.ManyToManyField(Blog)
-    highlight_blog= models.ForeignKey(Blog, related_name='handle_blog',on_delete= models.SET_NULL, null= True)
+    highlight_blog= models.ForeignKey(Blog, related_name='handle_blog',on_delete= models.CASCADE, null= True)
 
 
 class ApplyForThisPosition(models.Model):

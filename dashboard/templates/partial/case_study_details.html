@@ -32,7 +32,7 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label>About </label>
-                                                <textarea  class="textarea" name="case_study_about" >{{ case_study.case_study_about }}</textarea>
+                                                <textarea  class="case_study_about" name="case_study_about" >{{ case_study.case_study_about }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Case Study Image  </label>
@@ -51,11 +51,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Client Requirement  </label>
-                                                <textarea  class="textarea" name="client_requirement" >{{ case_study.client_requirement }}</textarea>
+                                                <textarea class="case_study_about" name="client_requirement" >{{ case_study.client_requirement }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>How We Build It </label>
-                                                <textarea  class="textarea" name="how_we_build_it" >{{ case_study.how_we_build_it }}</textarea>
+                                                <textarea  class="case_study_about"  name="how_we_build_it" >{{ case_study.how_we_build_it }}</textarea>
                                     
                                     
                                             <div class="form-group">
@@ -109,7 +109,10 @@
 {% block script %}
 <script>
     $(document).ready(function() {
-        $('.textarea').summernote()
+        $('.case_study_about').summernote({
+            fontNames: ['Arial','Titillium', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto'],
+            fontNamesIgnoreCheck: ['Titillium']
+            });
         $("#exampleFormControlSelect1").select2({
             allowClear: true
         });
