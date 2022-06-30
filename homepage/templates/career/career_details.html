@@ -60,16 +60,18 @@
 							<form id="applyform" class="applyform">
 								<div class="row g-4">
 									<div class="col-md-6 col-12">
-										<div class="inputbox">
+										<div id="firstname_apend_id" class="inputbox">
 											<label for="firstname" class="inputlabel">First Name *</label>
 											<input type="text" id="firstname" class="inputfield">
+											<p class="error-message">Invailed</p>
 										</div>
 									</div>
 
 									<div class="col-md-6 col-12">
-										<div class="inputbox ">
+										<div id="lastname_apend_id" class="inputbox ">
 											<label for="lastname" class="inputlabel">Last Name *</label>
 											<input type="text" id="lastname" class="inputfield">
+											<p class="error-message">Invailed</p>
 										</div>
 									</div>
 								</div>
@@ -208,49 +210,90 @@
             let careeremail = myForm["careeremail"];
             let capcha = myForm["capcha"];
 			filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-			if (!filter.test(careeremail.value)) {
-				$("#email_apend_id").addClass("inputerror");
-			}
-            else if (Number(capcha.value) != answer){
-                $("#capcha_apend_id").addClass("inputerror");
-            }
-			else if(!validateSize(uploadcv))
-			{
-				alert("size")
-				 $("#update_cv_apend_id").addClass("inputerror");
+			let falg = false
+			if (firstname.value == ""){
+				$("#firstname_apend_id").addClass("inputerror");
+              	$('.error-message').text('This field is required!')  
+				falg = true     
 			}
 			else{
-				let formData = new FormData();
-				formData.append('firstname', firstname.value)
-				formData.append('lastname', lastname.value)
-				formData.append('careeremail', careeremail.value)
-				formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
-				formData.append('career_id', '{{ career.id }}')
-				formData.append('image', image[0])
+				$("#firstname_apend_id").removeClass("inputerror"); 
+			}
+			if (lastname.value == ""){
+				$("#lastname_apend_id").addClass("inputerror");
+              	$('.error-message').text('This field is required!')
+				falg = true      
+			}
+			else{
+				$("#lastname_apend_id").removeClass("inputerror"); 
+			}
+			if (!filter.test(careeremail.value)) { 
+				$("#email_apend_id").addClass("inputerror");
+              	$('.error-message').text('Invalid email!')
+				falg = true 
+			}
+			else if(careeremail.value == ""){
+				$("#email_apend_id").addClass("inputerror");
+				falg = true  
+			}
+			else{
+				$("#email_apend_id").removeClass("inputerror"); 
+			}
+			if (image.length == 0){
+				$("#update_cv_apend_id").addClass("inputerror");
+              	$('.error-message').text('Tis field is required!')
+				falg = true   
+                
+			}
+			else if(!validateSize(uploadcv))
+			{
+				 $("#update_cv_apend_id").addClass("inputerror");	
+				 falg = true    
+			}
+			else{
+				$("#update_cv_apend_id").removeClass("inputerror"); 
+			}
+            if (Number(capcha.value) != answer){
+                $("#capcha_apend_id").addClass("inputerror");
+				falg = true   	
+            }
+			else{
+				$("#capcha_apend_id").removeClass("inputerror"); 
+			}
+			if (falg == true)
+			{
+				return false
+			}
+			let formData = new FormData();
+			formData.append('firstname', firstname.value)
+			formData.append('lastname', lastname.value)
+			formData.append('careeremail', careeremail.value)
+			formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
+			formData.append('career_id', '{{ career.id }}')
+			formData.append('image', image[0])
 
-				console.log(formData)
-				$.ajax({
-					url: "{% url 'homepage:apply_for_job_url' %}",
-					data: formData,
-					processData: false,
-					contentType: false,
-					type: "POST",
-					success: function (data) {
-						$('#applyform').trigger("reset");
-						$('#file_name').html('No file chosen')
-						$("#email_apend_id").removeClass("inputerror");
-						$("#capcha_apend_id").removeClass("inputerror");
-						$("#update_cv_apend_id").removeClass("inputerror");
-						$("#confirmedModal").modal('show');
-						
-						
-						
-					},
-					error: function (data) {
-					}
+			console.log(formData)
+			$.ajax({
+				url: "{% url 'homepage:apply_for_job_url' %}",
+				data: formData,
+				processData: false,
+				contentType: false,
+				type: "POST",
+				success: function (data) {
+					$('#applyform').trigger("reset");
+					$('#file_name').html('No file chosen')
+					$("#email_apend_id").removeClass("inputerror");
+					$("#capcha_apend_id").removeClass("inputerror");
+					$("#update_cv_apend_id").removeClass("inputerror");
+					$("#firstname_apend_id").removeClass("inputerror"); 
+					$("#lastname_apend_id").removeClass("inputerror"); 
+					$("#confirmedModal").modal('show');		
+				},
+				error: function (data) {
+				}
 			});
 
-			}
+			
 
            
 

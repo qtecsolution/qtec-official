@@ -40,7 +40,7 @@
                                     <td>{{ item.get_applicant_type_display }}</td>
                                     <td>{{ item.number_of_vacancy }}</td>
                                     <td>{{ item.deadline }}</td>
-                                    <td>{{ item.description }}</td>
+                                    <td>{{ item.description|safe }}</td>
                                     <td>
                                         {% if item.image %}
                                         <div>
@@ -117,7 +117,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="descriptions" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea required  id="textarea" class="form-control" name="description">{{ item.description }}</textarea>
+                                                                        <textarea required class="for_Summernote" id="textarea" class="form-control" name="description">{{ item.description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -202,7 +202,7 @@
                                     <div class="form-group row">
                                         <label for="descriptions" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <textarea required  id="textarea" class="form-control" name="description"></textarea>
+                                            <textarea class="for_Summernote" required  id="textarea" class="form-control" name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -234,7 +234,10 @@
 
 {% block script %}
 <script>
- 
+  $('.for_Summernote').summernote({
+            fontNames: ['Arial','Titillium', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto'],
+            fontNamesIgnoreCheck: ['Titillium']
+            });
 </script>
 
 {% endblock %}

@@ -13,7 +13,6 @@ class ServiceView(View):
 class ServiceDetailsView(View):
 
     def get(self, request, slug):
-        print("slug:::", slug)
         projects = ServiceDetailsProject.objects.filter(slug=slug)
 
         if slug == 'software-solutions-development':
