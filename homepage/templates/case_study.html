@@ -168,20 +168,22 @@
 					<div class="row g-4">
                         {% for tech in case_study_details.technology.all %}
 						<div class="col-lg-4 col-sm-6 col-12">
-							<div class="card-technology">
-								<div class="card-technology-header">
-									<div class="card-technology-cap">
-										<img class="img-fluid" src="{{ tech.image.url }}">
+							<a href="{% url 'homepage:technologies_url' tech.slug %}" class="projectlink">
+								<div class="card-technology">
+									<div class="card-technology-header">
+										<div class="card-technology-cap">
+											<img class="img-fluid" src="{{ tech.image.url }}">
+										</div>
+										<h4 class="card-technology-title">{{ tech.title }}</h4>
 									</div>
-									<h4 class="card-technology-title">{{ tech.title }}</h4>
-								</div>
 
-								<div class="card-technology-body">
-									<p class="card-technology-text">
-										{{ tech.description }}
-									</p>
+									<div class="card-technology-body">
+										<p class="card-technology-text">
+											{{ tech.description }}
+										</p>
+									</div>
 								</div>
-							</div>
+							</a>
 						</div>
                         {% endfor %}
 					</div>

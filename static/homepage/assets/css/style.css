@@ -5168,6 +5168,7 @@ select {
   width: 70%;
   height: 10.4375rem;
   background: #E1E8FF;
+  z-index: 100;
 }
 
 @media screen and (min-width: 62rem) {
@@ -5181,7 +5182,7 @@ select {
   width: 100%;
   border-radius: 1rem;
   border-radius: 1rem;
-  overflow: hidden;
+  position: relative;
 }
 
 .casestudy-banner .thumbnailbox .product-thumbnail img {
@@ -5189,6 +5190,39 @@ select {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  position: relative;
+  z-index: 2;
+}
+
+.casestudy-banner .thumbnailbox .product-thumbnail .icon {
+  position: absolute;
+  width: 14.5625rem;
+  height: 8.9375rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1;
+  bottom: -1rem;
+  left: -4rem;
+}
+
+.casestudy-banner .thumbnailbox .product-thumbnail .icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.technologybanner {
+  background: #ffffff;
+}
+
+.technologybanner .thumbnailbox::after {
+  background: rgba(16, 62, 46, 0.2);
 }
 
 /**=======================================================**
@@ -5963,8 +5997,8 @@ select {
 }
 
 .opportunities-body .emptyscreen .icon {
-  height: 12.5rem;
-  width: 12.5rem;
+  height: 16rem;
+  width: 16rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8838,6 +8872,118 @@ select {
   }
 }
 
+.whatcando-body .detailorder .service-count .link {
+  color: #0876FC;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.71429;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .whatcando-body .detailorder .service-count .link {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+}
+
+.whatcando-body .detailorder .service-count .link:not([disabled]):hover {
+  color: #0253b5;
+}
+
+.whatcando-body .program {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  margin-top: 4rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .whatcando-body .program {
+    margin-top: 0rem;
+  }
+}
+
+.whatcando-body .program .programthumb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 19.6875rem;
+  border-radius: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 36rem) {
+  .whatcando-body .program .programthumb {
+    width: 24.0625rem;
+  }
+}
+
+.whatcando-body .program .programthumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: relative;
+  z-index: 100;
+}
+
+.whatcando-body .program::before {
+  content: '';
+  position: absolute;
+  top: -2.375rem;
+  right: -2rem;
+  background: rgba(94, 155, 122, 0.1);
+  width: 19.5rem;
+  height: 20.9375rem;
+  border-radius: 1rem;
+  border-radius: 1rem;
+  z-index: -1;
+}
+
+.whatcando-body .program .icon {
+  width: 14.5625rem;
+  height: 8.625rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  bottom: -1.5rem;
+  right: -3rem;
+  z-index: -1;
+}
+
+.whatcando-body .program .icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 /**=======================================================**
                     WHAT-WE-CAN-DO END
 **=======================================================**/
@@ -9326,4 +9472,142 @@ select {
 
 /**=======================================================**
                     SOME-PROJECT END
+**=======================================================**/
+/**=======================================================**
+                    TECHNOLOGY-DETAILS START
+**=======================================================**/
+.techdetails {
+  background: #ffffff;
+  padding: 3rem 0.5rem 4rem;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 62rem) {
+  .techdetails {
+    padding: 6rem 0rem 4.25rem;
+  }
+}
+
+.techdetails .techthumb {
+  height: 15.625rem;
+  width: 15.625rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  margin-inline: auto;
+}
+
+@media screen and (min-width: 36rem) {
+  .techdetails .techthumb {
+    height: 27.0625rem;
+    width: 27.0625rem;
+  }
+}
+
+.techdetails .techthumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: relative;
+  z-index: 100;
+}
+
+.techdetails .techthumb .icon {
+  position: absolute;
+  left: -4rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1;
+  width: 8.6875rem;
+  height: 14.5625rem;
+}
+
+.techdetails .techthumb .icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.techdetails .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.5rem;
+}
+
+.techdetails .details .title {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.46875;
+  text-align: center;
+}
+
+@media screen and (min-width: 48rem) {
+  .techdetails .details .title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.925;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .techdetails .details .title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.52096;
+    text-align: right;
+  }
+}
+
+.techdetails .details .text {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media screen and (min-width: 62rem) {
+  .techdetails .details .text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+    text-align: right;
+  }
+}
+
+/**=======================================================**
+                    TECHNOLOGY-DETAILS END
 **=======================================================**/

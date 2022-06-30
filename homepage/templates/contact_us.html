@@ -212,32 +212,42 @@
             let budget = myForm["budget"];
             let message = myForm["message"];
 			let check_email = $('#email')
+			flag = false
 			if (name.value == "") {
 				$("#name_field_id").addClass("errorfield");
-				return false;
+				flag = true
+			}else{
+				$("#name_field_id").removeClass("errorfield");
 			}
 			if (email.value != "")
 			{
 				if(!check_email.val().match(validRegex)){
 					$("#email_field_id").addClass("errorfield");
-					return false;
+					flag = true
 				}
 			}
 			if (phone.value == "") {
 				$("#phone_number_field_id").addClass("errorfield");
 				$('.error-message').text('This field is required !')
-				return false;
-			}else{
+				flag = true
+			}else if(phone.value){
 				let valid_number = phone.value.match(/\+?(88)?0?1[356789][0-9]{8}\b/)
 				if (!valid_number){
 					$("#phone_number_field_id").addClass("errorfield");
-					return false;
+					flag = true
+				}else{
+					$("#phone_number_field_id").removeClass("errorfield");
 				}
 
+			}else{
+				$("#phone_number_field_id").removeClass("errorfield");
 			}
 			if (budget.value == 1) {
 				$("#budget_field_id").addClass("errorfield");
-				return false;
+				flag = true
+			}
+			if (flag){
+				return false
 			}
 			let data= {
 				"type": 2,

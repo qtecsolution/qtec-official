@@ -8,6 +8,7 @@ from homepage.views.contact_us_view import ContactUs
 from homepage.views.index_view import IndexView
 from homepage.views.product_view import ProductsView
 from homepage.views.service_view import ServiceView, ServiceDetailsView
+from homepage.views.technologies_view import TechnologiesView
 
 app_name= 'homepage'
 
@@ -33,5 +34,7 @@ urlpatterns= [
 
     path('service/', ServiceView.as_view(), name="service_url"),
     path('service-details/<str:slug>/', ServiceDetailsView.as_view(), name="service_details_url"),
+
+    path('technologies/<str:slug>/', TechnologiesView.as_view(), name="technologies_url"),
 
 ]
