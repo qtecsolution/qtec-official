@@ -1,4 +1,5 @@
 import email
+from pyexpat import features
 from django.db import models
 from multiselectfield import MultiSelectField
 # Create your models here.
@@ -74,13 +75,25 @@ LETS_TAlK_STATUS = (
     (CONTACTED, 'Contacted'),
 )
 
-
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
     slug= models.SlugField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='technologies')
+    technology_details_title = models.CharField(max_length=100)
+    technology_detail_description = models.TextField()
+    technology_detail_thumbnail= models.ImageField(upload_to='technologies/', null=True, blank=True)
+    why_this_technologies_title = models.CharField(max_length=100)
+    why_this_technologies_description = models.TextField()
+    why_this_technologies_image = models.ImageField(upload_to='technologies/', null=True, blank=True)
+    why_choice_title = models.CharField(max_length=200)
+    why_choice_description = models.TextField()
+    why_choice_image = models.ImageField(upload_to='technologies/', null=True, blank=True)
+    technology_features = models.ManyToManyField("TechnologyFeatures", related_name="technologies")
 
+class TechnologyFeatures(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
 
 class WhatProjectHaveWeDone(models.Model):
     name = models.CharField(max_length=150)
@@ -88,6 +101,7 @@ class WhatProjectHaveWeDone(models.Model):
     technology = models.ManyToManyField(Technologies)
     slug = models.SlugField(null=True, blank=True)
     project_type = MultiSelectField(choices=PROJECT_TYPE)
+
 
     @property
     def split_technology(self):

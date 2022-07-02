@@ -28,6 +28,16 @@
                                     <th>Title </th>
                                     <th>Description</th>
                                     <th>Image</th>
+                                    <th>Details Title</th>
+                                    <th>Details Description</th>
+                                    <th>Details Thumbnail</th>
+                                    <th>Why This Title</th>
+                                    <th>Why This Description</th>
+                                    <th>Why This Image</th>
+                                    <th>Why Choice Title</th>
+                                    <th>Why Choice Description</th>
+                                    <th>Why Choice Image</th>
+                                    <th>Features</th>
                                     <th>Action</th>
                                 </tr>
                                 {% for technologie in technologies %}
@@ -38,10 +48,45 @@
                                     <td>
                                         {% if technologie.image %}
                                         <div>
-                                            <img style="width: 50px;" src="/media/{{ technologie.image }}">
+                                            <img style="width: 50px;" src="{{ technologie.image.url }}">
                                         </div>
                                         {% endif %}
                                     </td>
+                                    <td>{{ technologie.technology_details_title }}</td>
+                                    <td>{{ technologie.technology_detail_description }}</td>
+                                    <td>
+                                        {% if technologie.technology_detail_thumbnail %}
+                                        <div>
+                                            <img style="width: 50px;" src="{{ technologie.technology_detail_thumbnail.url }}">
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ technologie.why_this_technologies_title }}</td>
+                                    <td>{{ technologie.why_this_technologies_description }}</td>
+                                    <td>
+                                        {% if technologie.why_this_technologies_image %}
+                                        <div>
+                                            <img style="width: 50px;" src="/media/{{ technologie.why_this_technologies_image }}">
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ technologie.why_choice_title }}</td>
+                                    <td>{{ technologie.why_choice_description }}</td>
+                                    <td>
+                                        {% if technologie.why_choice_image %}
+                                        <div>
+                                            <img style="width: 50px;" src="/media/{{ technologie.why_choice_image }}">
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% for item in technology_features %}
+                                       
+                                            {%if item == technologie.technology_features %} {{ item }} {% endif %}
+                                        {% endfor %}
+
+                                    </td>
+
                                     <th>
                                         <form action="{% url 'dashboard:delete_technologies_url' %}"method="POST" >
                                             {% csrf_token %}

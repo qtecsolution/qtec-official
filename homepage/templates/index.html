@@ -1012,10 +1012,10 @@
 
 										<div class="articledescript">
 											<p class="articletext">
-                                                {{ blog.description|safe }}
+                                                {{ blog.description|safe|truncatechars_html:100 }}
 											</p>
 										</div>
-
+										<br>
 										<span class="articlelink">Read article</span>
 									</div>
 								</div>

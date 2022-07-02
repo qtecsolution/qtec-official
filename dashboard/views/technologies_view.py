@@ -1,16 +1,19 @@
 from django.shortcuts import redirect, render
 from django.views import View
 
-from dashboard.models import Technologies
+from dashboard.models import Technologies, TechnologyFeatures
 from django.contrib import messages
 
 
 
 class TechnologiesView(View):
     def get(self, request):
-        technologies = Technologies.objects.order_by("-id").values()
+        technologies = Technologies.objects.all()
+        technology_features = TechnologyFeatures.objects.values('id','title')
+        print("technology_features::::", technology_features)
         context = {
             "technologies" : technologies,
+            "technology_features" : technology_features
         }
         return render(request, 'technologies.html', context)
         
