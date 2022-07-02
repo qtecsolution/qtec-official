@@ -75,7 +75,6 @@ class CaseStudyEditView(View):
         case_study_details.client_requirement = data.get('client_requirement')
         case_study_details.how_we_build_it = data.get('how_we_build_it')
         how_we_build_image = file.get('how_we_build_image')
-        print("how_we_build_image::::::::::::",how_we_build_image)
         if how_we_build_image:
             case_study_details.how_we_build_image = how_we_build_image
         case_study_details.save()
