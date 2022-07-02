@@ -1,16 +1,19 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.views import View
 
-from dashboard.models import Technologies
+from dashboard.models import Technologies, TechnologyFeatures
 
 
 class TechnologiesView(View):
 
     def get(self, request, slug):
-        technologies = Technologies.objects.filter(slug=slug)
-        print("technologies:::::::", technologies)
-        return render(request, 'technology/technologies.html')
+        technologies = Technologies.objects.filter(slug=slug).first()
+        features = TechnologyFeatures.objects.all()
+        context = {
+            "technologies" : technologies,
+            "features" : features
+        }
+        return render(request, 'technology/technologies.html', context)
 
-        # if slug == 'software-solutions-development':
-        #     return render(request, 'service/software_solution_development.html', {'title': "Service Details", "projects": projects})
       

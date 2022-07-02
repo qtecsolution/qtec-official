@@ -1,5 +1,4 @@
 import email
-from pyexpat import features
 from django.db import models
 from multiselectfield import MultiSelectField
 # Create your models here.
@@ -93,6 +92,7 @@ class Technologies(models.Model):
 
 class TechnologyFeatures(models.Model):
     title = models.CharField(max_length=200)
+    heading = models.CharField(max_length=200)
     description = models.TextField()
 
 class WhatProjectHaveWeDone(models.Model):

@@ -9,15 +9,11 @@
             <div class="col-lg-5 col-12">
                 <div class="casestudy-banner-description">
                     <div class="casestudyinfo">
-                        <h3 class="casestudy-title">Django</h3>
+                        <h3 class="casestudy-title">{{ technologies.technology_details_title }}</h3>
                     </div>
 
                     <div class="casestudydetetail">
-                        <p class="casestudy-text">
-                            Django is a widely-used Python web application framework with a "batteries-included" philosophy. 
-            The principle behind batteries-included is that the common functionality for building web applications 
-            should come with the framework instead of as separate libraries.
-                        </p>
+                        <p class="casestudy-text">{{ technologies.technology_detail_description }}</p>
                     </div>
                 </div>
             </div>
@@ -25,7 +21,7 @@
             <div class="col-lg-6 col-12 offset-lg-1 offset-0">
                 <div class="thumbnailbox">
                     <figure class="product-thumbnail">
-                        <img src="assets/images/technologies/django.svg" alt="case-study-thumbnail">
+                        <img src="{{technologies.technology_detail_thumbnail.url}}" alt="technology-thumbnail">
 
           <div class="icon">
             <svg width="233" height="143" viewBox="0 0 233 143" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,13 +192,9 @@
             <div class="row">
                 <div class="col-lg-6 col-12">
                     <div class="whatcando-header">
-                        <h2 class="whatcando-title">Why Django?</h2>
+                        <h2 class="whatcando-title">{{ technologies.why_this_technologies_title }}</h2>
 
-                        <p class="whatcando-text">
-            With Django, you can take web applications from concept to launch in a matter of hours. 
-            Django takes care of much of the hassle of web development, so you can focus on writing 
-            your app without needing to reinvent the wheel. It’s free and open source.
-          </p>
+                        <p class="whatcando-text">{{ technologies.why_this_technologies_description }}</p>
                     </div>
                 </div>
             </div>
@@ -211,62 +203,23 @@
                 <div class="row g-4">
                     <div class="col-lg-9 col-12 detailorder">
                         <div class="whatcandetails">
-                            <div class="service-count">
-                                <span class="counter">1.</span>
-                                <h4 class="title">Ridiculously fast</h4>
-                                <p class="text">
-                Django was designed to help developers take applications from concept to completion as quickly as possible.
-              </p>
-
-              <a href="#" class="link">start building -></a>
-                            </div>
-                            
-                            <div class="service-count">
-                                <span class="counter">2.</span>
-                                <h4 class="title">Fully loaded</h4>
-                                <p class="text">
-                Django was designed to help developers take applications from concept to completion as quickly as possible.
-              </p>
-
-              <a href="#" class="link">what’s include -></a>
-                            </div>
-
-                            <div class="service-count">
-                                <span class="counter">3.</span>
-                                <h4 class="title">Reassuringly secure</h4>
-                                <p class="text">
-                Django was designed to help developers take applications from concept to completion as quickly as possible.
-              </p>
-
-              <a href="#" class="link">read security overview -></a>
-                            </div>
-
-                            <div class="service-count">
-                                <span class="counter">4.</span>
-                                <h4 class="title">Exceedingly scalable</h4>
-                                <p class="text">
-                Django was designed to help developers take applications from concept to completion as quickly as possible.
-              </p>
-
-              <a href="#" class="link">scaling django application -></a>
-                            </div>
-
-                            <div class="service-count">
-                                <span class="counter">5.</span>
-                                <h4 class="title">Incredibly versatile</h4>
-                                <p class="text">
-                Django was designed to help developers take applications from concept to completion as quickly as possible.
-              </p>
-
-              <a href="#" class="link">learn more -></a>
-                            </div>
+                          {% for item in features%}
+                            {% if item in technologies.technology_features.all %}
+                              <div class="service-count">
+                                  <span class="counter">1.{{ item.title }}</span>
+                                  <h4 class="title">{{ item.heading }}</h4>
+                                  <p class="text">{{ item.description }}</p>
+                              </div>
+                              {%endif%}
+                           {% endfor %} 
+      
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-12 thumborder">
                         <div class="program">
                             <figure class="programthumb">
-                                <img src="assets/images/technologies/programming-1.svg" alt="programthumb">
+                                <img src="{{ technologies.why_this_technologies_image.url }}" alt="programthumb">
                             </figure>
 
             <div class="icon">
@@ -438,7 +391,7 @@
   <div class="row align-items-center g-4">
     <div class="col-lg-6 col-12">
       <figure class="techthumb">
-        <img src="assets/images/technologies/python.svg" alt="techthumb">
+        <img src="{{ technologies.why_choice_image.url }}" alt="techthumb">
       
         <div class="icon">
           <svg width="139" height="233" viewBox="0 0 139 233" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -599,20 +552,8 @@
 
     <div class="col-lg-6 col-12">
       <div class="details">
-        <h2 class="title">
-          Why is Django a good web framework choice?
-        </h2>
-
-        <p class="text">
-          The Django project's stability, performance and community have grown tremendously over 
-          the past decade since the framework's creation. Detailed tutorials and good practices 
-          are readily available on the web and in books. The framework continues to add significant 
-          new functionality such as database migrations with each release. I highly recommend the 
-          Django framework as a starting place for new Python web developers because the official 
-          documentation and tutorials are some of the best anywhere in software development. 
-          Many cities also have Django-specific groups such as Django District, Django Boston 
-          and San Francisco Django so new developers can get help when they are stuck.
-        </p>
+        <h2 class="title">{{ technologies.why_choice_title }}</h2>
+        <p class="text">{{ technologies.why_choice_description }}</p>
       </div>
     </div>
   </div>
