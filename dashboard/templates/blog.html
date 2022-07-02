@@ -111,13 +111,13 @@
                                                                 <div class="form-group row">
                                                                     <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea class ="textarea" required class="form-control" name="description">{{ blog.description }}</textarea>
+                                                                        <textarea class ="blog_list" required class="form-control" name="description">{{ blog.description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea required class ="textarea" id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
+                                                                        <textarea required class ="blog_list" id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -228,13 +228,13 @@
                                     <div class="form-group row">
                                         <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <textarea class ="textarea" required class="form-control" name="description"></textarea>
+                                            <textarea class ="blog_list" required class="form-control" name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <textarea required class ="textarea" id="textarea" class="form-control" name="tags"></textarea>
+                                            <textarea required class ="blog_list" id="textarea" class="form-control" name="tags"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -291,7 +291,13 @@
     })
   
     $(document).ready(function() {
-        $('.textarea').summernote()
+        $('.blog_list').summernote({
+            fontNames: ['Arial','Titillium Web', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto'],
+            fontNamesIgnoreCheck: ['Titillium Web']
+            });
+        $("#exampleFormControlSelect1").select2({
+            allowClear: true
+        });
     });
 </script>
 
