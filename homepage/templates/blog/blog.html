@@ -35,7 +35,7 @@
 
                 <div class="articledescript">
                   <p class="articletext">
-                    {{ i.description|safe  }}
+                    {{ i.description|safe|truncatechars_html:100  }}
                   </p>
                 </div>
 
@@ -76,7 +76,7 @@
 
                   <div class="info-body">
                     <p class="blogtext">
-                      {{ highlight_blog.description|safe  }}
+                      {{ highlight_blog.description|safe|truncatechars_html:100  }}
                     </p>
                   </div>
                 </div>
@@ -115,7 +115,7 @@
 
                   <div class="articledescript">
                     <p class="articletext">
-                        {{ highlight_blog.description }}
+                        {{ highlight_blog.description|safe|truncatechars_html:100 }}
                     </p>
                   </div>
 

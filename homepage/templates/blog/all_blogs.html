@@ -32,7 +32,7 @@
 
                   <div class="articledescript">
                     <p class="articletext">
-                    {{ i.description }}
+                    {{ i.description|safe|truncatechars_html:100 }}
                     </p>
                   </div>
                   <span class="articlelink">Read article</span>
