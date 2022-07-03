@@ -453,9 +453,9 @@
 															</div>
 
 															<div class="service-buttons">
-																<button class="btn-service">Discuss for your project</button>
+																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<button class="btn-text">
+																<a href="?#ourprojects_list"><button  class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -463,7 +463,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button>
+																</button></a>
 															</div>
 														</div>
 													</div>
@@ -490,17 +490,19 @@
 															</p>
 
 															<div class="service-buttons">
-																<button class="btn-service">Discuss for your project</button>
+																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
 																<button class="btn-text">
-																	<span class="text">App that we have already build</span>
+																	<a href="?#ourprojects_list"><span class="text">App that we have already build</span>
+																	
 
 																	<span class="icon">
 																		<svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button>
+																	
+																</button></a>
 															</div>
 														</div>
 													</div>
@@ -528,9 +530,9 @@
 															</p>
 
 															<div class="service-buttons">
-																<button class="btn-service">Discuss for your project</button>
+																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<button class="btn-text">
+																<a href="?#ourprojects_list"><button class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -538,7 +540,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button>
+																</button></a>
 															</div>
 														</div>
 													</div>
@@ -567,17 +569,17 @@
 															</p>
 
 															<div class="service-buttons">
-																<button class="btn-service">Discuss for your project</button>
+																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
 																<button class="btn-text">
-																	<span class="text">App that we have already build</span>
+																	<a href="?#ourprojects_list"><span class="text">App that we have already build</span>
 
 																	<span class="icon">
 																		<svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button>
+																</button></a>
 															</div>
 														</div>
 													</div>
@@ -605,9 +607,9 @@
 															</p>
 
 															<div class="service-buttons">
-																<button class="btn-service">Discuss for your project</button>
+																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<button class="btn-text">
+																<a href="?#ourprojects_list"><button class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -615,7 +617,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button>
+																</button></a>
 															</div>
 														</div>
 													</div>
@@ -644,9 +646,9 @@
 															</p>
 
 															<div class="service-buttons">
-																<button class="btn-service">Discuss for your project</button>
+																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<button class="btn-text">
+																<a href="?#ourprojects_list"><button class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -654,7 +656,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button>
+																</button></a>
 															</div>
 														</div>
 													</div>
@@ -711,7 +713,7 @@
 								<!-- LOGISTICS SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade" id="logistics" role="tabpanel" aria-labelledby="logistics-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/logistic.svg' %}" alt="mobile-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/logistic.svg' %}" alt="logistics-thumbnail">
 									</div>
 								</div>
 								<!--- LOGISTICS SOLUTIONS TAB CONTENT END --->
@@ -727,7 +729,7 @@
 
 	<!--========== OUR-PROJECTS-START ============-->
 	{% if project_done_exists %}
-		<section id="ourprojects_list" class="ourprojects">
+		<section  id="ourprojects_list" class="ourprojects">
 			<div class="container">
 				<div class="ourprojects-content">
 					<!-- OUR-PROJECTS HEADER START -->

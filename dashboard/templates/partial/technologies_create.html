@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <h2 class="text-center">Create Technologies</h2>
 
-                        <form method="POST"  id="managementadd" enctype="multipart/form-data" novalidate>
+                        <form method="POST"  id="managementadd" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div id="accordion">
                                 <div class="card" style="border: 1px dotted #999">
@@ -33,11 +33,11 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Title <small style="color: red">*</small> </label>
-                                                        <input name="title"  class="form-control" required/>
+                                                        <input type="text" name="title"  class="form-control" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Description <small style="color: red">*</small> </label>
-                                                        <textarea  name="description" class="form-control" required ></textarea>
+                                                        <textarea required name="description" class="form-control"  ></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -47,17 +47,17 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Details Title <small style="color: red">*</small> </label>
-                                                        <input name="technology_details_title"  class="form-control" required/>
+                                                        <input type="text" required name="technology_details_title"  class="form-control" >
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Detail Description<small style="color: red">*</small> </label>
-                                                        <textarea  name="technology_detail_description" class="form-control" required ></textarea>
+                                                        <textarea  required name="technology_detail_description" class="form-control" ></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Why This Technologies Title<small style="color: red">*</small> </label>
-                                                        <input type="text" name="why_this_technologies_title" class="form-control" required >
+                                                        <input required type="text" name="why_this_technologies_title" class="form-control" >
                                                     </div>  
                                                 </div>
                                                 <div class="col-md-6">
@@ -67,7 +67,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Why This Technologies Description <small style="color: red">*</small> </label>
-                                                        <textarea required class="form-control"  name="why_this_technologies_description" id=""> </textarea>
+                                                        <textarea  required name="why_this_technologies_description" class="form-control" ></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -77,13 +77,13 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Why Choice Description<small style="color: red">*</small> </label>
-                                                        <textarea  name="why_choice_description" class="form-control" required ></textarea>
+                                                        <textarea required  name="why_choice_description" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Why Choice Title<small style="color: red">*</small> </label>
-                                                        <input  name="why_choice_title" class="form-control" required >
+                                                        <input type="text" name="why_choice_title" class="form-control" required >
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Why Choice Image<small style="color: red">*</small> </label>
@@ -92,8 +92,8 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label>Technology Features<small style="color: red">*</small> </label>
-                                                        <select multiple class="form-control" required name="technology_features" id="technology_features">
+                                                        <label>Technology Features </label>
+                                                        <select multiple class="form-control"  name="technology_features" id="technology_features">
                                                             {% for item in technology_features %}
                                                                 <option value="{{ item.id }}">{{ item.title }}</option>
                                                             {% endfor %}
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
 
-                                <button name="save" value="Save&list" class="btn btn-default float-right" type="submit">
+                                <button name="save" class="btn btn-default float-right" type="submit">
                                     <i class="fa fa-plus-circle"></i>
                                     Create
                                 </button>

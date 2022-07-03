@@ -28,14 +28,8 @@
                                     <th>Description</th>
                                     <th>Image</th>
                                     <th>Details Title</th>
-                                    <th>Details Description</th>
-                                    <th>Details Thumbnail</th>
                                     <th>Why This Title</th>
-                                    <th>Why This Description</th>
-                                    <th>Why This Image</th>
                                     <th>Why Choice Title</th>
-                                    <th>Why Choice Description</th>
-                                    <th>Why Choice Image</th>
                                     <th>Features</th>
                                     <th>Action</th>
                                 </tr>
@@ -52,45 +46,79 @@
                                         {% endif %}
                                     </td>
                                     <td>{{ technologie.technology_details_title }}</td>
-                                    <td>{{ technologie.technology_detail_description }}</td>
-                                    <td>
-                                        {% if technologie.technology_detail_thumbnail %}
-                                        <div>
-                                            <img style="width: 50px;" src="{{ technologie.technology_detail_thumbnail.url }}">
-                                        </div>
-                                        {% endif %}
-                                    </td>
+                                 
+                                  
                                     <td>{{ technologie.why_this_technologies_title }}</td>
-                                    <td>{{ technologie.why_this_technologies_description }}</td>
-                                    <td>
-                                        {% if technologie.why_this_technologies_image %}
-                                        <div>
-                                            <img style="width: 50px;" src="/media/{{ technologie.why_this_technologies_image }}">
-                                        </div>
-                                        {% endif %}
-                                    </td>
+                           
                                     <td>{{ technologie.why_choice_title }}</td>
-                                    <td>{{ technologie.why_choice_description }}</td>
-                                    <td>
-                                        {% if technologie.why_choice_image %}
-                                        <div>
-                                            <img style="width: 50px;" src="/media/{{ technologie.why_choice_image }}">
-                                        </div>
-                                        {% endif %}
-                                    </td>
+                                  
                                     <td>
                                         {% for item in technology_features %}
-                                       
-                                            {%if item  in technologie.technology_features.all %} {{ item.title }} {% endif %},
+                                            {%if item  in technologie.technology_features.all %} {{ item.title }}, <br> {% endif %}
                                         {% endfor %}
                                     </td>
 
                                     <th>
-                                        <form action="{% url 'dashboard:delete_technologies_url' %}"method="POST" >
-                                            {% csrf_token %}
-                                            <input type="hidden" value="{{technologie.id}}" name="id">
-                                            <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
-                                        </form>  
+                                        <div class="form-group row">
+                                            <div cclass="">
+                                                <form action="{% url 'dashboard:delete_technologies_url' %}"method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{technologie.id}}" name="id">
+                                                    <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form> 
+                                            </div >
+                                            <div class="col-3">
+                                                <button class="btn btn-icon btn-sm btn-outline-primary"  data-toggle="modal"
+                                                data-target="#technologies_features_{{technologie.id}}" ><i class="fas fa-info-circle"></i></button>
+                                                 <!-- Add featurs -->
+                                                <div  class="modal fade" id="technologies_features_{{technologie.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Add Features</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <form action="{% url 'dashboard:save_technologies_features_url' %}" method="POST" enctype="multipart/form-data" >
+                                                            {% csrf_token %}
+                                                            <div class="modal-body">
+                                                                <input type="hidden" value="{{ technologie.id }}" name="id">
+                                                                <div class="error text-center" style="color: red;"></div>
+                                                                <br>
+                                                                <div class="form-group row">
+                                                                    <label for="title" class="col-sm-3 col-form-label">Title <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <input required type="text" class="form-control" name="title" >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="heading" class="col-sm-3 col-form-label">Heading <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <input required type="text" class="form-control" name="heading" >
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <textarea required type="text" class="form-control" name="description" ></textarea>
+                                                                    </div>
+                                                                </div>
+                                                             
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary"  >Save </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         
                                     </th>
                                 </tr>
                                 {% endfor %}

@@ -150,7 +150,7 @@ class BlogCategory(models.Model):
 
 class Blog(models.Model):
     blog_author = models.ForeignKey(BlogAuthor, null=True, related_name='blogs', on_delete=models.CASCADE)
-    blog_category = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null= True)
+    blog_category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE, null= True)
     slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     title = models.TextField()
     description = models.TextField()

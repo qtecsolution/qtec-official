@@ -85,7 +85,6 @@ class BlogView(View):
 class HandleBlogView(View):
     def get(self, request):
         blogs = Blog.objects.values('id','title')
-        print("blogs::::::::::::::::::::::", blogs)
         if HandleBlog.objects.exists():
             top_4_blog = HandleBlog.objects.first().top_4_blog.values_list('id',flat=True)
             highlight_blog = HandleBlog.objects.first().highlight_blog.id

@@ -42,7 +42,8 @@ class TechnologiesView(View):
             technologies.why_choice_image = file.get('why_choice_image')
             technologies.save()
             technology_features = data.getlist('technology_features')
-            technologies.technology_features.add(*technology_features)
+            if technology_features:
+                technologies.technology_features.add(*technology_features)
             messages.success(request, 'Data save successful!')
 
             return redirect('dashboard:technologies_url')
@@ -52,4 +53,16 @@ class TechnologiesView(View):
             technologies = Technologies.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Delete successful')
             return redirect('dashboard:technologies_url')
-        
+
+        if request.resolver_match.url_name == "save_technologies_features_url":
+            request_id = data.get('id')
+            technology = Technologies.objects.filter(id=request_id).first()
+            features = TechnologyFeatures()
+            features.title = data.get('title')
+            features.heading = data.get('heading')
+            features.description = data.get('description')
+            features.save()
+            technology.technology_features.add(features)
+            messages.success(request, 'Data save successful!')
+            return redirect('dashboard:technologies_url')
+            
