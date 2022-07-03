@@ -392,7 +392,7 @@
 			<div class="row">
 				<div class="col-md-9 col-12 mx-md-auto">
 					<div class="videobox">
-						<video id="my-player" class="video-js vjs-big-play-centered" poster="assets/video-poster/video-poster.jpg">
+						<video id="my-player" class="video-js vjs-big-play-centered" poster="{% static 'homepage/assets/video-poster/video-poster.png' %}">
 							<source src="{% static 'homepage/assets/videos/q-video.mp4' %}" type="video/mp4" />
 
 							<p class="vjs-no-js">Your browser does not support video tag</p>
@@ -427,7 +427,7 @@
 							<div class="services">
 								<div class="accordion" id="accordionService">
 									<ul class="nav nav-tabs" id="serviceTab" role="tablist">
-										<!-- SOFTWARE-SOLUTION TAB ITEM -->
+										
  										<li class="nav-item" role="presentation">
 											<div class="nav-link active" id="softwaresolution-tab" data-bs-toggle="tab" data-bs-target="#softwaresolution" type="button" role="tab" aria-controls="softwaresolution" aria-selected="true">
 												<div class="accordion-item">
@@ -455,7 +455,7 @@
 															<div class="service-buttons">
 																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<a href="?#ourprojects_list"><button  class="btn-text">
+																<a onclick="location.href='{% url 'homepage:service_details_url' 'software-solutions-development' %}'"><button  class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -492,7 +492,7 @@
 															<div class="service-buttons">
 																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<a href="?#ourprojects_list"><button class="btn-text">
+																<a  onclick="location.href='{% url 'homepage:service_details_url' 'ui-ux-design' %}'" class="btn-text">
 																	<span class="text">App that we have already build</span>
 																	
 
@@ -501,8 +501,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																	
-																</button></a>
+																</a>
 															</div>
 														</div>
 													</div>
@@ -532,7 +531,7 @@
 															<div class="service-buttons">
 																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<a href="?#ourprojects_list"><button class="btn-text">
+																<a onclick="location.href='{% url 'homepage:service_details_url' 'mobile-application-development' %}'"  class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -540,7 +539,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button></a>
+																</a>
 															</div>
 														</div>
 													</div>
@@ -568,10 +567,10 @@
 																of our solutions give our clients upper hand in the market.
 															</p>
 
-															<div class="service-buttons">
+															<div  class="service-buttons">
 																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<a href="?#ourprojects_list"><button class="btn-text">
+																<a onclick="location.href='{% url 'homepage:service_details_url' 'e-commerce-solutions' %}'"  class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -579,7 +578,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button></a>
+																</a>
 															</div>
 														</div>
 													</div>
@@ -609,7 +608,7 @@
 															<div class="service-buttons">
 																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<a href="?#ourprojects_list"><button class="btn-text">
+																<a onclick="location.href='{% url 'homepage:service_details_url' 'lms-solutions' %}'" class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -617,7 +616,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button></a>
+																</a>
 															</div>
 														</div>
 													</div>
@@ -645,10 +644,10 @@
 																our client’s needs the way they want.
 															</p>
 
-															<div class="service-buttons">
+															<div onclick="active_tab('uxui-tab')" class="service-buttons">
 																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<a href="?#ourprojects_list"><button class="btn-text">
+																<a onclick="location.href='{% url 'homepage:service_details_url' 'logistics-solutions' %}'" class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -656,7 +655,7 @@
 																			<path d="M24.1476 14.621L11.2371 27.5315L9.11609 25.4105L22.0251 12.5H10.6476V9.5H27.1476V26H24.1476V14.621Z" fill="#0876FC" />
 																		</svg>
 																	</span>
-																</button></a>
+																</a>
 															</div>
 														</div>
 													</div>
@@ -673,7 +672,7 @@
 								<!-- SOFTWARE SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade show active" id="softwaresolution" role="tabpanel" aria-labelledby="softwaresolution-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/software-development.svg' %}" alt="software-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/software-development.png' %}" alt="software-thumbnail">
 									</div>
 								</div>
 								<!--- SOFTWARE SOLUTIONS TAB CONTENT END --->
@@ -681,7 +680,7 @@
 								<!-- UX-UI DESIGN TAB CONTENT START -->
 								<div class="tab-pane fade" id="uxuidesign" role="tabpanel" aria-labelledby="uxuidesign-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/ui-ux.svg' %}" alt="uxui-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/ui-ux.png' %}" alt="uxui-thumbnail">
 									</div>
 								</div>
 								<!--- UX-UI DESIGN TAB CONTENT END --->
@@ -689,7 +688,7 @@
 								<!-- MOBILE-APPLICATION TAB CONTENT START -->
 								<div class="tab-pane fade" id="mibileapplication" role="tabpanel" aria-labelledby="mibileapplication-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/mobile-application.svg' %}" alt="mobile-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/mobile-development.png' %}" alt="mobile-thumbnail">
 									</div>
 								</div>
 								<!--- MOBILE-APPLICATION TAB CONTENT END --->
@@ -697,7 +696,7 @@
 								<!-- E-COMMERCE SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade" id="ecommercesolutions" role="tabpanel" aria-labelledby="ecommercesolutions-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/ecommerce.svg' %}" alt="software-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/ecommerce.png' %}" alt="software-thumbnail">
 									</div>
 								</div>
 								<!--- E-COMMERCE SOLUTIONS TAB CONTENT END --->
@@ -705,7 +704,7 @@
 								<!-- LMS SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade" id="lmssolutions" role="tabpanel" aria-labelledby="lmssolutions-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/lms.svg' %}" alt="uxui-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/lms.png' %}" alt="uxui-thumbnail">
 									</div>
 								</div>
 								<!--- LMS SOLUTIONS TAB CONTENT END --->
@@ -713,7 +712,7 @@
 								<!-- LOGISTICS SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade" id="logistics" role="tabpanel" aria-labelledby="logistics-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/logistic.svg' %}" alt="logistics-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/logistic.png' %}" alt="logistics-thumbnail">
 									</div>
 								</div>
 								<!--- LOGISTICS SOLUTIONS TAB CONTENT END --->
@@ -1040,6 +1039,5 @@
 
 {% block script %}
     <script>
-
     </script>
 {% endblock %}
