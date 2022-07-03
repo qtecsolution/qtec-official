@@ -53,7 +53,7 @@
                                     <td>{{ technologie.why_choice_title }}</td>
                                   
                                     <td>
-                                        {% if technology_features%}
+                                        {% if technology_features %}
                                             {% for item in technology_features %}
                                                 {%if item  in technologie.technology_features.all %} {{ item.title }}, <br> {% endif %}
                                             {% endfor %}

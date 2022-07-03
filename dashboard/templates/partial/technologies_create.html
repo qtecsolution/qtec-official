@@ -94,9 +94,11 @@
                                                     <div class="form-group">
                                                         <label>Technology Features </label>
                                                         <select multiple class="form-control"  name="technology_features" id="technology_features">
-                                                            {% for item in technology_features %}
-                                                                <option value="{{ item.id }}">{{ item.title }}</option>
-                                                            {% endfor %}
+                                                            {% if technology_features  %}
+                                                                {% for item in technology_features %}
+                                                                    <option value="{{ item.id }}">{{ item.title }}</option>
+                                                                {% endfor %}
+                                                            {% endif %}
                                                        </select>
                                                     </div>
                                                 </div>
