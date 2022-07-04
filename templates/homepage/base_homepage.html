@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'homepage/head_homepage.html' %}
+    {% block head %}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154659319-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-154659319-1');
+        </script>
+    {% endblock %}
+</head>
+
+<body>
+	<!--========== PRELOADER-START ==========-->
+	<div class="preloader" id="preloader">
+		<div class="preload">
+			<img src="{%  static 'homepage/assets/images/logo/logo.svg' %}" alt="logo">
+		</div>
+	</div>
+	<!--========== PRELOADER-END ============-->
+    {% include 'homepage/navbar_homepage.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'homepage/footer_homepage.html' %}
+
+    {% include 'homepage/script_homepage.html' %}
+
+    {% block script %}
+    {% endblock %}
+
+<script>
+    function saveSubscribe(){
+        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        let subscribe_email = $('#subscribe_email')
+        if (subscribe_email.val() == "") {
+          $("#subscribe_error_field_id").addClass("errorfield");
+          $('.error-message').text('Email is required!')
+          return false;
+        }else{
+            if (!subscribe_email.val().match(validRegex)) {
+              $("#subscribe_error_field_id").addClass("errorfield");
+              $('.error-message').text('Email is wrong!')
+
+                return false;
+              }
+        }
+
+        let data= {
+            "type": 1,
+            "email": subscribe_email.val(),
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+        }
+        $.ajax({
+            url: "{% url 'homepage:lets_talk_subscribe_save_url' %}",
+            data: data,
+            type: "POST",
+            success: function (data) {
+                if (data.success){
+                    subscribe_email.val('')
+                    if(data.email_existes){
+                      $("#subscribe_error_field_id").addClass("errorfield");
+                      $('.error-message').text('Alerady subscribed!')
+                      return false;
+                    }
+                    else{
+                      $("#subscribe_error_field_id").removeClass("errorfield");
+                      let toastSubscribe = document.getElementById('subscribeToast');
+                      let toast = new bootstrap.Toast(toastSubscribe);
+                      toast.show();
+                    }
+                    
+                  
+                }
+            },
+            error: function (data) {
+            }
+      });
+    }
+</script>
+
+</body>
+
+</html>

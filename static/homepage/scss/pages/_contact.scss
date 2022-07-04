@@ -1,0 +1,263 @@
+/**=======================================================**
+                    CONTACT-SECTION START
+**=======================================================**/
+.contact {
+	padding: length(48) length(8) length(0);
+
+	@include breakpoint(tab992) {
+		padding: length(80) length(0);
+	}
+
+	&-details {
+		background: $white;
+		padding: length(24);
+		@include flex-column;
+		gap: length(40);
+
+		@include breakpoint(mobile576) {
+			padding: length(40);
+		}
+
+		@include breakpoint(mobile768) {
+			padding: length(40) length(55);
+			gap: length(64);
+		}
+
+		@include breakpoint(tab992) {
+			padding: length(80) length(110);
+			gap: length(80);
+		}
+
+		.contact-header {
+			@include flex-center;
+			text-align: center;
+
+			.contact-title {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(32), weight('semibold'), line-height(47, 32));
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(40), weight('semibold'), line-height(77, 40));
+				}
+
+				@include breakpoint(tab992) {
+					@include font-face($primaryFont, style('normal'), size(52), weight('semibold'), line-height(79.09, 52));
+				}
+			}
+		}
+
+		.contact-body {
+			.contactform {
+				@include flex-column;
+				gap: length(16);
+
+				.forminfo {
+					@include flex-column;
+					gap: length(24);
+
+					.inputbox {
+						@include flex-column;
+						gap: length(8);
+
+						.inputlabel {
+							@include font-face($primaryFont, style('normal'), size(14), weight('normal'), line-height(16.94, 14));
+							color: $textLabel;
+						}
+
+						.inputfield {
+							@include border(solid, 1, $gray-300);
+							@include radius(6);
+							@include setBgColor($white, $black);
+							@include font-face($primaryFont, style('normal'), size(15), weight('medium'), line-height(15, 15));
+							padding: length(11.5) length(16);
+
+							&::placeholder {
+								color: $textPlaceholder;
+							}
+						}
+
+						.selectfield {
+							@include border(solid, 1, $gray-300);
+							@include radius(6);
+							@include setBgColor($white, $black);
+							@include font-face($primaryFont, style('normal'), size(15), weight('medium'), line-height(15, 15));
+							padding: length(15.5) length(16);
+							background: $white url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_102_11830' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='11' height='11'%3E%3Cpath d='M4.98252 7.65869L1.68511 3.89022C1.29615 3.4457 1.61184 2.75 2.20251 2.75H8.79733C9.388 2.75 9.70369 3.4457 9.31473 3.89022L6.01732 7.65869C5.74341 7.97173 5.25643 7.97173 4.98252 7.65869Z' fill='black'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_102_11830)'%3E%3Crect width='11' height='11' fill='%23B5B5BD'/%3E%3C/g%3E%3C/svg%3E%0A") no-repeat center right 3%;
+							appearance: none;
+						}
+
+						textarea {
+							resize: none;
+
+							&:focus {
+								outline: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-body {
+		.formsubmit {
+			@include flex-center-column;
+			gap: length(16);
+			text-align: center;
+
+			.or {
+				@include font-face($primaryFont, style('normal'), size(16), weight('normal'), line-height(16, 16));
+				color: $textLabel;
+			}
+		}
+	}
+}
+
+/**=======================================================**
+                    CONTACT-SECTION END
+**=======================================================**/
+
+
+
+/**=======================================================**
+                    GET-IN-TOUCH END
+**=======================================================**/
+.getintouch {
+	padding: length(48) length(8);
+
+	@include breakpoint(tab992) {
+		padding: length(80) length(0) length(160);
+	}
+
+	&-content {
+		@include flex-column;
+		gap: length(40);
+	}
+
+	&-header {
+		@include flex-center-column;
+		gap: length(40);
+		text-align: center;
+
+		@include breakpoint(tab992) {
+			align-items: flex-start;
+			text-align: left;
+		}
+
+		.getintouchinfo {
+			.getintouchtitle {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(32), weight('semibold'), line-height(47, 32));
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(40), weight('semibold'), line-height(77, 40));
+				}
+
+				@include breakpoint(tab992) {
+					@include font-face($primaryFont, style('normal'), size(52), weight('semibold'), line-height(79.09, 52));
+				}
+			}
+		}
+
+		.getintouchlist {
+			@include list-vertical;
+			gap: length(4);
+			align-items: center;
+
+			@include breakpoint(tab992) {
+				align-items: flex-start;
+			}
+
+			&-link {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(14), weight('normal'), line-height(21, 14));
+				@include transitionscolor;
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(16), weight('normal'), line-height(25.92, 16));
+				}
+
+				@include hover {
+					color: $primary;
+				}
+			}
+		}
+
+		.getintouchaddress {
+			text-align: center;
+
+			@include breakpoint(tab992) {
+				text-align: left;
+			}
+
+			.address {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(14), weight('normal'), line-height(21, 14));
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(16), weight('normal'), line-height(25.92, 16));
+				}
+			}
+		}
+
+		.getintouchsocial {
+			@include flex-center;
+
+			@include breakpoint(tab992) {
+				justify-content: flex-end;
+			}
+
+			.social-list {
+				@include list-horizontal;
+				gap: length(32);
+
+				@include breakpoint(tab992) {
+					gap: length(40);
+				}
+
+				&-link {
+					@include square(length(30));
+					@include flex-center;
+					overflow: hidden;
+
+					@include breakpoint(tab992) {
+						@include square(length(36));
+					}
+
+					svg {
+						@include wh100;
+					}
+				}
+			}
+		}
+	}
+
+	&-body {
+		background: $gray-300;
+		height: length(260);
+
+		@include breakpoint(mobile576) {
+			height: length(320);
+		}
+
+		@include breakpoint(mobile768) {
+			height: length(460);
+		}
+
+		@include breakpoint(tab992) {
+			min-height: length(625);
+		}
+
+		.mapouter {
+			@include wh100;
+
+			.gmap_canvas {
+				@include wh100;
+			}
+		}
+	}
+}
+
+/**=======================================================**
+                    GET-IN-TOUCH END
+**=======================================================**/

@@ -1,0 +1,32 @@
+/**=====================================================**
+                      COMING SOON START
+=======================================================**/
+
+.comingsoon {
+  background: $errorBg;
+  @include flex-center-column;
+  gap: length(24);
+  height: 100vh;
+  padding: length(20);
+
+  &-thumbnail {
+    overflow: hidden;
+
+    img {
+      @include wh100;
+      object-fit: cover;
+    }
+  }
+
+  &-info {
+    .comingsoon-text {
+      color: $primary;
+      @include font-face($primaryFont, style('normal'), size(24), weight('bold'), line-height(30, 24));
+      text-align: center;
+    }
+  }
+}
+
+/**=====================================================**
+                      COMING SOON END
+=======================================================**/

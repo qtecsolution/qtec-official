@@ -1,0 +1,88 @@
+{% extends 'homepage/base_homepage.html' %}
+{% load static %}
+
+{% block content %}
+	<section class="about-banner">
+		<div class="container">
+			<div class="about-banner-content">
+				<h1 class="about-banner-title">
+					<span>A Team that's</span> <br> Empowered, Diverse, <br> and Committed
+				</h1>
+			</div>
+		</div>
+	</section>
+	<!--========== ABOUT-BANNER-END ================-->
+
+	<!--========== OUR-STORY-START ================-->
+	<section class="ourstory">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-lg-auto col-12">
+					<div class="ourstory-content">
+						<h1 class="ourstory-title">Our Story</h1>
+						<p class="ourstory-text">
+							Qtec Solution Limited was founded at the end of 2019 with an aim to engineer robust
+							technology services for super growing businesses founded by visionaries.
+							We served software solutions for over 30 clients in the last two years and completed 50+
+							Medium and Large projects. Most of Qtec Solution Limited’s team members have
+							very good experience of working with local and international clients in software development projects.
+							On Time delivery and aligning with client’s requirements is something we are all about.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--========== OUR-STORY-END ==================-->
+
+	<!--========== HOME-VIDEO-SECTION-START ============-->
+	<section class="homevideo">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-12 mx-md-auto">
+					<div class="videobox">
+						<video id="about-player" class="video-js vjs-big-play-centered" poster="{% static 'homepage/assets/video-poster/video-poster.jpg' %}">
+							<source src="{% static 'homepage/assets/videos/q-video.mp4' %}" type="video/mp4" />
+
+							<p class="vjs-no-js">Your browser does not support video tag</p>
+						</video>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--========== HOME-VIDEO-SECTION-END ==============-->
+
+	<!--========== FEATURED-SECTION-START ==============-->
+	<section class="featured">
+		<div class="container">
+			<div class="row g-4 align-items-center">
+				<div class="col-lg-5 col-12">
+					<div class="featured-description">
+						<div class="featuredinfo">
+							<h3 class="featured-title">We got featured!</h3>
+						</div>
+
+						<div class="featureddetetail">
+							<p class="featured-text">
+								We have been featured at the daily famous newspaper in Bangladesh. They have acknowledged
+								our good work and inspired us with the publication. On the Interview our Managing Director
+								Mr. Mosharrof Hossain talked about How Qtec started their journey, what challenges Qtec faced over
+								the years and how Qtec overcame those challenges. He also talked about how Qtec substantially grew
+								its business during Covid-19 pandemic. On the right, you can see our team’s group photo.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
+					<div class="thumbnailbox">
+						<figure class="product-thumbnail">
+							<img src="{% static 'homepage/assets/images/featured/featured-thumbnail.png' %}" alt="featured-thumbnail">
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

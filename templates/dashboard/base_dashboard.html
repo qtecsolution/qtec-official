@@ -1,0 +1,58 @@
+
+{% load static %}
+<html>
+<head>
+
+    {% include 'dashboard/head_dashboard.html' %}
+
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed ">
+<div class="wrapper">
+
+  {% include 'dashboard/navbar_dashboard.html' %}
+  {% block navbar %}
+  {% endblock %}
+
+  {% include 'dashboard/sidebar_dashboard.html' %}
+  {% block sidebar %}
+  {% endblock %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="height: auto">
+  {% include 'dashboard/messages_dashboard.html' %}
+
+      {% block content %}
+      {% endblock %}
+
+  </div>
+  <!-- /.content-wrapper -->
+ {% include 'dashboard/footer_dashboard.html' %}
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+{% include 'dashboard/script_dashboard.html' %}
+<script>
+toastr.options = {
+    "debug": false,
+    "positionClass": "toast-bottom-right",
+    "onclick": null,
+    "fadeIn": 300,
+    "fadeOut": 1000,
+    "timeOut": 6000,
+    "extendedTimeOut": 2000
+  }
+</script>
+{% block script %}
+{% endblock %}
+</body>
+</html>

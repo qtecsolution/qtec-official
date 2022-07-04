@@ -1,0 +1,206 @@
+{% extends 'homepage/base_homepage.html' %}
+
+{% block content %}
+<!--========== CASESTUDY-BANNER-START ============-->
+	<section class="casestudy-banner">
+		<div class="container">
+			<div class="row g-4 align-items-center">
+				<div class="col-lg-5 col-12">
+					<div class="casestudy-banner-description">
+						<div class="casestudyinfo">
+							<h3 class="casestudy-title">{{ we_have_done.name }} Case Study</h3>
+						</div>
+
+						<div class="casestudydetetail">
+							<p class="casestudy-text">
+                                {{ case_study_details.case_study_about }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
+					<div class="thumbnailbox">
+						<figure class="product-thumbnail">
+							<img src="{{ case_study_details.case_study_image.url }}" alt="case-study-thumbnail">
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--========== CASESTUDY-BANNER-END ==============-->
+
+	<!--========== CLIENT-REQUIREMENTS START ============-->
+	<section class="client-requirements">
+		<div class="container">
+			<div class="row g-4">
+				<div class="col-lg-6 col-12">
+					<div class="requirements">
+						<div class="requirements-header">
+							<h2 class="requirements-title">Client Requirements</h2>
+						</div>
+
+						<div class="requirements-body">
+							<p class="requirements-text">
+								{{ case_study_details.client_requirement }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-12"></div>
+			</div>
+		</div>
+	</section>
+	<!--========== CLIENT-REQUIREMENTS END ==============-->
+
+	<!--========== KEY-FEATURES START ==============-->
+	<section class="keyfeatures">
+		<div class="container">
+			<div class="keyfeatures-content">
+				<!-- KEY-FEATURES-HEADER START -->
+				<div class="keyfeatures-header">
+					<div class="row g-0">
+						<div class="col-lg-9 col-12">
+							<div class="row g-4">
+								<div class="col-lg-6 col-12">
+									<div class="featuresinfo">
+										<h1 class="features-title">Key features</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- KEY-FEATURES-HEADER END -->
+
+				<!-- KEY-FEATURES-BODY START -->
+				<div class="keyfeatures-body">
+					<!-- FEATURE-SECTION START -->
+					<div class="features">
+						<!-- FEATURE-BODY START -->
+						<div class="features-body">
+							<div class="row g-4">
+                                {% for feature in case_study_details.key_features.all %}
+								<div class="col-lg-4 col-sm-6 col-12">
+									<div class="feature">
+										<div class="feature-header">
+											<div class="feature-cap">
+                                                <img width="40%" src="{{ feature.image.url }}">
+											</div>
+
+											<h4 class="feature-title">{{ feature.title }}</h4>
+										</div>
+
+										<div class="feature-body">
+											<p class="feature-text">
+												This section is filled with video lessons, quizzes, and course resources  where a student can watch videos, take quizzes and download course resources.
+											</p>
+										</div>
+									</div>
+								</div>
+                                {% endfor %}
+							</div>
+						</div>
+						<!-- FEATURE-BODY END -->
+					</div>
+					<!-- FEATURE-SECTION END -->
+				</div>
+				<!-- KEY-FEATURES-BODY END -->
+			</div>
+		</div>
+	</section>
+	<!--========== KEY-FEATURES END ================-->
+
+	<!--========== HOW-BUILD-START ============-->
+	<section class="how-build">
+		<div class="container">
+			<div class="row align-items-center g-4">
+				<div class="col-lg-5 col-12">
+					<div class="how-build-description">
+						<div class="buildinfo">
+							<h3 class="build-title">How we build it?</h3>
+						</div>
+
+						<div class="builddetetail">
+							<p class="build-text">
+								{{ case_study_details.how_we_build_it }}
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
+					<div class="thumbnailbox">
+						<figure class="product-thumbnail">
+							<img src="{{ case_study_details.how_we_build_image.url }}" alt="hwo-build-thumbnail">
+						</figure>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--========== HOW-BUILD-END ==============-->
+
+	<!--========== TECHNOLOGIES-START ============-->
+	<section class="technologies">
+		<div class="container">
+			<div class="technologies-content">
+				<!-- TECHNOLOGIES-HEADER START -->
+				<div class="technologies-header">
+					<div class="row g-0">
+						<div class="col-lg-9 col-12">
+							<div class="row g-4">
+								<div class="col-lg-6 col-12">
+									<div class="technologyinfo">
+										<h1 class="technology-title">Technologies</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- TECHNOLOGIES-HEADER END -->
+
+				<!-- TECHNOLOGIES-BODY START -->
+				<div class="technologies-body">
+					<div class="row g-4">
+                        {% for tech in case_study_details.technology.all %}
+						<div class="col-lg-4 col-sm-6 col-12">
+							<div class="card-technology">
+								<div class="card-technology-header">
+									<div class="card-technology-cap">
+										<img width="50%" src="{{ tech.image.url }}">
+									</div>
+
+									<h4 class="card-technology-title">{{ tech.title }}</h4>
+								</div>
+
+								<div class="card-technology-body">
+									<p class="card-technology-text">
+										{{ tech.description }}
+									</p>
+								</div>
+							</div>
+						</div>
+                        {% endfor %}
+					</div>
+				</div>
+				<!-- TECHNOLOGIES-BODY END -->
+			</div>
+		</div>
+	</section>
+	<!--========== TECHNOLOGIES-END ==============-->
+
+	<!--========== SUBSCRIBE-START ==============-->
+	<section class="subscribe">
+		<div class="container">
+			<div class="subscribe-content">
+				<h1 class="subscribe-title">Want to buid your one? <br> We are here for you!</h1>
+
+				<a href="{% url 'homepage:contact_us_url' %}" class="btn-getintouch">Contact us</a>
+			</div>
+		</div>
+	</section>
+{% endblock %}

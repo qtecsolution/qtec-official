@@ -1,0 +1,135 @@
+{% extends 'homepage/base_homepage.html' %}
+
+{% block content %}
+  <!--========== BLOG-BANNER START ==========-->
+  <section class="blogbanner">
+    <div class="container">
+      <div class="blogbanner-content">
+        <h1 class="banner-title">Our Blogs</h1>
+      </div>
+    </div>
+    <div class="overlay"></div>
+  </section>
+  <!--========== BLOG-BANNER END ============-->
+
+  <!--========== BLOG-SECTION START ==========-->
+  <section class="blog">
+    <div class="container">
+      <div class="row g-lg-4 g-3">
+        <!-- BLOG ITEM START -->
+          {% for i in top_4_blog %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
+          <a href="/blog-details/{{ i.blog_category.slug }}/{{ i.slug }}/" class="bloglink">
+            <div class="card-article">
+              <div class="card-article-header">
+                <img src="{{ i.image.url }}" alt="card-thumbnail">
+              </div>
+
+              <div class="card-article-body">
+                <div class="title-date">
+                  <h4 class="title">{{ i.title }}</h4>
+                  <p class="date">{{ i.updated_at }}</p>
+                </div>
+
+                <div class="articledescript">
+                  <p class="articletext">
+                    {{ i.description }}
+                  </p>
+                </div>
+
+                <span class="articlelink">Read article</span>
+              </div>
+            </div>
+          </a>
+        </div>
+          {% endfor %}
+        <!-- BLOG ITEM END -->
+      </div>
+    </div>
+  </section>
+  <!--========== BLOG-SECTION END ============-->
+
+  <!--========== BLOG-DESCRIPT START ==========-->
+  <section class="blogdescript">
+    <div class="container">
+      <div class="card-blog">
+        <div class="row g-4">
+          <div class="col-lg-6 col-12">
+            <div class="card-blog-thumbnail">
+              <img src="{{ highlight_blog.image.url }}" alt="blog-thumbnail">
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12">
+            <div class="card-blog-details">
+              <div class="info">
+                <div class="info-head">
+                  <h1 class="blogtitle">{{ highlight_blog.title }}</h1>
+                  <p class="date">{{ highlight_blog.updated_at }}</p>
+                </div>
+
+                <div class="info-body">
+                  <p class="blogtext">
+                    {{ highlight_blog.description }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="readinfo">
+                <a href="/blog-details/{{ highlight_blog.blog_category.slug }}/{{ highlight_blog.slug }}/" class="btn-read">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--========== BLOG-DESCRIPT END ============-->
+
+  <!--========== ALL BLOGS START ==========-->
+  <section class="allblogs">
+    <div class="container">
+      <div class="allblogs-content">
+        <!-- ALL BLOGS START -->
+        <div class="row g-4">
+            {% for i in random_blog %}
+                 <div class="col-lg-4 col-md-6 col-sm-6 col-8 mx-auto">
+            <a href="/blog-details/{{ i.blog_category.slug }}/{{ i.slug }}/" class="bloglink">
+              <div class="card-article">
+                <div class="card-article-header">
+                  <img src="{{ i.image.url }}" alt="card-thumbnail">
+                </div>
+
+                <div class="card-article-body">
+                  <div class="title-date">
+                    <h4 class="title">{{ i.title }}</h4>
+                    <p class="date">{{ i.updated_at }}</p>
+                  </div>
+
+                  <div class="articledescript">
+                    <p class="articletext">
+                        {{ highlight_blog.description }}
+                    </p>
+                  </div>
+
+                  <span class="articlelink">Read article</span>
+                </div>
+              </div>
+            </a>
+          </div>
+            {% endfor %}
+        </div>
+        <!-- ALL BLOGS END -->
+
+        <!-- SEE ALL START -->
+        <div class="seeall">
+          <div class="seemore">
+            <a href="{% url 'homepage:all_blog_url' %}" class="btn-seeall">See All</a>
+          </div>
+        </div>
+        <!-- SEE ALL END -->
+      </div>
+    </div>
+  </section>
+  <!--========== ALL BLOGS END ============-->
+{% endblock %}

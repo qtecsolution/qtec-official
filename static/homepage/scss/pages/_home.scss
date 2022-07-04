@@ -1,0 +1,515 @@
+/**=======================================================**
+                    HOME-BANNER SECTION START
+**=======================================================**/
+
+.homebanner {
+	background: url(../images/home-banner/banner-bg-1.svg) no-repeat;
+	background-position: left;
+	background-size: cover;
+	padding: length(24) length(8) length(0);
+
+	@include breakpoint(tab992) {
+		padding: length(100) length(0) length(140);
+	}
+
+	@include breakpoint(desktop1100) {
+		min-height: calc(100vh - 6.25rem);
+	}
+
+	&-details {
+		@include flex-column;
+		gap: length(24);
+
+		@include breakpoint(mobile768) {
+			gap: length(40);
+		}
+
+		@include breakpoint(tab992) {
+			gap: length(60);
+		}
+	}
+
+	&-header {
+		@include flex-column;
+		gap: length(24);
+
+		@include breakpoint(mobile768) {
+			gap: length(40);
+		}
+
+		.banner-title {
+			.homebanner-title {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(36), weight('bold'), line-height(48, 36));
+
+				@include breakpoint(mobile500) {
+					@include font-face($primaryFont, style('normal'), size(54), weight('bold'), line-height(74, 54));
+				}
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(64), weight('bold'), line-height(84, 64));
+				}
+
+				@include breakpoint(desktop1400) {
+					@include font-face($primaryFont, style('normal'), size(80), weight('bold'), line-height(100, 80));
+				}
+
+				.underline {
+					position: relative;
+
+					&::after {
+						content: '';
+						position: absolute;
+						left: 0;
+						bottom: 0;
+						width: 100%;
+						height: length(4);
+						background: $tertiary;
+
+						@include breakpoint(mobile768) {
+							height: length(8);
+						}
+
+						@include breakpoint(desktop1400) {
+							height: length(10);
+						}
+					}
+				}
+			}
+		}
+
+		.banner-info {
+			max-width: 100%;
+
+			@include breakpoint(tab992) {
+				max-width: 85%;
+			}
+
+			.banner-text {
+				color: $gray-600;
+				@include font-face($primaryFont, style('normal'), size(14), weight('normal'), line-height(25.58, 14));
+				letter-spacing: length(0.24);
+				text-align: justify;
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(16), weight('normal'), line-height(25.92, 16));
+				}
+
+				@include breakpoint(tab992) {
+					@include font-face($primaryFont, style('normal'), size(18), weight('normal'), line-height(30, 18));
+				}
+			}
+		}
+	}
+
+	&-body {
+		@include flex-center-vert;
+		gap: length(24);
+	}
+
+	&-descriptions {
+		@include flex-center-vert;
+		gap: length(36);
+		padding-top: length(100);
+		padding: length(160) length(0) length(40);
+		margin-left: length(0);
+
+		@include breakpoint(tab992) {
+			padding: length(240) length(0) length(0);
+			margin-left: length(-48);
+		}
+
+		.card-banner {
+			@include flex-center-column;
+			gap: length(16);
+			background: $white;
+			backdrop-filter: blur(length(10));
+			@include border(solid, 1, $gray-100);
+			@include radius(16);
+			padding: length(24) length(24) length(16);
+			filter: $drop-shadow-1;
+			box-shadow: $box-shadow-1;
+
+			@include breakpoint(mobile576) {
+				filter: none;
+				box-shadow: none;
+			}
+
+			&.cardlast {
+				margin-top: -50%;
+			}
+
+			&-header {
+				@include flex-center;
+
+				.cardcap {
+					background: $bannericonbg;
+					@include square(length(48));
+					@include circle;
+					@include flex-center;
+					padding: length(8);
+				}
+			}
+
+			&-body {
+				@include flex-center-column;
+				text-align: center;
+			}
+
+			&-title {
+				color: $gray-800;
+				@include font-face($primaryFont, style('normal'), size(24), weight('normal'), line-height(36, 24));
+
+				@include breakpoint(mobile576) {
+					@include font-face($primaryFont, style('normal'), size(40), weight('normal'), line-height(36, 40));
+					margin-bottom: length(8);
+				}
+			}
+
+			&-subtitle {
+				color: $gray-600;
+				@include font-face($primaryFont, style('normal'), size(12), weight('normal'), line-height(24, 12));
+
+				@include breakpoint(mobile576) {
+					@include font-face($primaryFont, style('normal'), size(18), weight('normal'), line-height(36, 18));
+				}
+			}
+
+			&-text {
+				color: $gray-600;
+				@include font-face($primaryFont, style('normal'), size(12), weight('normal'), line-height(24, 12));
+
+				@include breakpoint(mobile576) {
+					@include font-face($primaryFont, style('normal'), size(18), weight('normal'), line-height(36, 18));
+				}
+			}
+		}
+	}
+}
+
+/**=======================================================**
+                    HOME-BANNER SECTION END
+**=======================================================**/
+
+
+
+/**=======================================================**
+                HOME-FEATURES SECTION START
+**=======================================================**/
+
+.home-features {
+	background: $white;
+	padding: length(80) length(8);
+
+	@include breakpoint(tab992) {
+		padding: length(160) length(0);
+	}
+
+	&-content {
+		@include flex-column;
+		gap: length(40);
+	}
+
+	&-header {
+		.featureinfo {
+			.home-features-title {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(32), weight('semibold'), line-height(47, 32));
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(40), weight('semibold'), line-height(77, 40));
+				}
+
+				@include breakpoint(tab992) {
+					@include font-face($primaryFont, style('normal'), size(52), weight('semibold'), line-height(79.09, 52));
+				}
+			}
+		}
+	}
+}
+
+/**=======================================================**
+                HOME-FEATURES SECTION END
+**=======================================================**/
+
+
+
+/**=======================================================**
+                    HOME-VIDEO SECTION START
+**=======================================================**/
+
+.homevideo {
+	background: $gray-100;
+	padding-bottom: length(64);
+
+	@include breakpoint(tab992) {
+		padding-bottom: length(120);
+	}
+
+	.videobox {
+		background: $lightGrayBackground;
+		@include radius(16);
+		height: length(260);
+		margin-top: length(-40);
+		@include flex-center;
+		position: relative;
+		overflow: hidden;
+
+		img {
+			@include wh100;
+			object-fit: cover;
+		}
+
+		@include breakpoint(mobile576) {
+			height: length(320);
+		}
+
+		@include breakpoint(mobile768) {
+			height: length(460);
+		}
+
+		@include breakpoint(tab992) {
+			height: length(580);
+			margin-top: length(-80);
+		}
+	}
+}
+
+/**=======================================================**
+                    HOME-VIDEO SECTION END
+**=======================================================**/
+
+
+
+/**=======================================================**
+                OUR-SERVICES SECTION START
+**=======================================================**/
+
+.ourservices {
+	background: $serviceBg;
+	padding: length(48) length(8);
+
+	@include breakpoint(tab992) {
+		padding: length(80) length(0);
+	}
+
+	&-content {
+		@include flex-column;
+		gap: length(40);
+	}
+
+	&-header {
+		.servicesinfo {
+			.services-title {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(32), weight('semibold'), line-height(47, 32));
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(40), weight('semibold'), line-height(77, 40));
+				}
+
+				@include breakpoint(tab992) {
+					@include font-face($primaryFont, style('normal'), size(52), weight('semibold'), line-height(79.09, 52));
+				}
+			}
+		}
+	}
+
+	&-body {
+		.services {
+			@include w100;
+
+			.accordion {
+				@include w100;
+
+				.nav.nav-tabs {
+					@include w100;
+					flex-direction: column;
+					align-items: flex-start;
+
+					.nav-item {
+						@include w100;
+					}
+
+					.nav-link {
+						@include w100;
+						box-shadow: none;
+						padding: 0;
+						background: transparent;
+
+						&:hover:not(.active) {
+							@include radius(0);
+							filter: none;
+						}
+
+						&.active {
+							@include radius(0);
+							filter: none;
+						}
+					}
+				}
+			}
+		}
+
+		.tab-content {
+			.tab-thumbnail {
+				@include wh100;
+				overflow: hidden;
+
+				img {
+					@include wh100;
+					object-fit: cover;
+					@include transitiontransform;
+
+					@include hover {
+						@include transform(scale(1.05));
+					}
+				}
+			}
+		}
+	}
+}
+
+/**=======================================================**
+                OUR-SERVICES SECTION END
+**=======================================================**/
+
+
+
+/**=======================================================**
+                OUR-PROJECTS SECTION START
+**=======================================================**/
+
+.ourprojects {
+	background: $white;
+	padding: length(48) length(8);
+
+	@include breakpoint(tab992) {
+		padding: length(80) length(0);
+	}
+
+	&-content {
+		@include flex-column;
+		gap: length(40);
+	}
+
+	&-header {
+		.projectsinfo {
+			.projects-title {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(32), weight('semibold'), line-height(47, 32));
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(40), weight('semibold'), line-height(77, 40));
+				}
+
+				@include breakpoint(tab992) {
+					@include font-face($primaryFont, style('normal'), size(52), weight('semibold'), line-height(79.09, 52));
+				}
+			}
+		}
+	}
+
+	&-body {
+		@include flex-column;
+		gap: length(40);
+
+		.tab-content {
+			.tab-pane {
+				.projectlink {
+					@include h100;
+
+					.card-project {
+						@include h100;
+					}
+				}
+			}
+		}
+	}
+}
+
+/**=======================================================**
+                OUR-PROJECTS SECTION END
+**=======================================================**/
+
+
+
+/**=======================================================**
+                HOME-ARTICLES SECTION START
+**=======================================================**/
+
+.home-articles {
+	background: $serviceBg;
+	padding: length(48) length(8);
+
+	@include breakpoint(tab992) {
+		padding: length(80) length(0);
+	}
+
+	&-content {
+		@include flex-column;
+		gap: length(40);
+	}
+
+	&-header {
+		.articleinfo {
+			.home-articles-title {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(32), weight('semibold'), line-height(47, 32));
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(40), weight('semibold'), line-height(77, 40));
+				}
+
+				@include breakpoint(tab992) {
+					@include font-face($primaryFont, style('normal'), size(52), weight('semibold'), line-height(79.09, 52));
+				}
+			}
+		}
+	}
+}
+
+/**=======================================================**
+                HOME-ARTICLES SECTION END
+**=======================================================**/
+
+
+
+/**=======================================================**
+                HOME-TESTIMONIALS SECTION START
+**=======================================================**/
+
+.testimonial {
+	background: $aboutBg;
+	padding: length(48) length(8);
+
+	@include breakpoint(tab992) {
+		padding: length(80) length(0);
+	}
+
+	&-content {
+		@include flex-column;
+		gap: length(40);
+	}
+
+	&-header {
+		.testimonialinfo {
+			.testimonial-title {
+				color: $gray-700;
+				@include font-face($primaryFont, style('normal'), size(32), weight('semibold'), line-height(47, 32));
+
+				@include breakpoint(mobile768) {
+					@include font-face($primaryFont, style('normal'), size(40), weight('semibold'), line-height(77, 40));
+				}
+
+				@include breakpoint(tab992) {
+					@include font-face($primaryFont, style('normal'), size(52), weight('semibold'), line-height(79.09, 52));
+				}
+			}
+		}
+	}
+}
+
+/**=======================================================**
+                HOME-TESTIMONIALS SECTION END
+**=======================================================**/

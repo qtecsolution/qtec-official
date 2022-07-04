@@ -1,0 +1,28 @@
+/**=====================================================**
+                        ERROR START
+=======================================================**/
+
+.error {
+  background: $errorBg;
+  @include flex-center-column;
+  gap: length(24);
+  height: 100vh;
+
+  &-thumbnail {
+    overflow: hidden;
+
+    img {
+      @include wh100;
+      object-fit: cover;
+    }
+  }
+
+  &-link {
+    width: length(200);
+    margin-inline: auto;
+  }
+}
+
+/**=====================================================**
+                        ERROR END
+=======================================================**/
