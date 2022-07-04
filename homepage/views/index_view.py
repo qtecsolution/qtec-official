@@ -18,7 +18,7 @@ class IndexView(View):
         blog = blog[:4] if blog.count() > 4 else blog
         context = {
             'project_done_exists': project_done_all.exists(),
-            'title': "HOME",
+            'title': "Home",
             'project_done': project_done_all,
             'web_project': web_project,
             'app_project': app_project,

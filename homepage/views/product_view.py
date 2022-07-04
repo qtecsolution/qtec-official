@@ -5,4 +5,4 @@ from django.views import View
 class ProductsView(View):
 
     def get(self, request):
-        return render(request, 'product.html', {'title': "PRODUCTS"})
+        return render(request, 'product.html', {'title': "Products"})
