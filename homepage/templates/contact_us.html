@@ -19,7 +19,7 @@
 											<div id="name_field_id" class="inputbox">
 												<label for="name" class="inputlabel">Enter Full Name <small style="color: red">*</small></label>
 												<input type="text" class="inputfield" placeholder="Enter full name" id="name">
-												<p class="error-message">This field is required</p>
+												<p id="name_error" class="error-message"></p>
 											</div>
 										</div>
 
@@ -27,7 +27,7 @@
 											<div id="email_field_id" class="inputbox">
 												<label for="email" class="inputlabel">Enter Email Address</label>
 												<input type="email" class="inputfield" placeholder="Enter email address" id="email">
-												<p class="error-message">Invailed email</p>
+												<p id="email_error" class="error-message"></p>
 											</div>
 										</div>
 									</div>
@@ -37,7 +37,7 @@
 											<div id="phone_number_field_id" class="inputbox">
 												<label for="phone" class="inputlabel">Enter Phone Number <small style="color: red">*</small> </label>
 												<input type="tel" class="inputfield" placeholder="Enter phone number" id="phone">
-												<p class="error-message">Invailed Phone</p>
+												<p id="phone_number_error" class="error-message"></p>
 											</div>
 										</div>
 
@@ -49,7 +49,7 @@
 													<option value="{{ budget.0 }}">{{ budget.1 }}</option>
                                                     {% endfor %}
 												</select>
-												<p class="error-message">Invailed Budget</p>
+												<p id="budget_error" class="error-message"></p>
 											</div>
 										</div>
 									</div>
@@ -212,29 +212,40 @@
             let budget = myForm["budget"];
             let message = myForm["message"];
 			let check_email = $('#email')
-			flag = false
+
+			error = false
+
 			if (name.value == "") {
 				$("#name_field_id").addClass("errorfield");
-				flag = true
+				$('#name_error').text('This field is required!')
+				error= true
 			}else{
 				$("#name_field_id").removeClass("errorfield");
 			}
+
 			if (email.value != "")
 			{
 				if(!check_email.val().match(validRegex)){
 					$("#email_field_id").addClass("errorfield");
-					flag = true
+					$('#email_error').text('Invalid Email!')
+					error= true
+				}else{
+					$("#email_field_id").removeClass("errorfield");
 				}
+			}
+			else{
+				$("#email_field_id").removeClass("errorfield");
 			}
 			if (phone.value == "") {
 				$("#phone_number_field_id").addClass("errorfield");
-				$('.error-message').text('This field is required !')
-				flag = true
+				$('#phone_number_error').text('This field is required!')
+				error= true
 			}else if(phone.value){
 				let valid_number = phone.value.match(/\+?(88)?0?1[356789][0-9]{8}\b/)
 				if (!valid_number){
 					$("#phone_number_field_id").addClass("errorfield");
-					flag = true
+					$('#phone_number_error').text('Invalid Phone Number!')
+					error= true
 				}else{
 					$("#phone_number_field_id").removeClass("errorfield");
 				}
@@ -244,9 +255,13 @@
 			}
 			if (budget.value == 1) {
 				$("#budget_field_id").addClass("errorfield");
-				flag = true
+				$('#budget_error').text('This field is required!')
+				error= true
 			}
-			if (flag){
+			else{
+				$("#budget_field_id").removeClass("errorfield");
+			}
+			if (error){
 				return false
 			}
 			let data= {
