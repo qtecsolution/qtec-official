@@ -20,7 +20,7 @@ class BlogsView(View):
             highlight_blog = handle_blog.highlight_blog
         context = {
             'handle_blog_exists' : handle_blog_exists,
-            'title': 'BLOGS',
+            'title': 'Blogs',
             'highlight_blog': highlight_blog,
             'top_4_blog': top_4_blog,
             'random_blog': random_blog

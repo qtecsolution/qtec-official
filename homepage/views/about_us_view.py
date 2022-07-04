@@ -6,4 +6,4 @@ class AboutUsView(View):
 
     def get(self, request):
 
-        return render(request, 'about_us.html', {'title': "ABOUT US"})
+        return render(request, 'about_us.html', {'title': "About"})

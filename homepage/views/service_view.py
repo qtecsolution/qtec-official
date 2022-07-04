@@ -7,7 +7,7 @@ from dashboard.models import ServiceDetailsProject
 class ServiceView(View):
 
     def get(self, request):
-        return render(request, 'service/service.html', {'title': "SERVICE"})
+        return render(request, 'service/service.html', {'title': "Service"})
 
 
 class ServiceDetailsView(View):

@@ -11,7 +11,7 @@ class CareerView(View):
         careers = CurrentOpportunities.objects.all()
         is_careers = CurrentOpportunities.objects.exists()
         context = {
-            'title': "CAREER",
+            'title': "Career",
             'careers': careers,
             'is_careers' : is_careers
         }
