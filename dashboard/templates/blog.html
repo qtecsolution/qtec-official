@@ -138,7 +138,7 @@
                                                                     <div class="col-sm-9">
                                                                         <div class="form-group row">
                                                                             <div  class="col-md-6">
-                                                                                <input type="date" class="form-control" name="created_at">
+                                                                                <input type="date"  class="form-control" name="created_at">
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 {{ blog.created_at }}
@@ -231,11 +231,12 @@
                                             <textarea class ="blog_list" required class="form-control" name="description"></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div id="tag_error_id" class="form-group row">
                                         <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
                                             <textarea required class ="blog_list" id="textarea" class="form-control" name="tags"></textarea>
                                         </div>
+                                        <p id="tag_error" class="error-message"></p>
                                     </div>
                                     <div class="form-group row">
                                         <label for="image" class="col-sm-3 col-form-label">Image <small style="color: red">*</small> </label>
@@ -250,7 +251,7 @@
                                     <div class="form-group row">
                                         <label for="created_at" class="col-sm-3 col-form-label">Created At <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <input type="date" required class="form-control" name="created_at">
+                                            <input type="date"  required class="form-control" name="created_at">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -282,7 +283,6 @@
     $('#myForm').on('submit', function(e) {
     
     if($('.blog_list').summernote('isEmpty')) {
-
         // cancel submit
         e.preventDefault();
     }
