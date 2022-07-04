@@ -28,7 +28,7 @@
 						</li>
 
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:service_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
+							<a href="{% url 'homepage:service_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'homepage:service_url' %} active {% endif %}">Services</a>
 						</li>
 						<li class="desktoplist-item">
 							<a href="{% url 'homepage:blog_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blogs</a>
