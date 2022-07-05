@@ -19,7 +19,7 @@ class ServiceDetailsView(View):
             return render(request, 'service/software_solution_development.html', {'title': "Service Details", "projects": projects})
         if slug == 'ui-ux-design':
             return render(request, 'service/ui_ux_design.html', {'title': "UI UX Design", "projects": projects})
-        if slug == 'e-commerce-solutions':
+        if slug == 'ecommerce-solutions':
             return render(request, 'service/e_commerce_solutions.html', {'title': "E Commerce Solutions", "projects": projects})
         if slug == 'mobile-application-development':
             return render(request, 'service/mobile_application_development.html', {'title': "Mobile Application Development", "projects": projects})
