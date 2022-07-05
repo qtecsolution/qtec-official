@@ -9617,3 +9617,18 @@ select {
 /**=======================================================**
                     TECHNOLOGY-DETAILS END
 **=======================================================**/
+
+
+/**=======================================================**
+                    over write
+**=======================================================**/
+
+element.style {
+  font-size: 11pt;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 3.25rem;
+  font-weight: 600;
+  line-height: 1.52096;
+  text-align: right;
+}
