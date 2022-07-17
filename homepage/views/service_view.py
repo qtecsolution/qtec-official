@@ -33,7 +33,7 @@ class ServiceDetailsView(View):
             }
             return render(request, 'service/ui_ux_design.html', context)
         if slug == 'ecommerce-solutions':
-            projects_done = WhatProjectHaveWeDone.objects.filter(Q(name='Odommo prokash') | Q(name='Decories Diamonds') | Q(name='Wear Soha')).all()
+            projects_done = WhatProjectHaveWeDone.objects.filter(Q(name='Odommo Prokash') | Q(name='Decoris Diamonds') | Q(name='Wear Soha')).all()
             context = {
                 'title': "E Commerce Solutions",
                 "projects": projects,
@@ -49,7 +49,7 @@ class ServiceDetailsView(View):
             }
             return render(request, 'service/mobile_application_development.html', context)
         if slug == 'lms-solutions':
-            projects_done = WhatProjectHaveWeDone.objects.filter(Q(name='Brightskills') | Q(name='Odommo prokash') | Q(name='Lex Intell')).all()
+            projects_done = WhatProjectHaveWeDone.objects.filter(Q(name='Brightskills') | Q(name='Odommo Prokash') | Q(name='Lex Intell')).all()
             context = {
                 'title': "LMS Solutions",
                 "projects": projects,
@@ -57,7 +57,7 @@ class ServiceDetailsView(View):
             }
             return render(request, 'service/lms_solutions.html', context)
         if slug == 'Logistics Solutions':
-            projects_done = WhatProjectHaveWeDone.objects.filter(Q(name='Odommo prokash') | Q(name='Brightskills') | Q(name='Aion Tribute')).all()
+            projects_done = WhatProjectHaveWeDone.objects.filter(Q(name='Odommo Prokash') | Q(name='Brightskills') | Q(name='Aion Tribute')).all()
             context = {
                 'title': "Logistic Solutions",
                 "projects": projects,
