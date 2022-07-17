@@ -204,124 +204,51 @@
 	<!--========== OUR-CLIENTS END ==============-->
 
 	<!--========== SOME-PROJECT START ============-->
-	<section class="someproject">
-		<div class="container">
-			<div class="someproject-content">
-				<div class="someproject-header">
-					<h2 class="someproject-title">Some of our projects</h2>
-				</div>
-
-				<div class="someproject-body">
-					<div class="row g-4">
-						<!-- BRIGHTSKILLS -->
-						<div class="col-lg-4 col-sm-6 col-12">
-							<a href="case-study.html" class="projectlink">
-								<div class="card-project">
-									<div class="card-project-header">
-										<img src="assets/images/projects/brightskill.svg" alt="project-thumbnail">
-									</div>
-
-									<div class="card-project-body">
-										<div class="project-title">
-											<h2 class="title">BrightSkills</h2>
-
-											<span class="icon">
-												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568"></path>
-												</svg>
-											</span>
-										</div>
-
-										<div class="tags">
-											<span class="tag">Django</span>
-											<span class="tag">Python</span>
-											<span class="tag">Flutter</span>
-											<span class="tag">Vuejs</span>
-											<span class="tag">NuxtJs</span>
-											<span class="tag">REST API</span>
-											<span class="tag">AWS</span>
-											<span class="tag">Figma</span>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<!-- BRIGHTSKILLS -->
-
-						<!-- SUPPLYLINE -->
-						<div class="col-lg-4 col-sm-6 col-12">
-							<a href="case-study.html" class="projectlink">
-								<div class="card-project">
-									<div class="card-project-header">
-										<img src="assets/images/projects/supplyline.svg" alt="project-thumbnail">
-									</div>
-
-									<div class="card-project-body">
-										<div class="project-title">
-											<h2 class="title">Supplyline</h2>
-
-											<span class="icon">
-												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568"></path>
-												</svg>
-											</span>
-										</div>
-
-										<div class="tags">
-											<span class="tag">Django</span>
-											<span class="tag">Python</span>
-											<span class="tag">Flutter</span>
-											<span class="tag">Vuejs</span>
-											<span class="tag">NuxtJs</span>
-											<span class="tag">REST API</span>
-											<span class="tag">AWS</span>
-											<span class="tag">Figma</span>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<!-- SUPPLYLINE -->
-
-						<!-- WEAR-SOHA -->
-						<div class="col-lg-4 col-sm-6 col-12">
-							<a href="case-study.html" class="projectlink">
-								<div class="card-project">
-									<div class="card-project-header">
-										<img src="assets/images/projects/soha.svg" alt="project-thumbnail">
-									</div>
-
-									<div class="card-project-body">
-										<div class="project-title">
-											<h2 class="title">Wear Soha</h2>
-
-											<span class="icon">
-												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568"></path>
-												</svg>
-											</span>
-										</div>
-
-										<div class="tags">
-											<span class="tag">Django</span>
-											<span class="tag">Python</span>
-											<span class="tag">Flutter</span>
-											<span class="tag">Vuejs</span>
-											<span class="tag">NuxtJs</span>
-											<span class="tag">REST API</span>
-											<span class="tag">AWS</span>
-											<span class="tag">Figma</span>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<!-- WEAR-SOHA -->
+	{% if projects_done %}
+		<section class="someproject">
+			<div class="container">
+				<div class="someproject-content">
+					<div class="someproject-header">
+						<h2 class="someproject-title">Some of our projects</h2>
 					</div>
+					{% for project in projects_done%}
+						<div class="someproject-body">
+							<div class="row g-4">
+								<!-- BRIGHTSKILLS -->
+								<div class="col-lg-4 col-sm-6 col-12">
+									<a href="case-study.html" class="projectlink">
+										<div class="card-project">
+											<div class="card-project-header">
+												<img src="{{ project.image.url  }}" alt="project-thumbnail">
+											</div>
+											<div class="card-project-body">
+												<div class="project-title">
+													<h2 class="title">{{ project.name }}</h2>
+
+													<span class="icon">
+														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568"></path>
+														</svg>
+													</span>
+												</div>
+
+												<div class="tags">
+													{% for skill in project.technology.all %}
+															<span class="tag">{{ skill.title }}</span><br>
+													{% endfor %}
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<!-- BRIGHTSKILLS -->
+							</div>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	{% endif %}
 	<!--========== SOME-PROJECT END ==============-->
 
 
