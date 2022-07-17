@@ -220,10 +220,9 @@
 					<div class="someproject-header">
 						<h2 class="someproject-title">Some of our projects</h2>
 					</div>
-					{% for project in projects_done%}
 						<div class="someproject-body">
 							<div class="row g-4">
-								<!-- BRIGHTSKILLS -->
+								{% for project in projects_done%}
 								<div class="col-lg-4 col-sm-6 col-12">
 									<a href="case-study.html" class="projectlink">
 										<div class="card-project">
@@ -250,10 +249,9 @@
 										</div>
 									</a>
 								</div>
-								<!-- BRIGHTSKILLS -->
+								{% endfor %}
 							</div>
 						</div>
-					{% endfor %}
 				</div>
 			</div>
 		</section>
