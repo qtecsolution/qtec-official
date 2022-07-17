@@ -1,0 +1,166 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center">Update Technologies</h2>
+
+                        <form method="POST"  id="managementadd" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div id="accordion">
+                                <div class="card" style="border: 1px dotted #999">
+
+                                    <div id="collapseOne"
+                                         class="collapse show"
+                                         aria-labelledby="headingOne"
+                                         data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Title <small style="color: red">*</small> </label>
+                                                        <input value="{{ technology.title }}" type="text" name="title"  class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Description <small style="color: red">*</small> </label>
+                                                        <textarea required name="description" class="form-control" >{{ technology.description }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                <label>Image <small style="color: red">*</small> </label>
+                                                                <input class="form-control" type="file" name="image" id=""> 
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <img style="width: 50px; height: 50px; margin-top: 30px; margin-left: 70px; " src="/media/{{ technology.image }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Details Title <small style="color: red">*</small> </label>
+                                                        <input value="{{ technology.technology_details_title }}" type="text" required name="technology_details_title"  class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Detail Description<small style="color: red">*</small> </label>
+                                                        <textarea  required name="technology_detail_description" class="form-control" >{{ technology.technology_detail_description }}</textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Why This Technologies Title<small style="color: red">*</small> </label>
+                                                        <input value="{{ technology.why_this_technologies_title }}" required type="text" name="why_this_technologies_title" class="form-control" >
+                                                    </div>  
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                <label>Details Thumbnail <small style="color: red">*</small> </label>
+                                                                <input class="form-control" type="file" name="technology_detail_thumbnail" id=""> 
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <img style="width: 50px; height: 50px; margin-top: 30px; margin-left: 70px; " src="/media/{{ technology.technology_detail_thumbnail }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Why This Technologies Description <small style="color: red">*</small> </label>
+                                                        <textarea  required name="why_this_technologies_description" class="form-control">{{ technology.why_this_technologies_description }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                <label>Why This Technologies Image <small style="color: red">*</small> </label>
+                                                                <input class="form-control" type="file" name="why_this_technologies_image" id=""> 
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <img style="width: 50px; height: 50px; margin-top: 30px; margin-left: 70px; " src="/media/{{ technology.why_this_technologies_image }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Why Choice Description<small style="color: red">*</small> </label>
+                                                        <textarea required  name="why_choice_description" class="form-control">{{ technology.why_choice_description }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Why Choice Title<small style="color: red">*</small> </label>
+                                                        <input value="{{ technology.why_choice_title }}" type="text" name="why_choice_title" class="form-control" required >
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                <label>Why Choice Image<small style="color: red">*</small> </label>
+                                                                <input type="file" name="why_choice_image" class="form-control" >
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <img style="width: 50px; height: 50px; margin-top: 30px; margin-left: 70px; " src="/media/{{ technology.why_choice_image }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Technology Features </label>
+                                                        <select multiple class="form-control"  name="technology_features" id="technology_features">
+                                                            {% if technology_features  %}
+                                                                {% for item in technology_features %}
+                                                                    <option {% if  item  in technology.technology_features.all %} selected {% endif %}value="{{ item.id }}">{{ item.title }}</option>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                       </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                                <button name="save" class="btn btn-default float-right" type="submit">
+                                    <i class="fa fa-plus-circle"></i>
+                                    Save
+                                </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+csrf = '{{ csrf_token }}';
+$(document).ready(function() {
+    $("#technology_features").select2({
+        allowClear: true
+    });     
+});
+</script>
+
+{% endblock %}

@@ -35,7 +35,8 @@ urlpatterns= [
     path('technologies/', TechnologiesView.as_view(), name= 'technologies_url'),
     path('technologies-save/', TechnologiesView.as_view(), name= 'save_technologies_url'),
     path('technologies-delete/', TechnologiesView.as_view(), name= 'delete_technologies_url'), 
-    path('technologies-features/', TechnologiesView.as_view(), name= 'save_technologies_features_url'),   
+    path('technologies-features/', TechnologiesView.as_view(), name= 'save_technologies_features_url'),  
+    path('technologies-update/<int:id>/', TechnologiesView.as_view(), name= 'update_technologies_url'), 
 
      # blog
     path('blog-list/', BlogView.as_view(), name="blog_blog_list_url"),
