@@ -56,7 +56,7 @@ class ServiceDetailsView(View):
                 'projects_done' : projects_done,
             }
             return render(request, 'service/lms_solutions.html', context)
-        if slug == 'Logistics Solutions':
+        if slug == 'logistics-solutions':
             projects_done = WhatProjectHaveWeDone.objects.filter(Q(name='Odommo Prokash ') | Q(name='Brightskills') | Q(name='Aion Tribute')).all()
             context = {
                 'title': "Logistic Solutions",
