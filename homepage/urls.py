@@ -15,10 +15,10 @@ app_name= 'homepage'
 urlpatterns= [
     path('', IndexView.as_view(), name="index_url"),
     path('about-us/', AboutUsView.as_view(), name="about_us_url"),
-    path('product/', ProductsView.as_view(), name="product_url"),
+    path('products/', ProductsView.as_view(), name="product_url"),
 
     path('all-blog/', AllBlogView.as_view(), name="all_blog_url"),
-    path('blog/', BlogsView.as_view(), name="blog_url"),
+    path('blogs/', BlogsView.as_view(), name="blog_url"),
     path('blog-details/<str:category_slug>/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
 
     path('contact-us/', ContactUs.as_view(), name="contact_us_url"),
@@ -32,7 +32,7 @@ urlpatterns= [
 
     path('apply/job/', CareerDetailsView.as_view(), name="apply_for_job_url"),
 
-    path('service/', ServiceView.as_view(), name="service_url"),
+    path('services/', ServiceView.as_view(), name="service_url"),
     path('service-details/<str:slug>/', ServiceDetailsView.as_view(), name="service_details_url"),
 
     path('technologies/<str:slug>/', TechnologiesView.as_view(), name="technologies_url"),
