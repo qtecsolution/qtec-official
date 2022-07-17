@@ -14,7 +14,7 @@
 		
 							<div class="detailsinfo">
 								<p class="cardbanner-text">
-									Everybody looks for an App when you have a business digital or non digital. We use Flutter
+									Everybody looks for an App when you have a business digital or non digital. We use Flutter and Native technologies to develop super user friendly, fast and smooth mobile applications. Our expert engineers can deliver both iOS and Android applications on time. 
 								</p>
 							</div>
 		
@@ -215,7 +215,7 @@
 							<div class="row g-4">
 								{% for project in projects_done%}
 								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
+									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
 										<div class="card-project">
 											<div class="card-project-header">
 												<img src="{{ project.image.url  }}" alt="project-thumbnail">

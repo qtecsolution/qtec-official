@@ -14,7 +14,7 @@
 		
 							<div class="detailsinfo">
 								<p class="cardbanner-text">
-									Learning Management System software development is something we are very good at. We have developed several Elearning solutions for our clients <span id="dots_5">...</span><span id="more_5" style="display: none;">and have become very expert in this industry. Our in- depth understanding of the industry gives us extra advantage to help our clients reach the designed goal with scalable technology.
+									Learning Management System software development is something we are very good at. We have developed several Elearning solutions for our clients and have become very expert in this industry. Our in- depth understanding of the industry gives us extra advantage to help our clients reach the designed goal with scalable technology.
 								</p>
 							</div>
 		
@@ -215,7 +215,7 @@
 							<div class="row g-4">
 								{% for project in projects_done%}
 								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
+									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
 										<div class="card-project">
 											<div class="card-project-header">
 												<img src="{{ project.image.url  }}" alt="project-thumbnail">

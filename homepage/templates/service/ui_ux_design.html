@@ -14,7 +14,7 @@
 		
 							<div class="detailsinfo">
 								<p class="cardbanner-text">
-									Starting from how a user thinks to delivering what a user needs to use your dream product is what UX UI Design is all about.Our expert UI UX Designers
+									Starting from how a user thinks to delivering what a user needs to use your dream product is what UX UI Design is all about. Our expert UI UX Designers analyse the user group, do user interviews and discussion and create the user flow accordingly. The final touch gets colour and theme before going to the production.
 								</p>
 							</div>
 		
@@ -224,7 +224,7 @@
 							<div class="row g-4">
 								{% for project in projects_done%}
 								<div class="col-lg-4 col-sm-6 col-12">
-									<a href="case-study.html" class="projectlink">
+									<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
 										<div class="card-project">
 											<div class="card-project-header">
 												<img src="{{ project.image.url  }}" alt="project-thumbnail">
