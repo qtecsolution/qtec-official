@@ -16,5 +16,4 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
-handler404 = 'qtec_official.404error.handler404'
-handler500 =  'qtec_official.404error.handler500'
+
