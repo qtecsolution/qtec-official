@@ -21,7 +21,10 @@
         <!-- BLOG ITEM START -->
           {% for i in top_4_blog %}
                 <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
-          <a href="/blog-details/{{ i.blog_category.slug }}/{{ i.slug }}/" class="bloglink">
+          <form action="{% url 'homepage:blog_details_url' slug=i.slug  %}" method="POST" >
+            {% csrf_token %}
+            <input type="hidden" value="{{ i.slug }}" name="blog_category_slug">
+          <button type="submit" class="bloglink">
             <div class="card-article">
               <div class="card-article-header">
                 <img src="{{ i.image.url }}" alt="card-thumbnail">
@@ -29,7 +32,7 @@
 
               <div class="card-article-body">
                 <div class="title-date">
-                  <h4 class="title">{{ i.title }}</h4>
+                  <h4 class="title">{{ i.title }} </h4>
                   <p class="date">{{ i.updated_at }}</p>
                 </div>
 
@@ -42,7 +45,8 @@
                 <span class="articlelink">Read article</span>
               </div>
             </div>
-          </a>
+          </button>
+          </form>
         </div>
           {% endfor %}
         <!-- BLOG ITEM END -->
@@ -82,7 +86,11 @@
                 </div>
 
                 <div class="readinfo">
-                  <a href="/blog-details/{{ highlight_blog.blog_category.slug }}/{{ highlight_blog.slug }}/" class="btn-read">Read More</a>
+                  <form action="{% url 'homepage:blog_details_url' slug=highlight_blog.slug  %}" method="POST" >
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ i.slug }}" name="blog_category_slug">
+                  <button class="btn-read" type="submit" class="bloglink">Read More</button>
+                  </form>
                 </div>
               </div>
             </div>

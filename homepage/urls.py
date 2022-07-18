@@ -20,7 +20,7 @@ urlpatterns= [
 
     path('all-blog/', AllBlogView.as_view(), name="all_blog_url"),
     path('blogs/', BlogsView.as_view(), name="blog_url"),
-    path('blog-details/<str:category_slug>/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
+    path('<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
 
     path('contact-us/', ContactUs.as_view(), name="contact_us_url"),
 

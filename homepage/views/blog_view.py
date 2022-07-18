@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from django.views import View
 
+
 from dashboard.models import HandleBlog, Blog
 
 
@@ -31,9 +32,19 @@ class BlogsView(View):
 
 
 class BlogDetails(View):
-
-    def get(self, request, category_slug, slug):
+    def get(self, request, slug):
         blog = Blog.objects.get(slug= slug)
+        category_slug = blog.blog_category.slug
+        random_blog = Blog.objects.filter(blog_category__slug= category_slug).exclude(id= blog.id).select_related('blog_author').select_related('blog_category')
+        random_blog = random_blog[:5] if random_blog.count() > 4 else random_blog
+        return render(request, 'blog/blog_details.html' ,{'blog': blog, 'random_blog': random_blog,
+                                                          'abs_uri': request.build_absolute_uri,
+                                                          'title': 'BLOG DETAILS'
+                                                          })
+
+    def post(self,request,slug):
+        blog = Blog.objects.get(slug= slug)
+        category_slug  = request.POST.get('blog_category_slug')
         random_blog = Blog.objects.filter(blog_category__slug= category_slug).exclude(id= blog.id).select_related('blog_author').select_related('blog_category')
         random_blog = random_blog[:5] if random_blog.count() > 4 else random_blog
         return render(request, 'blog/blog_details.html' ,{'blog': blog, 'random_blog': random_blog,
