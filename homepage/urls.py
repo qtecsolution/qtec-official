@@ -37,12 +37,10 @@ urlpatterns= [
     path('technologies/<str:slug>/', TechnologiesView.as_view(), name="technologies_url"),
 
     path('error_404/', Error_404.as_view(), name="error_url"),
-    
+
     path('all-blog/', AllBlogView.as_view(), name="all_blog_url"),
     path('blogs/', BlogsView.as_view(), name="blog_url"),
-    path('<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
-
-
+    path('blog/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
 
 
 ]
