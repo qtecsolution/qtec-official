@@ -4636,7 +4636,7 @@ select {
 @media screen and (min-width: 62rem) {
   .blogdetails-thumbnail {
     height: 36.25rem;
-    width: 85%;
+    width: 100%;
   }
 }
 
