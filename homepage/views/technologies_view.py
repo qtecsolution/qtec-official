@@ -11,6 +11,7 @@ class TechnologiesView(View):
         technologies = Technologies.objects.filter(slug=slug).first()
         features = TechnologyFeatures.objects.all()
         context = {
+            'title': "Technologies",
             "technologies" : technologies,
             "features" : features
         }
