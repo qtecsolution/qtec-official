@@ -999,7 +999,11 @@
 					<div class="row g-4">
                         {% for blog in blogs %}
 						<div class="col-lg-3 col-sm-6 col-12">
-							<a href="/blog-details/{{ blog.blog_category.slug }}/{{ blog.slug }}/" class="articlelink">
+							<form action="{% url 'homepage:blog_details_url' slug=blog.slug  %}" method="POST" >
+								{% csrf_token %}
+								<input type="hidden" value="{{ i.slug }}" name="blog_category_slug">
+							  <button type="submit" class="bloglink">
+							
 								<div class="card-article">
 									<div class="card-article-header">
 										<img src="{{ blog.image.url }}" alt="card-thumbnail">
@@ -1020,7 +1024,8 @@
 										<span class="articlelink">Read article</span>
 									</div>
 								</div>
-							</a>
+							  </button>
+							</form>
 						</div>
                         {% endfor %}
 					</div>

@@ -9,3 +9,4 @@ def handler404(request, *args, **argv):
 
 def handler500(request, *args, **argv):
     return render(request, 'homepage/404error.html')
+

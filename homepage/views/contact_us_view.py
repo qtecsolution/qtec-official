@@ -8,7 +8,7 @@ from dashboard.models import BUDGET, LetsTalk, Subscribe
 class ContactUs(View):
 
     def get(self, request):
-        return render(request, 'contact_us.html', {'BUDGET': BUDGET, 'title': "Contact"})
+        return render(request, 'contact_us.html', {'BUDGET': BUDGET, 'title': "Contact Us"})
 
     def post(self, request):
         data = request.POST
