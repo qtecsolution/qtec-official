@@ -26,7 +26,14 @@
     {% endif %}
 
 	<title>
-        {{ title }} - Qtec Solution Limited
+		{% if title == 'Home' %}
+			Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development, Machine Learning, UI UX Design, Android and iOS mobile application development
+		{% elif title == 'BLOG DETAILS' %}
+		  {{ blog.title }} - Qtec Solution Limited
+		{% else %}
+			{{ title }} - Qtec Solution Limited	
+		{% endif %}
+        
 	</title>
 	<!-- SITE-TITLE -->
 

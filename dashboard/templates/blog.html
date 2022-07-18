@@ -41,11 +41,7 @@
                                     <td>{{ blog.title }}</td>
                                     <td>{{ blog.description|safe }}</td>
                                     <td>
-                                        {% if blog.image %}
-                                        <div>
-                                            <img style="width: 50px; " src="/media/{{ blog.image }}">
-                                        </div>
-                                        {% endif %}
+                                         <img style="width: 50px; " src="{{ blog.image.url }}">    
                                     </td>
                                     <td>{{ blog.tags|safe }}</td>
                                     <td>{{ blog.created_at }}</td>
