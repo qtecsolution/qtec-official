@@ -6,7 +6,6 @@ from dashboard.models import ServiceDetailsProject, WhatProjectHaveWeDone
 from django.db.models import Q
 
 class ServiceView(View):
-
     def get(self, request):
         return render(request, 'service/service.html', {'title': "Services"})
 

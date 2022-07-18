@@ -18,9 +18,7 @@ urlpatterns= [
     path('about-us/', AboutUsView.as_view(), name="about_us_url"),
     path('products/', ProductsView.as_view(), name="product_url"),
 
-    path('all-blog/', AllBlogView.as_view(), name="all_blog_url"),
-    path('blogs/', BlogsView.as_view(), name="blog_url"),
-    path('<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
+   
 
     path('contact-us/', ContactUs.as_view(), name="contact_us_url"),
 
@@ -39,6 +37,10 @@ urlpatterns= [
     path('technologies/<str:slug>/', TechnologiesView.as_view(), name="technologies_url"),
 
     path('error_404/', Error_404.as_view(), name="error_url"),
+    
+    path('all-blog/', AllBlogView.as_view(), name="all_blog_url"),
+    path('blogs/', BlogsView.as_view(), name="blog_url"),
+    path('<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
 
 
 
