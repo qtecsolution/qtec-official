@@ -1,5 +1,5 @@
 from django.urls import path
-from homepage.views.Error_404_view import Error_404
+
 
 from homepage.views.about_us_view import AboutUsView
 from homepage.views.blog_view import BlogsView, BlogDetails, AllBlogView
@@ -35,8 +35,6 @@ urlpatterns= [
     path('service-details/<str:slug>/', ServiceDetailsView.as_view(), name="service_details_url"),
 
     path('technologies/<str:slug>/', TechnologiesView.as_view(), name="technologies_url"),
-
-    path('error_404/', Error_404.as_view(), name="error_url"),
 
     path('all-blog/', AllBlogView.as_view(), name="all_blog_url"),
     path('blogs/', BlogsView.as_view(), name="blog_url"),
