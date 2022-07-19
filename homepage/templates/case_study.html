@@ -164,8 +164,8 @@
 				<!-- TECHNOLOGIES-HEADER END -->
 
 				<!-- TECHNOLOGIES-BODY START -->
-				<div class="technologies-body align-items-start">
-					<div class="row g-4">
+				<div class="technologies-body ">
+					<div class="row g-4 align-items-start">
                         {% for tech in case_study_details.technology.all %}
 						<div class="col-lg-4 col-sm-6 col-12">
 							<a href="{% url 'homepage:technologies_url' tech.slug %}" class="projectlink">
