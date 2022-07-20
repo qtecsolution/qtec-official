@@ -22,7 +22,7 @@
 
                         <form method="POST" id="managementadd" enctype="multipart/form-data" novalidate>
                             {% csrf_token %}
-                            <input id="payment_type" type="hidden" name="payment_type" value="1">
+                            <input id="get_case_study_id" type="hidden" name="get_case_study_id" value="{{case_study.id}}">
                             <div id="accordion">
                                 <div class="card" style="border: 1px dotted #999; margin-left: 200px; margin-right: 200px; margin-top: 20px;">
                                     <div id="collapseOne"
@@ -32,7 +32,7 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label>About </label>
-                                                <textarea  class="case_study_about" name="case_study_about" >{{ case_study.case_study_about }}</textarea>
+                                                <textarea  class="case_study_about_{{case_study.id}}" name="case_study_about" >{{ case_study.case_study_about }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Case Study Image  </label>
@@ -51,12 +51,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Client Requirement  </label>
-                                                <textarea  class="case_study_requirement" name="client_requirement" >{{ case_study.client_requirement }}</textarea>
+                                                <textarea  class="case_study_requirement_{{case_study.id}}" name="client_requirement" >{{ case_study.client_requirement }}</textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>How We Build It </label>
-                                                <textarea  class="case_study_build"  name="how_we_build_it" >{{ case_study.how_we_build_it }}</textarea>
-                                    
+                                                <textarea  class="case_study_build_{{case_study.id}}"  name="how_we_build_it" >{{ case_study.how_we_build_it }}</textarea>
                                     
                                             <div class="form-group">
                                                 <label>How We Build Image </label>
@@ -109,7 +108,9 @@
 {% block script %}
 <script>
     $(document).ready(function() {
-        $('.case_study_about').summernote({
+        id = document.getElementById('get_case_study_id').value
+        alert(id)
+        $('.case_study_about_'+id).summernote({
             fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather','Titillium Web"'],
             fontNamesIgnoreCheck: ['Titillium Web"'],
             toolbar: [
@@ -130,7 +131,7 @@
            
         });
         
-        $('.case_study_requirement').summernote({
+        $('.case_study_requirement_'+id).summernote({
             fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather','Titillium Web"'],
             fontNamesIgnoreCheck: ['Titillium Web"'],
             toolbar: [
@@ -152,7 +153,7 @@
         });
         
 
-        $('.case_study_build').summernote({
+        $('.case_study_build_'+id).summernote({
             fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather','Titillium Web"'],
             fontNamesIgnoreCheck: ['Titillium Web"'],
             toolbar: [
