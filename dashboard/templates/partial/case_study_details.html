@@ -110,12 +110,24 @@
 <script>
     $(document).ready(function() {
         $('.case_study_about').summernote({
-            fontNames: ['Arial','Titillium Web', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto'],
-            fontNamesIgnoreCheck: ['Titillium Web'],
-            styleTags: [
-            'p',
-                { className: 'feature-text', },
-            ],
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather','Titillium Web"'],
+            fontNamesIgnoreCheck: ['Titillium Web"'],
+            toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+            ['height', ['height']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+   
+             ]
+            
            
         });
         $('.note-editable').css('font-style','normal','font-size','1.125rem','font-weight','normal','line-height','1.66667');
