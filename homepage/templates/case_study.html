@@ -178,7 +178,7 @@
 									</div>
 
 									<div class="card-technology-body">
-										<p class="card-technology-text">
+										<p style="font-size: 90px;" class="card-technology-text">
 											{{ tech.description }}
 										</p>
 									</div>
@@ -204,4 +204,19 @@
 			</div>
 		</div>
 	</section>
+{% endblock %}
+
+{% block script %}
+
+<script>
+
+
+	$("span").addClass('feature-text')
+	// $("span").css("font-size", "1.125rem");
+	// $("span").css("font-weight", "normal");
+	// $("span").css("line-height", "1.66667");
+
+
+</script>
+
 {% endblock %}
