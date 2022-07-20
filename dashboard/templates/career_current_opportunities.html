@@ -234,10 +234,32 @@
 
 {% block script %}
 <script>
-  $('.for_Summernote').summernote({
-            fontNames: ['Arial','Titillium', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto'],
-            fontNamesIgnoreCheck: ['Titillium']
-            });
+ 
+    
+    $(document).ready(function() {
+        
+        $('.for_Summernote').summernote({
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather','Titillium Web"'],
+            fontNamesIgnoreCheck: ['Titillium Web"'],
+            toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear',]],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+            ['height', ['height']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+             ]
+            
+           
+        });
+    });    
+    
 </script>
 
 {% endblock %}
