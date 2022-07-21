@@ -2818,6 +2818,7 @@ select {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 1rem;
+  height: 100%;
 }
 
 .cardwork-header .card-thumbnail {
@@ -2855,9 +2856,29 @@ select {
   color: #4A5568;
   font-family: "Titillium Web";
   font-style: normal;
-  font-size: 1.75rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  line-height: 1.89321;
+  line-height: 1.55556;
+}
+
+@media screen and (min-width: 48rem) {
+  .cardwork-body .cardwork-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .cardwork-body .cardwork-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.89321;
+  }
 }
 
 .cardwork-body .cardwork-text {
@@ -3391,7 +3412,7 @@ select {
           justify-content: center;
   position: fixed;
   width: 100%;
-  min-height: 100vh;
+  min-height: 120vh;
   overflow: hidden;
   z-index: 10000;
   background: #ffffff;
@@ -4126,7 +4147,8 @@ select {
                         ABOUT-BANNER START
 **=======================================================**/
 .about-banner {
-  background: url(../images/about/about-banner.png) no-repeat center center/cover;
+  background: url(../images/about/about-banner.webp) no-repeat center center/cover;
+  position: relative;
 }
 
 .about-banner-content {
@@ -4152,6 +4174,8 @@ select {
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.25;
+  position: relative;
+  z-index: 100;
 }
 
 @media screen and (min-width: 48rem) {
@@ -4175,7 +4199,23 @@ select {
 }
 
 .about-banner-title span {
-  color: #A0AEC0;
+  color: #000000;
+}
+
+.about-banner .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+@media screen and (min-width: 62rem) {
+  .about-banner .overlay {
+    display: none;
+  }
 }
 
 /**=======================================================**
@@ -4405,7 +4445,7 @@ select {
                     BLOG BANNER START
 **=======================================================**/
 .blogbanner {
-  background: url(../images/blog/blog-hero-bg.jpg) no-repeat center center/cover;
+  background: url(../images/blog/blog-hero-bg.webp) no-repeat center center/cover;
   min-height: 30vh;
   position: relative;
   display: -webkit-box;
@@ -5708,6 +5748,7 @@ select {
 **=======================================================**/
 .career-hero {
   position: relative;
+  padding: 1rem 0.5rem;
 }
 
 .career-hero .career-thumb {
@@ -5740,6 +5781,8 @@ select {
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 15rem;
+  position: relative;
+  z-index: 100;
 }
 
 @media screen and (min-width: 62rem) {
@@ -5756,6 +5799,8 @@ select {
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.25;
+  position: relative;
+  z-index: 100;
 }
 
 @media screen and (min-width: 48rem) {
@@ -5800,6 +5845,8 @@ select {
   font-weight: normal;
   line-height: 1.71429;
   letter-spacing: 0.015rem;
+  position: relative;
+  z-index: 100;
 }
 
 @media screen and (min-width: 48rem) {
@@ -5819,6 +5866,22 @@ select {
     font-size: 1.125rem;
     font-weight: normal;
     line-height: 1.66667;
+  }
+}
+
+.career-hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+@media screen and (min-width: 62rem) {
+  .career-hero .overlay {
+    display: none;
   }
 }
 
@@ -6221,7 +6284,7 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 1rem;
+  gap: 3rem;
 }
 
 .career-details-content .article {
@@ -7294,7 +7357,7 @@ select {
                     HOME-BANNER SECTION START
 **=======================================================**/
 .homebanner {
-  background: url(../images/home-banner/home-banner.png) no-repeat;
+  background: url(../images/home-banner/home-banner.webp) no-repeat;
   background-position: left;
   background-size: cover;
   padding: 1.5rem 0.5rem 0rem;
@@ -8297,7 +8360,7 @@ select {
                     SERVICE BANNER START
 **=======================================================**/
 .servicebanner {
-  background: url(../images/service/service-banner.png) no-repeat center center/cover;
+  background: url(../images/service/service-banner.webp) no-repeat center center/cover;
   min-height: 30vh;
   position: relative;
   display: -webkit-box;
@@ -8493,7 +8556,7 @@ select {
                     DETAILS BANNER START
 **=======================================================**/
 .details-banner {
-  background: url(../images/service-details/banner.png) no-repeat center center/cover;
+  background: url(../images/service-details/banner.webp) no-repeat center center/cover;
   min-height: 100vh;
   position: relative;
   display: -webkit-box;
