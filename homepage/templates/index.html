@@ -791,7 +791,7 @@
 													<div class="tags">
 
 														{% for skill in project.technology.all %}
-															<a class="tags" href="{% url 'homepage:technologies_url' skill.slug %}"><span class="tag">{{ skill.title }}</span></a><br>
+															<span lass="tags"><a href="{% url 'homepage:technologies_url' skill.slug %}"><span class="tag">{{ skill.title }}</span></a></span>
 														{% endfor %}
 
 													</div>
