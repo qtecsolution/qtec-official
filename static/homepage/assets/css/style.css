@@ -6221,7 +6221,7 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 .career-details-content .article {
