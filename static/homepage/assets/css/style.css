@@ -8,6 +8,9 @@
                     BACKGROUND-COLORS
 =======================================================**/
 /**=====================================================**
+                  SOCIAL-NETWORK-COLORS
+=======================================================**/
+/**=====================================================**
                     BORDER-COLORS
 =======================================================**/
 /**=====================================================**
@@ -3219,6 +3222,196 @@ select {
   color: #02479c;
 }
 
+.card-team {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.card-team-header {
+  border-radius: 0.625rem;
+  border-radius: 0.625rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 12.5rem;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 36rem) {
+  .card-team-header {
+    height: 15.625rem;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .card-team-header {
+    height: 19.5rem;
+  }
+}
+
+.card-team-header img {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: transform 200ms ease-in-out;
+  -webkit-transition: -webkit-transform 200ms ease-in-out;
+  transition: -webkit-transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-team-header img:not([disabled]):hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.card-team-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.card-team-body .name {
+  color: #2D3748;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.66667;
+}
+
+@media screen and (min-width: 48rem) {
+  .card-team-body .name {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+}
+
+@media screen and (min-width: 87.5rem) {
+  .card-team-body .name {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.625rem;
+    font-weight: 600;
+    line-height: 1.53846;
+  }
+}
+
+.card-team-body .designation {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.78571;
+  letter-spacing: 0.015rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 87.5rem) {
+  .card-team-body .designation {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5625;
+  }
+}
+
+.card-team-body .social {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.875rem;
+}
+
+.card-team-body .social-link {
+  height: 1.125rem;
+  width: 1.125rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+.card-team-body .social-link svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card-team-body .social-link svg svg path {
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.card-team-body .social-link.facebooklink:not([disabled]):hover svg path {
+  fill: #4268b3;
+}
+
+.card-team-body .social-link.twitterlink:not([disabled]):hover svg path {
+  fill: #00acf0;
+}
+
+.card-team-body .social-link.linkedinlink:not([disabled]):hover svg path {
+  fill: #0074b3;
+}
+
+.card-team-body .social-link.instagramlink:not([disabled]):hover svg path {
+  fill: #f0003c;
+}
+
 .modal-content {
   overflow: hidden;
   border: none;
@@ -4290,7 +4483,6 @@ select {
   font-weight: normal;
   line-height: 1.75;
   letter-spacing: 0.015rem;
-  text-align: justify;
 }
 
 @media screen and (min-width: 48rem) {
@@ -4440,6 +4632,106 @@ select {
 
 /**=======================================================**
                         FEATURED END
+**=======================================================**/
+/**=======================================================**
+                        OUR-TEAM START
+**=======================================================**/
+.ourteam {
+  padding: 3rem 0.5rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .ourteam {
+    padding: 5rem 0.5rem;
+  }
+}
+
+.ourteam-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.5rem;
+}
+
+.ourteam-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.625rem;
+  text-align: center;
+}
+
+.ourteam-header .ourteam-title {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.46875;
+}
+
+@media screen and (min-width: 48rem) {
+  .ourteam-header .ourteam-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.925;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .ourteam-header .ourteam-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.52096;
+  }
+}
+
+.ourteam-header .ourteam-text {
+  color: #718096;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.75;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .ourteam-header .ourteam-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+/**=======================================================**
+                        OUR-TEAM END
 **=======================================================**/
 /**=======================================================**
                     BLOG BANNER START
