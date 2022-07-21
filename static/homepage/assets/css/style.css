@@ -2389,7 +2389,7 @@ select {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.52071;
-  padding: 0.25rem 0.50rem;
+  padding: 0.5rem 0.75rem;
   text-align: center;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
@@ -4636,7 +4636,7 @@ select {
 @media screen and (min-width: 62rem) {
   .blogdetails-thumbnail {
     height: 36.25rem;
-    width: 100%;
+    width: 85%;
   }
 }
 
