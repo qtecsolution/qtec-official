@@ -71,31 +71,31 @@
 					<div class="offcanvas-body">
 						<ul class="mobilelist">
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:index_url' %}" class="mobilelist-link active">Home</a>
+								<a id="home_page" onclick="active_list('home_page')" href="{% url 'homepage:index_url' %}" class="mobilelist-link">Home</a>
 							</li>
 
 							<li class="mobilelist-item">
-								<a  href="{% url 'homepage:about_us_url' %}" class="mobilelist-link">About Us</a>
+								<a id="about_us" onclick="active_list('about_us')" href="{% url 'homepage:about_us_url' %}" class="mobilelist-link">About Us</a>
 							</li>
 
 							<li class="mobilelist-item d-none">
-								<a href="services.html" class="mobilelist-link">Services</a>
+								<a id="service" onclick="active_list('service')" href="services.html" class="mobilelist-link">Services</a>
 							</li>
 
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:product_url' %}" class="mobilelist-link">Products</a>
+								<a id="products" onclick="active_list('products')" href="{% url 'homepage:product_url' %}" class="mobilelist-link">Products</a>
 							</li>
                             <li class="mobilelist-item">
-								<a href="{% url 'homepage:service_url' %}" class="mobilelist-link">Services</a>
+								<a id="service" onclick="active_list('service')" href="{% url 'homepage:service_url' %}" class="mobilelist-link">Services</a>
 							</li>
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:blog_url' %}" class="mobilelist-link">Blogs</a>
+								<a  id="blogs" onclick="active_list('blogs')" href="{% url 'homepage:blog_url' %}" class="mobilelist-link">Blogs</a>
 							</li>
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:career_url' %}" class="mobilelist-link">Career</a>
+								<a id="career" onclick="active_list('career')" href="{% url 'homepage:career_url' %}" class="mobilelist-link">Career</a>
 							</li>
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link">Contact Us</a>
+								<a id="contact_us" onclick="active_list('contact_us')" href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link">Contact Us</a>
 							</li>
 						</ul>
 					</div>
@@ -109,3 +109,14 @@
 	<!--========== GAP-START ==========-->
 	<section class="gap"></section>
 	<!--========== GAP-END ============-->
+
+
+{% block script %}
+
+    <script>
+		function active_list(id){
+			alert(id)
+		}
+
+	</script>
+{% endblock %}
