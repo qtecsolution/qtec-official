@@ -70,18 +70,13 @@
 
 					<div class="offcanvas-body">
 						<ul class="mobilelist">
-							<li class="mobilelist-item">
+							<li class="mobilelist-item ">
 								<a id="home_page" onclick="active_list('home_page')" href="{% url 'homepage:index_url' %}" class="mobilelist-link">Home</a>
 							</li>
 
 							<li class="mobilelist-item">
 								<a id="about_us" onclick="active_list('about_us')" href="{% url 'homepage:about_us_url' %}" class="mobilelist-link">About Us</a>
 							</li>
-
-							<li class="mobilelist-item d-none">
-								<a id="service" onclick="active_list('service')" href="services.html" class="mobilelist-link">Services</a>
-							</li>
-
 							<li class="mobilelist-item">
 								<a id="products" onclick="active_list('products')" href="{% url 'homepage:product_url' %}" class="mobilelist-link">Products</a>
 							</li>
@@ -114,9 +109,18 @@
 {% block script %}
 
     <script>
+	
 		function active_list(id){
-			alert(id)
+			$("#home_page").removeClass("active"); 
+			$("#about_us").removeClass("active"); 
+			$("#service").removeClass("active"); 
+			$("#products").removeClass("active"); 
+			$("#blogs").removeClass("active"); 
+			$("#career").removeClass("active"); 
+			$("#contact_us").removeClass("active"); 
+			$("#"+id).addClass("active");
 		}
+
 
 	</script>
 {% endblock %}
