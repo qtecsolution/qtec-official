@@ -771,22 +771,21 @@
 								<div class="row g-4">
 									{% for project in project_done %}
 									<div class="col-lg-4 col-sm-6 col-12">
-											<div class="card-project">
-												<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
+											<div class="card-project">	
 												<div class="card-project-header">
-													<img src="/media/{{ project.image }}" alt="project-thumbnail">
 												</div>
 
 												<div class="card-project-body">
-													<div class="project-title">
-														<h2 class="title">{{ project.name }}</h2>
-														<span class="icon">
-															<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-															</svg>
-														</span>
-													</div>
-												</a>
+													<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
+														<div class="project-title">
+															<h2 class="title">{{ project.name }}</h2>
+															<span class="icon">
+																<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
+																</svg>
+															</span>
+														</div>
+													</a>
 													<div class="tags">
 
 														{% for skill in project.technology.all %}
