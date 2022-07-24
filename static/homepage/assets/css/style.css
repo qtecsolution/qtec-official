@@ -3309,9 +3309,19 @@ select {
   color: #2D3748;
   font-family: "Titillium Web";
   font-style: normal;
-  font-size: 1.125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  line-height: 1.66667;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 36rem) {
+  .card-team-body .name {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.66667;
+  }
 }
 
 @media screen and (min-width: 48rem) {
@@ -3372,8 +3382,8 @@ select {
 }
 
 .card-team-body .social-link {
-  height: 1.125rem;
-  width: 1.125rem;
+  height: 1.1875rem;
+  width: 1.1875rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3396,12 +3406,12 @@ select {
   transition: all 200ms ease-in-out;
 }
 
-.card-team-body .social-link.facebooklink:not([disabled]):hover svg path {
-  fill: #4268b3;
+.card-team-body .social-link.githublink:not([disabled]):hover svg path {
+  fill: #4387f4;
 }
 
-.card-team-body .social-link.twitterlink:not([disabled]):hover svg path {
-  fill: #00acf0;
+.card-team-body .social-link.emaillink:not([disabled]):hover svg path {
+  fill: #4387f4;
 }
 
 .card-team-body .social-link.linkedinlink:not([disabled]):hover svg path {
