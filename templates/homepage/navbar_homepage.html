@@ -71,26 +71,26 @@
 					<div class="offcanvas-body">
 						<ul class="mobilelist">
 							<li class="mobilelist-item ">
-								<a id="home_page" onclick="active_list('home_page')" href="{% url 'homepage:index_url' %}" class="mobilelist-link">Home</a>
+								<a  href="{% url 'homepage:index_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'index_url' %} active {% endif %}">Home</a>
 							</li>
 
 							<li class="mobilelist-item">
-								<a id="about_us" onclick="active_list('about_us')" href="{% url 'homepage:about_us_url' %}" class="mobilelist-link">About Us</a>
+								<a  href="{% url 'homepage:about_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'about_us_url' %} active {% endif %}">About Us</a>
 							</li>
 							<li class="mobilelist-item">
-								<a id="products" onclick="active_list('products')" href="{% url 'homepage:product_url' %}" class="mobilelist-link">Products</a>
+								<a  href="{% url 'homepage:product_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a>
 							</li>
                             <li class="mobilelist-item">
-								<a id="service" onclick="active_list('service')" href="{% url 'homepage:service_url' %}" class="mobilelist-link">Services</a>
+								<a  href="{% url 'homepage:service_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
 							</li>
 							<li class="mobilelist-item">
-								<a  id="blogs" onclick="active_list('blogs')" href="{% url 'homepage:blog_url' %}" class="mobilelist-link">Blogs</a>
+								<a   href="{% url 'homepage:blog_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blogs</a>
 							</li>
 							<li class="mobilelist-item">
-								<a id="career" onclick="active_list('career')" href="{% url 'homepage:career_url' %}" class="mobilelist-link">Career</a>
+								<a  href="{% url 'homepage:career_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'career_url' %} active {% endif %}">Career</a>
 							</li>
 							<li class="mobilelist-item">
-								<a id="contact_us" onclick="active_list('contact_us')" href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link">Contact Us</a>
+								<a  href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'contact_us_url' %} active {% endif %}">Contact Us</a>
 							</li>
 						</ul>
 					</div>

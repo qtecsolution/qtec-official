@@ -217,3 +217,12 @@ def slug_generator(sender, instance, created, **kwargs):
         slug = slug_object.unique_slug_generator(instance)
         instance.slug = slug
         instance.save()
+class TeamMembers(models.Model):
+    name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='team_members/')
+    designation = models.CharField(max_length=100)
+    github  = models.CharField(max_length=100)
+    linkedin = models.CharField(max_length=100)
+    instagram = models.CharField(max_length=100)
+    gmail = models.EmailField(max_length=100)
+    priority = models.PositiveSmallIntegerField() 
