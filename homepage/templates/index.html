@@ -773,6 +773,7 @@
 									<div class="col-lg-4 col-sm-6 col-12">
 											<div class="card-project">	
 												<div class="card-project-header">
+													<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink"><img  src="/media/{{ project.image }}" alt="project-thumbnail"></a>
 												</div>
 
 												<div class="card-project-body">
@@ -786,6 +787,7 @@
 															</span>
 														</div>
 													</a>
+												</a>
 													<div class="tags">
 
 														{% for skill in project.technology.all %}
