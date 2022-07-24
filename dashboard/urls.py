@@ -7,6 +7,7 @@ from dashboard.views.career_view import ApplyForThisPositionView, CurrentOpportu
 from dashboard.views.dashboard import DashboardView
 from dashboard.views.lets_talk_view import LetsTalkView
 from dashboard.views.subscribe_view import SubscribeView
+from dashboard.views.team_members_view import TeamMembersView
 from dashboard.views.technologies_view import TechnologiesView
 
 app_name= 'dashboard'
@@ -67,8 +68,15 @@ urlpatterns= [
     path('current-opportunities-edit/', CurrentOpportunitiesView.as_view(), name="current_opportunities_edit_url"),
     path('current-opportunities-delete/', CurrentOpportunitiesView.as_view(), name="delete_current_opportunities_url"),
     
-    path('career-apply_for_this_position/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_url"),
-    path('career-apply_for_this_position-satus/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_status_url"),
-    path('career-apply_for_this_position_delete/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_delete_url"),
+    path('career-apply-for-this-position/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_url"),
+    path('career-apply-for-this_position-satus/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_status_url"),
+    path('career-apply-for-this-position-delete/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_delete_url"),
+
+   
+    path('team-members/', TeamMembersView.as_view(), name="team_members_url"),
+    path('team-members-delete/', TeamMembersView.as_view(), name="delete_team_member_url"),
+    path('team-members-create/', TeamMembersView.as_view(), name="save_team_member_url"),
+    path('team-members-update/<int:id>/', TeamMembersView.as_view(), name="update_team_member_url"),
+    
         
 ]
