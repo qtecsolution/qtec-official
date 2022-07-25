@@ -222,7 +222,7 @@ class TeamMembers(models.Model):
     image = models.ImageField(upload_to='team_members/')
     designation = models.CharField(max_length=100)
     github  = models.CharField(max_length=100,null=True,blank=True)
-    linkedin = models.CharField(max_length=100,null=True,blank=True)
+    linkedin = models.CharField(max_length=100,null=True)
     instagram = models.CharField(max_length=100,null=True,blank=True)
     gmail = models.EmailField(max_length=100)
     priority = models.PositiveSmallIntegerField() 

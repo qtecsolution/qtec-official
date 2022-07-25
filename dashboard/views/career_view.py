@@ -58,7 +58,6 @@ class CurrentOpportunitiesView(View):
 class ApplyForThisPositionView(View):
     def get(self, request):
         positions = ApplyForThisPosition.objects.order_by("-id").all()
-        print('position:::::',positions)
         context = {
             "positions" : positions,
             "apply_status" : APPLY_STATUS,
