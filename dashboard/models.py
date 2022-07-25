@@ -226,3 +226,6 @@ class TeamMembers(models.Model):
     instagram = models.CharField(max_length=100,null=True,blank=True)
     gmail = models.EmailField(max_length=100)
     priority = models.PositiveSmallIntegerField() 
+
+    def __str__(self) -> str:
+        return self.name
