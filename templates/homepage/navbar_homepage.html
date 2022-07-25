@@ -106,21 +106,3 @@
 	<!--========== GAP-END ============-->
 
 
-{% block script %}
-
-    <script>
-	
-		function active_list(id){
-			$("#home_page").removeClass("active"); 
-			$("#about_us").removeClass("active"); 
-			$("#service").removeClass("active"); 
-			$("#products").removeClass("active"); 
-			$("#blogs").removeClass("active"); 
-			$("#career").removeClass("active"); 
-			$("#contact_us").removeClass("active"); 
-			$("#"+id).addClass("active");
-		}
-
-
-	</script>
-{% endblock %}
