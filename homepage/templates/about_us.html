@@ -116,6 +116,15 @@
 									<h5 class="name">{{ member.name }}</h5>
 									<p class="designation">{{ member.designation }}</p>
 									<ul class="social">
+										{% if member.linkedin %}
+										<li class="social-item">
+											<a href="{{ member.linkedin }}" target="_blank" class="social-link linkedinlink"data-bs-toggle="tooltip" data-bs-placement="top" title="Follow on Linkedin">
+												<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5611 6.2721H10.9037V7.9371C11.3852 6.9795 12.62 6.1191 14.4749 6.1191C18.0308 6.1191 18.875 8.0253 18.875 11.5227V18H15.275V12.3192C15.275 10.3275 14.7935 9.2043 13.5677 9.2043C11.8676 9.2043 11.1611 10.4148 11.1611 12.3183V18H7.5611V6.2721ZM1.388 17.847H4.988V6.1191H1.388V17.847ZM5.5037 2.295C5.50383 2.59675 5.44399 2.89551 5.32765 3.17393C5.21131 3.45235 5.04079 3.70486 4.826 3.9168C4.39076 4.34936 3.80163 4.59149 3.188 4.59C2.57545 4.58959 1.98768 4.34808 1.5518 3.9177C1.33779 3.70504 1.16785 3.45224 1.05171 3.17379C0.935571 2.89534 0.875521 2.5967 0.875 2.295C0.875 1.6857 1.118 1.1025 1.5527 0.6723C1.9882 0.241343 2.57622 -0.00026929 3.1889 2.25238e-07C3.8027 2.25238e-07 4.3913 0.2421 4.826 0.6723C5.2598 1.1025 5.5037 1.6857 5.5037 2.295Z" fill="#4A5568"/>
+												</svg>
+											</a>
+										</li>
+										{% endif %}
 										{% if member.github %}
 											<li class="social-item">
 												<a href="{{ member.github }}" target="_blank" class="social-link githublink"data-bs-toggle="tooltip" data-bs-placement="top" title="Follow on GitHub">
@@ -128,21 +137,12 @@
 										
 										{% if member.gmail %}
 											<li class="social-item">
-												<a href="mailto:{{ member.gmail }}?" target="_blank" class="social-link emaillink" data-bs-toggle="tooltip" data-bs-placement="top" title="Follow on Gmail">
+												<a href="mailto:{{ member.gmail }}?" target="_blank" class="social-link emaillink" data-bs-toggle="tooltip" data-bs-placement="top" title="Send Mmail">
 													<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 														<path d="M18 14H16V5.25L10 9L4 5.25V14H2V2H3.2L10 6.25L16.8 2H18V14ZM18 0H2C0.89 0 0 0.89 0 2V14C0 14.5304 0.210714 15.0391 0.585786 15.4142C0.960859 15.7893 1.46957 16 2 16H18C18.5304 16 19.0391 15.7893 19.4142 15.4142C19.7893 15.0391 20 14.5304 20 14V2C20 1.46957 19.7893 0.960859 19.4142 0.585786C19.0391 0.210714 18.5304 0 18 0V0Z" fill="#4A5568"/>
 													</svg>
 												</a>
 											</li>
-										{% endif %}
-										{% if member.linkedin %}
-										<li class="social-item">
-											<a href="{{ member.linkedin }}" target="_blank" class="social-link linkedinlink"data-bs-toggle="tooltip" data-bs-placement="top" title="Follow on Linkedin">
-												<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5611 6.2721H10.9037V7.9371C11.3852 6.9795 12.62 6.1191 14.4749 6.1191C18.0308 6.1191 18.875 8.0253 18.875 11.5227V18H15.275V12.3192C15.275 10.3275 14.7935 9.2043 13.5677 9.2043C11.8676 9.2043 11.1611 10.4148 11.1611 12.3183V18H7.5611V6.2721ZM1.388 17.847H4.988V6.1191H1.388V17.847ZM5.5037 2.295C5.50383 2.59675 5.44399 2.89551 5.32765 3.17393C5.21131 3.45235 5.04079 3.70486 4.826 3.9168C4.39076 4.34936 3.80163 4.59149 3.188 4.59C2.57545 4.58959 1.98768 4.34808 1.5518 3.9177C1.33779 3.70504 1.16785 3.45224 1.05171 3.17379C0.935571 2.89534 0.875521 2.5967 0.875 2.295C0.875 1.6857 1.118 1.1025 1.5527 0.6723C1.9882 0.241343 2.57622 -0.00026929 3.1889 2.25238e-07C3.8027 2.25238e-07 4.3913 0.2421 4.826 0.6723C5.2598 1.1025 5.5037 1.6857 5.5037 2.295Z" fill="#4A5568"/>
-												</svg>
-											</a>
-										</li>
 										{% endif %}
 										{% if member.instagram %}
 										<li class="social-item">
