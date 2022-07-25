@@ -293,9 +293,9 @@
 
 
 			let formData = new FormData();
-			formData.append('firstname', firstname.value)
-			formData.append('lastname', lastname.value)
-			formData.append('careeremail', careeremail.value)
+			formData.append('firstname', firstname)
+			formData.append('lastname', lastname)
+			formData.append('careeremail', careeremail)
 			formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
 			formData.append('career_id', '{{ career.id }}')
 			formData.append('image', image[0])
