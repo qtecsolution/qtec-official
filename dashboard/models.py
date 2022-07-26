@@ -229,3 +229,13 @@ class TeamMembers(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+class OurGallery(models.Model):
+    title = models.CharField(max_length=500)
+    description = models.TextField() 
+    primary_image = models.ImageField(upload_to='about-gallery/')
+    secondary_image = models.ImageField(upload_to='about-gallery/')
+    priority = models.PositiveSmallIntegerField() 
+
+
+   

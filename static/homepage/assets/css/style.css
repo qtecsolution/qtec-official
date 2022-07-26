@@ -4346,6 +4346,174 @@ select {
 /**=====================================================**
                     CONTACT-TOAST START
 =======================================================**/
+.swiper {
+  max-height: 33.75rem;
+  position: relative;
+}
+
+@media screen and (min-width: 48rem) {
+  .swiper {
+    max-height: 46.875rem;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .swiper {
+    max-height: 27.5rem;
+  }
+}
+
+.swiper-pagination {
+  font-size: 0;
+}
+
+.swiper-pagination-current {
+  font-size: 1.75rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .swiper-pagination-current {
+    font-size: 2rem;
+  }
+}
+
+.swiper-pagination-fraction {
+  bottom: auto;
+  right: 22%;
+  width: 15%;
+  top: 42%;
+  margin-left: auto;
+  text-align: left;
+  -webkit-transform: translateX(-20%);
+  transform: translateX(-20%);
+}
+
+@media screen and (min-width: 30rem) {
+  .swiper-pagination-fraction {
+    top: 45%;
+  }
+}
+
+@media screen and (min-width: 31.25rem) {
+  .swiper-pagination-fraction {
+    width: 10%;
+    right: 28%;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .swiper-pagination-fraction {
+    right: 31%;
+    top: 53%;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .swiper-pagination-fraction {
+    right: auto;
+    left: 29.5%;
+    top: 91%;
+    width: 5%;
+  }
+}
+
+.swiper-buttons {
+  position: absolute;
+  top: 42%;
+  width: 100%;
+  height: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 2%;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 30rem) {
+  .swiper-buttons {
+    top: 46%;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .swiper-buttons {
+    top: 54%;
+    padding-right: 8%;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .swiper-buttons {
+    padding-right: 0;
+    top: 93%;
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 75rem) {
+  .swiper-buttons {
+    width: 46%;
+  }
+}
+
+@media screen and (min-width: 87.5rem) {
+  .swiper-buttons {
+    width: 46%;
+  }
+}
+
+.swiper-button-next, .swiper-button-prev {
+  background: transparent;
+  border: none;
+  width: 1rem;
+  height: 1.875rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  position: static;
+  top: auto;
+  margin-top: 0;
+}
+
+.swiper-button-next svg, .swiper-button-prev svg {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  width: 0;
+  height: 0;
+  content: '';
+  display: none;
+}
+
+.swiper-button-next:not([disabled]):hover svg path, .swiper-button-prev:not([disabled]):hover svg path {
+  fill: #0876FC;
+}
+
+.swiper-button-next {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+.swiper-button-prev {
+  left: -4.625rem;
+}
+
 /**=======================================================**
                         ABOUT-BANNER START
 **=======================================================**/
@@ -4642,6 +4810,265 @@ select {
 
 /**=======================================================**
                         FEATURED END
+**=======================================================**/
+/**=======================================================**
+                        OUR-GALLERY START
+**=======================================================**/
+.aboutgallery {
+  padding: 3rem 0.5rem 4rem;
+}
+
+@media screen and (min-width: 62rem) {
+  .aboutgallery {
+    padding: 3.75rem 0rem 7.5rem;
+  }
+}
+
+.aboutgallery-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.5rem;
+}
+
+.aboutgallery-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.aboutgallery-header .aboutgallery-title {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.89321;
+}
+
+@media screen and (min-width: 48rem) {
+  .aboutgallery-header .aboutgallery-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 2.375rem;
+    font-weight: 600;
+    line-height: 1.65816;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .aboutgallery-header .aboutgallery-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.52104;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .aboutgallery-body {
+    max-height: 27.5rem;
+  }
+}
+
+.aboutgallery-body .gallery-images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.aboutgallery-body .gallery-images .primary-image,
+.aboutgallery-body .gallery-images .secondary-image {
+  overflow: hidden;
+}
+
+.aboutgallery-body .gallery-images .primary-image img,
+.aboutgallery-body .gallery-images .secondary-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: transform 200ms ease-in-out;
+  -webkit-transition: -webkit-transform 200ms ease-in-out;
+  transition: -webkit-transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+}
+
+.aboutgallery-body .gallery-images .primary-image img:not([disabled]):hover,
+.aboutgallery-body .gallery-images .secondary-image img:not([disabled]):hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.aboutgallery-body .gallery-images .primary-image {
+  width: 17.1875rem;
+  height: 16.25rem;
+}
+
+@media screen and (min-width: 30rem) {
+  .aboutgallery-body .gallery-images .primary-image {
+    width: 18.75rem;
+    height: 17.5rem;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .aboutgallery-body .gallery-images .primary-image {
+    width: 23.4375rem;
+    height: 27.5rem;
+  }
+}
+
+.aboutgallery-body .gallery-images .secondary-image {
+  width: 12.5rem;
+  height: 11.25rem;
+}
+
+@media screen and (min-width: 30rem) {
+  .aboutgallery-body .gallery-images .secondary-image {
+    width: 13.75rem;
+    height: 12.5rem;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .aboutgallery-body .gallery-images .secondary-image {
+    width: 15.625rem;
+    height: 21.875rem;
+  }
+}
+
+.aboutgallery-body .gallerydetails {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .aboutgallery-body .gallerydetails {
+    gap: 3rem;
+    text-align: right;
+  }
+}
+
+.aboutgallery-body .gallerydetails .gallery-title {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 48rem) {
+  .aboutgallery-body .gallerydetails .gallery-title {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+.aboutgallery-body .gallerydetails .gallery-text {
+  color: #4A5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.82714;
+  letter-spacing: 0.015rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .aboutgallery-body .gallerydetails .gallery-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.62;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .aboutgallery-body .gallerydetails .gallery-text {
+    font-family: "Titillium Web";
+    font-style: normal;
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 1.66667;
+  }
+}
+
+.aboutgallery-body .gallerydetails .galleryicon {
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  display: none;
+}
+
+@media screen and (min-width: 48rem) {
+  .aboutgallery-body .gallerydetails .galleryicon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 10rem;
+    width: 10rem;
+    top: -17%;
+    right: -4rem;
+  }
+}
+
+@media screen and (min-width: 62rem) {
+  .aboutgallery-body .gallerydetails .galleryicon {
+    top: -14%;
+  }
+}
+
+.aboutgallery-body .gallerydetails .galleryicon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/**=======================================================**
+                        OUR-GALLERY END
 **=======================================================**/
 /**=======================================================**
                         OUR-TEAM START
@@ -5668,6 +6095,29 @@ select {
     font-weight: normal;
     line-height: 1.66667;
   }
+}
+
+.client-requirements .requirements-thumbnail {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.client-requirements .requirements-thumbnail img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: transform 200ms ease-in-out;
+  -webkit-transition: -webkit-transform 200ms ease-in-out;
+  transition: -webkit-transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+}
+
+.client-requirements .requirements-thumbnail img:not([disabled]):hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /**=======================================================**

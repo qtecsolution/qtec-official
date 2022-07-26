@@ -23,6 +23,7 @@ class BlogView(View):
 
     def post(self, request):
         data =request.POST
+        print("data:::::::::::::",data)
         if request.resolver_match.url_name == "save_blog_url":
             blog_author = data.get('blog_author')
             blog_category = data.get('blog_category')

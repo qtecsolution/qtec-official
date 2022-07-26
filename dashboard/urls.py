@@ -6,6 +6,7 @@ from dashboard.views.career_view import ApplyForThisPositionView, CurrentOpportu
 
 from dashboard.views.dashboard import DashboardView
 from dashboard.views.lets_talk_view import LetsTalkView
+from dashboard.views.our_gallery_view import OurGalleryView
 from dashboard.views.subscribe_view import SubscribeView
 from dashboard.views.team_members_view import TeamMembersView
 from dashboard.views.technologies_view import TechnologiesView
@@ -77,6 +78,13 @@ urlpatterns= [
     path('team-members-delete/', TeamMembersView.as_view(), name="delete_team_member_url"),
     path('team-members-create/', TeamMembersView.as_view(), name="save_team_member_url"),
     path('team-members-update/<int:id>/', TeamMembersView.as_view(), name="update_team_member_url"),
+    
+
+    path('our-gallery/', OurGalleryView.as_view(), name="our_gallery_url"),
+    path('our-gallery-create/', OurGalleryView.as_view(), name="save_our_gallery_url"),
+    path('our-gallery-update/<int:id>/', OurGalleryView.as_view(), name="update_our_gallery_url"),
+    path('our-gallery-delete/', OurGalleryView.as_view(), name="delete_our_gallery_url"),
+    
     
         
 ]
