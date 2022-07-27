@@ -5862,7 +5862,7 @@ select {
   }
 }
 
-.casestudy-banner .thumbnailbox {
+.casestudy-banner .bannerthumb {
   border-radius: 1rem;
   border-radius: 1rem;
   position: relative;
@@ -5870,12 +5870,12 @@ select {
 }
 
 @media screen and (min-width: 62rem) {
-  .casestudy-banner .thumbnailbox {
+  .casestudy-banner .bannerthumb {
     margin-top: 0rem;
   }
 }
 
-.casestudy-banner .thumbnailbox::after {
+.casestudy-banner .bannerthumb::after {
   content: '';
   position: absolute;
   top: -1.875rem;
@@ -5887,10 +5887,14 @@ select {
 }
 
 @media screen and (min-width: 62rem) {
-  .casestudy-banner .thumbnailbox::after {
+  .casestudy-banner .bannerthumb::after {
     top: -3.75rem;
     right: -1.875rem;
   }
+}
+
+.casestudy-banner .bannerthumb .swiper {
+  z-index: 100;
 }
 
 .casestudy-banner .thumbnailbox .product-thumbnail {
@@ -8109,38 +8113,28 @@ select {
   color: #4A5568;
   font-family: "Titillium Web";
   font-style: normal;
-  font-size: 2.25rem;
-  font-weight: 700;
-  line-height: 1.33333;
-}
-
-@media screen and (min-width: 31.25rem) {
-  .homebanner-header .banner-title .homebanner-title {
-    font-family: "Titillium Web";
-    font-style: normal;
-    font-size: 3.375rem;
-    font-weight: 700;
-    line-height: 1.37037;
-  }
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.46875;
 }
 
 @media screen and (min-width: 48rem) {
   .homebanner-header .banner-title .homebanner-title {
     font-family: "Titillium Web";
     font-style: normal;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.3125;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.925;
   }
 }
 
-@media screen and (min-width: 87.5rem) {
+@media screen and (min-width: 62rem) {
   .homebanner-header .banner-title .homebanner-title {
     font-family: "Titillium Web";
     font-style: normal;
-    font-size: 5rem;
-    font-weight: 700;
-    line-height: 1.25;
+    font-size: 3.25rem;
+    font-weight: 600;
+    line-height: 1.52096;
   }
 }
 
@@ -8164,12 +8158,6 @@ select {
   }
 }
 
-@media screen and (min-width: 87.5rem) {
-  .homebanner-header .banner-title .homebanner-title .underline::after {
-    height: 0.625rem;
-  }
-}
-
 .homebanner-header .banner-info {
   max-width: 100%;
 }
@@ -8184,21 +8172,11 @@ select {
   color: #718096;
   font-family: "Titillium Web";
   font-style: normal;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 1.82714;
+  line-height: 1.62;
   letter-spacing: 0.015rem;
   text-align: justify;
-}
-
-@media screen and (min-width: 48rem) {
-  .homebanner-header .banner-info .banner-text {
-    font-family: "Titillium Web";
-    font-style: normal;
-    font-size: 1rem;
-    font-weight: normal;
-    line-height: 1.62;
-  }
 }
 
 @media screen and (min-width: 62rem) {

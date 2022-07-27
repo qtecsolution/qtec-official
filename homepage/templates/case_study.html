@@ -1,35 +1,85 @@
 {% extends 'homepage/base_homepage.html' %}
+{% load static %}
 
 {% block content %}
 <!--========== CASESTUDY-BANNER-START ============-->
-	<section class="casestudy-banner">
-		<div class="container">
-			<div class="row g-4 align-items-center">
-				<div class="col-lg-5 col-12">
-					<div class="casestudy-banner-description">
-						<div class="casestudyinfo">
-							<h3 class="casestudy-title">{{ we_have_done.name }} Case Study</h3>
-						</div> 
+<section class="casestudy-banner">
+	<div class="container">
+		<div class="row g-4 align-items-center">
+			<div class="col-lg-5 col-12">
+				<div class="casestudy-banner-description">
+					<div class="casestudyinfo">
+						<h3 class="casestudy-title">{{ we_have_done.name }} Case Study</h3>
+					</div>
 
-						<div class="casestudydetetail">
-							<p class="casestudy-text">
-                                {{ case_study_details.case_study_about|safe }}
-							</p>
-						</div>
+					<div class="casestudydetetail">
+						<p class="casestudy-text">
+							{{ case_study_details.case_study_about|safe }}
+						</p>
 					</div>
 				</div>
+			</div>
+			<div class="col-lg-6 col-12 offset-lg-1 offset-0">
+				<div class="bannerthumb">
+					<div class="swiper caseSwiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="thumbnailbox">
+									<figure class="product-thumbnail">
+										<img src="{{ case_study_details.case_study_image.url }}" alt="case-study-thumbnail">
+									</figure>
+								</div>
+							</div>
 
-				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
-					<div class="thumbnailbox">
-						<figure class="product-thumbnail">
-							<img {% if case_study_details.case_study_image %} src="{{ case_study_details.case_study_image.url }}" {% endif %} alt="case-study-thumbnail">
-						</figure>
+							<div class="swiper-slide">
+								<div class="thumbnailbox">
+									<figure class="product-thumbnail">
+										<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements">
+									</figure>
+								</div>
+							</div>
+
+							<div class="swiper-slide">
+								<div class="thumbnailbox">
+									<figure class="product-thumbnail">
+										<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements">
+									</figure>
+								</div>
+							</div>
+
+							<div class="swiper-slide">
+								<div class="thumbnailbox">
+									<figure class="product-thumbnail">
+										<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements">
+									</figure>
+								</div>
+							</div>
+
+							<div class="swiper-slide">
+								<div class="thumbnailbox">
+									<figure class="product-thumbnail">
+										<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements">
+									</figure>
+								</div>
+							</div>
+
+							<div class="swiper-slide">
+								<div class="thumbnailbox">
+									<figure class="product-thumbnail">
+										<img src="{{ case_study_details.case_study_image.url }} alt="client-requirements">
+									</figure>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<!--========== CASESTUDY-BANNER-END ==============-->
+	</div>
+</section>
+<!--========== CASESTUDY-BANNER-END ==============-->
+
+	
 
 	<!--========== CLIENT-REQUIREMENTS START ============-->
 	<section class="client-requirements">
@@ -212,6 +262,8 @@
 {% endblock %}
 
 {% block script %}
+<!-- CASE STUDY JS -->
+<script src="{% static 'homepage/assets/js/caseslider.js' %}" ></script>
 
 <script>
 
