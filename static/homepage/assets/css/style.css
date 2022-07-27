@@ -8729,6 +8729,7 @@ select {
 }
 
 .ourprojects-body .tab-content .tab-pane .projectlink {
+  width: 100%;
   height: 100%;
 }
 
