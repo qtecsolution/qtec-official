@@ -398,6 +398,28 @@
             
            
         });
+        $.summernote.dom.walkPoint = (function (_super) {
+        return function () {
+            var startPoint = arguments[0]
+            var endPoint = arguments[1]
+            var handler = arguments[2]
+            var isSkipInnerOffset = arguments[3]
+            let point = startPoint;
+
+            while (point) {
+                handler(point);
+
+                if ($.summernote.dom.isSamePoint(point, endPoint)) {
+                    break;
+                }
+                const isSkipOffset = isSkipInnerOffset &&
+                    startPoint.node !== point.node &&
+                    endPoint.node !== point.node;
+                point = $.summernote.dom.nextPoint(point, isSkipOffset);
+            }
+        };
+
+    })($.summernote.dom.walkPoint);
         
      
         $("#exampleFormControlSelect1").select2({
