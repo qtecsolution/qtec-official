@@ -54,6 +54,20 @@
                                                 <textarea  class="case_study_requirement_{{case_study.id}}" name="client_requirement" >{{ case_study.client_requirement }}</textarea>
                                             </div>
                                             <div class="form-group">
+                                                <label>Requirements Thumbnail  </label>
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <input type="file" name="requirements_thumbnail"  class="form-control" >
+                                                    </div>
+                                                    <div class="col-4">
+                                                        {% if case_study.case_study_image %}
+                                                            <img style="width: 50px; height: 50px; margin-left: 100px;" src="/media/{{ case_study.requirements_thumbnail }}">
+                                                        {% endif %}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>How We Build It </label>
                                                 <textarea  class="case_study_build_{{case_study.id}}"  name="how_we_build_it" >{{ case_study.how_we_build_it }}</textarea>
                                     

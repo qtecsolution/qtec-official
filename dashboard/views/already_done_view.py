@@ -73,6 +73,9 @@ class CaseStudyEditView(View):
         if  case_study_image:
             case_study_details.case_study_image = file.get('case_study_image')
         case_study_details.client_requirement = data.get('client_requirement')
+        requirements_thumbnail = file.get('requirements_thumbnail')
+        if requirements_thumbnail:
+            case_study_details.requirements_thumbnail = requirements_thumbnail
         case_study_details.how_we_build_it = data.get('how_we_build_it')
         how_we_build_image = file.get('how_we_build_image')
         if how_we_build_image:

@@ -114,6 +114,7 @@ class CaseStudyDetails(models.Model):
     case_study_about = models.TextField(null=True, blank=True)
     case_study_image = models.ImageField(upload_to='case_study/', null=True, blank=True)
     client_requirement = models.TextField(null=True, blank=True)
+    requirements_thumbnail = models.ImageField(upload_to='case_study/', null=True, blank=True)
     how_we_build_it = models.TextField(null=True, blank=True)
     how_we_build_image = models.ImageField(upload_to='how_we_build/', null=True, blank=True)
     technology = models.ManyToManyField(Technologies)
