@@ -39,6 +39,7 @@
                         <input id="foo" type="text" class="d-none" value="{{ abs_uri }}">
                       <ul class="sociallist">
                         <li class="sociallist-item">
+                         
                           {% post_to_facebook abs_uri "Facebook" %}
                         </li>
 
@@ -171,7 +172,6 @@
   </section>
 {% endblock %}
 {% block script %}
-
     <script>
 
         function myFunction() {
