@@ -161,7 +161,7 @@
 	<!--========== KEY-FEATURES END ================-->
 
 	<!--========== HOW-BUILD-START ============-->
-	<section class="how-build">
+	<section class="how-build pb-5">
 		<div class="container">
 			<div class="row align-items-center g-4">
 				<div class="col-lg-5 col-12">
@@ -212,7 +212,7 @@
 
 				<!-- TECHNOLOGIES-BODY START -->
 				<div class="technologies-body ">
-					<div class="row g-4 align-items-start">
+					<div class="row g-4">
                         {% for tech in case_study_details.technology.all %}
 						<div class="col-lg-4 col-sm-6 col-12">
 							<a href="{% url 'homepage:technologies_url' tech.slug %}" class="projectlink">
