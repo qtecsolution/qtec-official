@@ -26,7 +26,6 @@
                                     <th>Blog Author </th>
                                     <th>Blog Category</th>
                                     <th>Title</th>
-                                    <th>Description</th>
                                     <th>Image</th>
                                     <th>Tags</th>
                                     <th>Created At</th>
@@ -39,7 +38,6 @@
                                     <td>{{ blog.blog_author }}</td>
                                     <td>{{ blog.blog_category }}</td>
                                     <td>{{ blog.title }}</td>
-                                    <td>{{ blog.description|safe }}</td>
                                     <td>
                                          <img style="width: 50px; " src="{{ blog.image.url }}">    
                                     </td>
@@ -108,13 +106,13 @@
                                                                 <div class="form-group row">
                                                                     <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea class ="blog_description_id_{{ blog.id }}" required class="form-control" name="description">{{ blog.description }}</textarea>
+                                                                        <textarea id="editor1" required class="form-control" name="description">{{ blog.description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea required class ="blog_tags_id_{{ blog.id }}" id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
+                                                                        <textarea required id="editor2"  id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -277,6 +275,16 @@
 
 {% block script %}
 <script>
+    ClassicEditor
+        .create( document.querySelector( '#editor1' ) )
+        .catch( error => {
+             console.error( error );
+    } );
+    ClassicEditor
+        .create( document.querySelector( '#editor2' ) )
+        .catch( error => {
+             console.error( error );
+    } );
    
    function give_id(id){
         $('.blog_description_id_'+id).summernote({
