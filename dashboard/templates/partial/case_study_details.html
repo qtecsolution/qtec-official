@@ -40,28 +40,26 @@
                                                         <label>Case Study Image  </label>
                                                     </div>
                                                     <div class="col-4">
-                                                        <button onclick="add_image_field('{{6}}')" type="button" style="margin-left: 100px;" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i><br>
+                                                        <button onclick="add_image_field('{{case_study.id}}')" type="button" style="margin-left: 90px;" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i><br>
                                                     </div>
 
                                                 </div>
                                                 {% for case_study_image in case_study.case_study_image.all %}
                                                 <div class="row" id="case_study_{{ case_study_image.id }}">
-                                                    
-                                                   
-                                                    <div class="col-2">
-                                                       Image-{{ case_study_image.id }}
-                                                    </div>
                                                     <div class="col-6">
-                                                        <input type="file" name="case_study_image"  value="" class="form-control" > 
+                                                        <input type="file" name="case_study_image_{{ case_study_image.id }}"  value="" class="form-control" > 
                                                     </div>
                                                     <div class="col-3">
                                                         {% if case_study_image.image %}
-                                                            <img  style="width: 50px; height: 50px; margin-left: 100px;" src="/media/{{ case_study_image.image  }}">
+                                                            <img style="width: 50px; height: 50px; margin-left: 100px;" src="/media/{{ case_study_image.image  }}">
                                                         {% endif %}
                                                     </div>
+                                                    <div class="col-2 mt-2 ml-4">
+                                                        <button  type="button" onclick="delete_case_study_image('{{case_study_image.id}}','{{case_study.id}}')" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                     </div>
                                                    
 
-                                                </div>
+                                                </div><br>
                                                 {% endfor %}
                                                 
                                             </div>
@@ -137,25 +135,28 @@
 
 {% block script %}
 <script>
-    function add_image_field(){
-        const all_id = document.querySelectorAll ('[id^="case_study_"]')
+    const all_id = document.querySelectorAll ('[id^="case_study_"]')
         var last_id = ''
         for (let i = 0; i < all_id.length; i++) {
             last_id = all_id[i].id
         }
         id = last_id.replace(/[^0-9]/g,'')
-        
-        alert(parseInt(id))
-       
-        var input = 6
-        var new_div  = ` <div class="col-2">image-`+input+`</div>
-        <div class="col-6">
-            <input type="file" name="case_study_image"  value="" class="form-control" > 
-        </div>
-        <div class="col-4">
-        </div><br>`
-        $('#case_study_3').append(new_div);
-        $('#case_study_3').append('<br');
+        str = id.replace(/\s/g, '');
+        var new_id = parseInt(id) 
+    function add_image_field(case_study_id){
+        new_id += 1
+        var new_div  =
+        `<br><div class="row" id="case_study_`+new_id+`">
+            <div class="col-6">
+                <input type="file" name="case_study_image"  value="" class="form-control" > 
+            </div>
+            <div class="col-2 mt-2 ml-4">
+                
+            </div>
+        </div>`
+        alert(new_id)
+        $('#case_study_'+String(new_id-1)).after(new_div);
+      
     }
 
     $(document).ready(function() {
@@ -230,6 +231,28 @@
             allowClear: true
         });
     });
+    function delete_case_study_image(id,case_study_id){
+        alert(case_study_id)
+            var csrf = '{{ csrf_token }}'
+            var data = {'id': id,'case_study_id':case_study_id, 'csrfmiddlewaretoken': csrf}
+            $.ajax({
+                url: "{% url 'dashboard:case_study_image_delete_url' %}",
+                data: data,
+                type: "POST",
+                success: function (data) {
+
+                toastr.success('Image deleted successfully') 
+                $('#case_study_'+id).html('')
+                   
+                },
+                error: function (data) {
+                    
+                    toastr.success(data)
+                }
+            })
+
+
+        }
 </script>
 
 {% endblock %}

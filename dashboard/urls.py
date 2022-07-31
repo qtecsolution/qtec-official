@@ -26,6 +26,7 @@ urlpatterns= [
     path('already-done-edit/', AlreadyDoneView.as_view(), name= 'edit_what_project_done_url'),
     path('already-done-save/', AlreadyDoneView.as_view(), name= 'save_what_done_url'),
     path('case-study-edit/<int:id>/', CaseStudyEditView.as_view(), name= 'case_study_edit_url'),
+    path('case-study-image-delete/', CaseStudyEditView.as_view(), name= 'case_study_image_delete_url'),
     path('key-feature/<int:id>/', KeyFeatureView.as_view(), name= 'key_feature_url'),
     path('key-feature-delete/<int:id>/', KeyFeatureView.as_view(), name= 'delete_key_feature_url'),
    
