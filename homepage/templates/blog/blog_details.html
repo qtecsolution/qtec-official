@@ -32,16 +32,14 @@
                     <!-- AUTHOR-INFO END -->
 
                     <!-- SHARE-INFO START -->
-                    <div class="shareinfo">
+                    <div class="shareinfo" style="gap: 0rem;">
                       <p class="sharetitle">Share with </p>
 
                       <!-- SHARE SOCIAL LIST START -->
                         <input id="foo" type="text" class="d-none" value="{{ abs_uri }}">
                       <ul class="sociallist">
                         <li class="sociallist-item">
-                        <div class="fb-share-button" data-href="https://www.qtecsolution.com/blog/{{blog.slug}}/" data-layout="button_count" data-size="large"><a target="_blank"  class="fb-xfbml-parse-ignore">Share</a></div>
-                        
-                         
+                          {% post_to_facebook abs_uri "Facebook" %}
                         </li>
 
                         <li class="sociallist-item">
@@ -69,7 +67,7 @@
                               </svg>
                             </span>
 
-                            <span class="text">Link</span>
+                            
                           </a>
                         </li>
                       </ul>
