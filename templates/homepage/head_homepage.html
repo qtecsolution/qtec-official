@@ -11,7 +11,7 @@
 
     {% if request.resolver_match.url_name == 'blog_details_url' %}
 	<meta property="og:title" content="{{ blog.title }}">
-	<meta property="og:description" content="{{ blog.description|safe }}">
+	<meta property="og:description" content="{{ blog.description }}">
 	<meta property="og:image" content="{{ blog.image.url }}">
 	<meta property="og:type" content="article">
 
