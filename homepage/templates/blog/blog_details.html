@@ -172,6 +172,10 @@
 {% endblock %}
 {% block script %}
     <script>
+    $(document).ready(function() {
+      $('.description p').addClass('descriptiontext');
+           
+    });
 
         function myFunction() {
           var copyText = document.getElementById("foo");
