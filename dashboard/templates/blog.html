@@ -27,7 +27,6 @@
                                     <th>Blog Category</th>
                                     <th>Title</th>
                                     <th>Image</th>
-                                    <th>Tags</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
                                     <th>Action</th>
@@ -41,7 +40,6 @@
                                     <td>
                                          <img style="width: 50px; " src="{{ blog.image.url }}">    
                                     </td>
-                                    <td>{{ blog.tags|safe }}</td>
                                     <td>{{ blog.created_at }}</td>
                                     <td>{{ blog.updated_at }}</td> 
                                     <td>
@@ -55,8 +53,8 @@
                                             </div>
                                             <div class="col-3">
                                                 <button  onclick="give_id('{{blog.id}}')" data-toggle="modal"
-                                                data-target="#blog_edit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
-                                                <div class="modal fade" id="blog_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                data-target="#blog_edit_{{blog.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
+                                                <div class="modal fade" id="blog_edit_{{blog.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -106,13 +104,13 @@
                                                                 <div class="form-group row">
                                                                     <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea id="editor1" required class="form-control" name="description">{{ blog.description }}</textarea>
+                                                                        <textarea id="editor1_{{blog.id}}" required class="form-control" name="description">{{ blog.description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea required id="editor2"  id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
+                                                                        <textarea required id="editor2_{{blog.id}}"  id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -275,20 +273,20 @@
 
 {% block script %}
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#editor1' ) )
-        .catch( error => {
-             console.error( error );
-    } );
-    ClassicEditor
-        .create( document.querySelector( '#editor2' ) )
-        .catch( error => {
-             console.error( error );
-    } );
+   
    
    function give_id(id){
-       
-        
+    ClassicEditor
+        .create( document.querySelector( '#editor1_'+id ) )
+        .catch( error => {
+             console.error( error );
+    } );
+    ClassicEditor
+        .create( document.querySelector( '#editor2_'+id ) )
+        .catch( error => {
+             console.error( error );
+    } );
+           
    }
     $(document).ready(function() {
         
