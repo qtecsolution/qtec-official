@@ -35,18 +35,34 @@
                                                 <textarea  class="case_study_about_{{case_study.id}}" name="case_study_about" >{{ case_study.case_study_about }}</textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label>Case Study Image  </label>
-                                                <div class="row">
+                                                <div class="row mb-3" >
                                                     <div class="col-8">
-                                                        <input type="file" name="case_study_image"  class="form-control" > 
+                                                        <label>Case Study Image  </label>
                                                     </div>
                                                     <div class="col-4">
-                                                        {% if case_study.case_study_image %}
-                                                            <img style="width: 50px; height: 50px; margin-left: 100px;" src="/media/{{ case_study.case_study_image }}">
-                                                        {% endif %}
+                                                        <button onclick="add_image_field('{{6}}')" type="button" style="margin-left: 100px;" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i><br>
                                                     </div>
 
                                                 </div>
+                                                {% for case_study_image in case_study.case_study_image.all %}
+                                                <div class="row" id="case_study_{{ case_study_image.id }}">
+                                                    
+                                                   
+                                                    <div class="col-2">
+                                                       Image-{{ case_study_image.id }}
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input type="file" name="case_study_image"  value="" class="form-control" > 
+                                                    </div>
+                                                    <div class="col-3">
+                                                        {% if case_study_image.image %}
+                                                            <img  style="width: 50px; height: 50px; margin-left: 100px;" src="/media/{{ case_study_image.image  }}">
+                                                        {% endif %}
+                                                    </div>
+                                                   
+
+                                                </div>
+                                                {% endfor %}
                                                 
                                             </div>
                                             <div class="form-group">
@@ -121,6 +137,27 @@
 
 {% block script %}
 <script>
+    function add_image_field(){
+        const all_id = document.querySelectorAll ('[id^="case_study_"]')
+        var last_id = ''
+        for (let i = 0; i < all_id.length; i++) {
+            last_id = all_id[i].id
+        }
+        id = last_id.replace(/[^0-9]/g,'')
+        
+        alert(parseInt(id))
+       
+        var input = 6
+        var new_div  = ` <div class="col-2">image-`+input+`</div>
+        <div class="col-6">
+            <input type="file" name="case_study_image"  value="" class="form-control" > 
+        </div>
+        <div class="col-4">
+        </div><br>`
+        $('#case_study_3').append(new_div);
+        $('#case_study_3').append('<br');
+    }
+
     $(document).ready(function() {
         id = document.getElementById('get_case_study_id').value
         $('.case_study_about_'+id).summernote({
