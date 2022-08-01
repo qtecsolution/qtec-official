@@ -135,16 +135,23 @@
 
 {% block script %}
 <script>
+    var count = 0 
     const all_id = document.querySelectorAll ('[id^="case_study_"]')
         var last_id = ''
         for (let i = 0; i < all_id.length; i++) {
             last_id = all_id[i].id
+            count += 1
         }
         id = last_id.replace(/[^0-9]/g,'')
         str = id.replace(/\s/g, '');
         var new_id = parseInt(id) 
     function add_image_field(case_study_id){
         new_id += 1
+        count += 1
+        if(count > 6){
+            $('#case_study_'+String(new_id-1)).after(`<span class="error text-danger">Errors: Image limit over</span>`);
+            return
+        }
         var new_div  =
         `<br><div class="row" id="case_study_`+new_id+`">
             <div class="col-6">
@@ -154,7 +161,6 @@
                 
             </div>
         </div>`
-        alert(new_id)
         $('#case_study_'+String(new_id-1)).after(new_div);
       
     }
@@ -233,23 +239,24 @@
     });
     function delete_case_study_image(id,case_study_id){
         alert(case_study_id)
-            var csrf = '{{ csrf_token }}'
-            var data = {'id': id,'case_study_id':case_study_id, 'csrfmiddlewaretoken': csrf}
-            $.ajax({
-                url: "{% url 'dashboard:case_study_image_delete_url' %}",
-                data: data,
-                type: "POST",
-                success: function (data) {
+        count -= 1
+        var csrf = '{{ csrf_token }}'
+        var data = {'id': id,'case_study_id':case_study_id, 'csrfmiddlewaretoken': csrf}
+        $.ajax({
+            url: "{% url 'dashboard:case_study_image_delete_url' %}",
+            data: data,
+            type: "POST",
+            success: function (data) {
 
-                toastr.success('Image deleted successfully') 
-                $('#case_study_'+id).html('')
-                   
-                },
-                error: function (data) {
-                    
-                    toastr.success(data)
-                }
-            })
+            toastr.success('Image deleted successfully') 
+            $('#case_study_'+id).html('')
+                
+            },
+            error: function (data) {
+                
+                toastr.success(data)
+            }
+        })
 
 
         }

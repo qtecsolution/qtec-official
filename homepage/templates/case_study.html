@@ -23,45 +23,15 @@
 				<div class="bannerthumb">
 					<div class="swiper caseSwiper">
 						<div class="swiper-wrapper">
+							{% for item in  case_study_details.case_study_image.all %}
 							<div class="swiper-slide">
 								<div class="thumbnailbox">
 									<figure class="product-thumbnail">
-										<img src="{{ case_study_details.case_study_image.url }}" alt="case-study-thumbnail">
+										<img src="{{ item.image.url }}" alt="case-study-thumbnail">
 									</figure>
 								</div>
 							</div>
-
-							<div class="swiper-slide">
-								<div class="thumbnailbox">
-									<figure class="product-thumbnail">
-										<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements">
-									</figure>
-								</div>
-							</div>
-
-							<div class="swiper-slide">
-								<div class="thumbnailbox">
-									<figure class="product-thumbnail">
-										<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements">
-									</figure>
-								</div>
-							</div>
-
-							<div class="swiper-slide">
-								<div class="thumbnailbox">
-									<figure class="product-thumbnail">
-										<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements">
-									</figure>
-								</div>
-							</div>
-
-							<div class="swiper-slide">
-								<div class="thumbnailbox">
-									<figure class="product-thumbnail">
-										<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements">
-									</figure>
-								</div>
-							</div>
+							{% endfor %}
 						</div>
 					</div>
 				</div>
