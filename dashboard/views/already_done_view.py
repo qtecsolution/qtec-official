@@ -88,7 +88,7 @@ class CaseStudyEditView(View):
                     update_image.image = case_study_image
                     update_image.save()
                  
-                   
+            print("file.getlist('case_study_image'):::::::::::::::::",file.getlist('case_study_image'))  
             case_study_image = file.getlist('case_study_image')
             for item in case_study_image:
                 object = CaseStudyImage()

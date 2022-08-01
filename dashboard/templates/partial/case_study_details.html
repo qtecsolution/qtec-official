@@ -44,6 +44,7 @@
                                                     </div>
 
                                                 </div>
+                                                {% if case_study.case_study_image.all %}
                                                 {% for case_study_image in case_study.case_study_image.all %}
                                                 <div class="row" id="case_study_{{ case_study_image.id }}">
                                                     <div class="col-6">
@@ -56,11 +57,19 @@
                                                     </div>
                                                     <div class="col-2 mt-2 ml-4">
                                                         <button  type="button" onclick="delete_case_study_image('{{case_study_image.id}}','{{case_study.id}}')" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
-                                                     </div>
+                                                     </div><br>
                                                    
 
-                                                </div><br>
+                                                </div>
                                                 {% endfor %}
+                                                {% else %}
+                                                <div class="row" id="case_study_1">
+                                                    <div class="col-6">
+                                                        <input type="file" name="case_study_image"  value="" class="form-control" ><br>
+                                                    </div>
+                                                    
+                                                </div><br>
+                                                {% endif %}
                                                 
                                             </div>
                                             <div class="form-group">
@@ -146,16 +155,32 @@
         str = id.replace(/\s/g, '');
         var new_id = parseInt(id) 
     function add_image_field(case_study_id){
-        new_id += 1
+        if(new_id > 1)
+        {
+            new_id += 1
+        }
+        else{
+         id = 2  
+        var new_div  =
+        `<div class="row" id="case_study_`+id+`">
+                <div class="col-6">
+                    <input type="file" name="case_study_image"  value="" class="form-control" ><br>
+                </div>
+            </div>
+            `
+        $('#case_study_'+String(id-1)).after(new_div);
+           
+        }
+        alert(new_id)
         count += 1
         if(count > 6){
             $('#case_study_'+String(new_id-1)).after(`<span class="error text-danger">Errors: Image limit over</span>`);
             return
         }
         var new_div  =
-        `<br><div class="row" id="case_study_`+new_id+`">
+        `<div class="row" id="case_study_`+new_id+`">
             <div class="col-6">
-                <input type="file" name="case_study_image"  value="" class="form-control" > 
+                <input type="file" name="case_study_image"  value="" class="form-control" ><br>
             </div>
             <div class="col-2 mt-2 ml-4">
                 
@@ -249,7 +274,7 @@
             success: function (data) {
 
             toastr.success('Image deleted successfully') 
-            $('#case_study_'+id).html('')
+            $('#case_study_'+id).remove('')
                 
             },
             error: function (data) {
