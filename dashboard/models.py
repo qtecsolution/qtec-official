@@ -158,6 +158,7 @@ class Blog(models.Model):
     slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     title = models.TextField()
     description = models.TextField()
+    og_description = models.TextField(null=True)
     image = models.ImageField(upload_to='blog/')
     tags = models.TextField(null=True)
     created_at = models.DateField(auto_now_add=True, null=True)

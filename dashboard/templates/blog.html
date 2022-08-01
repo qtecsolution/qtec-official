@@ -108,6 +108,12 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
+                                                                    <label for="description" class="col-sm-3 col-form-label">OG Description <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <textarea  required class="form-control" name="og_description">{{ blog.og_description }}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
                                                                     <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
                                                                         <textarea required id="editor2_{{blog.id}}"  id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
@@ -222,6 +228,12 @@
                                         <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
                                             <textarea id ="blog_description" required class="form-control" name="description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="description" class="col-sm-3 col-form-label">OG Description <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <textarea id ="og_description" required class="form-control" name="og_description"></textarea>
                                         </div>
                                     </div>
                                     <div id="tag_error_id" class="form-group row">
