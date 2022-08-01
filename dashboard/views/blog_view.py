@@ -23,17 +23,17 @@ class BlogView(View):
 
     def post(self, request):
         data =request.POST
-        print("data:::::::::::::",data)
         if request.resolver_match.url_name == "save_blog_url":
             blog_author = data.get('blog_author')
             blog_category = data.get('blog_category')
             title = data.get('title')
             description = data.get('description')
+            og_description = data.get('og_description')
             image = request.FILES.get('image')
             tags = data.get('tags')
             created_at = data.get('created_at')
             updated_at = data.get('updated_at')
-            if not blog_author or not description or not tags:
+            if not blog_author or not description or not tags or not og_description:
                  messages.error(request, 'Invalid input!')
             else:
                 blog_object = Blog()
@@ -41,6 +41,7 @@ class BlogView(View):
                 blog_object.blog_category_id = blog_category
                 blog_object.title = title
                 blog_object.description = description
+                blog_object.og_description = og_description
                 blog_object.tags = tags
                 blog_object.image = image
                 blog_object.created_at = created_at
@@ -54,11 +55,12 @@ class BlogView(View):
             blog_category = data.get('blog_category')
             title = data.get('title')
             description = data.get('description')
+            og_description = data.get('og_description')
             image = request.FILES.get('image')
             tags = data.get('tags')
             created_at = data.get('created_at')
             updated_at = data.get('updated_at')
-            if not blog_author or not description or not tags:
+            if not blog_author or not description or not tags or not og_description:
                  messages.error(request, 'Invalid input!')
             else:
                 request_id = data.get('id')
@@ -67,6 +69,7 @@ class BlogView(View):
                 blog_object.blog_category_id = blog_category
                 blog_object.title = title
                 blog_object.description = description
+                blog_object.og_description = og_description
                 blog_object.tags = tags
                 if image:
                     blog_object.image = image
