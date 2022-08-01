@@ -171,7 +171,6 @@
         $('#case_study_'+String(id-1)).after(new_div);
            
         }
-        alert(new_id)
         count += 1
         if(count > 6){
             $('#case_study_'+String(new_id-1)).after(`<span class="error text-danger">Errors: Image limit over</span>`);
@@ -263,7 +262,6 @@
         });
     });
     function delete_case_study_image(id,case_study_id){
-        alert(case_study_id)
         count -= 1
         var csrf = '{{ csrf_token }}'
         var data = {'id': id,'case_study_id':case_study_id, 'csrfmiddlewaretoken': csrf}
