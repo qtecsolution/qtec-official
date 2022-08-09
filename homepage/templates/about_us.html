@@ -108,7 +108,7 @@
 										<div class="gallery-images">
 											{% if  not gallery.secondary_image %}
 											<figure class="primary-image w-100">
-												<img src="/media/{{gallery.primary_image}}" alt="gallery-primary-image">
+												<img src="/media/{{gallery.primary_image}}" alt="gallery-primary-image" style="object-fit:contain;">
 											</figure>
 											{% else %}
 												<figure class="primary-image">
