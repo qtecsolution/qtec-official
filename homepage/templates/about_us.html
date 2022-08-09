@@ -106,13 +106,21 @@
 								<div class="row w-100 align-items-center g-0 gy-5 gx-lg-5">
 									<div class="col-lg-6 col-12">
 										<div class="gallery-images">
-											<figure class="primary-image">
+											{% if  not gallery.secondary_image %}
+											<figure class="primary-image w-100">
 												<img src="/media/{{gallery.primary_image}}" alt="gallery-primary-image">
 											</figure>
-
+											{% else %}
+												<figure class="primary-image">
+													<img src="/media/{{gallery.primary_image}}" alt="gallery-primary-image">
+												</figure>
+											{% endif %}
+											
+											{% if gallery.secondary_image %}
 											<figure class="secondary-image">
 												<img src="/media/{{gallery.secondary_image}}" alt="gallery-secondary-image">
 											</figure>
+											{% endif %}
 										</div>
 									</div>
 
