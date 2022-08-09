@@ -59,9 +59,11 @@
                                                                 <label>Secondary Image </label>
                                                                 <input type="file"  name="secondary_image" class="form-control"  >
                                                             </div>
+                                                            {% if our_gallery.secondary_image %}
                                                             <div class="col-6">
                                                                 <img style="width: 50px; margin-top: 30px; margin-left: 80px;" src="{{ our_gallery.secondary_image.url }}">
                                                             </div>
+                                                            {% endif %}
                                                         </div>
                                                         
                                                     </div>
