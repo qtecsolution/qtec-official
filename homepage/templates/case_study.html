@@ -186,7 +186,7 @@
                         {% for tech in case_study_details.technology.all %}
 						<div class="col-lg-4 col-sm-6 col-12">
 							<a href="{% url 'homepage:technologies_url' tech.slug %}" class="projectlink">
-								<div class="card-technology">
+								<div class="card-technology justify-content-start ">
 									<div class="card-technology-header">
 										<div class="card-technology-cap">
 											<img class="img-fluid" src="{{ tech.image.url }}">
