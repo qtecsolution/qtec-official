@@ -11463,6 +11463,9 @@ select {
   left: -4rem;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
   width: 8.6875rem;
   height: 14.5625rem;
