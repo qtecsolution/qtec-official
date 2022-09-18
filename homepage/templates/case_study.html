@@ -1,35 +1,47 @@
 {% extends 'homepage/base_homepage.html' %}
+{% load static %}
 
 {% block content %}
 <!--========== CASESTUDY-BANNER-START ============-->
-	<section class="casestudy-banner">
-		<div class="container">
-			<div class="row g-4 align-items-center">
-				<div class="col-lg-5 col-12">
-					<div class="casestudy-banner-description">
-						<div class="casestudyinfo">
-							<h3 class="casestudy-title">{{ we_have_done.name }} Case Study</h3>
-						</div>
+<section class="casestudy-banner">
+	<div class="container">
+		<div class="row g-4 align-items-center">
+			<div class="col-lg-5 col-12">
+				<div class="casestudy-banner-description">
+					<div class="casestudyinfo">
+						<h3 class="casestudy-title">{{ we_have_done.name }} Case Study</h3>
+					</div>
 
-						<div class="casestudydetetail">
-							<p class="casestudy-text">
-                                {{ case_study_details.case_study_about|safe }}
-							</p>
-						</div>
+					<div class="casestudydetetail">
+						<p class="casestudy-text">
+							{{ case_study_details.case_study_about|safe }}
+						</p>
 					</div>
 				</div>
-
-				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
-					<div class="thumbnailbox">
-						<figure class="product-thumbnail">
-							<img {% if case_study_details.case_study_image %} src="{{ case_study_details.case_study_image.url }}" {% endif %} alt="case-study-thumbnail">
-						</figure>
+			</div>
+			<div class="col-lg-6 col-12 offset-lg-1 offset-0">
+				<div class="bannerthumb">
+					<div class="swiper caseSwiper">
+						<div class="swiper-wrapper">
+							{% for item in  case_study_details.case_study_image.all %}
+							<div class="swiper-slide">
+								<div class="thumbnailbox">
+									<figure class="product-thumbnail">
+										<img src="{{ item.image.url }}" alt="case-study-thumbnail">
+									</figure>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<!--========== CASESTUDY-BANNER-END ==============-->
+	</div>
+</section>
+<!--========== CASESTUDY-BANNER-END ==============-->
+
+	
 
 	<!--========== CLIENT-REQUIREMENTS START ============-->
 	<section class="client-requirements">
@@ -48,8 +60,13 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="col-lg-6 col-12"></div>
+				{% if case_study_details.requirements_thumbnail %}
+				<div class="col-lg-6 col-12">
+					<figure class="requirements-thumbnail">
+						<img src="{{ case_study_details.requirements_thumbnail.url }}" alt="client-requirements">
+					</figure>
+				</div>
+				{% endif %}
 			</div>
 		</div>
 	</section>
@@ -114,7 +131,7 @@
 	<!--========== KEY-FEATURES END ================-->
 
 	<!--========== HOW-BUILD-START ============-->
-	<section class="how-build">
+	<section class="how-build pb-5">
 		<div class="container">
 			<div class="row align-items-center g-4">
 				<div class="col-lg-5 col-12">
@@ -164,12 +181,12 @@
 				<!-- TECHNOLOGIES-HEADER END -->
 
 				<!-- TECHNOLOGIES-BODY START -->
-				<div class="technologies-body">
+				<div class="technologies-body ">
 					<div class="row g-4">
                         {% for tech in case_study_details.technology.all %}
 						<div class="col-lg-4 col-sm-6 col-12">
 							<a href="{% url 'homepage:technologies_url' tech.slug %}" class="projectlink">
-								<div class="card-technology">
+								<div class="card-technology justify-content-start ">
 									<div class="card-technology-header">
 										<div class="card-technology-cap">
 											<img class="img-fluid" src="{{ tech.image.url }}">
@@ -204,4 +221,20 @@
 			</div>
 		</div>
 	</section>
+{% endblock %}
+
+{% block script %}
+
+
+<script>
+
+
+	$("span").addClass('feature-text')
+	$("span").css("font-size", "1.125rem");
+	// $("span").css("font-weight", "normal");
+	// $("span").css("line-height", "1.66667");
+
+
+</script>
+
 {% endblock %}

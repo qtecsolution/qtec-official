@@ -70,32 +70,27 @@
 
 					<div class="offcanvas-body">
 						<ul class="mobilelist">
-							<li class="mobilelist-item">
-								<a href="{% url 'homepage:index_url' %}" class="mobilelist-link active">Home</a>
+							<li class="mobilelist-item ">
+								<a  href="{% url 'homepage:index_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'index_url' %} active {% endif %}">Home</a>
 							</li>
 
 							<li class="mobilelist-item">
-								<a  href="{% url 'homepage:about_us_url' %}" class="mobilelist-link">About Us</a>
+								<a  href="{% url 'homepage:about_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'about_us_url' %} active {% endif %}">About Us</a>
 							</li>
-
-							<li class="mobilelist-item d-none">
-								<a href="services.html" class="mobilelist-link">Services</a>
-							</li>
-
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:product_url' %}" class="mobilelist-link">Products</a>
+								<a  href="{% url 'homepage:product_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a>
 							</li>
                             <li class="mobilelist-item">
-								<a href="{% url 'homepage:service_url' %}" class="mobilelist-link">Services</a>
+								<a  href="{% url 'homepage:service_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
 							</li>
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:blog_url' %}" class="mobilelist-link">Blogs</a>
+								<a   href="{% url 'homepage:blog_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blogs</a>
 							</li>
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:career_url' %}" class="mobilelist-link">Career</a>
+								<a  href="{% url 'homepage:career_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'career_url' %} active {% endif %}">Career</a>
 							</li>
 							<li class="mobilelist-item">
-								<a href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link">Contact Us</a>
+								<a  href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'contact_us_url' %} active {% endif %}">Contact Us</a>
 							</li>
 						</ul>
 					</div>
@@ -109,3 +104,5 @@
 	<!--========== GAP-START ==========-->
 	<section class="gap"></section>
 	<!--========== GAP-END ============-->
+
+

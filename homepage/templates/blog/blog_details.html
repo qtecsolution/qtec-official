@@ -32,14 +32,14 @@
                     <!-- AUTHOR-INFO END -->
 
                     <!-- SHARE-INFO START -->
-                    <div class="shareinfo">
+                    <div class="shareinfo" style="gap: 0rem;">
                       <p class="sharetitle">Share with </p>
 
                       <!-- SHARE SOCIAL LIST START -->
                         <input id="foo" type="text" class="d-none" value="{{ abs_uri }}">
                       <ul class="sociallist">
                         <li class="sociallist-item">
-                            {% post_to_facebook abs_uri "Facebook" %}
+                          {% post_to_facebook abs_uri "Facebook" %}
                         </li>
 
                         <li class="sociallist-item">
@@ -67,7 +67,7 @@
                               </svg>
                             </span>
 
-                            <span class="text">Link</span>
+                            
                           </a>
                         </li>
                       </ul>
@@ -84,7 +84,7 @@
                 <!-- SECTION DIVIDER END -->
                 
                  <!-- BLOG-DETAILS THUMBNAIL START -->
-                 <div class="blogdetails-thumbnail">
+                 <div class="blogdetails-thumbnail" style="width: 100%;">
                   <img src="{{ blog.image.url }}" alt="blog-thumbnail">
                 </div>
                 <!-- BLOG-DETAILS THUMBNAIL END -->
@@ -95,7 +95,7 @@
                 <div class="blogdescriptions-body">
                   <div class="detail">
                     <div class="description">
-                      <p class="descriptiontext">{{ blog.description|safe }}</p>
+                      {{ blog.description|safe }}
                     </div>
                   </div>
                 </div>
@@ -128,7 +128,7 @@
             <!-- BLOG ITEM START -->
               {% for i in random_blog %}
                     <div class="col-lg-3 col-md-6 col-sm-6 col-10 mx-auto">
-              <a href="/blog{{ i.slug }}/" class="bloglink">
+              <a href="/blog/{{ i.slug }}/" class="bloglink">
                 <div class="card-article">
                   <div class="card-article-header">
                     <img src="{{ i.image.url }}" alt="card-thumbnail">
@@ -141,9 +141,9 @@
                     </div>
 
                     <div class="articledescript">
-                      <p class="articletext">
-                        {{ i.description|safe }}
-                      </p>
+                     
+                      {{ i.description|safe }}
+                      
                     </div>
 
                     <span class="articlelink">Read article</span>
@@ -171,8 +171,12 @@
   </section>
 {% endblock %}
 {% block script %}
-
     <script>
+    $(document).ready(function() {
+      $('.description p').addClass('descriptiontext');
+      $('.articledescript p').addClass('articletext');
+           
+    });
 
         function myFunction() {
           var copyText = document.getElementById("foo");

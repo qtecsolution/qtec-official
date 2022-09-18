@@ -26,9 +26,7 @@
                                     <th>Blog Author </th>
                                     <th>Blog Category</th>
                                     <th>Title</th>
-                                    <th>Description</th>
                                     <th>Image</th>
-                                    <th>Tags</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
                                     <th>Action</th>
@@ -39,16 +37,14 @@
                                     <td>{{ blog.blog_author }}</td>
                                     <td>{{ blog.blog_category }}</td>
                                     <td>{{ blog.title }}</td>
-                                    <td>{{ blog.description|safe }}</td>
                                     <td>
                                          <img style="width: 50px; " src="{{ blog.image.url }}">    
                                     </td>
-                                    <td>{{ blog.tags|safe }}</td>
                                     <td>{{ blog.created_at }}</td>
                                     <td>{{ blog.updated_at }}</td> 
                                     <td>
                                         <div class="form-group row">
-                                            <div class="col-5">
+                                            <div class="col-md-6">
                                                 <form action="{% url 'dashboard:delete_blog_row_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{ blog.id }}" name="id">
@@ -56,9 +52,9 @@
                                                 </form> 
                                             </div>
                                             <div class="col-3">
-                                                <button  data-toggle="modal"
-                                                data-target="#blog_edit_{{ blog.id }}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
-                                                <div class="modal fade" id="blog_edit_{{ blog.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                <button  onclick="give_id('{{blog.id}}')" data-toggle="modal"
+                                                data-target="#blog_edit_{{blog.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
+                                                <div class="modal fade" id="blog_edit_{{blog.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -72,6 +68,7 @@
                                                         <form id="myForm" action="{% url 'dashboard:edit_blog_url' %}" method="POST" enctype="multipart/form-data" >
                                                             {% csrf_token %}
                                                             <input type="hidden" name="id" value="{{ blog.id }}">
+                                                            <input type="hidden" name="blog_id" value="{{ blog.id }}">
                                                             <div class="modal-body">
                                                                 <div class="error text-center" style="color: red;"></div>
                                                                 <br>
@@ -79,7 +76,7 @@
                                                                     <label for="name" class="col-sm-3 col-form-label">Blog Author <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9" class="form-control" >
                                                                         <select required  name="blog_author" class="form-control"
-                                                                                    id="exampleFormControlSelect1">
+                                                                                    id="">
                                                                             {% for author in blog_author %}
                                                                                 <option {% if author.id == blog.blog_author.id %} selected {% endif %}class="form-control" value="{{ author.id }}">{{ author.name }}</option>
                                                                             {% endfor %}
@@ -90,7 +87,7 @@
                                                                     <label for="name" class="col-sm-3 col-form-label">Blog Category <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9" class="form-control" >
                                                                         <select required  name="blog_category" class="form-control"
-                                                                                    id="exampleFormControlSelect1">
+                                                                                    id="">
                                                                             {% for category in blog_category %}
                                                                                 <option {% if category.id == blog.blog_category.id %} selected {% endif %}class="form-control" value="{{ category.id }}">{{ category.name }}</option>
                                                                             {% endfor %}
@@ -107,13 +104,19 @@
                                                                 <div class="form-group row">
                                                                     <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea class ="blog_list" required class="form-control" name="description">{{ blog.description }}</textarea>
+                                                                        <textarea id="editor1_{{blog.id}}" required class="form-control" name="description">{{ blog.description }}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="description" class="col-sm-3 col-form-label">OG Description <small style="color: red">*</small> </label>
+                                                                    <div class="col-sm-9">
+                                                                        <textarea  required class="form-control" name="og_description">{{ blog.og_description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea required class ="blog_list" id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
+                                                                        <textarea required id="editor2_{{blog.id}}"  id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -187,7 +190,7 @@
                                 </button>
                             </div>
                 
-                            <form id="myForm" action="{% url 'dashboard:save_blog_url' %}" method="POST" enctype="multipart/form-data" >
+                            <form id="myForm" action="{% url 'dashboard:save_blog_url' %}" method="POST" enctype="multipart/form-data" novalidate >
                                 {% csrf_token %}
                                 <div class="modal-body">
                                     <div class="error text-center" style="color: red;"></div>
@@ -196,7 +199,7 @@
                                         <label for="name" class="col-sm-3 col-form-label">Blog Author <small style="color: red">*</small> </label>
                                         <div class="col-sm-9" class="form-control" >
                                             <select required  name="blog_author" class="form-control"
-                                                        id="exampleFormControlSelect1">
+                                                        id="">
                                                 {% for author in blog_author %}
                                                     <option class="form-control" value="{{ author.id }}">{{ author.name }}</option>
                                                 {% endfor %}
@@ -207,7 +210,7 @@
                                         <label for="name" class="col-sm-3 col-form-label">Blog Category <small style="color: red">*</small> </label>
                                         <div class="col-sm-9" class="form-control" >
                                             <select required  name="blog_category" class="form-control"
-                                                        id="exampleFormControlSelect1">
+                                                        id="">
                                                 {% for category in blog_category %}
                                                     <option class="form-control" value="{{ category.id }}">{{ category.name }}</option>
                                                 {% endfor %}
@@ -224,13 +227,19 @@
                                     <div class="form-group row">
                                         <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <textarea class ="blog_list" required class="form-control" name="description"></textarea>
+                                            <textarea id ="blog_description" required class="form-control" name="description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="description" class="col-sm-3 col-form-label">OG Description <small style="color: red">*</small> </label>
+                                        <div class="col-sm-9">
+                                            <textarea id ="og_description" required class="form-control" name="og_description"></textarea>
                                         </div>
                                     </div>
                                     <div id="tag_error_id" class="form-group row">
                                         <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <textarea required class ="blog_list" id="textarea" class="form-control" name="tags"></textarea>
+                                            <textarea required id ="blog_tags" id="textarea" class="form-control" name="tags"></textarea>
                                         </div>
                                         <p id="tag_error" class="error-message"></p>
                                     </div>
@@ -276,24 +285,39 @@
 
 {% block script %}
 <script>
-    $('#myForm').on('submit', function(e) {
-    
-    if($('.blog_list').summernote('isEmpty')) {
-        // cancel submit
-        e.preventDefault();
-    }
-
-    })
-  
+   
+   
+   function give_id(id){
+    ClassicEditor
+        .create( document.querySelector( '#editor1_'+id ) )
+        .catch( error => {
+             console.error( error );
+    } );
+    ClassicEditor
+        .create( document.querySelector( '#editor2_'+id ) )
+        .catch( error => {
+             console.error( error );
+    } );
+           
+   }
     $(document).ready(function() {
-        $('.blog_list').summernote({
-            fontNames: ['Arial','Titillium Web', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Roboto'],
-            fontNamesIgnoreCheck: ['Titillium Web']
-            });
-        $("#exampleFormControlSelect1").select2({
-            allowClear: true
-        });
-    });
+        
+      
+        ClassicEditor
+        .create( document.querySelector( '#blog_description' ) )
+        .catch( error => {
+             console.error( error );
+        } );
+        ClassicEditor
+            .create( document.querySelector( '#blog_tags' ) )
+            .catch( error => {
+                console.error( error );
+        } );
+        
+    })
+        
+     
+
 </script>
 
 {% endblock %}

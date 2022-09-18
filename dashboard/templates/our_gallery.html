@@ -1,0 +1,92 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="" id="">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>Our Gallery</h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <a style="margin-left: 200px;" href="{% url 'dashboard:save_our_gallery_url' %}" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-plus-circle"></i></a>    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="subscriber_list" class="table table-borderless table-striped table-hover">
+                                <tr>
+                                    <th>Title </th>
+                                    <th>Description </th>
+                                    <th>Primary Image</th>
+                                    <th>Secondary Image</th>
+                                    <th>Priority</th>
+                                    <th>Action</th>
+                                </tr>
+                                {% for gallery in our_gallery %}
+                                <tr id="gallery_{{ gallery.id }}">
+                                    <td>{{ gallery.title }}</td>
+                                    <td>{{ gallery.description }}</td>
+                                    <td>
+                                        {% if gallery.primary_image %}
+                                        <div>
+                                            <img style="width: 50px;" src="/media/{{ gallery.primary_image }}">
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if gallery.secondary_image %}
+                                        <div>
+                                            <img style="width: 50px;" src="/media/{{ gallery.secondary_image }}">
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ gallery.priority }}</td>
+                                  
+
+                                    <th>
+                                        <div class="form-group row">
+                                            <div cclass="">
+                                                <form action="{% url 'dashboard:delete_our_gallery_url' %}"method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{gallery.id}}" name="id">
+                                                    <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form> 
+                                            </div >
+                                            <div class="col-5">
+                                                <a href="{% url 'dashboard:update_our_gallery_url' gallery.id %}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
+                                            </div>
+                                        </div>
+                                         
+                                    </th>
+                                </tr>
+                                {% endfor %}
+                                
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+csrf = '{{ csrf_token }}';
+
+</script>
+
+{% endblock %}

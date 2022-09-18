@@ -9,6 +9,7 @@
 					<span>A Team that's</span> <br> Empowered, Diverse, <br> and Committed
 				</h1>
 			</div>
+			<div class="overlay"></div>
 		</div>
 	</section>
 	<!--========== ABOUT-BANNER-END ================-->
@@ -32,6 +33,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</section>
 	<!--========== OUR-STORY-END ==================-->
 
@@ -41,7 +43,7 @@
 			<div class="row">
 				<div class="col-md-9 col-12 mx-md-auto">
 					<div class="videobox">
-						<video id="about-player" class="video-js vjs-big-play-centered" poster="{% static 'homepage/assets/video-poster/video-poster.jpg' %}">
+						<video id="about-player" class="video-js vjs-big-play-centered" poster="{% static 'homepage/assets/video-poster/video-poster.webp' %}">
 							<source src="{% static 'homepage/assets/videos/q-video.mp4' %}" type="video/mp4" />
 
 							<p class="vjs-no-js">Your browser does not support video tag</p>
@@ -64,7 +66,7 @@
 						</div>
 
 						<div class="featureddetetail">
-							<p class="featured-text">
+							<p class="featured-text" style="margin: auto;">
 								We have been featured at the daily famous newspaper in Bangladesh. They have acknowledged
 								our good work and inspired us with the publication. On the Interview our Managing Director
 								Mr. Mosharrof Hossain talked about How Qtec started their journey, what challenges Qtec faced over
@@ -78,11 +80,227 @@
 				<div class="col-lg-6 col-12 offset-lg-1 offset-0">
 					<div class="thumbnailbox">
 						<figure class="product-thumbnail">
-							<img src="{% static 'homepage/assets/images/featured/featured-thumbnail.png' %}" alt="featured-thumbnail">
+							<img src="{% static 'homepage/assets/images/featured/featured-thumbnail.webp' %}" alt="featured-thumbnail">
 						</figure>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!--========== FEATURED-SECTION-END ================-->
+
+	<!--========== GALLERY-SECTION START ================-->
+	<section class="aboutgallery">
+		<div class="container">
+			<div class="aboutgallery-content">
+				<div class="aboutgallery-header">
+					<h2 class="aboutgallery-title">Our Gallery</h2>
+				</div>
+
+				<div class="aboutgallery-body">
+					<!-- Swiper -->
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							{% for gallery in our_gallery %}
+							<div class="swiper-slide">
+								<div class="row w-100 align-items-center g-0 gy-5 gx-lg-5">
+									<div class="col-lg-6 col-12">
+										<div class="gallery-images">
+											{% if  not gallery.secondary_image %}
+											<figure class="primary-image w-100">
+												<img src="/media/{{gallery.primary_image}}" alt="gallery-primary-image" style="object-fit:contain;">
+											</figure>
+											{% else %}
+												<figure class="primary-image">
+													<img src="/media/{{gallery.primary_image}}" alt="gallery-primary-image">
+												</figure>
+											{% endif %}
+											
+											{% if gallery.secondary_image %}
+											<figure class="secondary-image">
+												<img src="/media/{{gallery.secondary_image}}" alt="gallery-secondary-image">
+											</figure>
+											{% endif %}
+										</div>
+									</div>
+
+									<div class="col-lg-6 col-12">
+										<div class="gallerydetails">
+											<h3 class="gallery-title">
+												{{ gallery.title }}
+											</h3>
+											<p class="gallery-text">
+												
+												{{ gallery.description }}
+											</p>
+
+											<div class="galleryicon">
+												<svg width="217" height="217" viewBox="0 0 217 217" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<mask id="galleryicon" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="217" height="217">
+													<rect width="217" height="217" fill="#E2F7FA"/>
+													</mask>
+													<g mask="url(#galleryicon)">
+														<rect x="-139.203" y="57.1318" width="333.568" height="2.72956" transform="rotate(-37.5217 -139.203 57.1318)" fill="#BCF7FF"/>
+														<rect x="-135.047" y="62.5449" width="333.568" height="2.72956" transform="rotate(-37.5217 -135.047 62.5449)" fill="#BCF7FF"/>
+														<rect x="-130.891" y="67.958" width="333.568" height="2.72956" transform="rotate(-37.5217 -130.891 67.958)" fill="#BCF7FF"/>
+														<rect x="-126.734" y="73.3711" width="333.568" height="2.72956" transform="rotate(-37.5217 -126.734 73.3711)" fill="#BCF7FF"/>
+														<rect x="-122.574" y="78.7803" width="333.568" height="2.72956" transform="rotate(-37.5217 -122.574 78.7803)" fill="#BCF7FF"/>
+														<rect x="-118.418" y="84.1934" width="333.568" height="2.72956" transform="rotate(-37.5217 -118.418 84.1934)" fill="#BCF7FF"/>
+														<rect x="-114.273" y="89.6064" width="333.568" height="2.72956" transform="rotate(-37.5217 -114.273 89.6064)" fill="#BCF7FF"/>
+														<rect x="-110.109" y="95.0195" width="333.568" height="2.72956" transform="rotate(-37.5217 -110.109 95.0195)" fill="#BCF7FF"/>
+														<rect x="-105.953" y="100.431" width="333.568" height="2.72956" transform="rotate(-37.5217 -105.953 100.431)" fill="#BCF7FF"/>
+														<rect x="-101.797" y="105.844" width="333.568" height="2.72956" transform="rotate(-37.5217 -101.797 105.844)" fill="#BCF7FF"/>
+														<rect x="-97.6406" y="111.256" width="333.568" height="2.72956" transform="rotate(-37.5217 -97.6406 111.256)" fill="#BCF7FF"/>
+														<rect x="-93.4844" y="116.668" width="333.568" height="2.72956" transform="rotate(-37.5217 -93.4844 116.668)" fill="#BCF7FF"/>
+														<rect x="-89.3281" y="122.079" width="333.568" height="2.72956" transform="rotate(-37.5217 -89.3281 122.079)" fill="#BCF7FF"/>
+														<rect x="-85.1719" y="127.492" width="333.568" height="2.72956" transform="rotate(-37.5217 -85.1719 127.492)" fill="#BCF7FF"/>
+														<rect x="-81.0117" y="132.905" width="333.568" height="2.72956" transform="rotate(-37.5217 -81.0117 132.905)" fill="#BCF7FF"/>
+														<rect x="-76.8555" y="138.315" width="333.568" height="2.72956" transform="rotate(-37.5217 -76.8555 138.315)" fill="#BCF7FF"/>
+														<rect x="-72.707" y="143.729" width="333.568" height="2.72956" transform="rotate(-37.5217 -72.707 143.729)" fill="#BCF7FF"/>
+														<rect x="-68.5508" y="149.142" width="333.568" height="2.72956" transform="rotate(-37.5217 -68.5508 149.142)" fill="#BCF7FF"/>
+														<rect x="-64.3945" y="154.551" width="333.568" height="2.72956" transform="rotate(-37.5217 -64.3945 154.551)" fill="#BCF7FF"/>
+														<rect x="-60.2383" y="159.964" width="333.568" height="2.72956" transform="rotate(-37.5217 -60.2383 159.964)" fill="#BCF7FF"/>
+														<rect x="-56.082" y="165.377" width="333.568" height="2.72956" transform="rotate(-37.5217 -56.082 165.377)" fill="#BCF7FF"/>
+														<rect x="-51.9219" y="170.79" width="333.568" height="2.72956" transform="rotate(-37.5217 -51.9219 170.79)" fill="#BCF7FF"/>
+														<rect x="-47.7617" y="176.201" width="333.568" height="2.72956" transform="rotate(-37.5217 -47.7617 176.201)" fill="#BCF7FF"/>
+														<rect x="-43.6055" y="181.614" width="333.568" height="2.72956" transform="rotate(-37.5217 -43.6055 181.614)" fill="#BCF7FF"/>
+														<rect x="-39.4492" y="187.026" width="333.568" height="2.72956" transform="rotate(-37.5217 -39.4492 187.026)" fill="#BCF7FF"/>
+														<rect x="-35.293" y="192.438" width="333.568" height="2.72956" transform="rotate(-37.5217 -35.293 192.438)" fill="#BCF7FF"/>
+														<rect x="-31.1445" y="197.85" width="333.568" height="2.72956" transform="rotate(-37.5217 -31.1445 197.85)" fill="#BCF7FF"/>
+														<rect x="-26.9883" y="203.263" width="333.568" height="2.72956" transform="rotate(-37.5217 -26.9883 203.263)" fill="#BCF7FF"/>
+														<rect x="-22.832" y="208.676" width="333.568" height="2.72956" transform="rotate(-37.5217 -22.832 208.676)" fill="#BCF7FF"/>
+														<rect x="-18.6758" y="214.086" width="333.568" height="2.72956" transform="rotate(-37.5217 -18.6758 214.086)" fill="#BCF7FF"/>
+														<rect x="-14.5156" y="219.499" width="333.568" height="2.72956" transform="rotate(-37.5217 -14.5156 219.499)" fill="#BCF7FF"/>
+														<rect x="-10.3594" y="224.912" width="333.568" height="2.72956" transform="rotate(-37.5217 -10.3594 224.912)" fill="#BCF7FF"/>
+														<rect x="-6.20312" y="230.322" width="333.568" height="2.72956" transform="rotate(-37.5217 -6.20312 230.322)" fill="#BCF7FF"/>
+														<rect x="-2.04688" y="235.734" width="333.568" height="2.72956" transform="rotate(-37.5217 -2.04688 235.734)" fill="#BCF7FF"/>
+														<rect x="2.10938" y="241.147" width="333.568" height="2.72956" transform="rotate(-37.5217 2.10938 241.147)" fill="#BCF7FF"/>
+														<rect x="6.26953" y="246.561" width="333.568" height="2.72956" transform="rotate(-37.5217 6.26953 246.561)" fill="#BCF7FF"/>
+														<rect x="10.4141" y="251.972" width="333.568" height="2.72956" transform="rotate(-37.5217 10.4141 251.972)" fill="#BCF7FF"/>
+														<rect x="14.5703" y="257.385" width="333.568" height="2.72956" transform="rotate(-37.5217 14.5703 257.385)" fill="#BCF7FF"/>
+														<rect x="18.7344" y="262.798" width="333.568" height="2.72956" transform="rotate(-37.5217 18.7344 262.798)" fill="#BCF7FF"/>
+														<rect x="22.8906" y="268.209" width="333.568" height="2.72956" transform="rotate(-37.5217 22.8906 268.209)" fill="#BCF7FF"/>
+														<rect x="27.0469" y="273.62" width="333.568" height="2.72956" transform="rotate(-37.5217 27.0469 273.62)" fill="#BCF7FF"/>
+														<rect x="31.2031" y="279.033" width="333.568" height="2.72956" transform="rotate(-37.5217 31.2031 279.033)" fill="#BCF7FF"/>
+														<rect x="35.3594" y="284.446" width="333.568" height="2.72956" transform="rotate(-37.5217 35.3594 284.446)" fill="#BCF7FF"/>
+														<rect x="39.5156" y="289.856" width="333.568" height="2.72956" transform="rotate(-37.5217 39.5156 289.856)" fill="#BCF7FF"/>
+														<rect x="43.6719" y="295.27" width="333.568" height="2.72956" transform="rotate(-37.5217 43.6719 295.27)" fill="#BCF7FF"/>
+														<rect x="47.8203" y="300.683" width="333.568" height="2.72956" transform="rotate(-37.5217 47.8203 300.683)" fill="#BCF7FF"/>
+														<rect x="51.9805" y="306.093" width="333.568" height="2.72956" transform="rotate(-37.5217 51.9805 306.093)" fill="#BCF7FF"/>
+														<rect x="56.1367" y="311.505" width="333.568" height="2.72956" transform="rotate(-37.5217 56.1367 311.505)" fill="#BCF7FF"/>
+														<rect x="60.293" y="316.918" width="333.568" height="2.72956" transform="rotate(-37.5217 60.293 316.918)" fill="#BCF7FF"/>
+														<rect x="64.4492" y="322.331" width="333.568" height="2.72956" transform="rotate(-37.5217 64.4492 322.331)" fill="#BCF7FF"/>
+														<rect x="68.6055" y="327.742" width="333.568" height="2.72956" transform="rotate(-37.5217 68.6055 327.742)" fill="#BCF7FF"/>
+														<rect x="72.7617" y="333.155" width="333.568" height="2.72956" transform="rotate(-37.5217 72.7617 333.155)" fill="#BCF7FF"/>
+														<rect x="76.9219" y="338.568" width="333.568" height="2.72956" transform="rotate(-37.5217 76.9219 338.568)" fill="#BCF7FF"/>
+													</g>
+												</svg>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						
+						</div>
+						<div class="swiper-buttons">
+							<button class="swiper-button-next" type="button">
+								<span class="icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+									</svg>
+								</span>
+							</button>
+							<button class="swiper-button-prev" type="button">
+								<span class="icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+									</svg>
+								</span>
+							</button>
+						</div>
+							
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--========== GALLERY-SECTION END ==================-->
+
+	
+		<!--========== OUR-TEAM-START ================-->
+		<section class="ourteam">
+			<div class="container">
+				<div class="ourteam-content">
+					<div class="row w-100">
+						<div class="col-lg-8 col-md-10 col-12 mx-md-auto">
+							<div class="ourteam-header">
+								<h1 class="ourteam-title">Our Team</h1>
+								<p class="ourteam-text d-none">
+									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it.
+								</p>
+							</div>
+						</div>
+					</div>
+	
+					<div class="row gx-3 gx-md-4 gy-5 w-100">
+						<!-- TEAM-MEMBER START -->
+						{% for member in members%}
+						<div class="col-lg-3 col-md-4 col-6">
+							<div class="card-team">
+								<figure class="card-team-header">
+									<img src="/media/{{ member.image }}" alt="team-member-thumbnail">
+								</figure>
+	
+								<div class="card-team-body">
+									<h5 class="name">{{ member.name }}</h5>
+									<p class="designation">{{ member.designation }}</p>
+									<ul class="social">
+										<li class="social-item">
+											<a href="{{ member.linkedin }}" target="_blank" class="social-link linkedinlink"data-bs-toggle="tooltip" data-bs-placement="top" title="Follow on Linkedin">
+												<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5611 6.2721H10.9037V7.9371C11.3852 6.9795 12.62 6.1191 14.4749 6.1191C18.0308 6.1191 18.875 8.0253 18.875 11.5227V18H15.275V12.3192C15.275 10.3275 14.7935 9.2043 13.5677 9.2043C11.8676 9.2043 11.1611 10.4148 11.1611 12.3183V18H7.5611V6.2721ZM1.388 17.847H4.988V6.1191H1.388V17.847ZM5.5037 2.295C5.50383 2.59675 5.44399 2.89551 5.32765 3.17393C5.21131 3.45235 5.04079 3.70486 4.826 3.9168C4.39076 4.34936 3.80163 4.59149 3.188 4.59C2.57545 4.58959 1.98768 4.34808 1.5518 3.9177C1.33779 3.70504 1.16785 3.45224 1.05171 3.17379C0.935571 2.89534 0.875521 2.5967 0.875 2.295C0.875 1.6857 1.118 1.1025 1.5527 0.6723C1.9882 0.241343 2.57622 -0.00026929 3.1889 2.25238e-07C3.8027 2.25238e-07 4.3913 0.2421 4.826 0.6723C5.2598 1.1025 5.5037 1.6857 5.5037 2.295Z" fill="#4A5568"/>
+												</svg>
+											</a>
+										</li>
+										{% if member.github %}
+											<li class="social-item">
+												<a href="{{ member.github }}" target="_blank" class="social-link githublink"data-bs-toggle="tooltip" data-bs-placement="top" title="Follow on GitHub">
+													<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path fill-rule="evenodd" clip-rule="evenodd" d="M9.22764 0C4.12937 0 0 4.12937 0 9.22764C0 13.3109 2.64141 16.7597 6.3094 17.9824C6.77078 18.0631 6.9438 17.7863 6.9438 17.5441C6.9438 17.3249 6.93227 16.5982 6.93227 15.8254C4.61382 16.2522 4.01403 15.2602 3.82947 14.7412C3.72566 14.4759 3.27581 13.6569 2.88364 13.4378C2.56067 13.2647 2.09929 12.838 2.8721 12.8264C3.59878 12.8149 4.11784 13.4954 4.29085 13.7723C5.12134 15.1679 6.44782 14.7758 6.97841 14.5335C7.05915 13.9337 7.30137 13.53 7.56667 13.2993C5.51352 13.0687 3.36809 12.2728 3.36809 8.74319C3.36809 7.73969 3.72566 6.9092 4.31392 6.26326C4.22165 6.03257 3.89868 5.08674 4.4062 3.81794C4.4062 3.81794 5.17901 3.57571 6.9438 4.76377C7.68201 4.55615 8.46636 4.45234 9.25071 4.45234C10.0351 4.45234 10.8194 4.55615 11.5576 4.76377C13.3224 3.56418 14.0952 3.81794 14.0952 3.81794C14.6027 5.08674 14.2798 6.03257 14.1875 6.26326C14.7758 6.9092 15.1333 7.72815 15.1333 8.74319C15.1333 12.2843 12.9764 13.0687 10.9232 13.2993C11.2577 13.5877 11.5461 14.1414 11.5461 15.0065C11.5461 16.2407 11.5346 17.2326 11.5346 17.5441C11.5346 17.7863 11.7076 18.0746 12.169 17.9824C14.0008 17.3639 15.5925 16.1866 16.7202 14.6161C17.8479 13.0456 18.4547 11.1611 18.4553 9.22764C18.4553 4.12937 14.3259 0 9.22764 0Z" fill="#4A5568"/>
+													</svg>
+												</a>
+											</li>
+										{% endif %}
+										
+										{% if member.gmail %}
+											<li class="social-item">
+												<a href="mailto:{{ member.gmail }}?" target="_blank" class="social-link emaillink" data-bs-toggle="tooltip" data-bs-placement="top" title="Sent Mail">
+													<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M18 14H16V5.25L10 9L4 5.25V14H2V2H3.2L10 6.25L16.8 2H18V14ZM18 0H2C0.89 0 0 0.89 0 2V14C0 14.5304 0.210714 15.0391 0.585786 15.4142C0.960859 15.7893 1.46957 16 2 16H18C18.5304 16 19.0391 15.7893 19.4142 15.4142C19.7893 15.0391 20 14.5304 20 14V2C20 1.46957 19.7893 0.960859 19.4142 0.585786C19.0391 0.210714 18.5304 0 18 0V0Z" fill="#4A5568"/>
+													</svg>
+												</a>
+											</li>
+										{% endif %}
+										{% if member.instagram %}
+										<li class="social-item">
+											<a href="{{ member.instagram }}" target="_blank" class="social-link instagramlink"data-bs-toggle="tooltip" data-bs-placement="top" title="Follow on Instagram">
+												<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M9.93134 4.38213C7.37586 4.38213 5.31347 6.44452 5.31347 9C5.31347 11.5555 7.37586 13.6179 9.93134 13.6179C12.4868 13.6179 14.5492 11.5555 14.5492 9C14.5492 6.44452 12.4868 4.38213 9.93134 4.38213ZM9.93134 12.0013C8.27872 12.0013 6.93006 10.6526 6.93006 9C6.93006 7.34738 8.27872 5.99872 9.93134 5.99872C11.584 5.99872 12.9326 7.34738 12.9326 9C12.9326 10.6526 11.584 12.0013 9.93134 12.0013ZM14.7383 3.11678C14.1417 3.11678 13.6599 3.5986 13.6599 4.19525C13.6599 4.79191 14.1417 5.27373 14.7383 5.27373C15.335 5.27373 15.8168 4.79416 15.8168 4.19525C15.817 4.05358 15.7892 3.91325 15.7351 3.78233C15.6809 3.6514 15.6015 3.53244 15.5013 3.43226C15.4012 3.33208 15.2822 3.25264 15.1513 3.19851C15.0203 3.14437 14.88 3.1166 14.7383 3.11678ZM18.9329 9C18.9329 7.75716 18.9442 6.52558 18.8744 5.28499C18.8046 3.84402 18.4759 2.56515 17.4221 1.51144C16.3662 0.455477 15.0896 0.129006 13.6486 0.0592092C12.4058 -0.0105879 11.1742 0.000669702 9.93359 0.000669702C8.69075 0.000669702 7.45917 -0.0105879 6.21858 0.0592092C4.77761 0.129006 3.49875 0.457728 2.44503 1.51144C1.38907 2.5674 1.0626 3.84402 0.992803 5.28499C0.923006 6.52783 0.934263 7.75941 0.934263 9C0.934263 10.2406 0.923006 11.4744 0.992803 12.715C1.0626 14.156 1.39132 15.4348 2.44503 16.4886C3.501 17.5445 4.77761 17.871 6.21858 17.9408C7.46142 18.0106 8.693 17.9993 9.93359 17.9993C11.1764 17.9993 12.408 18.0106 13.6486 17.9408C15.0896 17.871 16.3684 17.5423 17.4221 16.4886C18.4781 15.4326 18.8046 14.156 18.8744 12.715C18.9464 11.4744 18.9329 10.2428 18.9329 9ZM16.9516 14.3091C16.7872 14.7189 16.5891 15.0251 16.2716 15.3403C15.9542 15.6577 15.6502 15.8559 15.2404 16.0202C14.0561 16.4908 11.244 16.385 9.93134 16.385C8.6187 16.385 5.8043 16.4908 4.62 16.0225C4.21023 15.8581 3.90402 15.66 3.58881 15.3425C3.27134 15.0251 3.07321 14.7211 2.90885 14.3113C2.44053 13.1248 2.54635 10.3126 2.54635 9C2.54635 7.68736 2.44053 4.87296 2.90885 3.68866C3.07321 3.27888 3.27134 2.97268 3.58881 2.65746C3.90627 2.34225 4.21023 2.14187 4.62 1.97751C5.8043 1.50919 8.6187 1.61501 9.93134 1.61501C11.244 1.61501 14.0584 1.50919 15.2427 1.97751C15.6525 2.14187 15.9587 2.34 16.2739 2.65746C16.5913 2.97493 16.7895 3.27888 16.9538 3.68866C17.4222 4.87296 17.3163 7.68736 17.3163 9C17.3163 10.3126 17.4221 13.1248 16.9516 14.3091Z" fill="#4A5568"/>
+												</svg>
+											</a>
+										</li>
+										{% endif %}
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- TEAM-MEMBER END -->
+						{% endfor %}				
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--========== OUR-TEAM-END ==================-->
 {% endblock %}

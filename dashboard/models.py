@@ -107,13 +107,17 @@ class WhatProjectHaveWeDone(models.Model):
     def split_technology(self):
         return self.technology.split(',')
 
+class CaseStudyImage(models.Model):
+    image = models.ImageField(upload_to='case_study/', null=True, blank=True)
+
 
 class CaseStudyDetails(models.Model):
     project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
                                                 on_delete=models.CASCADE)
     case_study_about = models.TextField(null=True, blank=True)
-    case_study_image = models.ImageField(upload_to='case_study/', null=True, blank=True)
+    case_study_image = models.ManyToManyField(CaseStudyImage, related_name="case_study_details")
     client_requirement = models.TextField(null=True, blank=True)
+    requirements_thumbnail = models.ImageField(upload_to='case_study/', null=True, blank=True)
     how_we_build_it = models.TextField(null=True, blank=True)
     how_we_build_image = models.ImageField(upload_to='how_we_build/', null=True, blank=True)
     technology = models.ManyToManyField(Technologies)
@@ -154,6 +158,7 @@ class Blog(models.Model):
     slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     title = models.TextField()
     description = models.TextField()
+    og_description = models.TextField(null=True)
     image = models.ImageField(upload_to='blog/')
     tags = models.TextField(null=True)
     created_at = models.DateField(auto_now_add=True, null=True)
@@ -217,3 +222,25 @@ def slug_generator(sender, instance, created, **kwargs):
         slug = slug_object.unique_slug_generator(instance)
         instance.slug = slug
         instance.save()
+class TeamMembers(models.Model):
+    name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='team_members/')
+    designation = models.CharField(max_length=100)
+    github  = models.CharField(max_length=100,null=True,blank=True)
+    linkedin = models.CharField(max_length=100,null=True)
+    instagram = models.CharField(max_length=100,null=True,blank=True)
+    gmail = models.EmailField(max_length=100)
+    priority = models.PositiveSmallIntegerField() 
+
+    def __str__(self) -> str:
+        return self.name
+
+class OurGallery(models.Model):
+    title = models.CharField(max_length=500)
+    description = models.TextField() 
+    primary_image = models.ImageField(upload_to='about-gallery/')
+    secondary_image = models.ImageField(upload_to='about-gallery/')
+    priority = models.PositiveSmallIntegerField() 
+
+
+   

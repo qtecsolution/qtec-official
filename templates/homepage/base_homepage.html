@@ -39,6 +39,12 @@
     {% endblock %}
 
 <script>
+  $(document).ready(function(){
+      var year = new Date().getFullYear();
+      var res = "&copy; "+year+" Qtec Solution Limited. All rights reserved."
+      $("p#copyright_date").html(res);
+    });
+ 
     function saveSubscribe(){
         var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         let subscribe_email = $('#subscribe_email')

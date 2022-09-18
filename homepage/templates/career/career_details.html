@@ -5,10 +5,10 @@
     <section class="career-banner">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6 col-12 mx-lg-auto">
+				<div class="col-lg-8 col-12 mx-lg-auto">
 					<div class="career-banner-content">
 						<figure class="career-thumbnail">
-							<img width="100%" height="100%" src="{{ career.image.url }}">
+							<img src="{{ career.image.url }}">
 						</figure>
 
 						<div class="bannerinfo">
@@ -37,7 +37,7 @@
 	<section class="career-details">
 		<div class="container">
 			<div class="col-lg-8 mx-lg-auto">
-				<div class="career-details-content">
+				<div class="career-details-content" style="gap: 1rem;">
                     {{ career.description|safe }}
 				</div>
 			</div>
@@ -293,9 +293,9 @@
 
 
 			let formData = new FormData();
-			formData.append('firstname', firstname.value)
-			formData.append('lastname', lastname.value)
-			formData.append('careeremail', careeremail.value)
+			formData.append('firstname', firstname)
+			formData.append('lastname', lastname)
+			formData.append('careeremail', careeremail)
 			formData.append('csrfmiddlewaretoken', '{{ csrf_token }}')
 			formData.append('career_id', '{{ career.id }}')
 			formData.append('image', image[0])

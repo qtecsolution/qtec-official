@@ -25,7 +25,7 @@
       <div class="fb-customerchat"
         attribution="setup_tool"
         page_id="113577516734880"
-  theme_color="#7646ff">
+  theme_color="#0876FC">
       </div>
 
 	<section class="homebanner">
@@ -36,7 +36,7 @@
 						<div class="homebanner-header" id="banner-header">
 							<div class="banner-title">
 								<h1 class="homebanner-title">
-									Fully <span class="underline">Managed</span> <span class="underline">Delelopment</span> Teams To Build
+									Fully <span class="underline">Managed</span> <span class="underline">Development</span> Teams To Build
 									Your Software
 								</h1>
 							</div>
@@ -73,7 +73,10 @@
 							</div>
 
 							<div class="card-banner-body">
-								<h3 class="card-banner-title">20+</h3>
+								<div class="titlebox">
+									<h3 class="card-banner-title projectcounter" data-targets="20">0</h3> 
+									<p>+</p>
+								</div>
 								<h4 class="card-banner-subtitle">Total Clients</h4>
 								<h5 class="card-banner-text">for last 2 years</h5>
 							</div>
@@ -85,7 +88,10 @@
 							</div>
 
 							<div class="card-banner-body">
-								<h3 class="card-banner-title">50+</h3>
+								<div class="titlebox">
+									<h3 class="card-banner-title projectcounter" data-targets="50">0</h3> 
+									<p>+</p>
+								</div>
 								<h4 class="card-banner-subtitle">Total Projects</h4>
 								<h5 class="card-banner-text">for last 2 years</h5>
 							</div>
@@ -392,7 +398,7 @@
 			<div class="row">
 				<div class="col-md-9 col-12 mx-md-auto">
 					<div class="videobox">
-						<video id="my-player" class="video-js vjs-big-play-centered" poster="{% static 'homepage/assets/video-poster/video-poster.jpg' %}">
+						<video id="my-player" class="video-js vjs-big-play-centered" poster="{% static 'homepage/assets/video-poster/video-poster.webp' %}">
 							<source src="{% static 'homepage/assets/videos/q-video.mp4' %}" type="video/mp4" />
 
 							<p class="vjs-no-js">Your browser does not support video tag</p>
@@ -672,7 +678,7 @@
 								<!-- SOFTWARE SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade show active" id="softwaresolution" role="tabpanel" aria-labelledby="softwaresolution-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/software-development.png' %}" alt="software-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/software-development.webp' %}" alt="software-thumbnail">
 									</div>
 								</div>
 								<!--- SOFTWARE SOLUTIONS TAB CONTENT END --->
@@ -680,7 +686,7 @@
 								<!-- UX-UI DESIGN TAB CONTENT START -->
 								<div class="tab-pane fade" id="uxuidesign" role="tabpanel" aria-labelledby="uxuidesign-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/ui-ux.png' %}" alt="uxui-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/ui-ux.webp' %}" alt="uxui-thumbnail">
 									</div>
 								</div>
 								<!--- UX-UI DESIGN TAB CONTENT END --->
@@ -688,7 +694,7 @@
 								<!-- MOBILE-APPLICATION TAB CONTENT START -->
 								<div class="tab-pane fade" id="mobileapplication" role="tabpanel" aria-labelledby="mobileapplication-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/mobile-development.png' %}" alt="mobile-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/mobile-development.webp' %}" alt="mobile-thumbnail">
 									</div>
 								</div>
 								<!--- MOBILE-APPLICATION TAB CONTENT END --->
@@ -696,7 +702,7 @@
 								<!-- E-COMMERCE SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade" id="ecommercesolutions" role="tabpanel" aria-labelledby="ecommercesolutions-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/ecommerce.png' %}" alt="software-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/ecommece.webp' %}" alt="software-thumbnail">
 									</div>
 								</div>
 								<!--- E-COMMERCE SOLUTIONS TAB CONTENT END --->
@@ -704,7 +710,7 @@
 								<!-- LMS SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade" id="lmssolutions" role="tabpanel" aria-labelledby="lmssolutions-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/lms.png' %}" alt="uxui-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/lms.webp' %}" alt="uxui-thumbnail">
 									</div>
 								</div>
 								<!--- LMS SOLUTIONS TAB CONTENT END --->
@@ -712,7 +718,7 @@
 								<!-- LOGISTICS SOLUTIONS TAB CONTENT START -->
 								<div class="tab-pane fade" id="logistics" role="tabpanel" aria-labelledby="logistics-tab">
 									<div class="tab-thumbnail">
-										<img src="{% static 'homepage/assets/images/services/logistic.png' %}" alt="logistics-thumbnail">
+										<img src="{% static 'homepage/assets/images/services/logistic.webp' %}" alt="logistics-thumbnail">
 									</div>
 								</div>
 								<!--- LOGISTICS SOLUTIONS TAB CONTENT END --->
@@ -771,33 +777,33 @@
 								<div class="row g-4">
 									{% for project in project_done %}
 									<div class="col-lg-4 col-sm-6 col-12">
-										<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
-											<div class="card-project">
+											<div class="card-project">	
 												<div class="card-project-header">
-													<img src="/media/{{ project.image }}" alt="project-thumbnail">
+													<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink"><img  src="/media/{{ project.image }}" alt="project-thumbnail"></a>
 												</div>
 
 												<div class="card-project-body">
-													<div class="project-title">
-														<h2 class="title">{{ project.name }}</h2>
-
-														<span class="icon">
-															<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
-															</svg>
-														</span>
-													</div>
-
+													<a href="{% url 'homepage:case_study_details_url' project.slug %}" class="projectlink">
+														<div class="project-title">
+															<h2 class="title">{{ project.name }}</h2>
+															<span class="icon">
+																<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M16.004 9.414L7.39703 18.021L5.98303 16.607L14.589 8H7.00403V6H18.004V17H16.004V9.414Z" fill="#4A5568" />
+																</svg>
+															</span>
+														</div>
+													</a>
+												</a>
 													<div class="tags">
 
 														{% for skill in project.technology.all %}
-															<a href="{% url 'homepage:technologies_url' skill.slug %}"><span class="tag">{{ skill.title }}</span></a><br>
+															<a class="tag" href="{% url 'homepage:technologies_url' skill.slug %}" >{{ skill.title }}</a>
 														{% endfor %}
 
 													</div>
 												</div>
 											</div>
-										</a>
+										
 									</div>
 									{% endfor %}
 								</div>
@@ -999,11 +1005,7 @@
 					<div class="row g-4">
                         {% for blog in blogs %}
 						<div class="col-lg-3 col-sm-6 col-12">
-							<form action="{% url 'homepage:blog_details_url' slug=blog.slug  %}" method="POST" >
-								{% csrf_token %}
-								<input type="hidden" value="{{ i.slug }}" name="blog_category_slug">
-							  <button type="submit" class="bloglink">
-							
+							<a href="/blog/{{ blog.slug }}/" class="bloglink">
 								<div class="card-article">
 									<div class="card-article-header">
 										<img src="{{ blog.image.url }}" alt="card-thumbnail">
@@ -1024,8 +1026,7 @@
 										<span class="articlelink">Read article</span>
 									</div>
 								</div>
-							  </button>
-							</form>
+							</a>
 						</div>
                         {% endfor %}
 					</div>

@@ -11,7 +11,7 @@
 
     {% if request.resolver_match.url_name == 'blog_details_url' %}
 	<meta property="og:title" content="{{ blog.title }}">
-	<meta property="og:description" content="{{ blog.description }}">
+	<meta property="og:description" content="{{ blog.og_description }}">
 	<meta property="og:image" content="{{ blog.image.url }}">
 	<meta property="og:type" content="article">
 
@@ -39,8 +39,6 @@
 
 	<!-- FAVICON LINK -->
 
-	<!-- LOCOMOTIVE-SCROLL CSS -->
-	<link rel="stylesheet" href="{% static 'homepage/assets/css/locomotive-scroll.min.css' %}">
 	<!-- KURSOR CSS -->
 	<link rel="stylesheet" href="{% static 'homepage/assets/css/video-js.min.css' %}">
 	<!-- KURSOR CSS -->
@@ -49,6 +47,9 @@
 	<link rel="stylesheet" href="{% static 'homepage/assets/css/up_btn.css' %}">
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="{% static 'homepage/assets/css/bootstrap.min.css' %}">
+	<!-- SWIPER-JS CSS -->
+	<link rel="stylesheet" href="{% static 'homepage/assets/css/swiper-bundle.min.css' %}">
+	
 	<!-- CUSTOM CSS -->
 	<link rel="stylesheet" href="{% static 'homepage/assets/css/style.css' %}">
 
