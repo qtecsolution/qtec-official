@@ -94,7 +94,7 @@
 		<div class="container">
 			<div class="aboutgallery-content">
 				<div class="aboutgallery-header">
-					<h2 class="aboutgallery-title">Our Gallery</h2>
+					<h2 class="aboutgallery-title mb-4">Our Gallery</h2>
 				</div>
 
 				<div class="aboutgallery-body">
@@ -103,7 +103,7 @@
 						<div class="swiper-wrapper">
 							{% for gallery in our_gallery %}
 							<div class="swiper-slide">
-								<div class="row w-100 align-items-center g-0 gy-5 gx-lg-5">
+								<div class="row w-100 flex-lg-nowrap align-items-start g-0 gy-5 gx-lg-5">
 									<div class="col-lg-6 col-12">
 										<div class="gallery-images">
 											{% if  not gallery.secondary_image %}
