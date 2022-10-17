@@ -10,7 +10,7 @@ from django.contrib import messages
 class LetsTalkView(View):
 
     def get(self, request):
-        lets_talk = LetsTalk.objects.values()
+        lets_talk = LetsTalk.objects.all().order_by('-id')
         LETS_TAlK_STATUS
         context = {
             "lets_talk" : lets_talk,

@@ -24,7 +24,7 @@ class TechnologiesView(View):
             return render(request, 'partial/technologies_update.html', context)
 
         else:
-            technologies = Technologies.objects.all()
+            technologies = Technologies.objects.prefetch_related('technology_features').all()
             technology_features = TechnologyFeatures.objects.all()
             context = {
                 "technologies" : technologies,

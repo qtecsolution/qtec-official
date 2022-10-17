@@ -1,0 +1,1 @@
+EVENT_MODEL_PREFIX = 'evnt-'

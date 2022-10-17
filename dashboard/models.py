@@ -178,6 +178,7 @@ class LetsTalk(models.Model):
     budget = models.PositiveSmallIntegerField( choices= BUDGET)
     message = models.TextField(null= True)
     status = models.PositiveSmallIntegerField( choices= LETS_TAlK_STATUS, default=PENDING)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class HandleBlog(models.Model):

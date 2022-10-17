@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'dashboard',
     'homepage',
     'django_social_share',
-    'multiselectfield'
+    'multiselectfield',
+    'debug_toolbar'
 ]
 PER_PAGE = 16
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -140,3 +142,8 @@ else:
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+
+]

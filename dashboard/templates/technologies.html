@@ -16,7 +16,7 @@
                                     <h5>Technologies List</h5>
                                 </div>
                                 <div class="col-md-3">
-                                    <a style="margin-left: 200px;" href="{% url 'dashboard:save_technologies_url' %}" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-plus-circle"></i></a>    
+                                    <a title="Add Item" style="margin-left: 200px;" href="{% url 'dashboard:save_technologies_url' %}" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-plus-circle"></i></a>    
                                 </div>
                             </div>
                         </div>
@@ -66,11 +66,11 @@
                                                 <form action="{% url 'dashboard:delete_technologies_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{technologie.id}}" name="id">
-                                                    <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                    <button  title="Delete Item" onclick="check()" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </div >
                                             <div class="col-5">
-                                                <button class="btn btn-icon btn-sm btn-outline-primary"  data-toggle="modal"
+                                                <button title="Add Features" class="btn btn-icon btn-sm btn-outline-primary"  data-toggle="modal"
                                                 data-target="#technologies_features_{{technologie.id}}" ><i class="fas fa-info-circle"></i></button>
                                                  <!-- Add featurs -->
                                                 <div  class="modal fade" id="technologies_features_{{technologie.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -120,7 +120,7 @@
                                                 </div>
                                             </div>
                                             <div cclass="col">
-                                                <a href="{% url 'dashboard:update_technologies_url' technologie.id %}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
+                                                <a title="Edit Technology" href="{% url 'dashboard:update_technologies_url' technologie.id %}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
                                             </div>
                                         </div>
                                          
@@ -145,6 +145,18 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function check(){
+    if (confirm("Do you want to delete?") == true) {
+        return true;
+    } else {
+        //cancle the from submission 
+        $(this).submit(function(e){
+            e.preventDefault();
+            return  false;
+        })
+        
+    }
+}
 
 </script>
 
