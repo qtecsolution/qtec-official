@@ -17,6 +17,5 @@ class SubscribeView(View):
     def post(self, request):
         obj = Subscribe.objects.get(id=request.POST.get('id'))
         obj.status = request.POST.get('status')
-        # print("request.POST.get('status'):::::::::::", request.POST.get('status'))
         obj.save()
         return JsonResponse({})
