@@ -71,13 +71,8 @@
             <div class="widget style1 dashboard-card">
                 <div class="row">
                     <div class="col-8">
-                      {% if user_type == 2%}
-                          <p> Total Channel</p>
-                        {% else %}
-                          <p> Total Channel Owner </p>
-                      {% endif %}
-                        
-                        <h2 class="font-bold">{{  total_channel  }}</h2>
+                        <p> Total Blog </p>
+                        <h2 class="font-bold">{{  total_blog}}</h2>
                     </div>
                 </div>
             </div>
@@ -87,27 +82,47 @@
             <div class="widget style1 dashboard-card">
                 <div class="row">
                     <div class="col-8">
-                        <p> Total Comments </p>
-                        <h2 class="font-bold">{{ total_comment }}</h2>
+                        <p> Total Subscribe </p>
+                        <h2 class="font-bold">{{ total_subscribe }}</h2>
                     </div>
                 </div>
             </div>
         </div>
   </div>
-  {% if user_type == 1%}
   <div class="row p-4">
-      <div class="col-lg-12">
-          <div class="wrapper wrapper-content animated fadeInRight">
-              <div class="card">
-                  <h3 class="card-header" style="background-color: #081E3C; color:#fff">User Vs Date Growth</h3>
-                  <div class="card-body">
-                      <div id="chartdiv"></div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  {% endif %}
+    <div class="col-lg-4">
+        <div class="widget style1 dashboard-card">
+            <div class="row">
+                <div class="col-8">
+                    <p> Team members</p>
+                    <h2 class="font-bold"> {{ total_teammembers }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="widget style1 dashboard-card">
+            <div class="row">
+                <div class="col-8">
+                    <p style="text-align: center;"> Opportunities</p>
+                    <samp class="font-bold">Active: {{ active_opportunities }}</samp><br>
+                    <samp class="font-bold">Closed: {{  closed_opportunities }}</samp>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-lg-4">
+        <div class="widget style1 dashboard-card">
+            <div class="row">
+                <div class="col-8">
+                    <p> Unseen Applications </p>
+                    <h2 class="font-bold">{{ unseen_application }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   {% if user_type == 2%}
   <div class="row p-4">
       <div class="col-lg-12">

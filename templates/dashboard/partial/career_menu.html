@@ -1,5 +1,6 @@
-<li class="nav-item has-treeview">
-    <a href="" class="nav-link">
+{% load check_permission %}
+<li class="nav-item has-treeview {%  if request|check_active_menu:'current_opportunities_url,save_current_opportunities_url,current_opportunities_edit_url,delete_current_opportunities_url,change_status_current_opportunities_url,apply_for_this_position_url,apply_for_this_position_status_url,apply_for_this_position_delete_url'  %} menu-open {% endif %}">
+    <a href="" class="nav-link {%  if request|check_active_menu:'current_opportunities_url,save_current_opportunities_url,current_opportunities_edit_url,delete_current_opportunities_url,change_status_current_opportunities_url,apply_for_this_position_url,apply_for_this_position_status_url,apply_for_this_position_delete_url'   %} active {% endif %}">
         <i class="nav-icon fa fa-users"></i>
         <p> Career </p>
         <i class="right fas fa-angle-left"></i>

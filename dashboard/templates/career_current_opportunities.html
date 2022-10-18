@@ -60,7 +60,7 @@
                                                 <form action="{% url 'dashboard:delete_current_opportunities_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{ item.id }}" name="id">
-                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                    <button  title="Delete Item" onclick="check()" type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </div>
                                             <div class="col-3">
@@ -68,8 +68,8 @@
                                                 data-target="#current_opportunities_edit_{{ item.id }}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
                                                 <div  class="modal fade" id="current_opportunities_edit_{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">
-                                                <div class="modal-dialog" role="document" >
-                                                    <div class="modal-content" style=" width: 750px;">
+                                                <div class="modal-dialog" role="document" style="max-width: 50%;" >
+                                                    <div class="modal-content" >
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -162,7 +162,7 @@
                     <!-- Add current_opportunities_add_modal -->
                     <div class="modal fade" id="current_opportunities_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog" role="document" style="max-width: 50%;">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Add</h5>
@@ -241,6 +241,19 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function check(){
+    if (confirm("Do you want to delete?") == true) {
+        return true;
+    } else {
+        //cancle the from submission 
+        $(this).submit(function(e){
+            e.preventDefault();
+            location.reload()
+            return  false;
+        })
+        
+    }
+}
 function change_status(id){
     let url =  "{% url 'dashboard:change_status_current_opportunities_url' %}";
     status = $("#change_status_id_"+id).val()

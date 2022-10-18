@@ -7,19 +7,19 @@ from dashboard.models import OurGallery, Subscribe
 class OurGalleryView(View):
     def get(self, request, id=None):
         if request.resolver_match.url_name == "save_our_gallery_url":
-            return render(request, 'partial/our_gallery_create.html')
+            return render(request, 'our_gallery/our_gallery_create.html')
         if request.resolver_match.url_name == "update_our_gallery_url":
             our_gallery = OurGallery.objects.filter(id=id).first()
             context = {
                 "our_gallery" : our_gallery,
             }
-            return render(request, 'partial/update_gallery_create.html', context)
+            return render(request, 'our_gallery/update_gallery_create.html', context)
         else:
             our_gallery = OurGallery.objects.order_by('priority')
             context = {
                 "our_gallery" : our_gallery,
             }
-            return render(request, 'our_gallery.html', context)
+            return render(request, 'our_gallery/our_gallery.html', context)
     def post(self, request, id=None):
         data = request.POST
         file = request.FILES

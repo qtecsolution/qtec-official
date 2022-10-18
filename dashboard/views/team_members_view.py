@@ -8,19 +8,19 @@ from django.contrib import messages
 class TeamMembersView(View):
     def get(self, request, id = None):
         if request.resolver_match.url_name == "save_team_member_url":
-            return render(request, 'partial/team_members_create.html')
+            return render(request, 'team_members/team_members_create.html')
         if request.resolver_match.url_name == "update_team_member_url":
             member = TeamMembers.objects.filter(id=id).first()
             context = {
                 "member" : member,
             }
-            return render(request, 'partial/team_member_update.html', context)
+            return render(request, 'team_members/team_member_update.html', context)
         else:
             team_members = TeamMembers.objects.order_by('priority').values()
             context = {
                 "team_members" : team_members,
             }
-            return render(request, 'team_members.html', context)
+            return render(request, 'team_members/team_members.html', context)
 
     def post(self, request, id=None):
         data = request.POST

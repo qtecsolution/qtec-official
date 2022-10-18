@@ -1,6 +1,6 @@
 
 <li class="nav-item menu-open">
-    <a href="{% url 'dashboard:technologies_url' %}" class="nav-link {% if request.resolver_match.url_name == 'technologies_url' %} active {% endif %}">
+    <a href="{% url 'dashboard:technologies_url' %}" class="nav-link {% if request.resolver_match.url_name in 'technologies_url, save_technologies_url, delete_technologies_url, save_technologies_features_url,update_technologies_url ' %} active {% endif %}">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
             Technologies

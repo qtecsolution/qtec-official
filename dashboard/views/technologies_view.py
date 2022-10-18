@@ -13,7 +13,7 @@ class TechnologiesView(View):
             context = {
                 "technology_features" : technology_features,
             }
-            return render(request, 'partial/technologies_create.html', context)
+            return render(request, 'technologies/technologies_create.html', context)
         elif request.resolver_match.url_name == "update_technologies_url":
             technology_features = TechnologyFeatures.objects.all()
             technology = Technologies.objects.filter(id=id).first()
@@ -21,7 +21,7 @@ class TechnologiesView(View):
                 "technology_features" : technology_features,
                 "technology" : technology,
             }
-            return render(request, 'partial/technologies_update.html', context)
+            return render(request, 'technologies/technologies_update.html', context)
 
         else:
             technologies = Technologies.objects.all()
@@ -30,7 +30,7 @@ class TechnologiesView(View):
                 "technologies" : technologies,
                 "technology_features" : technology_features
             }
-            return render(request, 'technologies.html', context)
+            return render(request, 'technologies/technologies.html', context)
         
     def post(self, request,id=None):
         data = request.POST

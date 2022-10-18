@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.views import View
 from datetime import date, datetime
-from dashboard.models import CONTACTED, PENDING, LetsTalk
+from dashboard.models import CONTACTED, PENDING, UNSEEN, ApplyForThisPosition, Blog, CurrentOpportunities, LetsTalk, Subscribe, TeamMembers
 from utils.datetime_utils import DateOperationMixin
 from django.db.models import Count
 
@@ -20,9 +20,29 @@ class DashboardView(View, DateOperationMixin):
             if item['status'] == CONTACTED:
                global contacted
                contacted = item['count']
+        total_blog = Blog.objects.all().count()
+        total_subscribe = Subscribe.objects.all().count()
+        total_teammembers = TeamMembers.objects.all().count()
+        opportunities = CurrentOpportunities.objects.values('status').annotate(count=Count('status'))
+        unseen_application = ApplyForThisPosition.objects.filter(status=UNSEEN).count()
+        print("total_opportunities::::", opportunities)
+        for item in opportunities:
+            if item['status'] == 0:
+                global active_opportunities 
+                active_opportunities = item['count']
+            if item['status'] == 1:
+               global closed_opportunities
+               closed_opportunities = item['count']
         context = {
             "pending": pending,
-            "contacted": contacted
+            "contacted": contacted,
+            "total_blog": total_blog,
+            "total_subscribe": total_subscribe,
+            "total_teammembers": total_teammembers,
+            "closed_opportunities": closed_opportunities,
+            "unseen_application": unseen_application,
+            "active_opportunities": active_opportunities
+
         }
         return context
     def get(self, request):

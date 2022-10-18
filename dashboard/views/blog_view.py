@@ -19,7 +19,7 @@ class BlogView(View):
             'blog_author' :blog_author,
             'blog_category' : blog_category
         }
-        return render(request, 'blog.html', context)
+        return render(request, 'blog/blog.html', context)
 
     def post(self, request):
         data =request.POST
@@ -128,7 +128,7 @@ class BlogAuthorView(View):
             'blog_author': blog_author,
             'blogs': blogs,
         }
-        return render(request, 'blog_author.html', context)
+        return render(request, 'blog/blog_author.html', context)
 
     def post(self, request):
         data =request.POST
@@ -165,7 +165,7 @@ class BlogCategoryView(View):
             context = {
                 'blog_category': blog_category,
             }
-            return render(request, 'blog_category.html', context)
+            return render(request, 'blog/blog_category.html', context)
 
         def post(self, request):
             data =request.POST
