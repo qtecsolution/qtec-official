@@ -60,7 +60,6 @@
 <script>
 csrf = '{{ csrf_token }}';
 function subscriber_talk_status(id){
-    alert()
     let url =  "{% url 'dashboard:subscriber_status_change_url' %}";
     status = $("#subscriber_change_status_id_"+id).val()
     $.ajax({

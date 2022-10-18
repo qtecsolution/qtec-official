@@ -48,11 +48,11 @@
                                                 <form action="{% url 'dashboard:delete_blog_row_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{ blog.id }}" name="id">
-                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                    <button title="Delete Item"  onclick="check()" type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </div>
                                             <div class="col-3">
-                                                <button  onclick="give_id('{{blog.id}}')" data-toggle="modal"
+                                                <button  title="Blog Edit" onclick="give_id('{{blog.id}}')" data-toggle="modal"
                                                 data-target="#blog_edit_{{blog.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
                                                 <div class="modal fade" id="blog_edit_{{blog.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">
@@ -285,6 +285,20 @@
 
 {% block script %}
 <script>
+function check(){
+    if (confirm("Do you want to delete?") == true) {
+        return true;
+    } else {
+        //cancle the from submission 
+        $(this).submit(function(e){
+            e.preventDefault();
+            location.reload()
+            return  false;
+        })
+        
+    }
+}
+
    
    
    function give_id(id){

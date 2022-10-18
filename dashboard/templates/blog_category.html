@@ -38,11 +38,11 @@
                                                 <form action="{% url 'dashboard:delete_blog_blog_category_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{ category.id }}" name="id">
-                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                    <button title="Delete Item"  onclick="check()"  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </div>
                                             <div class="col-sm-1">
-                                                <button  data-toggle="modal"
+                                                <button  title="Edit category" data-toggle="modal"
                                                 data-target="#blog_category_edit_{{ category.id }}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
                                                 <div class="modal fade" id="blog_category_edit_{{ category.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">
@@ -129,6 +129,19 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function check(){
+    if (confirm("Do you want to delete?") == true) {
+        return true;
+    } else {
+        //cancle the from submission 
+        $(this).submit(function(e){
+            e.preventDefault();
+            location.reload()
+            return  false;
+        })
+        
+    }
+}
 
 </script>
 
