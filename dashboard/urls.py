@@ -33,6 +33,7 @@ urlpatterns= [
 
     # subscribe
     path('subscribe/', SubscribeView.as_view(), name= 'subscribe_url'),
+    path('subscribe-status/', SubscribeView.as_view(), name= 'subscriber_status_change_url'),
 
     # technologies
     path('technologies/', TechnologiesView.as_view(), name= 'technologies_url'),

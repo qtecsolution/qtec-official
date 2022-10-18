@@ -74,6 +74,12 @@ LETS_TAlK_STATUS = (
     (CONTACTED, 'Contacted'),
 )
 
+OPT_IN = 0
+OPT_OUT = 1
+SUBSCRIBE_STATUS = (
+    (OPT_IN,'opt in'),
+    (OPT_OUT, 'opt out')
+)
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
     slug= models.SlugField(null=True, blank=True)
@@ -133,6 +139,8 @@ class KeyFeature(models.Model):
 
 class Subscribe(models.Model):
     email = models.CharField(max_length=200)
+    date = models.DateTimeField(auto_now_add=True)
+    status = models.PositiveSmallIntegerField( choices= SUBSCRIBE_STATUS, default=OPT_IN)
 
 
 class BlogAuthor(models.Model):
