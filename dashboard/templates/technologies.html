@@ -25,7 +25,6 @@
                                 <tr>
                                     <th>Id </th>
                                     <th>Title </th>
-                                    <th>Description</th>
                                     <th>Image</th>
                                     <th>Details Title</th>
                                     <th>Why This Title</th>
@@ -37,7 +36,6 @@
                                 <tr id="what_done_{{ item.id }}">
                                     <td>{{ technologie.id }}</td>
                                     <td>{{ technologie.title }}</td>
-                                    <td>{{ technologie.description }}</td>
                                     <td>
                                         {% if technologie.image %}
                                         <div>
@@ -62,14 +60,14 @@
 
                                     <th>
                                         <div class="form-group row">
-                                            <div cclass="">
+                                            <div class="col-md-3">
                                                 <form action="{% url 'dashboard:delete_technologies_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{technologie.id}}" name="id">
                                                     <button  title="Delete Item" onclick="check()" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </div >
-                                            <div class="col-5">
+                                            <div class="col-md-3">
                                                 <button title="Add Features" class="btn btn-icon btn-sm btn-outline-primary"  data-toggle="modal"
                                                 data-target="#technologies_features_{{technologie.id}}" ><i class="fas fa-info-circle"></i></button>
                                                  <!-- Add featurs -->
@@ -119,7 +117,7 @@
                                                 </div>
                                                 </div>
                                             </div>
-                                            <div cclass="col">
+                                            <div cclass="col-md-3">
                                                 <a title="Edit Technology" href="{% url 'dashboard:update_technologies_url' technologie.id %}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
                                             </div>
                                         </div>

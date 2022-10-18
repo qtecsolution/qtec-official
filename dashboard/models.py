@@ -80,6 +80,12 @@ SUBSCRIBE_STATUS = (
     (OPT_IN,'opt in'),
     (OPT_OUT, 'opt out')
 )
+ACTIVE = 0
+CLOSED = 1
+ACTIVE_STATUS = (
+    (ACTIVE,'Active'),
+    (CLOSED, 'Closed')
+)
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
     slug= models.SlugField(null=True, blank=True)
@@ -208,9 +214,10 @@ class CurrentOpportunities(models.Model):
     image = models.ImageField(upload_to= 'opportunities/', null= True)
     slug = models.SlugField(null=True, allow_unicode=True, blank=True)
     applicant_type = models.PositiveSmallIntegerField( choices= APPLICENT_STATUS, default=FULL_TIME)
-    number_of_vacancy = models.CharField(max_length=50)
+    number_of_vacancy = models.PositiveIntegerField()
     deadline = models.DateField()
     description = models.TextField()
+    status = models.PositiveSmallIntegerField( choices= ACTIVE_STATUS, default=ACTIVE)
 
 
 class ServiceDetailsProject(models.Model):

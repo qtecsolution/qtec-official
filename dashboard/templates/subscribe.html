@@ -71,9 +71,9 @@ function subscriber_talk_status(id){
         },
         success: function (data) {
             toastr.success('Status change successfully');
-            $('#speaker_'+id).html('');
         },
         error: function (data) {
+            alert("")
             console.log(data);
         }
     });
