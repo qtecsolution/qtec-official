@@ -56,8 +56,8 @@
                                                     <button title="Delete Item" onclick="check()"  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
-                                            <div class="" style="margin-left: 1em;
-                                            margin-right: 1em;">
+                                            <div class="" style="margin-left: .5em;
+                                            margin-right: .5em;">
                                                 <button title="Edit Item" onclick="get_id('{{done.id}}')" data-toggle="modal"
                                                 data-target="#edit_what_project_done_add_modal_{{done.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
                                                 <div class="modal fade" id="edit_what_project_done_add_modal_{{done.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -131,8 +131,8 @@
                                             <div class="" >
                                                 <a title="Update case study" href="{% url 'dashboard:case_study_edit_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-info-circle"></i></button></a>
                                             </div>
-                                            <div class="" style="margin-left: 1em;
-                                            margin-right: 1em;">
+                                            <div class="" style="margin-left: .5em;
+                                            margin-right: .5em;">
                                                 <a  title="Add key feature" href="{% url 'dashboard:key_feature_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i></button></a>
                                             </div>
                                         </div>
