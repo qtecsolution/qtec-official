@@ -60,14 +60,15 @@
 
                                     <th>
                                         <div class="form-group row">
-                                            <div class="col-md-3">
+                                            <div class="">
                                                 <form action="{% url 'dashboard:delete_technologies_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{technologie.id}}" name="id">
                                                     <button  title="Delete Item" onclick="check()" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </div >
-                                            <div class="col-md-3">
+                                            <div class="" style="margin-left: 1em;
+                                            margin-right: 1em;">
                                                 <button title="Add Features" class="btn btn-icon btn-sm btn-outline-primary"  data-toggle="modal"
                                                 data-target="#technologies_features_{{technologie.id}}" ><i class="fas fa-info-circle"></i></button>
                                                  <!-- Add featurs -->
@@ -117,7 +118,7 @@
                                                 </div>
                                                 </div>
                                             </div>
-                                            <div cclass="col-md-3">
+                                            <div cclass="">
                                                 <a title="Edit Technology" href="{% url 'dashboard:update_technologies_url' technologie.id %}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
                                             </div>
                                         </div>
