@@ -31,7 +31,8 @@
                                     <th>Action</th>
                                 </tr>
                                 {% for done in what_Done %}
-                                <tr id="what_done_{{ item.id }}"
+                                <tr id="what_done_{{ item.id }}">
+                                   
                                     <td>{{ done.name }}</td>
                                     <td>
                                         {% if done.image %}
