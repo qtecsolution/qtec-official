@@ -122,7 +122,7 @@ class HandleBlogView(View):
 class BlogAuthorView(View):
     def get(self, request):
         blogs = Blog.objects.values('id','title')
-        blog_author = BlogAuthor.objects.values()
+        blog_author = BlogAuthor.objects.values().order_by("-id")
     
         context = {
             'blog_author': blog_author,
@@ -160,7 +160,7 @@ class BlogAuthorView(View):
             return redirect('dashboard:blog_blog_author_url')
 class BlogCategoryView(View):
         def get(self, request):
-            blog_category = BlogCategory.objects.values('id','name')
+            blog_category = BlogCategory.objects.values('id','name').order_by("-id")
         
             context = {
                 'blog_category': blog_category,
