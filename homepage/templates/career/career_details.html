@@ -19,11 +19,16 @@
 									<p>Vacancy : {{ career.number_of_vacancy}}</p>
 									<p>Job Type : {{ career.get_applicant_type_display }}</p>
 									<p>Deadline : {{ career.deadline }}</p>
+									<p>status : {{ career.get_status_display }}</p>
 								</div>
 							</div>
 
 							<div class="bannerinfo-body">
-								<a href="#applysection" class="btn-explore">Apply Now</a>
+								{% if career.status == 1%}
+									<a href="#closesection" class="btn-explore">Closed</a>
+									{% else %}
+										<a href="#applysection" class="btn-explore">Apply Now</a>
+								{% endif %}
 							</div>
 						</div>
 					</div>
@@ -46,6 +51,9 @@
 	<!--========== CAREER-DETAILS END ==============-->
 
 	<!--========== CAREER-APPLY START ==============-->
+
+	{% if career.status == 0 %}
+	
 	<section class="career-apply" id="applysection">
 		<div class="container">
 			<div class="row">
@@ -129,7 +137,23 @@
 			</div>
 		</div>
 	</section>
+	{% else %}
+	<section class="career-apply" id="closesection">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-xl-6 mx-lg-auto col-12">
+					
+					<div class="apply">
+						<div class="apply-header">
+							<h2 class="apply-title">Requirement for this position is closed <br> "Better luck for next time."</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
+{% endif %}
 
 
 	<div class="modal fade" id="confirmedModal" tabindex="-1" aria-labelledby="confirmedModal" aria-hidden="true">
