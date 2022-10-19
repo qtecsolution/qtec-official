@@ -57,32 +57,32 @@
 
   <div class="row p-4">
         <div class="col-lg-4">
-            <div class="widget style1 dashboard-card" style="height: 160px;">
+            <div class="widget style1 dashboard-card" style="height: 170px;">
                 <div class="row">
                     <div class="col-8">
                         <p> Let's Talk</p>
-                        <h10 class="">{{ pending }}</h10><br>
+                        <h2 class="">{{ pending }}</h2><br>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="widget style1 dashboard-card" style="height: 160px;">
+            <div class="widget style1 dashboard-card" style="height: 170px;">
                 <div class="row">
                     <div class="col-8 ">
-                        <p> Total Contacted </p>
-                        <h10 class="font-bold">{{  contacted}}</h4>
+                        <p> Total Let's Talk Contacted </p>
+                        <h2 class="font-bold">{{  contacted}}</h2>
                     </div>
                 </div>
             </div>
 
         </div>
         <div class="col-lg-4">
-            <div class="widget style1 dashboard-card" style="height: 160px;">
+            <div class="widget style1 dashboard-card" style="height: 170px;">
                 <div class="row">
                     <div class="col-8">
                         <p> Tota Blog </p>
-                        <h10 class="font-bold">{{ total_blog }}</h10>
+                        <h2 class="font-bold">{{ total_blog }}</h2>
                     </div>
                 </div>
             </div>
@@ -90,32 +90,32 @@
   </div>
   <div class="row p-4">
     <div class="col-lg-4">
-        <div class="widget style1 dashboard-card" style="height: 160px;">
+        <div class="widget style1 dashboard-card" style="height: 170px;">
             <div class="row">
                 <div class="col-8">
                     <p> Total Blog Category</p>
-                    <h10 class="font-bold"> {{ total_blog_category }}</h10>
+                    <h2 class="font-bold"> {{ total_blog_category }}</h2>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="widget style1 dashboard-card" style="height: 160px;">
+        <div class="widget style1 dashboard-card" style="height: 170px;">
             <div class="row">
                 <div class="col-8">
-                    <p> Total Subscription</p>
-                    <h10 class="font-bold"> {{ total_subscribe }}</h10>
+                    <p> Total Subscriptions</p>
+                    <h2 class="font-bold"> {{ total_subscribe }}</h2>
                 </div>
             </div>
         </div>
 
     </div>
     <div class="col-lg-4">
-        <div class="widget style1 dashboard-card" style="height: 160px;">
+        <div class="widget style1 dashboard-card" style="height: 170px;">
             <div class="row">
                 <div class="col-8">
                     <p> Total Team Member </p>
-                    <h10 class="font-bold">{{ total_teammembers }}</h10>
+                    <h2 class="font-bold">{{ total_teammembers }}</h2>
                 </div>
             </div>
         </div>
@@ -123,29 +123,29 @@
 </div>
 <div class="row p-4">
     <div class="col-lg-4">
-        <div class="widget style1 dashboard-card" style="height: 160px;">
+        <div class="widget style1 dashboard-card" style="height: 170px;">
             <div class="row">
                 <div class="col-8">
                     <p> Total Opportunities</p>
-                    <h10 class="font-bold"> {{ total_opportunities }}</h10>
+                    <h2 class="font-bold"> {{ total_opportunities }}</h2>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="widget style1 dashboard-card">
+        <div class="widget style1 dashboard-card" style="height: 170px;">
             <div class="row">
-                <div class="col-8">
-                    <p> Total Application</p>
-                    <div class="row">
-                        <div class="col-6">
-                            <h10 class="font-bold"> Unseen: {{ unseen }}</h10>
-                            <h10 class="font-bold"> Selected: {{ selected }}</h10>
-                            <h10 class="font-bold"> Pendings: {{ pendings }}</h10>
+                <div class="col-12">
+                    <p> Total Applications</p>
+                    <div class="row justify-content-between" style="font-size:14px;">
+                        <div class="col-6 d-flex flex-column" style="gap: 8px;">
+                            <h10 class="font-bold"> Unseen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{   unseen }}</h10>
+                            <h10 class="font-bold"> Selected:&nbsp;&nbsp;&nbsp; {{ selected }}</h10>
+                            <h10 class="font-bold"> Pendings: &nbsp;&nbsp;{{ pendings }}</h10>
                         </div>
-                        <div class="col-6">
-                            <h10 class="font-bold"> Seen: {{ seen }}</h10>
-                            <h10 class="font-bold"> Rejected: {{ rejected }}</h10>
+                        <div class="col-6 d-flex flex-column" style="gap: 8px;">
+                            <h10 class="font-bold"> Seen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ seen }}</h10>
+                            <h10 class="font-bold"> Rejected:&nbsp;&nbsp; {{ rejected }}</h10>
                         </div>
 
                     </div>
