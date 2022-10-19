@@ -25,13 +25,12 @@ class DashboardView(View, DateOperationMixin):
         total_teammembers = TeamMembers.objects.all().count()
         opportunities = CurrentOpportunities.objects.values('status').annotate(count=Count('status'))
         unseen_application = ApplyForThisPosition.objects.filter(status=UNSEEN).count()
-        print("total_opportunities::::", opportunities)
+        active_opportunities = 0
+        closed_opportunities = 0
         for item in opportunities:
             if item['status'] == 0:
-                global active_opportunities 
                 active_opportunities = item['count']
             if item['status'] == 1:
-               global closed_opportunities
                closed_opportunities = item['count']
         context = {
             "pending": pending,
