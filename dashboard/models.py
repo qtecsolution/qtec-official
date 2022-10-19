@@ -145,7 +145,7 @@ class KeyFeature(models.Model):
 
 class Subscribe(models.Model):
     email = models.CharField(max_length=200)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=datetime.now)
     status = models.PositiveSmallIntegerField( choices= SUBSCRIBE_STATUS, default=OPT_IN)
 
 
