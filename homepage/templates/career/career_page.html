@@ -263,6 +263,7 @@
                 {%if is_careers %}
                   {% for career in careers %}
                         <div class="col-lg-3 col-sm-6 col-12">
+                  <a href="{% url 'homepage:career_details_url' career.slug %}">
                   <div class="card-opportunities">
                     <div class="card-opportunities-header">
                       <div class="titlebox">
@@ -277,10 +278,15 @@
                         <p class="text">Vacancy : {{ career.number_of_vacancy }}</p>
                         <p class="text">Deadline : {{ career.deadline }}</p>
                       </div>
-
-                      <a href="{% url 'homepage:career_details_url' career.slug %}" class="link">View &amp; Apply</a>
+                      {% if career.get_status == 0 %}
+                        <p>View &amp; Apply</p> 
+                        {% else %}
+                        <p>Haired</p> 
+                        
+                        {% endif %}
                     </div>
                   </div>
+                  </a>
                 </div>
                   {% endfor %}
                   {% else %}

@@ -8,13 +8,11 @@ from dashboard.models import ACTIVE_STATUS, APPLICENT_STATUS, APPLY_STATUS, Appl
 
 class CurrentOpportunitiesView(View):
     def get(self, request):
-        current_opportunities = CurrentOpportunities.objects.all().order_by('-id')
+        current_opportunities = CurrentOpportunities.objects.all().order_by('-deadline')
         applicant_type = APPLICENT_STATUS
-        status = ACTIVE_STATUS
         context = {
             "current_opportunities" : current_opportunities,
             "applicant_type" : applicant_type,
-            "status": status
         }
         return render(request, 'career_current_opportunities.html', context)
 

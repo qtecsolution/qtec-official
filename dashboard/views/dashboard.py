@@ -26,6 +26,9 @@ class DashboardView(View, DateOperationMixin):
         total_opportunities = CurrentOpportunities.objects.all().count()
         application = ApplyForThisPosition.objects.values('status').annotate(count = Count('status'))
         total_blog_category = BlogCategory.objects.all().count()
+        current_postion = CurrentOpportunities.objects.all()
+        for item in current_postion:
+            print("status",item.get_status)
         unseen = 0
         seen = 0
         pendings = 0
