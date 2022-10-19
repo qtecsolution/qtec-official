@@ -23,7 +23,6 @@
                         <div class="card-body table-responsive">
                             <table id="subscriber_list" class="table table-borderless table-striped table-hover">
                                 <tr>
-                                    <th>Id </th>
                                     <th>Title </th>
                                     <th>Image</th>
                                     <th>Details Title</th>
@@ -34,7 +33,6 @@
                                 </tr>
                                 {% for technologie in technologies %}
                                 <tr id="what_done_{{ item.id }}">
-                                    <td>{{ technologie.id }}</td>
                                     <td>{{ technologie.title }}</td>
                                     <td>
                                         {% if technologie.image %}
