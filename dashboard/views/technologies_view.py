@@ -24,7 +24,7 @@ class TechnologiesView(View):
             return render(request, 'technologies/technologies_update.html', context)
 
         else:
-            technologies = Technologies.objects.all()
+            technologies = Technologies.objects.all().order_by("-id")
             technology_features = TechnologyFeatures.objects.all()
             context = {
                 "technologies" : technologies,
