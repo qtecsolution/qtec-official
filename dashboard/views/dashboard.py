@@ -20,15 +20,7 @@ class DashboardView(View, DateOperationMixin):
             if item['status'] == CONTACTED:
                global contacted
                contacted = item['count']
-        total_blog = Blog.objects.all().count()
-        total_subscribe = Subscribe.objects.all().count()
-        total_teammembers = TeamMembers.objects.all().count()
-        total_opportunities = CurrentOpportunities.objects.all().count()
         application = ApplyForThisPosition.objects.values('status').annotate(count = Count('status'))
-        total_blog_category = BlogCategory.objects.all().count()
-        current_postion = CurrentOpportunities.objects.all()
-        for item in current_postion:
-            print("status",item.get_status)
         unseen = 0
         seen = 0
         pendings = 0
@@ -49,12 +41,11 @@ class DashboardView(View, DateOperationMixin):
         context = {
             "pending": pending,
             "contacted": contacted,
-            "total_blog": total_blog,
-            "total_subscribe": total_subscribe,
-            "total_teammembers": total_teammembers,
-            "application": application,
-            "total_blog_category": total_blog_category,
-            "total_opportunities": total_opportunities,
+            "total_blog": Blog.objects.all().count(),
+            "total_subscribe":  Subscribe.objects.all().count(),
+            "total_teammembers": TeamMembers.objects.all().count(),
+            "total_blog_category": BlogCategory.objects.all().count(),
+            "total_opportunities": CurrentOpportunities.objects.all().count(),
             "unseen": unseen,
             "seen": seen,
             "pendings": pendings,

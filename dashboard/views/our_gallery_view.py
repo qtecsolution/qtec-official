@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib import messages
-from dashboard.models import OurGallery, Subscribe
+from dashboard.models import OurGallery
 
 
 class OurGalleryView(View):
