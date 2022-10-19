@@ -1,4 +1,4 @@
-import email
+from datetime import datetime
 from django.db import models
 from multiselectfield import MultiSelectField
 # Create your models here.
@@ -217,7 +217,15 @@ class CurrentOpportunities(models.Model):
     number_of_vacancy = models.PositiveIntegerField()
     deadline = models.DateField()
     description = models.TextField()
-    status = models.PositiveSmallIntegerField( choices= ACTIVE_STATUS, default=ACTIVE)
+    @property
+    def get_status(self):
+        today = datetime.now().date()
+        if today > self.deadline:
+            return CLOSED
+        else:
+            return ACTIVE
+
+
 
 
 class ServiceDetailsProject(models.Model):

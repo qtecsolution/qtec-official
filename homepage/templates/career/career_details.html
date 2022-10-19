@@ -24,10 +24,10 @@
 							</div>
 
 							<div class="bannerinfo-body">
-								{% if career.status == 1%}
-									<a href="#closesection" class="btn-explore">Closed</a>
+								{% if career.get_status == 1%}
+									<a style="font-size: 1rem;" href="#closesection" class="btn-explore">Closed</a>
 									{% else %}
-										<a href="#applysection" class="btn-explore">Apply Now</a>
+										<a style="font-size: 1rem;" href="#applysection" class="btn-explore">Apply Now</a>
 								{% endif %}
 							</div>
 						</div>
@@ -145,7 +145,7 @@
 					
 					<div class="apply">
 						<div class="apply-header">
-							<h2 class="apply-title">Requirement for this position is closed <br> "Better luck for next time."</h2>
+							<h2 class="apply-title">Requirement for this position is Haired <br> "Better luck for next time. 🙂"</h2>
 						</div>
 					</div>
 				</div>

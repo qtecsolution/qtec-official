@@ -24,7 +24,6 @@
                         <div class="card-body table-responsive">
                             <table id="subscriber_list" class="table table-borderless table-striped table-hover">
                                 <tr>
-                                    <th>Id</th>
                                     <th>Title</th>
                                     <th>Applicent Type</th>
                                     <th>Number Of Vacancy</th>
@@ -35,7 +34,6 @@
                                 </tr>
                                 {% for item in current_opportunities %}
                                 <tr id="item_{{ item.id }}">
-                                    <td>{{ item.id }}</td>
                                     <td>{{ item.title }}</td>
                                     <td>{{ item.get_applicant_type_display }}</td>
                                     <td>{{ item.number_of_vacancy }}</td>
@@ -47,12 +45,12 @@
                                         </div>
                                         {% endif %}
                                     </td>
-                                    <td>
-                                        <select  title="change status" id="change_status_id_{{ item.id}}" onchange="change_status('{{ item.id }}')">
-                                            {% for value in status %}
-                                                <option {% if value.0 == item.status %} selected {% endif %} value="{{ value.0 }}">{{value.1}}</option>
-                                            {% endfor %}
-                                        </select>  
+                                    <td>{% if item.get_status == 1 %}
+                                        <p>Closed</p>
+                                        {% else %}
+                                            <p>Active</p>
+                                        {% endif %}
+
                                     </td>
                                     <td>
                                         <div class="form-group row">
