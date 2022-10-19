@@ -50,14 +50,15 @@
                                     <th> {{done.get_project_type_display}}</th>
                                     <th>
                                         <div class="form-group row">
-                                            <div class="col-2">
+                                            <div class="">
                                                 <form action="{% url 'dashboard:delete_what_done_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{done.id}}" name="id">
                                                     <button title="Delete Item" onclick="check()"  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
-                                            <div class="col-2">
+                                            <div class="" style="margin-left: 1em;
+                                            margin-right: 1em;">
                                                 <button title="Edit Item" onclick="get_id('{{done.id}}')" data-toggle="modal"
                                                 data-target="#edit_what_project_done_add_modal_{{done.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
                                                 <div class="modal fade" id="edit_what_project_done_add_modal_{{done.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -128,10 +129,11 @@
                                                 </div>
                                                 </div>
                                             </div>
-                                            <div class="col-2">
+                                            <div class="" >
                                                 <a title="Update case study" href="{% url 'dashboard:case_study_edit_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-info-circle"></i></button></a>
                                             </div>
-                                            <div class="col-2">
+                                            <div class="" style="margin-left: 1em;
+                                            margin-right: 1em;">
                                                 <a  title="Add key feature" href="{% url 'dashboard:key_feature_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i></button></a>
                                             </div>
                                         </div>
