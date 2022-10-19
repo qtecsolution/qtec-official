@@ -15,7 +15,7 @@ class OurGalleryView(View):
             }
             return render(request, 'our_gallery/update_gallery_create.html', context)
         else:
-            our_gallery = OurGallery.objects.order_by('-priority')
+            our_gallery = OurGallery.objects.all().order_by("priority")
             context = {
                 "our_gallery" : our_gallery,
             }
