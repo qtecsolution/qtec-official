@@ -22,11 +22,21 @@
                                 <tr>
                                     <th>Id </th>
                                     <th>Email </th>
+                                    <th>Date</th>
+                                    <th>Status</th>
                                 </tr>
                                 {% for subscribe in subscribers %}
                                 <tr id="subscriber_{{ subscribe.id }}">
                                     <td>{{ subscribe.id }}</td>
                                     <td>{{ subscribe.email }}</td>
+                                    <td>{{ subscribe.date }}</td>
+                                    <td>
+                                        <select title="change status" id="subscriber_change_status_id_{{ subscribe.id}}" onchange="subscriber_talk_status('{{ subscribe.id }}')">
+                                            {% for item in status %}
+                                                <option {% if item.0 == subscribe.status %} selected {% endif %} value="{{ item.0 }}">{{item.1}}</option>
+                                            {% endfor %}
+                                        </select>  
+                                    </td>
 
                                 </tr>
                                 {% endfor %}
@@ -49,6 +59,25 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function subscriber_talk_status(id){
+    let url =  "{% url 'dashboard:subscriber_status_change_url' %}";
+    status = $("#subscriber_change_status_id_"+id).val()
+    $.ajax({
+        url: url,
+        data: {'id': id,'status' : status, 'csrfmiddlewaretoken': csrf},
+        type: "POST",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+        },
+        success: function (data) {
+            toastr.success('Status change successfully');
+        },
+        error: function (data) {
+            alert("")
+            console.log(data);
+        }
+    });
+}
 
 </script>
 

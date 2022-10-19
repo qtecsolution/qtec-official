@@ -1,6 +1,6 @@
 
 <li class="nav-item menu-open">
-    <a href="{% url 'dashboard:our_gallery_url' %}" class="nav-link {% if request.resolver_match.url_name == 'our_gallery_url' %} active {% endif %}">
+    <a href="{% url 'dashboard:our_gallery_url' %}" class="nav-link {% if request.resolver_match.url_name in 'our_gallery_url, save_our_gallery_url,update_our_gallery_url' %} active {% endif %}">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
             Our Gallery

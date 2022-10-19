@@ -55,7 +55,7 @@
                                                 <form action="{% url 'dashboard:apply_for_this_position_delete_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{ position.id }}" name="id">
-                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                    <button title="Delete Item" onclick="check()"  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </div>
                                     </td>
@@ -80,6 +80,19 @@
 
 {% block script %}
 <script>
+function check(){
+    if (confirm("Do you want to delete?") == true) {
+        return true;
+    } else {
+        //cancle the from submission 
+        $(this).submit(function(e){
+            e.preventDefault();
+            location.reload()
+            return  false;
+        })
+        
+    }
+}
 csrf = '{{ csrf_token }}';
 function change_apply_status(id){
     var status = $("#apply_status_id_"+id).val()

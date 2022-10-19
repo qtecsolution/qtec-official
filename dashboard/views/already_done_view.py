@@ -10,8 +10,7 @@ class AlreadyDoneView(View):
 
     def get(self, request):
         technology = Technologies.objects.all()
-        what_Done = WhatProjectHaveWeDone.objects.order_by("-id")
-
+        what_Done = WhatProjectHaveWeDone.objects.prefetch_related('technology').order_by("-id").all()
         context = {
             "what_Done" : what_Done,
             'technology': technology,
@@ -23,7 +22,7 @@ class AlreadyDoneView(View):
         data = request.POST
         if request.resolver_match.url_name == "delete_what_done_url":
             request_id = request.POST.get('id')
-            WhatProjectHaveWeDone.objects.filter(id=request_id).delete()
+            WhatProjectHaveWeDone.objects.get(id=request_id).delete()
             messages.success(request, 'Delete successful')
             return redirect('dashboard:already_done_url')
 
@@ -40,7 +39,7 @@ class AlreadyDoneView(View):
 
         if request.resolver_match.url_name == "edit_what_project_done_url":
             request_id = data.get('id')
-            what_Done = WhatProjectHaveWeDone.objects.filter(id=request_id).first()
+            what_Done = WhatProjectHaveWeDone.objects.get(id=request_id)
             what_Done.name = data.get('name')
             technology_id = data.getlist('technology')
             what_Done.project_type = data.getlist('project_type')
@@ -84,11 +83,9 @@ class CaseStudyEditView(View):
                 case_study_image = file.get('case_study_image_'+str(value))
                 if case_study_image:
                     update_image = CaseStudyImage.objects.filter(id=value).first()
-                    print("update_image:::",update_image.image)
                     update_image.image = case_study_image
                     update_image.save()
-                 
-            print("file.getlist('case_study_image'):::::::::::::::::",file.getlist('case_study_image'))  
+                  
             case_study_image = file.getlist('case_study_image')
             for item in case_study_image:
                 object = CaseStudyImage()

@@ -27,7 +27,6 @@
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Budget</th>
-                                    <th>Message</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -37,10 +36,9 @@
                                     <td>{{ talk.name }}</td>
                                     <td>{{ talk.email }}</td>
                                     <td>{{ talk.phone_number }}</td>
-                                    <td>{{ talk.budget }}</td>
-                                    <td>{{ talk.message }}</td>
+                                    <td>{{ talk.get_budget_display }}</td>
                                     <td>
-                                        <select id="talk_change_status_id_{{ talk.id}}" onchange="change_talk_status('{{ talk.id }}')">
+                                        <select title="change status" id="talk_change_status_id_{{ talk.id}}" onchange="change_talk_status('{{ talk.id }}')">
                                             {% for item in status %}
                                                 <option {% if item.0 == talk.status %} selected {% endif %} value="{{ item.0 }}">{{item.1}}</option>
                                             {% endfor %}
@@ -50,7 +48,7 @@
                                         <form action="{% url 'dashboard:delete_lets_talk_url' %}"method="POST" >
                                             {% csrf_token %}
                                             <input type="hidden" value="{{ talk.id }}" name="id">
-                                            <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                            <button title="Delete Item" onclick="check()" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                         </form>  
                                     </th>
                                 </tr>
@@ -70,11 +68,26 @@
 
 </div>
 
+
+
 {% endblock %}
 
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function check(){
+    if (confirm("Do you want to delete?") == true) {
+        return true;
+    } else {
+        //cancle the from submission 
+        $(this).submit(function(e){
+            e.preventDefault();
+            location.reload()
+            return  false;
+        })
+        
+    }
+}
 
 function change_talk_status(id){
     let url =  "{% url 'dashboard:lets_talk_status_change_url' %}";

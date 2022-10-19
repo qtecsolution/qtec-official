@@ -1,5 +1,7 @@
-<li class="nav-item has-treeview">
-  <a href="" class="nav-link">
+{% load check_permission %}
+
+<li class="nav-item has-treeview {%  if request|check_active_menu:'blog_blog_list_url,save_blog_url,edit_blog_url,delete_blog_row_url,blog_blog_author_url,save_blog_blog_author_url,delete_blog_blog_author_url,edit_blog_blog_author_url,blog_blog_category_url,save_blog_category_url,delete_blog_blog_category_url,edit_blog_blog_category_url'  %} menu-open {% endif %}">
+  <a href="" class="nav-link {%  if request|check_active_menu:'blog_blog_list_url,save_blog_url,edit_blog_url,delete_blog_row_url,blog_blog_author_url,save_blog_blog_author_url,delete_blog_blog_author_url,edit_blog_blog_author_url,blog_blog_category_url,save_blog_category_url,delete_blog_blog_category_url,edit_blog_blog_category_url'  %} active {% endif %}">
       <i class="nav-icon fa fa-users"></i>
       <p> Blog </p>
       <i class="right fas fa-angle-left"></i>

@@ -3,16 +3,18 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib import messages
-from dashboard.models import APPLICENT_STATUS, APPLY_STATUS, ApplyForThisPosition, CurrentOpportunities
+from dashboard.models import ACTIVE_STATUS, APPLICENT_STATUS, APPLY_STATUS, ApplyForThisPosition, CurrentOpportunities
 
 
 class CurrentOpportunitiesView(View):
     def get(self, request):
-        current_opportunities = CurrentOpportunities.objects.all()
+        current_opportunities = CurrentOpportunities.objects.all().order_by('-id')
         applicant_type = APPLICENT_STATUS
+        status = ACTIVE_STATUS
         context = {
             "current_opportunities" : current_opportunities,
-            "applicant_type" : applicant_type
+            "applicant_type" : applicant_type,
+            "status": status
         }
         return render(request, 'career_current_opportunities.html', context)
 
@@ -53,6 +55,11 @@ class CurrentOpportunitiesView(View):
             current_opportunities.delete()
             messages.success(request, 'Delete successful!')
             return redirect('dashboard:current_opportunities_url')
+        if request.resolver_match.url_name == "change_status_current_opportunities_url":
+            obj = CurrentOpportunities.objects.get(id=data.get('id'))
+            obj.status = data.get('status')
+            obj.save()
+            return JsonResponse({})
 
  
 class ApplyForThisPositionView(View):
@@ -77,6 +84,7 @@ class ApplyForThisPositionView(View):
             request_id = data.get('id')
             ApplyForThisPosition.objects.filter(id=request_id).first().delete()
             return redirect('dashboard:apply_for_this_position_url')
+            
             
         
             

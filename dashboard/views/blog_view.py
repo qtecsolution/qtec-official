@@ -11,15 +11,15 @@ from django.contrib.auth.models import User
 
 class BlogView(View):
     def get(self, request):
-        blogs = Blog.objects.order_by("-id").all()
+        blog = Blog.objects.order_by("-id").all()
         blog_author = BlogAuthor.objects.values('id','name')
         blog_category = BlogCategory.objects.values('id','name')
         context = {
-            "blogs" : blogs,
+            "blogs" : blog,
             'blog_author' :blog_author,
             'blog_category' : blog_category
         }
-        return render(request, 'blog.html', context)
+        return render(request, 'blogs/blog.html', context)
 
     def post(self, request):
         data =request.POST
@@ -128,7 +128,7 @@ class BlogAuthorView(View):
             'blog_author': blog_author,
             'blogs': blogs,
         }
-        return render(request, 'blog_author.html', context)
+        return render(request, 'blogs/blog_author.html', context)
 
     def post(self, request):
         data =request.POST
@@ -165,7 +165,7 @@ class BlogCategoryView(View):
             context = {
                 'blog_category': blog_category,
             }
-            return render(request, 'blog_category.html', context)
+            return render(request, 'blogs/blog_category.html', context)
 
         def post(self, request):
             data =request.POST

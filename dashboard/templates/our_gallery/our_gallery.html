@@ -57,11 +57,11 @@
                                                 <form action="{% url 'dashboard:delete_our_gallery_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{gallery.id}}" name="id">
-                                                    <button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                    <button  title="Delete Item" onclick="check()"  class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </div >
                                             <div class="col-5">
-                                                <a href="{% url 'dashboard:update_our_gallery_url' gallery.id %}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
+                                                <a title="Edit gallery" href="{% url 'dashboard:update_our_gallery_url' gallery.id %}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
                                             </div>
                                         </div>
                                          
@@ -86,6 +86,19 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function check(){
+    if (confirm("Do you want to delete?") == true) {
+        return true;
+    } else {
+        //cancle the from submission 
+        $(this).submit(function(e){
+            e.preventDefault();
+            location.reload()
+            return  false;
+        })
+        
+    }
+}
 
 </script>
 

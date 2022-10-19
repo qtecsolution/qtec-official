@@ -1,9 +1,9 @@
 
 <li class="nav-item menu-open">
-    <a href="{% url 'dashboard:already_done_url' %}" class="nav-link {% if request.resolver_match.url_name == 'already_done_url' %} active {% endif %}">
+    <a href="{% url 'dashboard:already_done_url' %}" class="nav-link {% if request.resolver_match.url_name in 'already_done_url, delete_what_done_url, edit_what_project_done_url, save_what_done_url, case_study_edit_url, case_study_image_delete_url, key_feature_url' %} active {% endif %}">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
-        Already Done
+        Projects Done
         </p>
     </a>
     </li>

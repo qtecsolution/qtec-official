@@ -16,7 +16,7 @@
                                     <h5>What Project Have We Done</h5>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-success" data-toggle="modal"
+                                    <button title="Add Item" class="btn btn-success" data-toggle="modal"
                                         data-target="#what_project_done_add_modal"><strong>+</strong></button>
                                 </div>
                             </div>
@@ -54,11 +54,11 @@
                                                 <form action="{% url 'dashboard:delete_what_done_url' %}"method="POST" >
                                                     {% csrf_token %}
                                                     <input type="hidden" value="{{done.id}}" name="id">
-                                                    <button  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                    <button title="Delete Item" onclick="check()"  type="submit" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </div>
                                             <div class="col-2">
-                                                <button  onclick="get_id('{{done.id}}')" data-toggle="modal"
+                                                <button title="Edit Item" onclick="get_id('{{done.id}}')" data-toggle="modal"
                                                 data-target="#edit_what_project_done_add_modal_{{done.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
                                                 <div class="modal fade" id="edit_what_project_done_add_modal_{{done.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                 aria-hidden="true">
@@ -129,10 +129,10 @@
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <a href="{% url 'dashboard:case_study_edit_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-info-circle"></i></button></a>
+                                                <a title="Update case study" href="{% url 'dashboard:case_study_edit_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-info-circle"></i></button></a>
                                             </div>
                                             <div class="col-2">
-                                                <a href="{% url 'dashboard:key_feature_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i></button></a>
+                                                <a  title="Add key feature" href="{% url 'dashboard:key_feature_url' done.id %}" ><button class="btn btn-icon btn-sm btn-outline-primary" ><i class="fas fa-plus-circle"></i></button></a>
                                             </div>
                                         </div>
 
@@ -224,6 +224,19 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function check(){
+    if (confirm("Do you want to delete?") == true) {
+        return true;
+    } else {
+        //cancle the from submission 
+        $(this).submit(function(e){
+            e.preventDefault();
+            location.reload()
+            return  false;
+        })
+        
+    }
+}
 $(document).ready(function() {
         $('.textarea').summernote()
         $("#technology_select").select2({
