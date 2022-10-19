@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.views import View
 from datetime import date, datetime
-from dashboard.models import CONTACTED, PENDING, UNSEEN, ApplyForThisPosition, Blog, CurrentOpportunities, LetsTalk, Subscribe, TeamMembers
+from dashboard.models import CONTACTED, PENDING, UNSEEN, ApplyForThisPosition, Blog, BlogCategory, CurrentOpportunities, LetsTalk, Subscribe, TeamMembers
 from utils.datetime_utils import DateOperationMixin
 from django.db.models import Count
 
@@ -23,24 +23,40 @@ class DashboardView(View, DateOperationMixin):
         total_blog = Blog.objects.all().count()
         total_subscribe = Subscribe.objects.all().count()
         total_teammembers = TeamMembers.objects.all().count()
-        opportunities = CurrentOpportunities.objects.values('status').annotate(count=Count('status'))
-        unseen_application = ApplyForThisPosition.objects.filter(status=UNSEEN).count()
-        active_opportunities = 0
-        closed_opportunities = 0
-        for item in opportunities:
-            if item['status'] == 0:
-                active_opportunities = item['count']
+        total_opportunities = CurrentOpportunities.objects.all().count()
+        application = ApplyForThisPosition.objects.values('status').annotate(count = Count('status'))
+        total_blog_category = BlogCategory.objects.all().count()
+        unseen = 0
+        seen = 0
+        pendings = 0
+        selected = 0
+        rejected = 0
+        for item in application:
             if item['status'] == 1:
-               closed_opportunities = item['count']
+                unseen = item['count']
+            if item['status'] == 2:
+                seen = item['count']
+            if item['status'] == 3:
+                pendings = item['count']
+            if item['status'] == 4:
+                selected = item['count']
+            if item['status'] == 5:
+                rejected = item['count']
+      
         context = {
             "pending": pending,
             "contacted": contacted,
             "total_blog": total_blog,
             "total_subscribe": total_subscribe,
             "total_teammembers": total_teammembers,
-            "closed_opportunities": closed_opportunities,
-            "unseen_application": unseen_application,
-            "active_opportunities": active_opportunities
+            "application": application,
+            "total_blog_category": total_blog_category,
+            "total_opportunities": total_opportunities,
+            "unseen": unseen,
+            "seen": seen,
+            "pendings": pendings,
+            "selected": selected,
+            "rejected": rejected
 
         }
         return context
