@@ -50,7 +50,6 @@
                         <div class="card-body table-responsive">
                             <table id="subscriber_list" class="table table-borderless table-striped table-hover">
                                 <tr>
-                                    <th>Id </th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
@@ -61,7 +60,6 @@
                                 </tr>
                                 {% for position in positions %}
                                 <tr id="what_done_{{ item.id }}">
-                                    <td>{{ position.id }}</td>
                                     <td>{{ position.first_name }}</td>
                                     <td>{{ position.last_name }}</td>
                                     <td>{{ position.email }}</td>
