@@ -63,6 +63,16 @@ class CurrentOpportunitiesView(View):
 class ApplyForThisPositionView(View):
     def get(self, request):
         positions = ApplyForThisPosition.objects.order_by("-id").all()
+        data = request.GET
+        title = data.get('title')
+        status = data.get('status')
+        email = data.get('email')
+        if title:
+            positions = positions.filter(current_opportunities__title__icontains=title)
+        if status:
+            positions = positions.filter(status__icontains=status)
+        if email:
+            positions = positions.filter(email=email)
         context = {
             "positions" : positions,
             "apply_status" : APPLY_STATUS,
