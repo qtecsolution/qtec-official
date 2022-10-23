@@ -207,6 +207,7 @@ class ApplyForThisPosition(models.Model):
     upload_cv = models.FileField(upload_to='apply_for_this_position/')
     current_opportunities = models.ForeignKey("CurrentOpportunities",on_delete=models.CASCADE, related_name='apply_for_positions')
     status = models.PositiveSmallIntegerField( choices= APPLY_STATUS, default=UNSEEN)
+    date = models.DateTimeField(auto_now_add=True)
 
 
 class CurrentOpportunities(models.Model):

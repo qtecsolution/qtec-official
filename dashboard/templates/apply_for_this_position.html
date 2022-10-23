@@ -2,23 +2,51 @@
 
 {% block content %}
 
-<div class="container-fluid mt-2">
+<div class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div class="col-md-12">
             <div class="card mt-3">
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="text-secondary">Current Opportnities</label>
+                                <input name="title" class="form-control">
+                                    
+                                   
+                            </div>
+                            <div class="col-md-3">
+                                <label class="text-secondary">Status</label>
+                                <select name="status" class="form-control">
+                                    <option disabled selected>Select Type</option>
+                                    {% for item in apply_status %}
+                                        <option {% if request.GET.status|add:"0" == item.0 %} selected="selected" {% endif %}  value="{{ item.0 }}" > {{ item.1}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="text-secondary">Email</label>
+                                <input name="email" type="email" class="form-control">
+                                
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="text-secondary">Search & Filter</label> <br/>
+                                <button class="btn btn-block btn-secondary">Filter</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="tab-content" id="v-pills-tabContent">
-                <div class="" id="">
-                    <div class="card mt-3">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <h5>Applycation List</h5>
-                                </div>
-                                <div class="col-md-3">
-                                </div>
+            <div class="card mt-3">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Applycation List</h5>
                             </div>
                         </div>
+                    </div>
                         <div class="card-body table-responsive">
                             <table id="subscriber_list" class="table table-borderless table-striped table-hover">
                                 <tr>
@@ -28,6 +56,7 @@
                                     <th>Email</th>
                                     <th>CV</th>
                                     <th>Current Opportnities</th>
+                                    <th>Date</th>
                                     <th>Status</th>
                                 </tr>
                                 {% for position in positions %}
@@ -42,6 +71,7 @@
                                         {% endif  %} 
                                     </td>
                                     <td>{{ position.current_opportunities.title }}</td>
+                                    <td>{{position.date }}</td>
                                     <td>
                                         <select onchange="change_apply_status('{{ position.id }}')" class="form-control" id="apply_status_id_{{ position.id }}">
                                             {% for status in apply_status %}
