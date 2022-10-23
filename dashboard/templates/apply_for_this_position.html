@@ -72,7 +72,7 @@
                                     <td>{{ position.current_opportunities.title }}</td>
                                     <td>{{position.date }}</td>
                                     <td>
-                                        <select onchange="change_apply_status('{{ position.id }}')" class="form-control" id="apply_status_id_{{ position.id }}">
+                                        <select style="width: 105px;" onchange="change_apply_status('{{ position.id }}')" class="form-control" id="apply_status_id_{{ position.id }}">
                                             {% for status in apply_status %}
                                                 <option class="form-control" {% if status.0 == position.status %} selected {% endif %} value="{{ status.0 }}">{{ status.1 }}</option>
                                             {% endfor %}
