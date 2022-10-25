@@ -47,6 +47,7 @@ class AllBlogView(View):
     def get(self, request):
         page = request.GET.get('page')
         blogs = Blog.objects.order_by('?')
+        print("blogs:::::::::", blogs)
 
         paginator = Paginator(blogs, settings.PER_PAGE)
         try:

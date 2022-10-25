@@ -1,0 +1,10 @@
+.blogdetails-thumbnail img {
+    object-fit: cover;
+}
+
+.descriptionlist {
+    padding-left: 2rem;
+}
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist { 
+    flex-wrap: wrap;
+}
