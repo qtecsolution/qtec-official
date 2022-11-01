@@ -29,6 +29,14 @@
 
 						<li class="desktoplist-item">
 							<a href="{% url 'homepage:service_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
+							<a  aria-expanded="false" type="button" class="dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="{% url 'homepage:service_details_url' 'software-solutions-development' %}">Software Development</a>
+								<a class="dropdown-item" href="{% url 'homepage:service_details_url' 'ui-ux-design' %}">UI UX Design </a>
+								<a class="dropdown-item" href="{% url 'homepage:service_details_url' 'mobile-application-development' %}">Mobile App Development</a>
+								<a class="dropdown-item" href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}">E-commerce Development</a>
+							  </div>
 						</li>
 						<li class="desktoplist-item">
 							<a href="{% url 'homepage:blog_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blogs</a>
