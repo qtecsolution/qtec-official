@@ -18,7 +18,7 @@ class ServiceDetailsView(View):
         if slug == 'software-solutions-development':
             projects_done = WhatProjectHaveWeDone.objects.filter(Q(name='Wear Soha') | Q(name='Brightskills') | Q(name='Stech')).all()
             context = {
-                'title': "Service Details",
+                'title': "Software Solutions Development",
                 "projects": projects,
                 'projects_done' : projects_done,
             }
