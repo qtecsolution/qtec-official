@@ -62,7 +62,7 @@
 			</div>
 
 			<div class="viewall">
-			  <a href="#" class="link">Get a proposal</a>
+			  <a href="{% url 'homepage:contact_us_url' %}" class="link">Get a proposal</a>
 			</div>
 		  </div>
 		</div>
@@ -872,7 +872,7 @@
 		</div>
 
 		<div class="row my-5 justify-content-center">
-		  <a href="#" class="link">Start now</a>
+		  <a href="{% url 'homepage:contact_us_url' %}" class="link">Start now</a>
 		</div>
 	  </div>
 	</div>
@@ -1090,16 +1090,15 @@
 
 		  <div class="col-lg-6">
 			<div class="recentproject">
-			  <div class="recentproject-header">
-				<span class="recentsubtitle"
-				  >technology tags, technology tags,</span
-				>
-				<h5 class="recent-title">SupplyLine</h5>
+			  <div class="recentproject-header d-none">
+				<span class="recentsubtitle "
+				  >technology tags, technology tags,</span>
+				<h5 class="recent-title">SupplyChain</h5>
 			  </div>
 
 			  <div class="recentproject-body">
 				<p class="text">
-				  SupplyLine is a company that serves retail shops with stock
+				  SupplyChain is a company that serves retail shops with stock
 				  products at the best prices. The company offers
 				  collateral-free invoice finance to help them maintain good
 				  cash flow. For Brands, we offer a fully digitized and
@@ -1109,13 +1108,12 @@
 				  customers analytical solutions while making retailer
 				  management easier. The Qtac Solution team worked with
 				  dedication to develop this application within the designated
-				  time plan. SupplyLine application was developed with Django
+				  time plan. SupplyChain application was developed with Django
 				  Python technology in the backend and Nuxt.js technology in
 				  the frontend with REST API connected. Flutter was used to
 				  develop the mobile application.
 				</p>
 			  </div>
-
 			  <div class="viewall">
 				<a href="#" target="_blank" class="link">Project Link</a>
 			  </div>
@@ -1565,7 +1563,7 @@
 				</div>
 
 				<div class="viewall">
-				  <a href="contact.html" class="link">Discuss your project</a>
+				  <a href="{% url 'homepage:contact_us_url' %}" class="link">Discuss your project</a>
 				</div>
 			  </div>
 			</div>

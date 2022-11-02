@@ -60,7 +60,7 @@
 			</div>
 
 			<div class="viewall">
-			  <a href="#" class="link">Get a proposal</a>
+			  <a href="{% url 'homepage:contact_us_url' %}" class="link">Get a proposal</a>
 			</div>
 		  </div>
 		</div>
@@ -969,7 +969,7 @@
 			  </div>
 
 			  <div class="viewall">
-				<a href="#" class="link">Schedule a meeting</a>
+				<a href="{% url 'homepage:contact_us_url' %}" class="link">Schedule a meeting</a>
 			  </div>
 			</div>
 		  </div>
@@ -1051,6 +1051,9 @@
 				  Vue.js to develop this project.
 				</p>
 			  </div>
+			  <div class="viewall d-flex justify-content-lg-end custom-class-for-link" >
+				<a style="margin: auto; color: #fff;" href="{% url 'homepage:case_study_details_url' "stech" %}" target="_blank" class="link">Project Link</a>
+			  </div>
 			</div>
 		  </div>
 		</div>
@@ -1084,6 +1087,9 @@
 				  used Django, Figma, Nuxt.js, Flutter, REST API, Vue.js and
 				  AWS to develop this project.
 				</p>
+			  </div>
+			  <div class="viewall d-flex justify-content-lg-end custom-class-for-link" style="margin-left: 420px;" >
+				<a style="margin: auto; color: #fff;" href="{% url 'homepage:case_study_details_url' "decoris-diamonds" %}" target="_blank" class="link">Project Link</a>
 			  </div>
 			</div>
 		  </div>
@@ -1135,6 +1141,9 @@
 				  IOS, Vue.js, PostgreSQL and AWS to develop this project.
 				</p>
 			  </div>
+			  <div class="viewall d-flex justify-content-lg-end custom-class-for-link" >
+				<a style="margin: auto; color: #fff;" href="{% url 'homepage:case_study_details_url' "wear-soha" %}" target="_blank" class="link">Project Link</a>
+			  </div>
 			</div>
 		  </div>
 		</div>
@@ -1174,15 +1183,13 @@
 		  <div class="col-lg-6">
 			<div class="recentproject">
 			  <div class="recentproject-header">
-				<span class="recentsubtitle"
-				  >technology tags, technology tags,</span
-				>
-				<h5 class="recent-title">SupplyLine</h5>
+				<span class="recentsubtitle d-none">technology tags, technology tags,</span>
+				<h5 class="recent-title">SupplyChain</h5>
 			  </div>
 
 			  <div class="recentproject-body">
 				<p class="text">
-				  SupplyLine is a company that serves retail shops with stock
+				  SupplyChain is a company that serves retail shops with stock
 				  products at the best prices. The company offers
 				  collateral-free invoice finance to help them maintain good
 				  cash flow. For Brands, we offer a fully digitized and
@@ -1192,14 +1199,14 @@
 				  customers analytical solutions while making retailer
 				  management easier. The Qtac Solution team worked with
 				  dedication to develop this application within the designated
-				  time plan. SupplyLine application was developed with Django
+				  time plan. SupplyChain application was developed with Django
 				  Python technology in the backend and Nuxt.js technology in
 				  the front end with REST API connected. Flutter was used to
 				  develop the mobile application.
 				</p>
 			  </div>
 
-			  <div class="viewall">
+			  <div class="viewall d-none">
 				<a href="#" target="_blank" class="link">Project Link</a>
 			  </div>
 			</div>
@@ -1237,7 +1244,7 @@
 			  </div>
 
 			  <div class="viewall d-flex justify-content-lg-end">
-				<a href="#" target="_blank" class="link">Project Link</a>
+				<a href="{% url 'homepage:case_study_details_url' "alpha-dms" %}" target="_blank" class="link">Project Link</a>
 			  </div>
 			</div>
 		  </div>
@@ -1575,7 +1582,7 @@
 			  </div>
 
 			  <div class="viewall">
-				<a href="contact.html" class="link">Discuss your project</a>
+				<a href="{% url 'homepage:contact_us_url' %}" class="link">Discuss your project</a>
 			  </div>
 			</div>
 		  </div>
