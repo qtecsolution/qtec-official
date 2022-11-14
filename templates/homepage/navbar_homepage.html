@@ -28,14 +28,31 @@
 						</li>
 
 						<li class="desktoplist-item">
-							  <div class="dropdown">
-								<a href="{% url 'homepage:service_url' %}" class="dropbtn desktoplist-link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
-								<div class="dropdown-content d-none">
-									<a class="dropdown-item header-nav " href="{% url 'homepage:service_details_url' 'software-solutions-development' %}">Software Development</a>
-									<a class="dropdown-item header-nav " href="{% url 'homepage:service_details_url' 'ui-ux-design' %}">UI UX Design </a>
-									<a class="dropdown-item header-nav " href="{% url 'homepage:service_details_url' 'mobile-application-development' %}">Mobile App Development</a>
-									<a class="dropdown-item header-nav " href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}">E-commerce Development</a>
-								</div>
+							<a href="{% url 'homepage:service_url' %}" class="dropbtn desktoplist-link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
+			  
+							  <div class="desktopdropdown">
+								<ul class="dropdownlist">
+								  <li class="dropdownlist-item">
+									<a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="dropdownlist-link">
+									  UI /UX Design
+									</a>
+								  </li>
+								  <li class="dropdownlist-item">
+									<a href="{% url 'homepage:service_details_url' 'software-solutions-development' %}" class="dropdownlist-link">
+									  Software Development
+									</a>
+								  </li>
+								  <li class="dropdownlist-item">
+									<a href="{% url 'homepage:service_details_url' 'mobile-application-development' %}" class="dropdownlist-link">
+									  Mobile Application Development
+									</a>
+								  </li>
+								  <li class="dropdownlist-item">
+									<a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="dropdownlist-link">
+									  E-commerce Development
+									</a>
+								  </li>
+								</ul>
 							  </div>
 						</li>
 						<li class="desktoplist-item">
@@ -61,47 +78,103 @@
 					</button>
 				</div>
 				<!-- HAMBURGER-MENU END -->
-
-				<!-- MOBILE-MENU START -->
-				<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenu">
-					<div class="offcanvas-header">
-						<a href="index.html" class="logo">
-							<img src="{%  static 'homepage/assets/images//logo/logo.svg' %}" alt="logo">
-						</a>
-
-						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
-							</svg>
-						</button>
-					</div>
-
-					<div class="offcanvas-body">
-						<ul class="mobilelist">
-							<li class="mobilelist-item ">
-								<a  href="{% url 'homepage:index_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'index_url' %} active {% endif %}">Home</a>
-							</li>
-
-							<li class="mobilelist-item">
-								<a  href="{% url 'homepage:about_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'about_us_url' %} active {% endif %}">About Us</a>
-							</li>
-							<li class="mobilelist-item">
-								<a  href="{% url 'homepage:product_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a>
-							</li>
-                            <li class="mobilelist-item">
-								<a  href="{% url 'homepage:service_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
-							</li>
-							<li class="mobilelist-item">
-								<a   href="{% url 'homepage:blog_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blogs</a>
-							</li>
-							<li class="mobilelist-item">
-								<a  href="{% url 'homepage:career_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'career_url' %} active {% endif %}">Career</a>
-							</li>
-							<li class="mobilelist-item">
-								<a  href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'contact_us_url' %} active {% endif %}">Contact Us</a>
-							</li>
-						</ul>
-					</div>
+				  <!-- MOBILE-MENU START -->
+				  <div
+				  class="offcanvas offcanvas-start"
+				  tabindex="-1"
+				  id="mobileMenu"
+				  aria-labelledby="mobileMenu"
+				>
+				  <div class="offcanvas-header">
+					<a href="index.html" class="logo">
+						<img src="{%  static 'homepage/assets/images//logo/logo.svg' %}" alt="logo">
+					</a>
+	  
+					<button
+					  type="button"
+					  class="btn-close text-reset"
+					  data-bs-dismiss="offcanvas"
+					  aria-label="Close"
+					>
+					  <svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						fill="currentColor"
+						class="bi bi-arrow-left-circle"
+						viewBox="0 0 16 16"
+					  >
+						<path
+						  fill-rule="evenodd"
+						  d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
+						/>
+					  </svg>
+					</button>
+				  </div>
+	  
+				  <div class="offcanvas-body">
+					<ul class="mobilelist">
+					  <li class="mobilelist-item">
+						<a href="{% url 'homepage:index_url' %}" class="mobilelist-link">Home</a>
+					  </li>
+	  
+					  <li class="mobilelist-item">
+						<a href="{% url 'homepage:about_us_url' %}" class="mobilelist-link active"
+						  >About Us</a
+						>
+					  </li>
+	  
+					  <div class="accordion" id="accordionDropdown">
+						<div class="accordion-item">
+						  <h2 class="accordion-header" id="heading-service">
+							<a href="{% url 'homepage:service_url' %}" class="link">Services</a>
+	  
+							<button
+							  class="accordion-button"
+							  type="button"
+							  data-bs-toggle="collapse"
+							  data-bs-target="#collapseOne"
+							  aria-expanded="true"
+							  aria-controls="collapseOne"
+							></button>
+						  </h2>
+						  <div
+							id="collapseOne"
+							class="accordion-collapse"
+							aria-labelledby="heading-service"
+							data-bs-parent="#accordionDropdown"
+						  >
+							<div class="accordion-body">
+							  <a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="servicelink">
+								UI /UX Design
+							  </a>
+							  <a href="{% url 'homepage:service_details_url' 'software-solutions-development' %}" class="servicelink">
+								Software Development
+							  </a>
+							  <a href="{% url 'homepage:service_details_url' 'mobile-application-development' %}" class="servicelink">
+								Mobile Application Development
+							  </a>
+							  <a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="servicelink">
+								E-commerce Development
+							  </a>
+							</div>
+						  </div>
+						</div>
+					  </div>
+	  
+					  <li class="mobilelist-item">
+						<a href="{% url 'homepage:product_url' %}" class="mobilelist-link">Products</a>
+					  </li>
+	  
+					  <li class="mobilelist-item">
+						<a href="{% url 'homepage:blog_url' %}" class="mobilelist-link">Blog</a>
+					  </li>
+	  
+					  <li class="mobilelist-item">
+						<a href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link">Contact Us</a>
+					  </li>
+					</ul>
+				  </div>
 				</div>
 				<!-- MOBILE-MENU END -->
 			</nav>
