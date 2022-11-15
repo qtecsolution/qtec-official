@@ -100,7 +100,7 @@ function add_image_field(){
    var next_id = last_id+1
    if (last_id == 0){
     $("#add").after(
-    `<div class="col-md-4"id="add-`+next_id+`">
+    `<div class="col-md-5"id="add-`+next_id+`">
         <div class="form-group">
             <label>Image</small> </label>
             <a style="margin-left: 320px;"  onclick="delete_image_field(`+next_id+`)" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-trash"></i></a>      
@@ -108,8 +108,7 @@ function add_image_field(){
         
         </div>
     </div>
-    <div class="col-md-2"">
-    </div>`);
+    `);
    }
    else{
     $("#add-"+last_id).after(
@@ -118,7 +117,6 @@ function add_image_field(){
             <label>Image</small> </label>
             <a style="margin-left: 320px;"  onclick="delete_image_field(`+next_id+`)" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-trash"></i></a>      
             <input type="file" name="image_`+next_id+`" class="form-control"  >
-        
         </div>
     </div>
     `);
