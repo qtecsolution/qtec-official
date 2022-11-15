@@ -145,67 +145,22 @@
 		<div class="workingclients-content">
 		<div class="workingclients-header">
 			<h3 class="title">
-			Working with <span>45+</span> clients over <span>2 years !</span>
+			{{home_clients.title}}
 			</h3>
 		</div>
 
 		<div class="workingclients-body">
 			<div class="clientslide">
+				{% for item in home_clients.clent_image.all %}
 			<figure class="client-thumnail">
 				<img
-				src="https://www.svgrepo.com/show/303139/google-play-badge-logo.svg"
+				src="{{ item.image.url }}"
 				alt="client-thumbnail"
 				/>
 			</figure>
+			{% endfor %}
 
-			<figure class="client-thumnail">
-				<img
-				src="https://www.svgrepo.com/show/303132/coca-cola-logo.svg"
-				alt="client-thumbnail"
-				/>
-			</figure>
-
-			<figure class="client-thumnail">
-				<img
-				src="https://www.svgrepo.com/show/303142/tiktok-banner-black-3-logo.svg"
-				alt="client-thumbnail"
-				/>
-			</figure>
-
-			<figure class="client-thumnail">
-				<img
-				src="https://www.svgrepo.com/show/303136/xbox-one-logo.svg"
-				alt="client-thumbnail"
-				/>
-			</figure>
-
-			<figure class="client-thumnail">
-				<img
-				src="https://www.svgrepo.com/show/303139/google-play-badge-logo.svg"
-				alt="client-thumbnail"
-				/>
-			</figure>
-
-			<figure class="client-thumnail">
-				<img
-				src="https://www.svgrepo.com/show/303144/windows-10-logo.svg"
-				alt="client-thumbnail"
-				/>
-			</figure>
-
-			<figure class="client-thumnail">
-				<img
-				src="https://www.svgrepo.com/show/303131/intrax-logo.svg"
-				alt="client-thumbnail"
-				/>
-			</figure>
-
-			<figure class="client-thumnail">
-				<img
-				src="https://www.svgrepo.com/show/303139/google-play-badge-logo.svg"
-				alt="client-thumbnail"
-				/>
-			</figure>
+		
 			</div>
 		</div>
 		</div>
