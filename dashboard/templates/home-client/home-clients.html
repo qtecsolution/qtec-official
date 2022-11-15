@@ -96,7 +96,6 @@ last_id = parseInt(last_id.slice(4))
 
 
 function add_image_field(){
-   alert(last_id)
    var next_id = last_id+1
    if (last_id == 0){
     $("#add").after(
@@ -128,7 +127,6 @@ function add_image_field(){
      
 }
 function delete_image_field(id){
-    alert(id)
     if(last_id > 1){
         $("#add-"+id).remove()
         last_id -= 1
