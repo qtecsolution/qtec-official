@@ -5,6 +5,7 @@ from dashboard.views.blog_view import BlogAuthorView, BlogCategoryView, BlogView
 from dashboard.views.career_view import ApplyForThisPositionView, CurrentOpportunitiesView
 
 from dashboard.views.dashboard import DashboardView
+from dashboard.views.home_clients_view import HomeClientsView
 from dashboard.views.lets_talk_view import LetsTalkView
 from dashboard.views.our_gallery_view import OurGalleryView
 from dashboard.views.subscribe_view import SubscribeView
@@ -87,6 +88,9 @@ urlpatterns= [
     path('our-gallery-create/', OurGalleryView.as_view(), name="save_our_gallery_url"),
     path('our-gallery-update/<int:id>/', OurGalleryView.as_view(), name="update_our_gallery_url"),
     path('our-gallery-delete/', OurGalleryView.as_view(), name="delete_our_gallery_url"),
+
+    path('home-clients/', HomeClientsView.as_view(), name="home_clients_url"),
+    path('home-clients-image-delete/', HomeClientsView.as_view(), name="home_clients_image_url"),
     
     
         
