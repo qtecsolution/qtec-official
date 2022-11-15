@@ -1,0 +1,161 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center">Home Clients</h2>
+
+                        <form method="POST"  id="managementadd" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div id="accordion">
+                                <div class="card" style="border: 1px dotted #999;margin-left: 60px; margin-right: 60px;">
+
+                                    <div id="collapseOne"
+                                         class="collapse show"
+                                         aria-labelledby="headingOne"
+                                         data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Title <small style="color: red">*</small> </label>
+                                                        <input value="{{home_clients.title}}" type="text" name="title"  class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6" id="add">
+                                                    <div class="form-group">
+                                                        <label>Add Image</small> </label>
+                                                        <a  onclick="add_image_field()" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-plus-circle"></i></a>  
+                                                    </div>
+                                                </div>
+                                                {% for item in home_clients.clent_image.all %}
+                                                <div class="col-md-6" id="add-{{item.id}}">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-10">
+                                                                <label>Image {{item.id}}</small> </label>
+                                                                <a style="margin-left: 300px;" onclick="delete_existing_field('{{item.id}}')" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-trash"></i></a>      
+                                                                <input type="file"  name="image_{{item.id}}" class="form-control"  >
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <img style="width: 50px;  height: 40px;" src="{{ item.image.url }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
+                                                </div>
+                                                {% endfor %}
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                                <button style="margin-right: 60px;" name="save" class="btn btn-default float-right" type="submit">
+                                    <i class="fa fa-plus-circle"></i>
+                                    Update
+                                </button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+csrf = '{{ csrf_token }}';
+var id_list = document.querySelectorAll('[id^="add-"]')
+var last_id = 0
+for (let i = 0 ;i<id_list.length;i++){
+    last_id = id_list[i].id
+}
+last_id = parseInt(last_id.slice(4))
+
+
+function add_image_field(){
+   alert(last_id)
+   var next_id = last_id+1
+   if (last_id == 0){
+    $("#add").after(
+    `<div class="col-md-4"id="add-`+next_id+`">
+        <div class="form-group">
+            <label>Image</small> </label>
+            <a style="margin-left: 320px;"  onclick="delete_image_field(`+next_id+`)" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-trash"></i></a>      
+            <input type="file" name="image_`+next_id+`" class="form-control"  >
+        
+        </div>
+    </div>
+    <div class="col-md-2"">
+    </div>`);
+   }
+   else{
+    $("#add-"+last_id).after(
+    `<div class="col-md-5"id="add-`+next_id+`">
+        <div class="form-group">
+            <label>Image</small> </label>
+            <a style="margin-left: 320px;"  onclick="delete_image_field(`+next_id+`)" class="btn btn-icon btn-sm btn-outline-primary"><i class="fas fa-trash"></i></a>      
+            <input type="file" name="image_`+next_id+`" class="form-control"  >
+        
+        </div>
+    </div>
+    `);
+
+   }
+ 
+     
+    last_id += 1
+     
+}
+function delete_image_field(id){
+    alert(id)
+    if(last_id > 1){
+        $("#add-"+id).remove()
+        last_id -= 1
+    }
+    else{
+        alert("You have to atlist one item")
+    }
+    
+}
+function delete_existing_field(id){
+    $("#add-"+id).remove()
+    var data = {'id': id, 'csrfmiddlewaretoken': csrf}
+    url = "{% url 'dashboard:home_clients_image_url' %}"
+    $.ajax({
+        url: url,
+        data: data,
+        type: "POST",
+        success: function (data) {
+            toastr.success('Item Deleted successfully')
+        },
+        error: function (data) {
+        }
+    });
+}
+</script>
+
+
+{% endblock %}

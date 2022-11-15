@@ -268,4 +268,16 @@ class OurGallery(models.Model):
     priority = models.PositiveSmallIntegerField() 
 
 
-   
+class ClientImage(models.Model):
+    image = models.ImageField(upload_to='home-client/')
+
+class HomeClients(models.Model):
+    title = models.CharField(max_length=250)
+    clent_image = models.ManyToManyField(ClientImage)
+
+    
+class WhatPeopleSay(models.Model):
+    name = models.CharField(max_length=100)
+    designation = models.CharField(max_length=250)
+    secondary_image = models.ImageField(upload_to='what-people-say/')
+    description = models.TextField()
