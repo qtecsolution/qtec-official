@@ -26,14 +26,19 @@ class HomeClientsView(View):
         else:
             file = request.FILES
             data = request.POST
-            home_clients = HomeClients.objects.first()
+            home_clients = HomeClients.objects.all()
+            if home_clients.exists():
+                home_clients = home_clients.first()
+            else:
+                home_clients = HomeClients()
+            home_clients.title = data.get('title')
+            home_clients.save()
             for item in file:
                 obj = ClientImage()
                 obj.image = file[item]
                 obj.save()
                 home_clients.clent_image.add(obj.id)
-            home_clients.title = data.get('title')
-            home_clients.save()
+            
             return redirect('dashboard:home_clients_url')
         
       
