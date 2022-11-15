@@ -17,7 +17,6 @@ class IndexView(View):
         blog = Blog.objects.order_by('-id')
         blog = blog[:4] if blog.count() > 4 else blog
         home_clients = HomeClients.objects.first()
-        print("item in home_clients.clent_image.all:::",  home_clients.clent_image.all)
         context = {
             'project_done_exists': project_done_all.exists(),
             'title': "Home",
