@@ -140,9 +140,9 @@
                       <p class="date">{{ i.updated_at }}</p>
                     </div>
 
-                    <div class="articledescript">
+                    <div class="articledescript" maxlength="50">
                      
-                      {{ i.description|safe }}
+                      {{ i.description|safe|truncatechars_html:100 }}
                       
                     </div>
 
@@ -173,7 +173,10 @@
 {% block script %}
     <script>
     $(document).ready(function() {
-      $('.description p').addClass('descriptiontext');
+      $('.description p ').addClass('descriptiontext');
+      $('.description ul ').addClass('descriptiontext');
+      $('.description ul ').addClass('descriptionlist');
+      $(".description ul '").css("background-color", "yellow");
       $('.articledescript p').addClass('articletext');
            
     });

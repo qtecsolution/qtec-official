@@ -34,7 +34,6 @@ class BlogsView(View):
 class BlogDetails(View):
     def get(self, request, slug):
         blog = Blog.objects.get(slug= slug)
-        print("blog::::::::", blog.title)
         category_slug = blog.blog_category.slug
         random_blog = Blog.objects.filter(blog_category__slug= category_slug).exclude(id= blog.id).select_related('blog_author').select_related('blog_category')
         random_blog = random_blog[:5] if random_blog.count() > 4 else random_blog
@@ -48,8 +47,6 @@ class AllBlogView(View):
     def get(self, request):
         page = request.GET.get('page')
         blogs = Blog.objects.order_by('?')
-        print("blogs:::::::::", blogs)
-
         paginator = Paginator(blogs, settings.PER_PAGE)
         try:
             blogs = paginator.page(page)
