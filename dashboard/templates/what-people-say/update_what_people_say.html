@@ -1,0 +1,101 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center">Update Clients Review</h2>
+
+                        <form method="POST"  id="managementadd" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div id="accordion">
+                                <div class="card" style="border: 1px dotted #999">
+
+                                    <div id="collapseOne"
+                                         class="collapse show"
+                                         aria-labelledby="headingOne"
+                                         data-parent="#accordion">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Name <small style="color: red">*</small> </label>
+                                                        <input value="{{ what_people_say.name }}" type="text" name="name"  class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <label>image <small style="color: red">*</small> </label>
+                                                                <input type="file"  name="image" class="form-control" >
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <img style="width: 50px; margin-top: 30px; margin-left: 80px;" src="{{ what_people_say.image.url }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Designation <small style="color: red">*</small> </label>
+                                                        <input value="{{ what_people_say.designation}}" required class="form-control" type="text" name="designation"> 
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Priority <small style="color: red">*</small> </label>
+                                                        <input value="{{what_people_say.priority}}" type="number" required name="priority" class="form-control" min="1" id="priority">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>description <small style="color: red">*</small> </label>
+                                                        <textarea required class="form-control" type="text" name="description">{{what_people_say.description}} </textarea>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                                <button name="save" class="btn btn-default float-right" type="submit">
+                                    <i class="fa fa-plus-circle"></i>
+                                    Save
+                                </button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+csrf = '{{ csrf_token }}';
+$(document).ready(function() {
+    $("#technology_features").select2({
+        allowClear: true
+    });     
+});
+</script>
+
+{% endblock %}

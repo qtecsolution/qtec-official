@@ -279,5 +279,6 @@ class HomeClients(models.Model):
 class WhatPeopleSay(models.Model):
     name = models.CharField(max_length=100)
     designation = models.CharField(max_length=250)
-    secondary_image = models.ImageField(upload_to='what-people-say/')
+    image = models.ImageField(upload_to='what-people-say/')
     description = models.TextField()
+    priority = models.PositiveSmallIntegerField() 
