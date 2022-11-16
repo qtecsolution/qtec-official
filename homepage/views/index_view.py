@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 
-from dashboard.models import HomeClients, WhatProjectHaveWeDone, Blog
+from dashboard.models import HomeClients, WhatPeopleSay, WhatProjectHaveWeDone, Blog
 
 
 class IndexView(View):
@@ -17,6 +17,7 @@ class IndexView(View):
         blog = Blog.objects.order_by('-id')
         blog = blog[:4] if blog.count() > 4 else blog
         home_clients = HomeClients.objects.first()
+        what_people_say = WhatPeopleSay.objects.values()
         context = {
             'project_done_exists': project_done_all.exists(),
             'title': "Home",
@@ -25,7 +26,8 @@ class IndexView(View):
             'app_project': app_project,
             'ui_ux':ui_ux,
             'blogs': blog,
-            'home_clients': home_clients
+            'home_clients': home_clients,
+            'what_people_say': what_people_say
         }
 
         return render(request, 'index.html', context)
