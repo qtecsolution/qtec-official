@@ -11,6 +11,7 @@ from dashboard.views.our_gallery_view import OurGalleryView
 from dashboard.views.subscribe_view import SubscribeView
 from dashboard.views.team_members_view import TeamMembersView
 from dashboard.views.technologies_view import TechnologiesView
+from dashboard.views.what_people_say_view import WhatPeopleSayView
 
 app_name= 'dashboard'
 
@@ -91,6 +92,11 @@ urlpatterns= [
 
     path('home-clients/', HomeClientsView.as_view(), name="home_clients_url"),
     path('home-clients-image-delete/', HomeClientsView.as_view(), name="home_clients_image_url"),
+
+    path('what-people-say/', WhatPeopleSayView.as_view(), name="what_people_say_url"),
+    path('what-people-say-create/', WhatPeopleSayView.as_view(), name="create_what_people_say_url"),
+    path('what-people-say-update/<int:id>', WhatPeopleSayView.as_view(), name="update_what_people_say_url"),
+    path('what-people-say-delete/', WhatPeopleSayView.as_view(), name="delete_what_people_say_url"),
     
     
         
