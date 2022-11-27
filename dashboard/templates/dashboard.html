@@ -40,9 +40,9 @@
                             {% if request.GET.selected_range|stringformat:'s' == 'last_thirty_days' %}
                             selected {% endif %}>Last 30 days
                     </option>
-                    <option value="last_six_months"
+                    <option  value="last_six_months"
                             {% if request.GET.selected_range|stringformat:'s' == 'last_six_months' %}
-                            selected {% endif %} >last 6 Months
+                            selected {% endif %}>last 6 Months
                     </option>
                     <option value="last_year"
                             {% if request.GET.selected_range|stringformat:'s' == 'last_year' %}

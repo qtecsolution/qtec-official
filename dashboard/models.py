@@ -113,6 +113,7 @@ class WhatProjectHaveWeDone(models.Model):
     technology = models.ManyToManyField(Technologies)
     slug = models.SlugField(null=True, blank=True)
     project_type = MultiSelectField(choices=PROJECT_TYPE)
+    priority = models.PositiveSmallIntegerField(default=0,null=True) 
 
 
     @property
