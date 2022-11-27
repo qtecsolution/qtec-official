@@ -16,12 +16,12 @@ class DashboardView(View, DateOperationMixin):
         for item in let_talk:
             if item['status'] == PENDING:
                 pending = item['count']
+            else:
+                pending = 0
             if item['status'] == CONTACTED:
                contacted = item['count']
-        if not let_talk:
-            pending = 0
-        if not contacted:
-            contacted = 0
+            else:
+                contacted = 0
         application = ApplyForThisPosition.objects.values('status').annotate(count = Count('status'))
         unseen = 0
         seen = 0
