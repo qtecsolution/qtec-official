@@ -20,6 +20,7 @@ class DashboardView(View, DateOperationMixin):
                contacted = item['count']
         if not let_talk:
             pending = 0
+        if not contacted:
             contacted = 0
         application = ApplyForThisPosition.objects.values('status').annotate(count = Count('status'))
         unseen = 0
