@@ -10,7 +10,7 @@ class AlreadyDoneView(View):
 
     def get(self, request):
         technology = Technologies.objects.all()
-        what_Done = WhatProjectHaveWeDone.objects.prefetch_related('technology').order_by("-id").all()
+        what_Done = WhatProjectHaveWeDone.objects.prefetch_related('technology').order_by("priority").all()
         context = {
             "what_Done" : what_Done,
             'technology': technology,
@@ -32,6 +32,7 @@ class AlreadyDoneView(View):
             technology_id = data.getlist('technology')
             what_Done.image = request.FILES.get('image')
             what_Done.project_type = data.getlist('project_type')
+            what_Done.priority = data.get('priority')
             what_Done.save()
             what_Done.technology.add(*technology_id)
             messages.success(request, 'Data save successful!')
@@ -46,6 +47,7 @@ class AlreadyDoneView(View):
             image = request.FILES.get('image')
             if image:
                 what_Done.image = image
+            what_Done.priority = data.get('priority')
             what_Done.save()
             what_Done.technology.clear()
             what_Done.technology.add(*technology_id)

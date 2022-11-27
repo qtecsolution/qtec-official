@@ -19,8 +19,8 @@ class DashboardView(View, DateOperationMixin):
             if item['status'] == CONTACTED:
                contacted = item['count']
         if not let_talk:
-            pending = ""
-            contacted = ""
+            pending = 0
+            contacted = 0
         application = ApplyForThisPosition.objects.values('status').annotate(count = Count('status'))
         unseen = 0
         seen = 0
