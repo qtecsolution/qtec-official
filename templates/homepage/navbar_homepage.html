@@ -62,7 +62,7 @@
 							<a href="{% url 'homepage:career_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'career_url' %} active {% endif %}">Career</a>
 						</li>
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:contact_us_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'contact_us_url' %} active {% endif %}">Contact Us</a>
+							<a href="{% url 'homepage:contact_us_url' %}" class="btn-explore {% if request.resolver_match.url_name == 'contact_us_url' %} active {% endif %}">Contact Us</a>
 						</li>
 					</ul>
 				</div>
@@ -126,7 +126,7 @@
 					  <div class="accordion" id="accordionDropdown">
 						<div class="accordion-item">
 						  <h2 class="accordion-header" id="heading-service">
-							<a href="{% url 'homepage:service_url' %}" class="link">Services</a>
+							<a href="{% url 'homepage:service_url' %}" class="link {% if request.resolver_match.url_name == 'service_url' %} active {% endif %}">Services</a>
 	  
 							<button
 							  class="accordion-button"
