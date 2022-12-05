@@ -33,22 +33,22 @@
 							  <div class="desktopdropdown">
 								<ul class="dropdownlist">
 								  <li class="dropdownlist-item">
-									<a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="dropdownlist-link">
+									<a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="dropdownlist-link {% if request.resolver_match.kwargs.slug == 'ui-ux-design'%} active {% endif %}">
 									  UI /UX Design
 									</a>
 								  </li>
 								  <li class="dropdownlist-item">
-									<a href="{% url 'homepage:service_details_url' 'software-solutions-development' %}" class="dropdownlist-link">
+									<a href="{% url 'homepage:service_details_url' 'software-solutions-development' %}" class="dropdownlist-link {% if request.resolver_match.kwargs.slug == 'software-solutions-development'%} active {% endif %}">
 									  Software Development
 									</a>
 								  </li>
 								  <li class="dropdownlist-item">
-									<a href="{% url 'homepage:service_details_url' 'mobile-application-development' %}" class="dropdownlist-link">
+									<a href="{% url 'homepage:service_details_url' 'mobile-application-development' %}" class="dropdownlist-link {% if request.resolver_match.kwargs.slug == 'mobile-application-development'%} active {% endif %}">
 									  Mobile Application Development
 									</a>
 								  </li>
 								  <li class="dropdownlist-item">
-									<a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="dropdownlist-link">
+									<a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="dropdownlist-link {% if request.resolver_match.kwargs.slug == 'ecommerce-solutions'%} active {% endif %}">
 									  E-commerce Development
 									</a>
 								  </li>

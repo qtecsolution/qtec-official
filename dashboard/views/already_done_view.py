@@ -121,9 +121,18 @@ class KeyFeatureView(View):
         return render(request, 'partial/key_feature.html', context)
     def post(self, request, id = None):
         data = request.POST
+        if request.resolver_match.url_name == "update_key_feature_url":
+            key_features = KeyFeature()
+            key_features.case_study_details = case_study
+            key_features.title = data.get('title')
+            key_features.description = data.get('description')
+            key_features.image = request.FILES.get('image')
+            key_features.save()
+            return redirect('dashboard:key_feature_url', id=id)
         if request.resolver_match.url_name == "delete_key_feature_url":
             _id = data.get('already_done_id')
             KeyFeature.objects.filter(id=id).first().delete()
+            messages.success(request, 'Data deteted successful!')
             return redirect('dashboard:key_feature_url', id=_id)
         else:
             key_features = KeyFeature()
