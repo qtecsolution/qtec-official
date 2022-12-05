@@ -115,13 +115,12 @@
 				  <div class="offcanvas-body">
 					<ul class="mobilelist">
 					  <li class="mobilelist-item">
-						<a href="{% url 'homepage:index_url' %}" class="mobilelist-link">Home</a>
+						<a href="{% url 'homepage:index_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'index_url' %} active {% endif %}">Home</a>
 					  </li>
 	  
 					  <li class="mobilelist-item">
-						<a href="{% url 'homepage:about_us_url' %}" class="mobilelist-link active"
-						  >About Us</a
-						>
+						<a href="{% url 'homepage:about_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'about_us_url' %} active {% endif %}"
+						  >About Us</a>
 					  </li>
 	  
 					  <div class="accordion" id="accordionDropdown">
@@ -140,21 +139,21 @@
 						  </h2>
 						  <div
 							id="collapseOne"
-							class="accordion-collapse"
+							class="accordion-collapse {% if request.resolver_match.url_name != 'service_details_url' %} collapse {% endif %} " 
 							aria-labelledby="heading-service"
 							data-bs-parent="#accordionDropdown"
 						  >
 							<div class="accordion-body">
-							  <a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="servicelink">
-								UI /UX Design
+							  <a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'ui-ux-design'%} active {% endif %}">
+								UI /UX Design 
 							  </a>
-							  <a href="{% url 'homepage:service_details_url' 'software-solutions-development' %}" class="servicelink">
+							  <a href="{% url 'homepage:service_details_url' 'software-solutions-development' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'software-solutions-development'%} active {% endif %}">
 								Software Development
 							  </a>
-							  <a href="{% url 'homepage:service_details_url' 'mobile-application-development' %}" class="servicelink">
+							  <a href="{% url 'homepage:service_details_url' 'mobile-application-development' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'mobile-application-development'%} active {% endif %}">
 								Mobile Application Development
 							  </a>
-							  <a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="servicelink">
+							  <a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'ecommerce-solutions'%} active {% endif %}">
 								E-commerce Development
 							  </a>
 							</div>
@@ -163,15 +162,15 @@
 					  </div>
 	  
 					  <li class="mobilelist-item">
-						<a href="{% url 'homepage:product_url' %}" class="mobilelist-link">Products</a>
+						<a href="{% url 'homepage:product_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a>
 					  </li>
 	  
 					  <li class="mobilelist-item">
-						<a href="{% url 'homepage:blog_url' %}" class="mobilelist-link">Blog</a>
+						<a href="{% url 'homepage:blog_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blog</a>
 					  </li>
 	  
 					  <li class="mobilelist-item">
-						<a href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link">Contact Us</a>
+						<a href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'contact_us_url' %} active {% endif %}">Contact Us</a>
 					  </li>
 					</ul>
 				  </div>

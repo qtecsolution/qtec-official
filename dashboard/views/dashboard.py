@@ -1,8 +1,8 @@
 
 from django.shortcuts import render
 from django.views import View
-from datetime import date, datetime
-from dashboard.models import CONTACTED, PENDING, UNSEEN, ApplyForThisPosition, Blog, BlogCategory, CurrentOpportunities, LetsTalk, Subscribe, TeamMembers
+from datetime import date
+from dashboard.models import CONTACTED, PENDING, ApplyForThisPosition, Blog, BlogCategory, CurrentOpportunities, LetsTalk, Subscribe, TeamMembers
 from utils.datetime_utils import DateOperationMixin
 from django.db.models import Count
 
