@@ -1,5 +1,6 @@
 from multiprocessing import context
 from django import views
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib import messages
@@ -85,6 +86,12 @@ class BlogView(View):
             request_id = data.get('id')
             Blog.objects.filter(id=request_id).first().delete()
             return redirect('dashboard:blog_blog_list_url')
+        if request.resolver_match.url_name == "display_blog_row_url":
+            request_id = data.get('id')
+            blog = Blog.objects.get(id=request_id)
+            blog.display = False if blog.display == True else True
+            blog.save()
+            return JsonResponse({})  
     
 class HandleBlogView(View):
     def get(self, request):
@@ -189,4 +196,6 @@ class BlogCategoryView(View):
                 blog_category.save()
                 messages.success(request, 'Data updated successful!')
                 return redirect('dashboard:blog_blog_category_url')
+
+            
             

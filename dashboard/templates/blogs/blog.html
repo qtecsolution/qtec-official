@@ -44,7 +44,7 @@
                                     <td>{{ blog.created_at }}</td>
                                     <td>{{ blog.updated_at }}</td> 
                                     <td>
-                                        <input  onchange="change_swithc('{{blog.id}}')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  technologie.view == 1 %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
+                                        <input  onchange="change_swithc('{{blog.id}}')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  blog.display == 1 %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
                                     </td>
                                     <td>
                                         <div class="form-group row">
@@ -289,6 +289,7 @@
 
 {% block script %}
 <script>
+csrf = '{{ csrf_token }}';
 function check(){
     if (confirm("Do you want to delete?") == true) {
         return true;
@@ -335,17 +336,17 @@ function check(){
     })
     function change_swithc(id){
     
-    let url = "{% url 'dashboard:change_status_technologies_url' %}";
-    var data = {'id': id, 'csrfmiddlewaretoken': csrf}
-    $.ajax({
-        url: url,
-        data: data,
-        type: "POST",
-        success: function (data) {
-            toastr.success('Status changed successfully')
-        },
-        error: function (data) {
-        }
+        let url = "{% url 'dashboard:display_blog_row_url' %}";
+        var data = {'id': id, 'csrfmiddlewaretoken': csrf}
+        $.ajax({
+            url: url,
+            data: data,
+            type: "POST",
+            success: function (data) {
+                toastr.success('Status changed successfully')
+            },
+            error: function (data) {
+            }
     });
 }
         

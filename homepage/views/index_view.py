@@ -14,7 +14,7 @@ class IndexView(View):
         
         ui_ux = project_done_all.filter(project_type__icontains = '3')
 
-        blog = Blog.objects.order_by('-id')
+        blog = Blog.objects.filter(display=True).order_by('-id')
         blog = blog[:4] if blog.count() > 4 else blog
         home_clients = HomeClients.objects.first()
         what_people_say = WhatPeopleSay.objects.values()
