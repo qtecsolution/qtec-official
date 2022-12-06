@@ -30,6 +30,7 @@
                                     <th>Deadline</th>
                                     <th>Image</th>
                                     <th>Status</th>
+                                    <th>Display</th>
                                     <th>Action</th>
                                 </tr>
                                 {% for item in current_opportunities %}
@@ -51,6 +52,9 @@
                                             <p>Active</p>
                                         {% endif %}
 
+                                    </td>
+                                    <td>
+                                        <input  onchange="change_swithc('{{item.id}}')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  item.display == 1 %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
                                     </td>
                                     <td>
                                         <div class="form-group row">
@@ -239,6 +243,20 @@
 {% block script %}
 <script>
 csrf = '{{ csrf_token }}';
+function change_swithc(id){
+    let url = "{% url 'dashboard:display_current_opportunities_url' %}";
+        var data = {'id': id, 'csrfmiddlewaretoken': csrf}
+        $.ajax({
+            url: url,
+            data: data,
+            type: "POST",
+            success: function (data) {
+                toastr.success('Status changed successfully')
+            },
+            error: function (data) {
+            }
+    });
+}
 function check(){
     if (confirm("Do you want to delete?") == true) {
         return true;

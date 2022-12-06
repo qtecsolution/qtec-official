@@ -27,9 +27,11 @@ urlpatterns= [
     path('already-done-delete/', AlreadyDoneView.as_view(), name= 'delete_what_done_url'),
     path('already-done-edit/', AlreadyDoneView.as_view(), name= 'edit_what_project_done_url'),
     path('already-done-save/', AlreadyDoneView.as_view(), name= 'save_what_done_url'),
+    path('already-done-status/', AlreadyDoneView.as_view(), name= 'status_what_done_url'),
+
     path('case-study-edit/<int:id>/', CaseStudyEditView.as_view(), name= 'case_study_edit_url'),
-    path('case-study-image-delete/', CaseStudyEditView.as_view(), name= 'case_study_image_delete_url'),
     path('key-feature/<int:id>/', KeyFeatureView.as_view(), name= 'key_feature_url'),
+    path('key-feature-update/<int:id>/', KeyFeatureView.as_view(), name= 'update_key_feature_url'),
     path('key-feature-delete/<int:id>/', KeyFeatureView.as_view(), name= 'delete_key_feature_url'),
    
 
@@ -43,12 +45,14 @@ urlpatterns= [
     path('technologies-delete/', TechnologiesView.as_view(), name= 'delete_technologies_url'), 
     path('technologies-features/', TechnologiesView.as_view(), name= 'save_technologies_features_url'),  
     path('technologies-update/<int:id>/', TechnologiesView.as_view(), name= 'update_technologies_url'), 
+    path('technologies-status/', TechnologiesView.as_view(), name= 'change_status_technologies_url'), 
 
      # blog
     path('blog-list/', BlogView.as_view(), name="blog_blog_list_url"),
     path('blog-list-save/', BlogView.as_view(), name="save_blog_url"),
     path('blog-list-edit/', BlogView.as_view(), name="edit_blog_url"),
     path('blog-list-delete/', BlogView.as_view(), name="delete_blog_row_url"),
+     path('blog-list-display/', BlogView.as_view(), name="display_blog_row_url"),
 
     path('handle-blog/', HandleBlogView.as_view(), name="handle_blog_url"),
 
@@ -73,10 +77,12 @@ urlpatterns= [
     path('current-opportunities-edit/', CurrentOpportunitiesView.as_view(), name="current_opportunities_edit_url"),
     path('current-opportunities-delete/', CurrentOpportunitiesView.as_view(), name="delete_current_opportunities_url"),
     path('current-opportunities-status/', CurrentOpportunitiesView.as_view(), name="change_status_current_opportunities_url"),
+    path('current-opportunities-display/', CurrentOpportunitiesView.as_view(), name="display_current_opportunities_url"),
     
     path('career-apply-for-this-position/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_url"),
     path('career-apply-for-this_position-satus/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_status_url"),
     path('career-apply-for-this-position-delete/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_delete_url"),
+    
 
    
     path('team-members/', TeamMembersView.as_view(), name="team_members_url"),

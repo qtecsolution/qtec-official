@@ -10,15 +10,20 @@ from dashboard.models import HandleBlog, Blog
 class BlogsView(View):
 
     def get(self, request):
-        handle_blog= HandleBlog.objects.first()
-        handle_blog_exists = HandleBlog.objects.exists()
+
+        handle_blog= HandleBlog.objects.filter(top_4_blog__display=True)
         top_4_blog = None
         random_blog = None
         highlight_blog = None
-        if handle_blog_exists:
+        if handle_blog.exists():
+            handle_blog_exists = True
+            handle_blog = handle_blog.first()
             top_4_blog = handle_blog.top_4_blog.select_related('blog_author').select_related('blog_category').all()
             random_blog = Blog.objects.exclude(id__in=top_4_blog.values_list('id', flat= True)).order_by('?')
             highlight_blog = handle_blog.highlight_blog
+        else:
+            handle_blog = None
+            handle_blog_exists = False
         context = {
             'handle_blog_exists' : handle_blog_exists,
             'title': 'Blogs',
@@ -46,7 +51,7 @@ class AllBlogView(View):
 
     def get(self, request):
         page = request.GET.get('page')
-        blogs = Blog.objects.order_by('?')
+        blogs = Blog.objects.filter(display=True).order_by('?')
         paginator = Paginator(blogs, settings.PER_PAGE)
         try:
             blogs = paginator.page(page)

@@ -9,7 +9,7 @@
 			<div class="col-lg-5 col-12">
 				<div class="casestudy-banner-description">
 					<div class="casestudyinfo">
-						<h3 class="casestudy-title">{{ we_have_done.name }} Case Study</h3>
+						<h1 class="casestudy-title">{{ we_have_done.name }} Case Study</h1>
 					</div>
 
 					<div class="casestudydetetail">
@@ -21,19 +21,9 @@
 			</div>
 			<div class="col-lg-6 col-12 offset-lg-1 offset-0">
 				<div class="bannerthumb">
-					<div class="swiper caseSwiper">
-						<div class="swiper-wrapper">
-							{% for item in  case_study_details.case_study_image.all %}
-							<div class="swiper-slide">
-								<div class="thumbnailbox">
-									<figure class="product-thumbnail">
-										<img src="{{ item.image.url }}" alt="case-study-thumbnail">
-									</figure>
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
+					<figure class="requirements-thumbnail position-relative" style="z-index: 100; height: 21.25rem;">
+						<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements" class="w-100 h-100">
+					</figure>
 				</div>
 			</div>
 		</div>
@@ -83,7 +73,7 @@
 							<div class="row g-4">
 								<div class="col-lg-6 col-12">
 									<div class="featuresinfo">
-										<h1 class="features-title">Key features</h1>
+										<h2 class="features-title">Key features</h2>
 									</div>
 								</div>
 							</div>
@@ -171,7 +161,7 @@
 							<div class="row g-4">
 								<div class="col-lg-6 col-12">
 									<div class="technologyinfo">
-										<h1 class="technology-title">Technologies</h1>
+										<h2 class="technology-title">Technologies</h2>
 									</div>
 								</div>
 							</div>
@@ -215,7 +205,7 @@
 	<section class="subscribe">
 		<div class="container">
 			<div class="subscribe-content">
-				<h1 class="subscribe-title">Want to build your one? <br> We are here for you!</h1>
+				<h2 class="subscribe-title">Want to build your one? <br> We are here for you!</h2>
 
 				<a href="{% url 'homepage:contact_us_url' %}" class="btn-getintouch">Contact us</a>
 			</div>

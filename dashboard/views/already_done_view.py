@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 
-from dashboard.models import PROJECT_TYPE, CaseStudyDetails, CaseStudyImage, KeyFeature, Technologies, WhatProjectHaveWeDone
+from dashboard.models import PROJECT_TYPE, CaseStudyDetails, KeyFeature, Technologies, WhatProjectHaveWeDone
 from django.contrib import messages
 
 
@@ -53,6 +53,12 @@ class AlreadyDoneView(View):
             what_Done.technology.add(*technology_id)
             messages.success(request, 'Edit successful')
             return redirect('dashboard:already_done_url')
+        if request.resolver_match.url_name == "status_what_done_url":
+            request_id = data.get('id')
+            obj = WhatProjectHaveWeDone.objects.get(id=request_id)
+            obj.display = False if obj.display == True else True
+            obj.save()
+            return JsonResponse({})  
 
 
 class CaseStudyEditView(View):
@@ -69,46 +75,27 @@ class CaseStudyEditView(View):
     def post(self, request, id=None):
         data = request.POST
         file = request.FILES
-        if request.resolver_match.url_name == 'case_study_image_delete_url':
-            id = data.get('id')
-            case_study_id = data.get('case_study_id')
-            case_study_detaile = CaseStudyDetails.objects.filter(id=case_study_id).first()
-            image = CaseStudyImage.objects.filter(id=id).first()
-            case_study_detaile.case_study_image.remove(image)
-            return JsonResponse({})
-        else:
-            
-            case_study_details = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
-            case_study_details.case_study_about = data.get('case_study_about')
-            image_list = case_study_details.case_study_image.values_list('id', flat=True)
-            for value in image_list:
-                case_study_image = file.get('case_study_image_'+str(value))
-                if case_study_image:
-                    update_image = CaseStudyImage.objects.filter(id=value).first()
-                    update_image.image = case_study_image
-                    update_image.save()
-                  
-            case_study_image = file.getlist('case_study_image')
-            for item in case_study_image:
-                object = CaseStudyImage()
-                object.image = item
-                object.save()
-                case_study_details.case_study_image.add(object)
-            case_study_details.client_requirement = data.get('client_requirement')
-            requirements_thumbnail = file.get('requirements_thumbnail')
-            if requirements_thumbnail:
-                case_study_details.requirements_thumbnail = requirements_thumbnail
-            case_study_details.how_we_build_it = data.get('how_we_build_it')
-            how_we_build_image = file.get('how_we_build_image')
-            if how_we_build_image:
-                case_study_details.how_we_build_image = how_we_build_image
-            case_study_details.save()
-            technology = data.getlist('technology')
-            case_study_details.technology.clear()
-            if technology:
-                case_study_details.technology.add(*technology)
-            messages.success(request, 'Case Study Details save successful')
-            return redirect('dashboard:already_done_url')
+        print("id:::::::", id)
+        case_study_details = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
+        case_study_details.case_study_about = data.get('case_study_about')
+        case_study_details.client_requirement = data.get('client_requirement')
+        case_study_image = file.get('case_study_image')
+        if case_study_image:
+            case_study_details.case_study_image = case_study_image
+        requirements_thumbnail = file.get('requirements_thumbnail')
+        if requirements_thumbnail:
+            case_study_details.requirements_thumbnail = requirements_thumbnail
+        case_study_details.how_we_build_it = data.get('how_we_build_it')
+        how_we_build_image = file.get('how_we_build_image')
+        if how_we_build_image:
+            case_study_details.how_we_build_image = how_we_build_image
+        case_study_details.save()
+        technology = data.getlist('technology')
+        case_study_details.technology.clear()
+        if technology:
+            case_study_details.technology.add(*technology)
+        messages.success(request, 'Case Study Details save successful')
+        return redirect('dashboard:already_done_url')
 
 class KeyFeatureView(View):
     def get(self, request, id= None):
@@ -121,9 +108,18 @@ class KeyFeatureView(View):
         return render(request, 'partial/key_feature.html', context)
     def post(self, request, id = None):
         data = request.POST
+        if request.resolver_match.url_name == "update_key_feature_url":
+            key_features = KeyFeature()
+            key_features.case_study_details = case_study
+            key_features.title = data.get('title')
+            key_features.description = data.get('description')
+            key_features.image = request.FILES.get('image')
+            key_features.save()
+            return redirect('dashboard:key_feature_url', id=id)
         if request.resolver_match.url_name == "delete_key_feature_url":
             _id = data.get('already_done_id')
             KeyFeature.objects.filter(id=id).first().delete()
+            messages.success(request, 'Data deteted successful!')
             return redirect('dashboard:key_feature_url', id=_id)
         else:
             key_features = KeyFeature()

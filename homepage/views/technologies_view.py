@@ -8,7 +8,7 @@ from dashboard.models import Technologies, TechnologyFeatures
 class TechnologiesView(View):
 
     def get(self, request, slug):
-        technologies = Technologies.objects.filter(slug=slug).first()
+        technologies = Technologies.objects.get(slug=slug)
         features = TechnologyFeatures.objects.all()
         context = {
             'title': "Technologies",

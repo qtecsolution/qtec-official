@@ -1,8 +1,8 @@
 
 from django.shortcuts import render
 from django.views import View
-from datetime import date, datetime
-from dashboard.models import CONTACTED, PENDING, UNSEEN, ApplyForThisPosition, Blog, BlogCategory, CurrentOpportunities, LetsTalk, Subscribe, TeamMembers
+from datetime import date
+from dashboard.models import CONTACTED, PENDING, ApplyForThisPosition, Blog, BlogCategory, CurrentOpportunities, LetsTalk, Subscribe, TeamMembers
 from utils.datetime_utils import DateOperationMixin
 from django.db.models import Count
 
@@ -12,16 +12,13 @@ class DashboardView(View, DateOperationMixin):
     @staticmethod
     def get_context(request, start, end):
         let_talk = LetsTalk.objects.filter(created_at__date__range=[start, end]).values('status').annotate(count=Count('status'))
-        
+        pending = 0
+        contacted = 0
         for item in let_talk:
             if item['status'] == PENDING:
                 pending = item['count']
-            else:
-                pending = 0
             if item['status'] == CONTACTED:
                contacted = item['count']
-            else:
-                contacted = 0
         application = ApplyForThisPosition.objects.values('status').annotate(count = Count('status'))
         unseen = 0
         seen = 0

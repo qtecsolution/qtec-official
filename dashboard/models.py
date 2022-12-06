@@ -101,6 +101,7 @@ class Technologies(models.Model):
     why_choice_description = models.TextField()
     why_choice_image = models.ImageField(upload_to='technologies/', null=True, blank=True)
     technology_features = models.ManyToManyField("TechnologyFeatures", related_name="technologies")
+    display = models.BooleanField(default=True)
 
 class TechnologyFeatures(models.Model):
     title = models.CharField(max_length=200)
@@ -114,21 +115,19 @@ class WhatProjectHaveWeDone(models.Model):
     slug = models.SlugField(null=True, blank=True)
     project_type = MultiSelectField(choices=PROJECT_TYPE)
     priority = models.PositiveSmallIntegerField(default=0,null=True) 
-
+    display = models.BooleanField(default=True)
 
     @property
     def split_technology(self):
         return self.technology.split(',')
 
-class CaseStudyImage(models.Model):
-    image = models.ImageField(upload_to='case_study/', null=True, blank=True)
 
 
 class CaseStudyDetails(models.Model):
     project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
                                                 on_delete=models.CASCADE)
     case_study_about = models.TextField(null=True, blank=True)
-    case_study_image = models.ManyToManyField(CaseStudyImage, related_name="case_study_details")
+    case_study_image = models.ImageField(upload_to='case_study_image/', null=True, blank=True)
     client_requirement = models.TextField(null=True, blank=True)
     requirements_thumbnail = models.ImageField(upload_to='case_study/', null=True, blank=True)
     how_we_build_it = models.TextField(null=True, blank=True)
@@ -178,6 +177,7 @@ class Blog(models.Model):
     tags = models.TextField(null=True)
     created_at = models.DateField(auto_now_add=True, null=True)
     updated_at = models.DateField(auto_now=True, null=True)
+    display = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.blog_author.name) + '-' + str(self.title)
@@ -219,6 +219,7 @@ class CurrentOpportunities(models.Model):
     number_of_vacancy = models.PositiveIntegerField()
     deadline = models.DateField()
     description = models.TextField()
+    display = models.BooleanField(default=True)
     @property
     def get_status(self):
         today = datetime.now().date()

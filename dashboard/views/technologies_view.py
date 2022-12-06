@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 
@@ -96,7 +97,7 @@ class TechnologiesView(View):
 
         if request.resolver_match.url_name == "delete_technologies_url":
             request_id = data.get('id')
-            technologies = Technologies.objects.filter(id=request_id).first().delete()
+            Technologies.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Delete successful')
             return redirect('dashboard:technologies_url')
 
@@ -110,5 +111,10 @@ class TechnologiesView(View):
             features.save()
             technology.technology_features.add(features)
             messages.success(request, 'Data save successful!')
-            return redirect('dashboard:technologies_url')
-            
+            return redirect('dashboard:technologies_url') 
+        if request.resolver_match.url_name == "change_status_technologies_url":
+            request_id = data.get('id')
+            technology = Technologies.objects.get(id=request_id)
+            technology.display = False if technology.display == True else True
+            technology.save()
+            return JsonResponse({})           

@@ -58,6 +58,13 @@ class CurrentOpportunitiesView(View):
             obj.status = data.get('status')
             obj.save()
             return JsonResponse({})
+        if request.resolver_match.url_name == "display_current_opportunities_url":
+            request_id = data.get('id')
+            print("id::::", request_id)
+            obj = CurrentOpportunities.objects.get(id=request_id)
+            obj.display = False if obj.display == True else True
+            obj.save()
+            return JsonResponse({}) 
 
  
 class ApplyForThisPositionView(View):
