@@ -20,11 +20,13 @@
 				</div>
 			</div>
 			<div class="col-lg-6 col-12 offset-lg-1 offset-0">
+				{% if case_study_details.case_study_image %}
 				<div class="bannerthumb">
 					<figure class="requirements-thumbnail position-relative" style="z-index: 100; height: 21.25rem;">
 						<img src="{{ case_study_details.case_study_image.url }}" alt="client-requirements" class="w-100 h-100">
 					</figure>
 				</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>
