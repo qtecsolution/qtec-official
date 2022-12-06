@@ -222,6 +222,7 @@ class CurrentOpportunities(models.Model):
     number_of_vacancy = models.PositiveIntegerField()
     deadline = models.DateField()
     description = models.TextField()
+    display = models.BooleanField(default=True)
     @property
     def get_status(self):
         today = datetime.now().date()

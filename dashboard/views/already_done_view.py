@@ -56,7 +56,7 @@ class AlreadyDoneView(View):
         if request.resolver_match.url_name == "status_what_done_url":
             request_id = data.get('id')
             what_Done = WhatProjectHaveWeDone.objects.get(id=request_id)
-            what_Done.view = False if what_Done.view == True else True
+            what_Done.display = False if what_Done.display == True else True
             what_Done.save()
             return JsonResponse({}) 
 

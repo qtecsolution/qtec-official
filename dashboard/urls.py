@@ -78,10 +78,12 @@ urlpatterns= [
     path('current-opportunities-edit/', CurrentOpportunitiesView.as_view(), name="current_opportunities_edit_url"),
     path('current-opportunities-delete/', CurrentOpportunitiesView.as_view(), name="delete_current_opportunities_url"),
     path('current-opportunities-status/', CurrentOpportunitiesView.as_view(), name="change_status_current_opportunities_url"),
+    path('current-opportunities-display/', CurrentOpportunitiesView.as_view(), name="display_current_opportunities_url"),
     
     path('career-apply-for-this-position/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_url"),
     path('career-apply-for-this_position-satus/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_status_url"),
     path('career-apply-for-this-position-delete/', ApplyForThisPositionView.as_view(), name="apply_for_this_position_delete_url"),
+    
 
    
     path('team-members/', TeamMembersView.as_view(), name="team_members_url"),

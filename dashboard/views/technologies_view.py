@@ -115,6 +115,6 @@ class TechnologiesView(View):
         if request.resolver_match.url_name == "change_status_technologies_url":
             request_id = data.get('id')
             technology = Technologies.objects.get(id=request_id)
-            technology.view = False if technology.view == True else True
+            technology.display = False if technology.display == True else True
             technology.save()
             return JsonResponse({})           
