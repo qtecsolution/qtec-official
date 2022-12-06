@@ -53,6 +53,7 @@ urlpatterns= [
     path('blog-list-save/', BlogView.as_view(), name="save_blog_url"),
     path('blog-list-edit/', BlogView.as_view(), name="edit_blog_url"),
     path('blog-list-delete/', BlogView.as_view(), name="delete_blog_row_url"),
+     path('blog-list-display/', BlogView.as_view(), name="display_blog_row_url"),
 
     path('handle-blog/', HandleBlogView.as_view(), name="handle_blog_url"),
 

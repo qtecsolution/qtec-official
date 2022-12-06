@@ -29,7 +29,7 @@
                                     <th>Why This Title</th>
                                     <th>Why Choice Title</th>
                                     <th>Features</th>
-                                    <th>View</th>
+                                    <th>Display</th>
                                     <th>Action</th>
                                 </tr>
                                 {% for technologie in technologies %}
@@ -57,7 +57,7 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        <input  onchange="change_swithc('{{technologie.id}}')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  technologie.view == 1 %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
+                                        <input  onchange="change_swithc('{{technologie.id}}')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  technologie.display == 1 %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
                                     </td>
 
                                     <th>

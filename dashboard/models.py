@@ -101,7 +101,7 @@ class Technologies(models.Model):
     why_choice_description = models.TextField()
     why_choice_image = models.ImageField(upload_to='technologies/', null=True, blank=True)
     technology_features = models.ManyToManyField("TechnologyFeatures", related_name="technologies")
-    view = models.BooleanField(default=True)
+    display = models.BooleanField(default=True)
 
 class TechnologyFeatures(models.Model):
     title = models.CharField(max_length=200)
@@ -115,7 +115,7 @@ class WhatProjectHaveWeDone(models.Model):
     slug = models.SlugField(null=True, blank=True)
     project_type = MultiSelectField(choices=PROJECT_TYPE)
     priority = models.PositiveSmallIntegerField(default=0,null=True) 
-    view = models.BooleanField(default=True)
+    display = models.BooleanField(default=True)
 
 
     @property
@@ -180,6 +180,7 @@ class Blog(models.Model):
     tags = models.TextField(null=True)
     created_at = models.DateField(auto_now_add=True, null=True)
     updated_at = models.DateField(auto_now=True, null=True)
+    display = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.blog_author.name) + '-' + str(self.title)

@@ -7,7 +7,7 @@ from dashboard.models import HomeClients, WhatPeopleSay, WhatProjectHaveWeDone, 
 class IndexView(View):
 
     def get(self, request):
-        project_done_all = WhatProjectHaveWeDone.objects.order_by("priority").all()
+        project_done_all = WhatProjectHaveWeDone.objects.filter(display=True).order_by("priority").all()
    
         web_project = project_done_all.filter(project_type__icontains = '1')
         app_project = project_done_all.filter(project_type__icontains = '2')
