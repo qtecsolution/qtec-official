@@ -117,20 +117,17 @@ class WhatProjectHaveWeDone(models.Model):
     priority = models.PositiveSmallIntegerField(default=0,null=True) 
     display = models.BooleanField(default=True)
 
-
     @property
     def split_technology(self):
         return self.technology.split(',')
 
-class CaseStudyImage(models.Model):
-    image = models.ImageField(upload_to='case_study/', null=True, blank=True)
 
 
 class CaseStudyDetails(models.Model):
     project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
                                                 on_delete=models.CASCADE)
     case_study_about = models.TextField(null=True, blank=True)
-    case_study_image = models.ManyToManyField(CaseStudyImage, related_name="case_study_details")
+    case_study_image = models.ImageField(upload_to='case_study_image/', null=True, blank=True)
     client_requirement = models.TextField(null=True, blank=True)
     requirements_thumbnail = models.ImageField(upload_to='case_study/', null=True, blank=True)
     how_we_build_it = models.TextField(null=True, blank=True)
