@@ -101,6 +101,7 @@ class Technologies(models.Model):
     why_choice_description = models.TextField()
     why_choice_image = models.ImageField(upload_to='technologies/', null=True, blank=True)
     technology_features = models.ManyToManyField("TechnologyFeatures", related_name="technologies")
+    view = models.BooleanField(default=True)
 
 class TechnologyFeatures(models.Model):
     title = models.CharField(max_length=200)
@@ -114,6 +115,7 @@ class WhatProjectHaveWeDone(models.Model):
     slug = models.SlugField(null=True, blank=True)
     project_type = MultiSelectField(choices=PROJECT_TYPE)
     priority = models.PositiveSmallIntegerField(default=0,null=True) 
+    view = models.BooleanField(default=True)
 
 
     @property

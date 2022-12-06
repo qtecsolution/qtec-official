@@ -29,6 +29,7 @@
                                     <th>Technology</th>
                                     <th>Project Type</th>
                                     <th>Priority</th>
+                                    <th>View</th>
                                     <th>Action</th>
                                 </tr>
                                 {% for done in what_Done %}
@@ -49,6 +50,9 @@
                                     </td>
                                     <td> {{done.get_project_type_display}}</td>
                                     <td>{{done.priority}}</td>
+                                    <td>
+                                        <input  onchange="change_swithc('{{done.id}}')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  done.view == 1 %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
+                                    </td>
 
                                     <td>
                                         <div class="form-group row">
@@ -271,6 +275,21 @@ $(document).ready(function() {
             allowClear: true
         }); 
     }
+    function change_swithc(id){
+    
+    let url = "{% url 'dashboard:status_what_done_url' %}";
+    var data = {'id': id, 'csrfmiddlewaretoken': csrf}
+    $.ajax({
+        url: url,
+        data: data,
+        type: "POST",
+        success: function (data) {
+            toastr.success('Status changed successfully')
+        },
+        error: function (data) {
+        }
+    });
+}
 
 </script>
 

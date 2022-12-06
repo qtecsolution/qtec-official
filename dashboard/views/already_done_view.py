@@ -53,6 +53,12 @@ class AlreadyDoneView(View):
             what_Done.technology.add(*technology_id)
             messages.success(request, 'Edit successful')
             return redirect('dashboard:already_done_url')
+        if request.resolver_match.url_name == "status_what_done_url":
+            request_id = data.get('id')
+            what_Done = WhatProjectHaveWeDone.objects.get(id=request_id)
+            what_Done.view = False if what_Done.view == True else True
+            what_Done.save()
+            return JsonResponse({}) 
 
 
 class CaseStudyEditView(View):
@@ -122,13 +128,15 @@ class KeyFeatureView(View):
     def post(self, request, id = None):
         data = request.POST
         if request.resolver_match.url_name == "update_key_feature_url":
-            key_features = KeyFeature()
-            key_features.case_study_details = case_study
+            _id = data.get('already_done_id')
+            key_features = KeyFeature.objects.get(id=id)
             key_features.title = data.get('title')
             key_features.description = data.get('description')
-            key_features.image = request.FILES.get('image')
+            image = request.FILES.get('image')
+            if image:
+                key_features.image = image
             key_features.save()
-            return redirect('dashboard:key_feature_url', id=id)
+            return redirect('dashboard:key_feature_url', id=_id )
         if request.resolver_match.url_name == "delete_key_feature_url":
             _id = data.get('already_done_id')
             KeyFeature.objects.filter(id=id).first().delete()

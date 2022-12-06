@@ -46,7 +46,7 @@
                                     </td>
                                     <th>
                                         <div class="form-group row">
-                                            <div class="col-2">
+                                            <div class="col-md-3">
                                                 <form action="{% url 'dashboard:delete_key_feature_url' key_feature.id %}" method="post">
                                                     <input type="hidden" value="{{ id_ }}" name="already_done_id">
                                                     {% csrf_token %}
@@ -71,6 +71,7 @@
 
                                                         <form action="{% url 'dashboard:update_key_feature_url' key_feature.id %}" method="POST" enctype="multipart/form-data" >
                                                             {% csrf_token %}
+                                                            <input type="hidden" value="{{ id_ }}" name="already_done_id">
                                                             <div class="modal-body">
                                                                 <div class="error text-center" style="color: red;"></div>
                                                                 <br>

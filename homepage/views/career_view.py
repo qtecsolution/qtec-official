@@ -8,7 +8,7 @@ from dashboard.models import CurrentOpportunities, ApplyForThisPosition
 class CareerView(View):
 
     def get(self, request):
-        careers = CurrentOpportunities.objects.all().order_by("deadline")
+        careers = CurrentOpportunities.objects.all().order_by("-deadline")
         is_careers = CurrentOpportunities.objects.exists()
         context = {
             'title': "Career",
