@@ -1812,7 +1812,7 @@ select{
     font-weight:600;
     line-height:1.5404166667
 }
-@media screen and (min-width: 48rem){
+@media screen and (min-width: 87.5rem){
     .card-technology-title{
         font-family:"Titillium Web";
         font-style:normal;
@@ -2576,7 +2576,15 @@ select{
 }
 .card-testimoni .info{
     margin-bottom:1.25rem;
-    min-height:9.375rem
+    max-height:9.375rem;
+    overflow-x:hidden
+}
+.card-testimoni .info::-webkit-scrollbar{
+    background:rgba(0,0,0,0);
+    width:0.25rem
+}
+.card-testimoni .info::-webkit-scrollbar-thumb{
+    background:rgba(0,0,0,0)
 }
 .card-testimoni .info .text-testimonial{
     color:#718096;
