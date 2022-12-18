@@ -112,8 +112,7 @@ class KeyFeatureView(View):
             key_features.description = data.get('description')
             key_features.image = request.FILES.get('image')
             key_features.save()
-            print("case_study_details::::", key_features.case_study_details.id)
-            id = key_features.case_study_details.project_we_have_done
+            id = key_features.case_study_details.project_we_have_done.id
             return redirect('dashboard:key_feature_url', id=id)
         if request.resolver_match.url_name == "delete_key_feature_url":
             _id = data.get('already_done_id')
