@@ -96,7 +96,9 @@
 									<div class="feature">
 										<div class="feature-header">
 											<div class="feature-cap">
-                                                <img class="img-fluid" src="{{ feature.image.url }}">
+												{% if feature.image %}
+                                                	<img class="img-fluid" src="{{ feature.image.url }}">
+												{% endif %}
 											</div>
 
 											<h4 class="feature-title">{{ feature.title }}</h4>
