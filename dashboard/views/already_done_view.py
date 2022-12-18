@@ -75,7 +75,6 @@ class CaseStudyEditView(View):
     def post(self, request, id=None):
         data = request.POST
         file = request.FILES
-        print("id:::::::", id)
         case_study_details = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
         case_study_details.case_study_about = data.get('case_study_about')
         case_study_details.client_requirement = data.get('client_requirement')
@@ -99,8 +98,7 @@ class CaseStudyEditView(View):
 
 class KeyFeatureView(View):
     def get(self, request, id= None):
-        case_study = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
-        key_features = KeyFeature.objects.filter(case_study_details=case_study.id).all()
+        key_features = KeyFeature.objects.filter(case_study_details=id).all()
         context = {
             "key_features" : key_features,
             'id_': id
@@ -114,6 +112,7 @@ class KeyFeatureView(View):
             key_features.description = data.get('description')
             key_features.image = request.FILES.get('image')
             key_features.save()
+            print("case_study_details::::", key_features.case_study_details.id)
             id = key_features.case_study_details.id
             return redirect('dashboard:key_feature_url', id=id)
         if request.resolver_match.url_name == "delete_key_feature_url":
