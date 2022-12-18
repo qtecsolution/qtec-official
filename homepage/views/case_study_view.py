@@ -10,7 +10,6 @@ class CaseStudyDetailsView(View):
         we_have_done = WhatProjectHaveWeDone.objects.get(slug= slug)
         case_study_details = we_have_done.case_study_details
         case_study_details = CaseStudyDetails.objects.filter(id=case_study_details.id, technology__display=True).first()
-        print("case_study:::::::::::", case_study_details)
       
         context = {
             'title': "Case Study",
