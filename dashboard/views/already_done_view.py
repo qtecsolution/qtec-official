@@ -109,8 +109,7 @@ class KeyFeatureView(View):
     def post(self, request, id = None):
         data = request.POST
         if request.resolver_match.url_name == "update_key_feature_url":
-            key_features = KeyFeature()
-            key_features.case_study_details = case_study
+            key_features = KeyFeature.objects.get(id=id)
             key_features.title = data.get('title')
             key_features.description = data.get('description')
             key_features.image = request.FILES.get('image')
