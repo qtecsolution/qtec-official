@@ -98,7 +98,7 @@ class CaseStudyEditView(View):
 
 class KeyFeatureView(View):
     def get(self, request, id= None):
-        key_features = KeyFeature.objects.filter(case_study_details=id).all()
+        key_features = KeyFeature.objects.filter(case_study_details__project_we_have_done=id).all()
         context = {
             "key_features" : key_features,
             'id_': id
@@ -113,7 +113,7 @@ class KeyFeatureView(View):
             key_features.image = request.FILES.get('image')
             key_features.save()
             print("case_study_details::::", key_features.case_study_details.id)
-            id = key_features.case_study_details.id
+            id = key_features.case_study_details.project_we_have_done
             return redirect('dashboard:key_feature_url', id=id)
         if request.resolver_match.url_name == "delete_key_feature_url":
             _id = data.get('already_done_id')
