@@ -125,7 +125,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="descriptions" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                                                     <div class="col-sm-9">
-                                                                        <textarea required class="current_opportunities_edit_id_{{item.id}}" id="textarea" class="form-control" name="description">{{ item.description }}</textarea>
+                                                                        <textarea required id="editor2_{{item.id}}" id="textarea" class="form-control" name="description">{{ item.description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -210,7 +210,7 @@
                                     <div class="form-group row">
                                         <label for="descriptions" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <textarea class="current_opportunities_add" required  id="textarea" class="form-control" name="description"></textarea>
+                                            <textarea  id="editor" class="form-control" name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -242,6 +242,18 @@
 
 {% block script %}
 <script>
+
+$(document).ready(function() {
+        
+      
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+             console.error( error );
+        } );
+     
+        
+    })
 csrf = '{{ csrf_token }}';
 function change_swithc(id){
     let url = "{% url 'dashboard:display_current_opportunities_url' %}";
@@ -288,57 +300,9 @@ function change_status(id){
         }
     });
 }
-    var id = ""
-    function get_id(id){
-        $('.current_opportunities_edit_id_'+id).summernote({
-            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather','Titillium Web"'],
-            fontNamesIgnoreCheck: ['Titillium Web"'],
-            fontSizeUnits: ['px', '100'],
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear',]],
-                ['fontname', ['fontname']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']],
-                ['height', ['height']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['fontsize', ['fontsize']],
-            
-            ]
-            
-           
-        });
-    }
-    $(document).ready(function() {
-        
-        $('.current_opportunities_add').summernote({
-            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Merriweather','Titillium Web"'],
-            fontNamesIgnoreCheck: ['Titillium Web"'],
-            fontSizeUnits: ['px', 'pt'],
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear',]],
-                ['fontname', ['fontname']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']],
-                ['height', ['height']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['fontsize', ['fontsize']],
-            
-            ]
-            
-           
-        });
-      
-    });    
+   
+
+   
     
 </script>
 

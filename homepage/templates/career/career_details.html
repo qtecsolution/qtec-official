@@ -41,7 +41,7 @@
 	<section class="career-details">
 		<div class="container">
 			<div class="col-lg-8 mx-lg-auto">
-				<div class="career-details-content" style="gap: 1rem;">
+				<div class="career-details-content" >
                     {{ career.description|safe }}
 				</div>
 			</div>
@@ -319,6 +319,7 @@
 {% block script %}
 
     <script>
+
         number_1 = Math.floor(Math.random() * (99 - 1 + 1) + 1)
         number_2 = Math.floor(Math.random() * (99 - 1 + 1) + 1)
 
@@ -425,12 +426,9 @@
 			}
 			}
 
-
-
 			if (error){
 				return false
 			}
-
 
 			let formData = new FormData();
 			formData.append('firstname', firstname)
@@ -460,10 +458,6 @@
 				error: function (data) {
 				}
 			});
-
-			
-
-           
 
         }
 
