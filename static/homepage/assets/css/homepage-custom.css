@@ -208,6 +208,6 @@
   font-family:"Titillium Web"; 
 }
 
-.career-details .career-details-content ul {
+.career-details .career-details-content ul li{
   padding-left: 1.25rem;
 }
