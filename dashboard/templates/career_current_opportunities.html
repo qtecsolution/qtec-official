@@ -210,7 +210,7 @@
                                     <div class="form-group row">
                                         <label for="descriptions" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
                                         <div class="col-sm-9">
-                                            <textarea  id="editor" class="form-control" name="description"></textarea>
+                                            <textarea    id="editor" class="form-control" name="description"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -300,8 +300,15 @@ function change_status(id){
         }
     });
 }
-   
-
+    var id = ""
+    function get_id(id){
+     ClassicEditor
+        .create( document.querySelector( '#editor2_'+id ) )
+        .catch( error => {
+             console.error( error );
+     } );
+       
+    }
    
     
 </script>
