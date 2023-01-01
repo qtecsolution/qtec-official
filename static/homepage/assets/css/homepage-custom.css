@@ -201,3 +201,13 @@
   object-fit: contain;
 }
 
+.career-details-content {
+  display:flex;
+  flex-direction:column;
+  gap: 0.25rem;
+  font-family:"Titillium Web"; 
+}
+
+.career-details .career-details-content ul {
+  padding-left: 1.25rem;
+}
