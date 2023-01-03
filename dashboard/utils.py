@@ -2,6 +2,7 @@ import random
 import string
 
 from django.utils.text import slugify
+from langdetect import detect
 
 
 class SlugGeneratorMixin(object):
@@ -18,7 +19,10 @@ class SlugGeneratorMixin(object):
             if klass_name == 'WhatProjectHaveWeDone' or klass_name == 'BlogCategory':
                 slug = slugify(instance.name).replace("&", "and")
             if klass_name == 'Blog' or klass_name == 'CurrentOpportunities' or klass_name == 'Technologies':
-                slug = slugify(instance.title).replace("&", "and")
+                if detect(instance.title) == 'en':
+                    slug = slugify(instance.title).replace("&", "and")
+                else:
+                    slug = instance.title.replace(" ","-")
 
         qs_exists = Klass.objects.filter(slug=slug).exists()
 
