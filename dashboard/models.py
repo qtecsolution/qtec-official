@@ -6,6 +6,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from dashboard.utils import SlugGeneratorMixin
+from langdetect import detect
 
 TEXT = 1
 TEXT_WITH_VIDEO = 2
@@ -169,7 +170,7 @@ class BlogCategory(models.Model):
 class Blog(models.Model):
     blog_author = models.ForeignKey(BlogAuthor, null=True, related_name='blogs', on_delete=models.CASCADE)
     blog_category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE, null= True)
-    slug = models.SlugField(null=True, allow_unicode=True, blank=True)
+    slug = models.SlugField(null=True, allow_unicode=True, unique=True, blank=True)
     title = models.TextField()
     description = models.TextField()
     og_description = models.TextField(null=True)
