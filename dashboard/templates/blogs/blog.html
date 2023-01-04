@@ -14,8 +14,7 @@
                                     <h5>Blog</h5>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-success" data-toggle="modal"
-                                        data-target="#blog_add_modal"><strong>+</strong></button>
+                                    <a href="{% url 'dashboard:save_blog_url' %}"  class="btn btn-success"><strong>+</strong></a>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +38,9 @@
                                     <td>{{ blog.blog_category }}</td>
                                     <td>{{ blog.title }}</td>
                                     <td>
-                                         <img style="width: 50px; " src="{{ blog.image.url }}">    
+                                        {% if blog.image %}
+                                         <img style="width: 50px; " src="{{ blog.image.url }}"> 
+                                        {% endif %}   
                                     </td>
                                     <td>{{ blog.created_at }}</td>
                                     <td>{{ blog.updated_at }}</td> 
@@ -56,122 +57,7 @@
                                                 </form> 
                                             </div>
                                             <div class="col-3">
-                                                <button  title="Blog Edit" onclick="give_id('{{blog.id}}')" data-toggle="modal"
-                                                data-target="#blog_edit_{{blog.id}}" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button>
-                                                <div class="modal fade" id="blog_edit_{{blog.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                aria-hidden="true">
-                                                <div class="modal-dialog" role="document" style="max-width: 50%;">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                            
-                                                        <form id="myForm" action="{% url 'dashboard:edit_blog_url' %}" method="POST" enctype="multipart/form-data" >
-                                                            {% csrf_token %}
-                                                            <input type="hidden" name="id" value="{{ blog.id }}">
-                                                            <input type="hidden" name="blog_id" value="{{ blog.id }}">
-                                                            <div class="modal-body">
-                                                                <div class="error text-center" style="color: red;"></div>
-                                                                <br>
-                                                                <div class="form-group row">
-                                                                    <label for="name" class="col-sm-3 col-form-label">Blog Author <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9" class="form-control" >
-                                                                        <select required  name="blog_author" class="form-control"
-                                                                                    id="">
-                                                                            {% for author in blog_author %}
-                                                                                <option {% if author.id == blog.blog_author.id %} selected {% endif %}class="form-control" value="{{ author.id }}">{{ author.name }}</option>
-                                                                            {% endfor %}
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="name" class="col-sm-3 col-form-label">Blog Category <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9" class="form-control" >
-                                                                        <select required  name="blog_category" class="form-control"
-                                                                                    id="">
-                                                                            {% for category in blog_category %}
-                                                                                <option {% if category.id == blog.blog_category.id %} selected {% endif %}class="form-control" value="{{ category.id }}">{{ category.name }}</option>
-                                                                            {% endfor %}
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            
-                                                                <div class="form-group row">
-                                                                    <label for="title" class="col-sm-3 col-form-label">Title <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9">
-                                                                        <input value="{{ blog.title }}" required class="form-control" name="title">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9">
-                                                                        <textarea id="editor1_{{blog.id}}" required class="form-control" name="description">{{ blog.description }}</textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="description" class="col-sm-3 col-form-label">OG Description <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9">
-                                                                        <textarea  required class="form-control" name="og_description">{{ blog.og_description }}</textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9">
-                                                                        <textarea required id="editor2_{{blog.id}}"  id="textarea" class="form-control" name="tags">{{ blog.tags }}</textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="image" class="col-sm-3 col-form-label">Image <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9">
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <input class="form-control" type="file" name="image" id="">
-                                                                            </div>
-                                                                            <div class="col-md-4">
-                                                                                <img style="width: 50px; " src="/media/{{ blog.image }}">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="created_at" class="col-sm-3 col-form-label">Created At <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9">
-                                                                        <div class="form-group row">
-                                                                            <div  class="col-md-6">
-                                                                                <input type="date"  class="form-control" name="created_at">
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                {{ blog.created_at }}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="updated_at" class="col-sm-3 col-form-label">Updated At <small style="color: red">*</small> </label>
-                                                                    <div class="col-sm-9">
-                                                                        <div class="form-group row">
-                                                                            <div  class="col-md-6">
-                                                                                <input type="date" class="form-control" name="updated_at">
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                {{ blog.updated_at }}
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-primary"  >Save </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                                
+                                                <a href="{% url 'dashboard:edit_blog_url'  blog.id %}"  title="Blog Edit"  class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
                                             </div>
                                         </div>
                                     </td>      
@@ -181,104 +67,6 @@
                             </table>
                         </div>
                     </div>
-
-                    <!-- Add what_project_done_add_modal -->
-                    <div class="modal fade" id="blog_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document" style="max-width: 50%;">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                
-                            <form id="myForm" action="{% url 'dashboard:save_blog_url' %}" method="POST" enctype="multipart/form-data" novalidate >
-                                {% csrf_token %}
-                                <div class="modal-body">
-                                    <div class="error text-center" style="color: red;"></div>
-                                    <br>
-                                    <div class="form-group row">
-                                        <label for="name" class="col-sm-3 col-form-label">Blog Author <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9" class="form-control" >
-                                            <select required  name="blog_author" class="form-control"
-                                                        id="">
-                                                {% for author in blog_author %}
-                                                    <option class="form-control" value="{{ author.id }}">{{ author.name }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="name" class="col-sm-3 col-form-label">Blog Category <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9" class="form-control" >
-                                            <select required  name="blog_category" class="form-control"
-                                                        id="">
-                                                {% for category in blog_category %}
-                                                    <option class="form-control" value="{{ category.id }}">{{ category.name }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group row">
-                                        <label for="title" class="col-sm-3 col-form-label">Title <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9">
-                                            <input required class="form-control" name="title">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="description" class="col-sm-3 col-form-label">Description <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9">
-                                            <textarea id ="blog_description" required class="form-control" name="description"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="description" class="col-sm-3 col-form-label">OG Description <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9">
-                                            <textarea id ="og_description" required class="form-control" name="og_description"></textarea>
-                                        </div>
-                                    </div>
-                                    <div id="tag_error_id" class="form-group row">
-                                        <label for="tags" class="col-sm-3 col-form-label">Tags <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9">
-                                            <textarea required id ="blog_tags" id="textarea" class="form-control" name="tags"></textarea>
-                                        </div>
-                                        <p id="tag_error" class="error-message"></p>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="image" class="col-sm-3 col-form-label">Image <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <input required class="form-control" type="file" name="image" id="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="created_at" class="col-sm-3 col-form-label">Created At <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9">
-                                            <input type="date"  required class="form-control" name="created_at">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="created_at" class="col-sm-3 col-form-label">Updated At <small style="color: red">*</small> </label>
-                                        <div class="col-sm-9">
-                                            <input type="date" required class="form-control" name="created_at">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary"  >Save </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    </div>
-
                 </div>
             </div>
         </div>

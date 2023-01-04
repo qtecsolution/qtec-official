@@ -22,7 +22,8 @@ class SlugGeneratorMixin(object):
                 if detect(instance.title) == 'en':
                     slug = slugify(instance.title).replace("&", "and")
                 else:
-                    slug = instance.title.replace(" ","-")
+                    text = instance.title.split()
+                    slug = "-".join(text)
 
         qs_exists = Klass.objects.filter(slug=slug).exists()
 

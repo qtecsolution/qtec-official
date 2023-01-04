@@ -50,7 +50,7 @@ urlpatterns= [
      # blog
     path('blog-list/', BlogView.as_view(), name="blog_blog_list_url"),
     path('blog-list-save/', BlogView.as_view(), name="save_blog_url"),
-    path('blog-list-edit/', BlogView.as_view(), name="edit_blog_url"),
+    path('blog-list-edit/<int:id>', BlogView.as_view(), name="edit_blog_url"),
     path('blog-list-delete/', BlogView.as_view(), name="delete_blog_row_url"),
      path('blog-list-display/', BlogView.as_view(), name="display_blog_row_url"),
 
