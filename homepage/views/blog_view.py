@@ -19,7 +19,7 @@ class BlogsView(View):
             handle_blog_exists = True
             handle_blog = handle_blog.first()
             top_4_blog = handle_blog.top_4_blog.select_related('blog_author').select_related('blog_category').all()
-            random_blog = Blog.objects.exclude(id__in=top_4_blog.values_list('id', flat= True)).order_by('?')
+            random_blog = Blog.objects.filter(display=True).exclude(id__in=top_4_blog.values_list('id', flat= True)).order_by('?')
             highlight_blog = handle_blog.highlight_blog
         else:
             handle_blog = None
