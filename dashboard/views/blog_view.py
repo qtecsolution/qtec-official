@@ -1,3 +1,4 @@
+from datetime import date, datetime
 from multiprocessing import context
 from django import views
 from django.http import JsonResponse
@@ -8,78 +9,56 @@ from django.contrib import messages
 from dashboard.models import Blog, BlogAuthor, BlogCategory, HandleBlog
 from django.contrib.auth.models import User
 
+from dashboard.utils import SlugGeneratorMixin
+
 
 
 class BlogView(View):
-    def get(self, request):
-        blog = Blog.objects.order_by("-id").all()
-        blog_author = BlogAuthor.objects.values('id','name')
-        blog_category = BlogCategory.objects.values('id','name')
-        context = {
-            "blogs" : blog,
-            'blog_author' :blog_author,
-            'blog_category' : blog_category
-        }
-        return render(request, 'blogs/blog.html', context)
-
-    def post(self, request):
-        data =request.POST
+    def get(self, request,id=None):
         if request.resolver_match.url_name == "save_blog_url":
-            blog_author = data.get('blog_author')
-            blog_category = data.get('blog_category')
-            title = data.get('title')
-            description = data.get('description')
-            og_description = data.get('og_description')
-            image = request.FILES.get('image')
-            tags = data.get('tags')
-            created_at = data.get('created_at')
-            updated_at = data.get('updated_at')
-            if not blog_author or not description or not tags or not og_description:
-                 messages.error(request, 'Invalid input!')
-            else:
-                blog_object = Blog()
-                blog_object.blog_author_id = blog_author
-                blog_object.blog_category_id = blog_category
-                blog_object.title = title
-                blog_object.description = description
-                blog_object.og_description = og_description
-                blog_object.tags = tags
-                blog_object.image = image
-                blog_object.created_at = created_at
-                blog_object.updated_at = updated_at
-                blog_object.save()
-                messages.success(request, 'Data save successful!')
+            blog_author = BlogAuthor.objects.values('id','name')
+            blog_category = BlogCategory.objects.values('id','name')
+            context = {
+                'blog_author' :blog_author,
+                'blog_category' : blog_category
+            }
+            return render(request, 'blogs/blog_create.html', context)
+
+        if request.resolver_match.url_name == "edit_blog_url":
+            blog = Blog.objects.filter(id=id).first()
+            blog_author = BlogAuthor.objects.values('id','name')
+            blog_category = BlogCategory.objects.values('id','name')
+            context = {
+                'blog_author' :blog_author,
+                'blog_category' : blog_category,
+                'blog': blog
+            }
+            return render(request, 'blogs/blog_update.html', context)
+        
+        else:
+            blog = Blog.objects.order_by("-id").all()
+            blog_author = BlogAuthor.objects.values('id','name')
+            blog_category = BlogCategory.objects.values('id','name')
+            context = {
+                "blogs" : blog,
+                'blog_author' :blog_author,
+                'blog_category' : blog_category
+            }
+            return render(request, 'blogs/blog.html', context)
+ 
+
+    def post(self, request,id=None):
+        data =request.POST
+        
+        if request.resolver_match.url_name == "save_blog_url":
+            self.data_save(request,flag='created')
+
             return redirect('dashboard:blog_blog_list_url')
             
         if request.resolver_match.url_name == "edit_blog_url":
-            blog_author = data.get('blog_author')
-            blog_category = data.get('blog_category')
-            title = data.get('title')
-            description = data.get('description')
-            og_description = data.get('og_description')
-            image = request.FILES.get('image')
-            tags = data.get('tags')
-            created_at = data.get('created_at')
-            updated_at = data.get('updated_at')
-            if not blog_author or not description or not tags or not og_description:
-                 messages.error(request, 'Invalid input!')
-            else:
-                request_id = data.get('id')
-                blog_object = Blog.objects.filter(id=request_id).first()
-                blog_object.blog_author_id = blog_author
-                blog_object.blog_category_id = blog_category
-                blog_object.title = title
-                blog_object.description = description
-                blog_object.og_description = og_description
-                blog_object.tags = tags
-                if image:
-                    blog_object.image = image
-                if created_at:
-                    blog_object.created_at = created_at
-                if updated_at:
-                    blog_object.updated_at = updated_at
-                blog_object.save()
-                messages.success(request, 'Data updated successful!')
+            self.data_save(request,flag='edit')
+
+            messages.success(request, 'Data updated successful!')
 
             return redirect('dashboard:blog_blog_list_url')
         if request.resolver_match.url_name == "delete_blog_row_url":
@@ -92,6 +71,37 @@ class BlogView(View):
             blog.display = False if blog.display == True else True
             blog.save()
             return JsonResponse({})  
+            
+    @staticmethod
+    def data_save(request,flag=None):
+        data =request.POST
+        request_id = data.get('id')
+        blog_object = Blog.objects.filter(id=request_id)
+        if blog_object.exists():
+            obj = blog_object.first()
+        else:
+            obj = Blog()
+        obj.blog_author_id = data.get('blog_author')
+        obj.blog_category_id = data.get('blog_category')
+        
+        obj.description = data.get('description')
+        obj.og_description = data.get('og_description')
+        image = request.FILES.get('image')
+        title = data.get('title')
+        if image:
+            obj.image = image
+        obj.tags = data.get('tags')
+        if flag=='created':
+            obj.created_at =  date.today()
+            obj.title = title
+        else:
+            if obj.title != title:
+                obj.title = title
+                slug_object = SlugGeneratorMixin()
+                slug = slug_object.unique_slug_generator(obj)
+                obj.slug = slug
+            obj.updated_at =  date.today()
+        obj.save()
     
 class HandleBlogView(View):
     def get(self, request):
