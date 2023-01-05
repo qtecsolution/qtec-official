@@ -59,5 +59,5 @@ class AllBlogView(View):
             blogs = paginator.page(1)
         except EmptyPage:
             blogs = paginator.page(paginator.num_pages)
-
+            
         return render(request, 'blog/all_blogs.html', {'blogs': blogs, 'title': 'ALL BLOGS'})
