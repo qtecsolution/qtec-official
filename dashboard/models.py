@@ -179,6 +179,7 @@ class Blog(models.Model):
     created_at = models.DateField(auto_now_add=True, null=True)
     updated_at = models.DateField(auto_now=True, null=True)
     display = models.BooleanField(default=True)
+    url = models.CharField(max_length=250, null=True)
 
     def __str__(self):
         return str(self.blog_author.name) + '-' + str(self.title)

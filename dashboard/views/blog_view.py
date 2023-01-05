@@ -52,24 +52,26 @@ class BlogView(View):
         
         if request.resolver_match.url_name == "save_blog_url":
             self.data_save(request,flag='created')
+            messages.success(request, 'Data Saved successful!')
 
             return redirect('dashboard:blog_blog_list_url')
             
         if request.resolver_match.url_name == "edit_blog_url":
             self.data_save(request,flag='edit')
-
             messages.success(request, 'Data updated successful!')
 
             return redirect('dashboard:blog_blog_list_url')
         if request.resolver_match.url_name == "delete_blog_row_url":
             request_id = data.get('id')
             Blog.objects.filter(id=request_id).first().delete()
+
             return redirect('dashboard:blog_blog_list_url')
         if request.resolver_match.url_name == "display_blog_row_url":
             request_id = data.get('id')
             blog = Blog.objects.get(id=request_id)
             blog.display = False if blog.display == True else True
             blog.save()
+
             return JsonResponse({})  
             
     @staticmethod
@@ -83,24 +85,19 @@ class BlogView(View):
             obj = Blog()
         obj.blog_author_id = data.get('blog_author')
         obj.blog_category_id = data.get('blog_category')
-        
         obj.description = data.get('description')
         obj.og_description = data.get('og_description')
         image = request.FILES.get('image')
-        title = data.get('title')
+        obj.title = data.get('title')
         if image:
             obj.image = image
         obj.tags = data.get('tags')
         if flag=='created':
+            obj.url = data.get('url')
             obj.created_at =  date.today()
-            obj.title = title
         else:
-            if obj.title != title:
-                obj.title = title
-                slug_object = SlugGeneratorMixin()
-                slug = slug_object.unique_slug_generator(obj)
-                obj.slug = slug
             obj.updated_at =  date.today()
+
         obj.save()
     
 class HandleBlogView(View):
@@ -117,6 +114,7 @@ class HandleBlogView(View):
             'top_4_blog': top_4_blog,
             'highlight_blog':highlight_blog,
         }
+
         return render(request, 'handle_blog.html', context)
 
     def post(self, request):
@@ -145,6 +143,7 @@ class BlogAuthorView(View):
             'blog_author': blog_author,
             'blogs': blogs,
         }
+    
         return render(request, 'blogs/blog_author.html', context)
 
     def post(self, request):
@@ -156,12 +155,14 @@ class BlogAuthorView(View):
             blog_author.image = request.FILES.get('image')
             blog_author.save()
             messages.success(request, 'Data save successful!')
+
             return redirect('dashboard:blog_blog_author_url')
 
         if request.resolver_match.url_name == "delete_blog_blog_author_url":
             request_id = data.get('id')
             BlogAuthor.objects.filter(id=request_id).first().delete()
             messages.success(request, 'Delete successful!')
+
             return redirect('dashboard:blog_blog_author_url')
 
         if request.resolver_match.url_name == "edit_blog_blog_author_url":
@@ -170,10 +171,13 @@ class BlogAuthorView(View):
             blog_author.name = data.get('name')
             blog_author.qualification = data.get('qualification')
             image = request.FILES.get('image')
+
             if image:
                 blog_author.image = image
+
             blog_author.save()
             messages.success(request, 'Data updated successful!')
+
             return redirect('dashboard:blog_blog_author_url')
 class BlogCategoryView(View):
         def get(self, request):
@@ -191,12 +195,14 @@ class BlogCategoryView(View):
                 blog_category.name = data.get('name')
                 blog_category.save()
                 messages.success(request, 'Data save successful!')
+
                 return redirect('dashboard:blog_blog_category_url')
 
             if request.resolver_match.url_name == "delete_blog_blog_category_url":
                 request_id = data.get('id')
                 BlogCategory.objects.filter(id=request_id).first().delete()
                 messages.success(request, 'Delete successful!')
+
                 return redirect('dashboard:blog_blog_category_url')
 
             if request.resolver_match.url_name == "edit_blog_blog_category_url":
@@ -205,6 +211,7 @@ class BlogCategoryView(View):
                 blog_category.name = data.get('name')
                 blog_category.save()
                 messages.success(request, 'Data updated successful!')
+
                 return redirect('dashboard:blog_blog_category_url')
 
             

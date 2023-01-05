@@ -18,11 +18,13 @@ class SlugGeneratorMixin(object):
         else:
             if klass_name == 'WhatProjectHaveWeDone' or klass_name == 'BlogCategory':
                 slug = slugify(instance.name).replace("&", "and")
-            if klass_name == 'Blog' or klass_name == 'CurrentOpportunities' or klass_name == 'Technologies':
-                if detect(instance.title) == 'en':
-                    slug = slugify(instance.title).replace("&", "and")
+            if klass_name == 'CurrentOpportunities' or klass_name == 'Technologies':
+                slug = slugify(instance.title).replace("&", "and")
+            if klass_name == 'Blog':
+                if detect(instance.url) == 'en':
+                    slug = slugify(instance.url).replace("&", "and")
                 else:
-                    text = instance.title.split()
+                    text = instance.url.split()
                     slug = "-".join(text)
 
         qs_exists = Klass.objects.filter(slug=slug).exists()
