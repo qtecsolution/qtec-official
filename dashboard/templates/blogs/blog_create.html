@@ -80,7 +80,6 @@
                                                         <label>Url <small style="color: red">*</small> </label>
                                                         <input type="text"  required name="url" class="form-control" >
                                                     </div>
-                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -107,21 +106,19 @@
 
 {% block script %}
 <script>
+
 csrf = '{{ csrf_token }}';
 $(document).ready(function() {
     $("#technology_features").select2({
         allowClear: true
     });     
 });
+
 $(document).ready(function() {
         
       
         ClassicEditor
-        .create( document.querySelector( '#blog_description' ), {
-                // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
-             
-                // Changing the language of the interface requires loading the language file using the <script> tag.
-                // language: 'es',
+        .create( document.querySelector( '#blog_description' ) , {
                 list: {
                     properties: {
                         styles: true,
@@ -141,8 +138,11 @@ $(document).ready(function() {
                         { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
                     ]
                 },
+                // https://ckeditor.com/docs/ckeditor5/latest/features/editor-placeholder.html#using-the-editor-configuration
                 placeholder: 'Blog Description !',
-             
+
+         
+              
                 link: {
                     decorators: {
                         addTargetToExternalLinks: true,
@@ -156,7 +156,7 @@ $(document).ready(function() {
                         }
                     }
                 },
-                
+ 
             });
 
         ClassicEditor
