@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="readinfo">
-                  <a href="/blog/{{ highlight_blog.url }}/" class="btn-read">Read More</a>
+                  <a href="/blog/{{ highlight_blog.slug }}/" class="btn-read">Read More</a>
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@
         <div class="row g-4 w-100">
             {% for i in random_blog %}
                  <div class="col-lg-4 col-md-6 col-sm-6 col-8 mx-auto mx-lg-0">
-            <a href="/blog/{{ i.url }}/" class="bloglink">
+            <a href="/blog/{{ i.slug }}/" class="bloglink">
               <div class="card-article">
                 <div class="card-article-header">
                   <img src="{{ i.image.url }}" alt="card-thumbnail">
