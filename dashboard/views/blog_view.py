@@ -97,10 +97,11 @@ class BlogView(View):
             obj.created_at =  date.today()
         else:
             if obj.url != url:
+                obj.url = url
                 slug_object = SlugGeneratorMixin()
                 slug = slug_object.unique_slug_generator(obj)
                 obj.slug = slug
-                obj.url = url
+               
             obj.updated_at =  date.today()
         obj.save()
     
