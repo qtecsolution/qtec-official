@@ -89,18 +89,18 @@ class BlogView(View):
         obj.og_description = data.get('og_description')
         image = request.FILES.get('image')
         title = data.get('title')
+        url = data.get('url')
         if image:
             obj.image = image
         obj.tags = data.get('tags')
         if flag=='created':
             obj.created_at =  date.today()
-            obj.title = title
         else:
-            if obj.title != title:
-                obj.title = title
+            if obj.url != url:
                 slug_object = SlugGeneratorMixin()
                 slug = slug_object.unique_slug_generator(obj)
                 obj.slug = slug
+                obj.url = url
             obj.updated_at =  date.today()
         obj.save()
     
