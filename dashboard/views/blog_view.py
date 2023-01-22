@@ -88,13 +88,14 @@ class BlogView(View):
         obj.description = data.get('description')
         obj.og_description = data.get('og_description')
         image = request.FILES.get('image')
-        title = data.get('title')
+        obj.title = data.get('title')
         url = data.get('url')
         if image:
             obj.image = image
         obj.tags = data.get('tags')
         if flag=='created':
             obj.created_at =  date.today()
+            obj.url = url
         else:
             if obj.url != url:
                 obj.url = url
