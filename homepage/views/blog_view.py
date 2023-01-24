@@ -52,6 +52,7 @@ class AllBlogView(View):
     def get(self, request):
         page = request.GET.get('page')
         blogs = Blog.objects.filter(display=True).order_by('?')
+        print("block.count:::", blogs.count())
         paginator = Paginator(blogs, settings.PER_PAGE)
         try:
             blogs = paginator.page(page)

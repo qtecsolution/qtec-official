@@ -59,9 +59,13 @@
                                                     <div class="form-group">
                                                         
                                                         <div class="row">
-                                                            <div class="col-md-9">
+                                                            <div class="col-md-4">
                                                                 <label>Image <small style="color: red">*</small> </label>
                                                                 <input type="file"   name="image" class="form-control" >
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <label>Alt Text </label>
+                                                                <input value="{{blog.alt_text }}"  required name="alt_text" class="form-control" >
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <img style="width: 50px; height: 50px; margin-top: 30px; margin-left: 70px; " src="/media/{{ blog.image }}">
