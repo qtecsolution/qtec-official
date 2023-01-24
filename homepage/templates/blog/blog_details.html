@@ -83,7 +83,7 @@
                 
                  <!-- BLOG-DETAILS THUMBNAIL START -->
                  <div class="blogdetails-thumbnail" style="width: 100%; object-fit: contain;height: 100%;">
-                  <img src="{{ blog.image.url }}" alt="blog-thumbnail">
+                  <img src="{{ blog.image.url }}" alt="{% if blog.alt_text %}{{ blog.alt_text }}{% else %}blog-thumbnail{% endif %}">
                 </div>
                 <!-- BLOG-DETAILS THUMBNAIL END -->
 

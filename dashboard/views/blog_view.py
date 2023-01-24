@@ -88,6 +88,7 @@ class BlogView(View):
         obj.description = data.get('description')
         obj.og_description = data.get('og_description')
         image = request.FILES.get('image')
+        obj.alt_text = data.get('alt_text');
         obj.title = data.get('title')
         url = data.get('url')
         if image:
