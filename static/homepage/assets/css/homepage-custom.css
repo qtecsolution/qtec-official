@@ -219,14 +219,6 @@
   /* editing area */
   min-height: 200px;
 }
-.image_resized{
-  /* block images */
-  max-width: 70%;
-
-  margin-right: 100px;
-  margin-left: 100px;
-  
-}
 
 .image  figcaption{
   padding-left: 1.25rem;
