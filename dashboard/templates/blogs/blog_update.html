@@ -75,9 +75,9 @@
                                                    
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group">
+                                                    <div id="container" class="form-group">
                                                         <label>Description <small style="color: red">*</small> </label>
-                                                        <textarea id="blog_description" type="text"  name="description"  class="form-control" >{{blog.description}}</textarea>
+                                                        <textarea id="editor" type="text"  name="description"  class="form-control" >{{blog.description}}</textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>OG Description<small style="color: red">*</small> </label>
@@ -126,7 +126,7 @@ $(document).ready(function() {
         allowClear: true
     });     
 });
-CKEDITOR.ClassicEditor.create(document.getElementById("blog_description"), {
+CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
                 // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
                 toolbar: {
                     items: [
@@ -178,7 +178,8 @@ CKEDITOR.ClassicEditor.create(document.getElementById("blog_description"), {
                         'Tahoma, Geneva, sans-serif',
                         'Times New Roman, Times, serif',
                         'Trebuchet MS, Helvetica, sans-serif',
-                        'Verdana, Geneva, sans-serif'
+                        'Verdana, Geneva, sans-serif',
+                        'Titillium Web'
                     ],
                     supportAllValues: true
                 },

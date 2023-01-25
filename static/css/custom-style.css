@@ -346,10 +346,3 @@
   padding: 0.5rem 0.75rem;
 }
 
-.teachers-dashboard .dashboard-content .dashboard-header .headernav .profile-dropdown .profile-dropdown-menu .dropdownlink:hover {
-  color: #DF6812;
-}
-
-.teachers-dashboard .dashboard-content .dashboard-header .headernav .profile-dropdown:hover .profile-dropdown-menu {
-  display: block;
-}

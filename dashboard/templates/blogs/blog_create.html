@@ -72,9 +72,9 @@
                                                    
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group">
+                                                    <div class="form-group" >
                                                         <label>Description <small style="color: red">*</small> </label>
-                                                        <textarea style="height: 600px;" id="blog_description" type="text"  name="description"  class="form-control" ></textarea>
+                                                        <textarea class="ck-blurred ck-editor__editable ck-rounded-corners ck-editor__editable_inline" id="blog_description" type="text"  name="description"  class="form-control" ></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>OG Description<small style="color: red">*</small> </label>
@@ -127,6 +127,7 @@ CKEDITOR.ClassicEditor.create(document.getElementById("blog_description"), {
                 // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
                 toolbar: {
                     items: [
+                       
                         'selectAll','findAndReplace', 
                         'heading',
                         'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'removeFormat',
@@ -136,7 +137,8 @@ CKEDITOR.ClassicEditor.create(document.getElementById("blog_description"), {
                         'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight',
                         'alignment',
                         'link', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed',
-                        'specialCharacters', ,
+                        'specialCharacters', 
+                  
                         
                     ],
                     shouldNotGroupWhenFull: true
@@ -175,11 +177,14 @@ CKEDITOR.ClassicEditor.create(document.getElementById("blog_description"), {
                         'Tahoma, Geneva, sans-serif',
                         'Times New Roman, Times, serif',
                         'Trebuchet MS, Helvetica, sans-serif',
-                        'Verdana, Geneva, sans-serif'
+                        'Verdana, Geneva, sans-serif',
+                        'Titillium Web'
+                        
                     ],
                     supportAllValues: true
                 },
-                // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
+               
+                  // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
                 fontSize: {
                     options: [ 10, 12, 14, 'default', 18, 20, 22 ],
                     supportAllValues: true
