@@ -233,11 +233,13 @@ heading_heading1 {
   text-size-adjust: 40px;
 }
 .h1class {
+
   font-family: "Titillium Web";
   font-style: normal;
   font-size: 2rem;
   font-weight: normal;
-  line-height: 1.6666666667;
+  line-height: 1.33333;
+  color: #718096 !important;
 
 }
 .h2class {
@@ -246,6 +248,7 @@ heading_heading1 {
   font-style: normal;
   font-weight: normal;
   line-height: 1.33333;
+  color: #718096 !important;
 
 }
 .h3class {
@@ -254,6 +257,7 @@ heading_heading1 {
   font-style: normal;
   font-weight: normal;
   line-height: 1.33333;
+  color: #718096 !important;
 
 }
 .h4class {
@@ -262,6 +266,7 @@ heading_heading1 {
   font-style: normal;
   font-weight: normal;
   line-height: 1.33333;
+  color: #718096 !important;
 
 }
 .h5class {
@@ -270,6 +275,7 @@ heading_heading1 {
   font-style: normal;
   font-weight: normal;
   line-height: 1.33333;
+  color: #718096 !important;
 
 }
 .h6class {
@@ -278,7 +284,40 @@ heading_heading1 {
   font-style: normal;
   font-weight: normal;
   line-height: 1.33333;
+  color: #718096 !important;
 
 }
 
 
+ /*  design for mobile devices less than 576 px */
+@media only screen and (max-width: 576px) {
+
+  .h1class {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+  .h2class {
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+  .h3class {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .h4class {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .h5class {
+    font-size: 0.7rem;
+    line-height: 1.5;
+  }
+  .h5class {
+    font-size: 0.5rem;
+    line-height: 1.5;
+  }
+
+
+
+
+}
