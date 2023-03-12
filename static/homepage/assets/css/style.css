@@ -4194,20 +4194,22 @@ select{
     gap:0.25rem
 }
 .blogdetails .bloginfo .blogdescriptions-body .detail .description .descriptiontext{
-    font-family:"Titillium Web";
+
     font-style:normal;
     font-size:1rem;
     font-weight:normal;
-    line-height:1.625;
-    color:#718096
+    line-height:2.125;
+    color: #26272C
+}
+.blogdetails{
+    background-color: white;
 }
 @media screen and (min-width: 48rem){
     .blogdetails .bloginfo .blogdescriptions-body .detail .description .descriptiontext{
-        font-family:"Titillium Web";
         font-style:normal;
         font-size:1.125rem;
         font-weight:normal;
-        line-height:1.6666666667
+        line-height:1.7666666667
     }
 }
 .readnext{
