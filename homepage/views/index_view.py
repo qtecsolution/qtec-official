@@ -32,3 +32,25 @@ class IndexView(View):
 
         return render(request, 'index.html', context)
 
+
+
+class CaseStudy(View):
+    def get(self, request):
+        project_done_all = WhatProjectHaveWeDone.objects.filter(display=True).order_by("priority").all()
+   
+        web_project = project_done_all.filter(project_type__icontains = '1')
+        app_project = project_done_all.filter(project_type__icontains = '2')
+        
+        ui_ux = project_done_all.filter(project_type__icontains = '3')
+
+        context = {
+            'project_done_exists': project_done_all.exists(),
+            'title': "Case Study",
+            'project_done': project_done_all,
+            'web_project': web_project,
+            'app_project': app_project,
+            'ui_ux':ui_ux,
+
+        }
+        return render(request, 'case_study_list.html', context)
+        
