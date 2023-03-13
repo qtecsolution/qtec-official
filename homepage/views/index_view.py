@@ -34,7 +34,8 @@ class IndexView(View):
 
 
 
-class CaseStudy(View):
+class CaseStudyView(View):
+    
     def get(self, request):
         project_done_all = WhatProjectHaveWeDone.objects.filter(display=True).order_by("priority").all()
    
