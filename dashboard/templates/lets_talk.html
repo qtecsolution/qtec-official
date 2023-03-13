@@ -27,6 +27,8 @@
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Budget</th>
+                                    <th>Message </th>
+                                    <th>Created </th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -37,6 +39,9 @@
                                     <td>{{ talk.email }}</td>
                                     <td>{{ talk.phone_number }}</td>
                                     <td>{{ talk.get_budget_display }}</td>
+                                    <td>{{ talk.message }}</td>
+                                    <td>{{talk.created_at|date:'Y-m-d'}}</td>
+
                                     <td>
                                         <select title="change status" id="talk_change_status_id_{{ talk.id}}" onchange="change_talk_status('{{ talk.id }}')">
                                             {% for item in status %}

@@ -1,6 +1,11 @@
 {% extends 'homepage/base_homepage.html' %}
 
 {% block content %}
+<style>
+  .articledescript p {
+    color: black;
+  }
+</style>
   <!--========== BLOG-BANNER START ==========-->
   <section class="blogbanner">
     <div class="container">
@@ -115,7 +120,7 @@
 
                   <div class="articledescript">
                     <p class="articletext">
-                        {{ i.description|safe|truncatechars_html:100 }}
+                        {{ i.description|truncatechars_html:100|safe }}
                     </p>
                   </div>
 
