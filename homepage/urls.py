@@ -19,7 +19,7 @@ urlpatterns= [
     path('products/', ProductsView.as_view(), name="product_url"),
 
    
-    path('case-study/', CaseStudyView.as_view(), name="case_study_list_url"),
+    path('case-study-list/', CaseStudyView.as_view(), name="case_study_list_url"),
 
     path('contact-us/', ContactUs.as_view(), name="contact_us_url"),
 
