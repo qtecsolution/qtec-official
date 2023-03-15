@@ -44,6 +44,7 @@
 											<div id="budget_field_id" class="inputbox">
 												<label for="budget" class="inputlabel">Enter Your Budget <small style="color: red">*</small> </label>
 												<select class="selectfield" id="budget" style="color: black;">
+                                                	<option value="">Select Budget</option>
                                                     {% for budget in BUDGET %}
 													<option value="{{ budget.0 }}">{{ budget.1 }}</option>
                                                     {% endfor %}
@@ -264,7 +265,7 @@
 			}else{
 				$("#phone_number_field_id").removeClass("errorfield");
 			}
-			if (budget.value == 1) {
+			if (budget.value == '') {
 				$("#budget_field_id").addClass("errorfield");
 				$('#budget_error').text('This field is required!')
 				error= true
