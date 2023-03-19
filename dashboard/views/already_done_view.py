@@ -12,9 +12,9 @@ class AlreadyDoneView(View):
         technology = Technologies.objects.all()
         what_Done = WhatProjectHaveWeDone.objects.prefetch_related('technology').order_by("priority").all()
         context = {
-            "what_Done" : what_Done,
+            "what_Done": what_Done,
             'technology': technology,
-             "project_type" : PROJECT_TYPE
+            "project_type": PROJECT_TYPE
         }
         return render(request, 'already_done.html', context)
 
@@ -53,12 +53,18 @@ class AlreadyDoneView(View):
             what_Done.technology.add(*technology_id)
             messages.success(request, 'Edit successful')
             return redirect('dashboard:already_done_url')
+
         if request.resolver_match.url_name == "status_what_done_url":
             request_id = data.get('id')
+            type = data.get('type')
+            print(type, '--------')
             obj = WhatProjectHaveWeDone.objects.get(id=request_id)
-            obj.display = False if obj.display == True else True
+            if type == 'display':
+                obj.display = False if obj.display == True else True
+            else:
+                obj.homepage = False if obj.homepage == True else True
             obj.save()
-            return JsonResponse({})  
+            return JsonResponse({})
 
 
 class CaseStudyEditView(View):
@@ -67,8 +73,8 @@ class CaseStudyEditView(View):
         case_study = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
         technologies = Technologies.objects.all()
         context = {
-            "technologies" : technologies,
-            "case_study" : case_study,
+            "technologies": technologies,
+            "case_study": case_study,
         }
         return render(request, 'partial/case_study_details.html', context)
 
@@ -96,15 +102,17 @@ class CaseStudyEditView(View):
         messages.success(request, 'Case Study Details save successful')
         return redirect('dashboard:already_done_url')
 
+
 class KeyFeatureView(View):
-    def get(self, request, id= None):
+    def get(self, request, id=None):
         key_features = KeyFeature.objects.filter(case_study_details__project_we_have_done=id).all()
         context = {
-            "key_features" : key_features,
+            "key_features": key_features,
             'id_': id
         }
         return render(request, 'partial/key_feature.html', context)
-    def post(self, request, id = None):
+
+    def post(self, request, id=None):
         data = request.POST
         if request.resolver_match.url_name == "update_key_feature_url":
             key_features = KeyFeature.objects.get(id=id)
@@ -131,4 +139,3 @@ class KeyFeatureView(View):
             key_features.image = request.FILES.get('image')
             key_features.save()
             return redirect('dashboard:key_feature_url', id=id)
-
