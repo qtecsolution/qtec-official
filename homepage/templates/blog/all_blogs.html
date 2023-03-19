@@ -25,13 +25,13 @@
                 </div>
                 <div class="card-article-body">
                   <div class="title-date">
-                    <h4 class="title">{{ i.title }}</h4>
-                    <p class="date">{{ i.updated_at }}</p>
+                    <h4 class="title">{{ blog.title }}</h4>
+                    <p class="date">{{ blog.updated_at }}</p>
                   </div>
 
                   <div class="articledescript">
                     <p class="articletext">
-                    {{ i.description|safe|truncatechars_html:100 }}
+                    {{ blog.description|safe|truncatechars_html:100 }}
                     </p>
                   </div>
                   <span class="articlelink">Read article</span>

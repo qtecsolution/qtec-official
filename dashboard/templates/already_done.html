@@ -30,6 +30,7 @@
                                     <th>Project Type</th>
                                     <th>Priority</th>
                                     <th>Display</th>
+                                    <th>Homepage</th>
                                     <th>Action</th>
                                 </tr>
                                 {% for done in what_Done %}
@@ -51,7 +52,10 @@
                                     <td> {{done.get_project_type_display}}</td>
                                     <td>{{done.priority}}</td>
                                     <td>
-                                        <input  onchange="change_swithc('{{done.id}}')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  done.display == 1 %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
+                                        <input  onchange="change_swithc('{{done.id}}', 'display')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  done.display %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
+                                    </td>
+                                    <td>
+                                        <input  onchange="change_swithc('{{done.id}}', 'homepage')" class="text-justify" type="checkbox" data-toggle="switchbutton" {% if  done.homepage  %} checked {% endif %} data-onstyle="outline-dark" data-offstyle="outline-primary">
                                     </td>
 
                                     <td>
@@ -276,10 +280,10 @@ $(document).ready(function() {
             allowClear: true
         }); 
     }
-    function change_swithc(id){
+    function change_swithc(id, type){
     
     let url = "{% url 'dashboard:status_what_done_url' %}";
-    var data = {'id': id, 'csrfmiddlewaretoken': csrf}
+    var data = {'id': id, 'csrfmiddlewaretoken': csrf, 'type': type}
     $.ajax({
         url: url,
         data: data,
