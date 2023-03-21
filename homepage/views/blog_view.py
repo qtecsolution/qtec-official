@@ -19,7 +19,7 @@ class BlogsView(View):
             handle_blog = handle_blog.first()
             top_4_blog = handle_blog.top_4_blog.select_related('blog_author').select_related('blog_category').all()
             random_blog = Blog.objects.filter(display=True).exclude(
-                id__in=top_4_blog.values_list('id', flat=True)).order_by('?')
+                id__in=top_4_blog.values_list('id', flat=True)).order_by('-id')
             highlight_blog = handle_blog.highlight_blog
         else:
             handle_blog = None
@@ -51,7 +51,7 @@ class AllBlogView(View):
 
     def get(self, request):
         page = request.GET.get('page')
-        blogs = Blog.objects.filter(display=True).order_by('?')
+        blogs = Blog.objects.filter(display=True).order_by('-id')
         paginator = Paginator(blogs, settings.PER_PAGE)
         try:
             blogs = paginator.page(page)

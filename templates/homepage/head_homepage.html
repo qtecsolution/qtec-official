@@ -16,6 +16,13 @@
 	<meta property="og:type" content="article">
 
 	<!-- OPEN-GRAPH META TAGS -->
+
+    {% elif request.resolver_match.url_name == 'service_url' %}
+	<meta property="og:title" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
+	<meta property="og:description" content="Qtec Solution Limited Software Development company delivers enterprise applications in planned time based on the requirements by the finest software developers, ui ux designers and devops and fully managed service.">
+	<meta property="og:image" content="{% static 'homepage/assets/images/Qtec-mobile-application-development-service.jpg' %}">
+	<meta property="og:type" content="website">
+	<!-- OPEN-GRAPH META TAGS -->
     {% else %}
 
 	<meta property="og:title" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
