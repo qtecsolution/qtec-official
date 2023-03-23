@@ -10,7 +10,9 @@ class CurrentOpportunitiesView(View):
     def get(self, request):
         current_opportunities = CurrentOpportunities.objects.all().order_by('-deadline')
         applicant_type = APPLICENT_STATUS
+        all_id = list(current_opportunities.values_list('id', flat= True))
         context = {
+            'all_id': all_id,
             "current_opportunities" : current_opportunities,
             "applicant_type" : applicant_type,
         }
