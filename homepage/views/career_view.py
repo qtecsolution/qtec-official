@@ -1,7 +1,8 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View
-
+from django.core.mail import EmailMessage
+import os
 from dashboard.models import CurrentOpportunities, ApplyForThisPosition
 
 
@@ -16,6 +17,18 @@ class CareerView(View):
             'is_careers' : is_careers
         }
         return render(request, 'career/career_page.html', context)
+
+
+def send_career_email_to_qtec(subject, file_contents, first_name, last_name, email):
+    subject = subject
+    body ="First Name: {} , Last Name: {}, Email: {}".format(first_name, last_name, email)
+    from_email = 'contact.qtec@gmail.com'
+    to_email = ['qtec.careers@gmail.com']
+
+    email = EmailMessage(subject, body, from_email, to_email)
+
+    email.attach('{} cv for position {}'.format(first_name, subject), file_contents, 'application/pdf')
+    email.send()
 
 
 class CareerDetailsView(View):
@@ -36,5 +49,12 @@ class CareerDetailsView(View):
         careeremail = data.get('careeremail')
         image = request.FILES.get('image')
         career_id= data.get('career_id')
-        ApplyForThisPosition.objects.create(current_opportunities_id= career_id ,first_name= firstname, last_name= lastname, email= careeremail, upload_cv= image)
+        
+        career = CurrentOpportunities.objects.get(id = career_id)
+
+        apply_ = ApplyForThisPosition.objects.create(current_opportunities_id= career_id ,first_name= firstname, last_name= lastname, email= careeremail, upload_cv= image)
+        title = career.title
+        file_contents = apply_.upload_cv.read()
+        send_career_email_to_qtec(title, file_contents, firstname, lastname, careeremail)
+        
         return JsonResponse({})
