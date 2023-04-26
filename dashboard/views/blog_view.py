@@ -121,7 +121,7 @@ class HandleBlogView(View):
             'top_4_blog': top_4_blog,
             'highlight_blog':highlight_blog,
         }
-
+        
         return render(request, 'handle_blog.html', context)
 
     def post(self, request):
@@ -159,6 +159,7 @@ class BlogAuthorView(View):
             blog_author = BlogAuthor()
             blog_author.name = data.get('name')
             blog_author.qualification = data.get('qualification')
+            blog_author.bio = data.get('bio')
             blog_author.image = request.FILES.get('image')
             blog_author.save()
             messages.success(request, 'Data save successful!')
@@ -177,6 +178,7 @@ class BlogAuthorView(View):
             blog_author = BlogAuthor.objects.filter(id=request_id).first()
             blog_author.name = data.get('name')
             blog_author.qualification = data.get('qualification')
+            blog_author.bio = data.get('bio')
             image = request.FILES.get('image')
 
             if image:

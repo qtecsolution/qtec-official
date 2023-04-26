@@ -157,6 +157,7 @@ class Subscribe(models.Model):
 class BlogAuthor(models.Model):
     name = models.CharField(max_length=100)
     qualification = models.TextField(blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='blog/author/', blank=True, null=True)
 
     def __str__(self):

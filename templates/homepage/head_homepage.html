@@ -30,7 +30,8 @@
 		{% if title == 'Home' %}
 			Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development, Machine Learning, UI UX Design, Android and iOS mobile application development
 		{% elif title == 'BLOG DETAILS' %}
-		  {{ blog.title }} - Qtec Solution Limited
+		  {% comment %} {{ blog.title }} - Qtec Solution Limited {% endcomment %}
+		  {{ blog.title }}
 		{% else %}
 			{{ title }} - Qtec Solution Limited	
 		{% endif %}

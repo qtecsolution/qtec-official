@@ -34,6 +34,7 @@ urlpatterns= [
 
     path('services/', ServiceView.as_view(), name="service_url"),
     path('service-details/<str:slug>/', ServiceDetailsView.as_view(), name="service_details_url"),
+    #path('/<str:slug>/', ServiceDetailsView.as_view(), name="service_details_url"),
 
     path('technologies/<str:slug>/', TechnologiesView.as_view(), name="technologies_url"),
 
