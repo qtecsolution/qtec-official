@@ -8,7 +8,11 @@ import debug_toolbar
 from homepage.sitemaps import *
 sitemaps = {
     'static': StaticViewSitemap,
-    'blogs': BlogSitemap
+    'blogs': BlogSitemap,
+    'case_study': WhatProjectHaveWeDoneSitemap,
+    'carrer': CurrentOpportunitiesSitemap,
+    'service': ServiceDetailsProjectSitemap,
+    'tech': TechnologiesSitemap,
 }
 
 urlpatterns = [
