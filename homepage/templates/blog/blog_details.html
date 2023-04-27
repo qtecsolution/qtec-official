@@ -1,6 +1,6 @@
 {% extends 'homepage/base_homepage.html' %}
 {% load social_share %}
-
+{% load static %}
 {% block content %}
 <style>
   .image.image_resized {
@@ -144,7 +144,12 @@
               <a href="/blog/{{ i.slug }}/" class="bloglink">
                 <div class="card-article">
                   <div class="card-article-header" style="object-fit: contain;">
-                    <img src="{{ i.image.url }}" alt="card-thumbnail">
+                    {% comment %} <img src="{{ i.thumbnail.url }}" alt="card-thumbnail"> {% endcomment %}
+                    {% if i.thumbnail %}
+                      <img style="object-fit: fill;" src="{{ i.thumbnail.url }}" alt="card-thumbnail">
+                    {% else %}
+                      <img style="object-fit: fill;" src="{% static 'images/default.jpg' %}" alt="card-thumbnail">
+                    {% endif %}
                   </div>
 
                   <div class="card-article-body">

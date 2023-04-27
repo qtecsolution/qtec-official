@@ -1,5 +1,5 @@
 {% extends 'homepage/base_homepage.html' %}
-
+{% load static %}
 {% block content %}
 <style>
   .articledescript p {
@@ -29,7 +29,12 @@
           <a href="/blog/{{ i.slug }}/" class="bloglink">
             <div class="card-article">
               <div class="card-article-header" >
-                <img style="object-fit: contain;" src="{{ i.image.url }}" alt="card-thumbnail">
+                {% comment %} <img style="object-fit: fill;" src="{{ i.image.url }}" alt="card-thumbnail"> {% endcomment %}
+                {% if i.thumbnail %}
+                <img style="object-fit: fill;" src="{{ i.thumbnail.url }}" alt="card-thumbnail">
+                {% else %}
+                <img style="object-fit: fill;" src="{% static 'images/default.jpg' %}" alt="card-thumbnail">
+                {% endif %}
               </div>
 
               <div class="card-article-body">
@@ -65,8 +70,10 @@
           <div class="row g-4">
             <div class="col-lg-6 col-12">
               <div class="card-blog-thumbnail">
-                {% if highlight_blog.image %}
-                  <img src="{{ highlight_blog.image.url }}" alt="blog-thumbnail">
+                {% if highlight_blog.thumbnail %}
+                  <img src="{{ highlight_blog.thumbnail.url }}" alt="blog-thumbnail">
+                {% else %}
+                  <img style="object-fit: fill;" src="{% static 'images/default.jpg' %}" alt="card-thumbnail">
                 {% endif %}
               </div>
             </div>
@@ -109,7 +116,11 @@
             <a href="/blog/{{ i.slug }}/" class="bloglink">
               <div class="card-article">
                 <div class="card-article-header">
-                  <img style="object-fit: contain;" src="{{ i.image.url }}" alt="card-thumbnail">
+                {% if i.thumbnail %}
+                  <img style="object-fit: fill;" src="{{ i.thumbnail.url }}" alt="card-thumbnail">
+                {% else %}
+                  <img style="object-fit: fill;" src="{% static 'images/default.jpg' %}" alt="card-thumbnail">
+                {% endif %}
                 </div>
 
                 <div class="card-article-body">

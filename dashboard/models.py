@@ -180,6 +180,7 @@ class Blog(models.Model):
     description = models.TextField()
     og_description = models.TextField(null=True)
     image = models.ImageField(upload_to='blog/')
+    thumbnail = models.ImageField(upload_to='blog/thumbnail/', null=True, blank=True)
     alt_text = models.CharField(max_length=250, null=True, default=True)
     tags = models.TextField(null=True, blank=True)
     created_at = models.DateField(auto_now_add=True, null=True)
