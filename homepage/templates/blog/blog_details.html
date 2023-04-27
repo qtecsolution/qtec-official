@@ -38,10 +38,10 @@
                     <div class="authorinfo">
                       <h5 class="authorname">Author: {{ blog.blog_author.name }}, {{ blog.blog_author.qualification }}</h5>
                       
-                      <p class="date" style="font-size:12px; font-style: italic">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <p class="date" style="font-size:12px; font-style: italic">{{ blog.blog_author.bio }}</p>
                       
-                      <p class="date">Published {{ blog.created_at }}</p>
-                      <p class="date">Modified {{ blog.updated_at }}</p>
+                      <p class="date">Published: {{ blog.created_at }}</p>
+                      <p class="date">Modified: {{ blog.updated_at }}</p>
                     </div>
                     <!-- AUTHOR-INFO END -->
 

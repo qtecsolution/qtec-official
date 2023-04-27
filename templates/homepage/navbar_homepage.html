@@ -45,7 +45,9 @@
 						</li>
 
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:product_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a>
+							{% comment %} <a href="{% url 'homepage:product_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a> {% endcomment %}
+							
+							<a href="{% url 'homepage:case_study_list_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'case_study_list_url' %} active {% endif %}">Case Studies</a>
 						</li>
 
 						<li class="desktoplist-item">

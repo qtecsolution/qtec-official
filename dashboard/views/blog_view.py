@@ -88,11 +88,14 @@ class BlogView(View):
         obj.description = data.get('description')
         obj.og_description = data.get('og_description')
         image = request.FILES.get('image')
+        thumbnail = request.FILES.get('thumbnail')
         obj.alt_text = data.get('alt_text');
         obj.title = data.get('title')
         url = data.get('url')
         if image:
             obj.image = image
+        if thumbnail:
+            obj.thumbnail = thumbnail
         obj.tags = data.get('tags')
         if flag=='created':
             obj.created_at =  date.today()
