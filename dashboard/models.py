@@ -179,6 +179,8 @@ class Blog(models.Model):
     title = models.TextField()
     description = models.TextField()
     og_description = models.TextField(null=True)
+    meta_description = models.TextField(null=True)
+    keywords = models.TextField(null=True)
     image = models.ImageField(upload_to='blog/')
     thumbnail = models.ImageField(upload_to='blog/thumbnail/', null=True, blank=True)
     alt_text = models.CharField(max_length=250, null=True, default=True)

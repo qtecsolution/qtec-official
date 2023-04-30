@@ -86,6 +86,8 @@ class BlogView(View):
         obj.blog_author_id = data.get('blog_author')
         obj.blog_category_id = data.get('blog_category')
         obj.description = data.get('description')
+        obj.meta_description = data.get('meta_description')
+        obj.keywords = data.get('keywords')
         obj.og_description = data.get('og_description')
         image = request.FILES.get('image')
         thumbnail = request.FILES.get('thumbnail')
