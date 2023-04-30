@@ -33,6 +33,8 @@ class AlreadyDoneView(View):
             what_Done.image = request.FILES.get('image')
             what_Done.project_type = data.getlist('project_type')
             what_Done.priority = data.get('priority')
+            what_Done.meta_description = data.get('meta_description')
+            what_Done.keywords = data.get('keywords')
             what_Done.save()
             what_Done.technology.add(*technology_id)
             messages.success(request, 'Data save successful!')
@@ -43,6 +45,8 @@ class AlreadyDoneView(View):
             what_Done = WhatProjectHaveWeDone.objects.get(id=request_id)
             what_Done.name = data.get('name')
             technology_id = data.getlist('technology')
+            what_Done.meta_description = data.get('meta_description')
+            what_Done.keywords = data.get('keywords')
             what_Done.project_type = data.getlist('project_type')
             image = request.FILES.get('image')
             if image:
@@ -84,6 +88,8 @@ class CaseStudyEditView(View):
         case_study_details = CaseStudyDetails.objects.filter(project_we_have_done=id).first()
         case_study_details.case_study_about = data.get('case_study_about')
         case_study_details.client_requirement = data.get('client_requirement')
+        case_study_details.meta_description = data.get('meta_description')
+        case_study_details.keywords = data.get('keywords')
         case_study_image = file.get('case_study_image')
         if case_study_image:
             case_study_details.case_study_image = case_study_image

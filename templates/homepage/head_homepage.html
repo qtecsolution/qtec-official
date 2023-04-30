@@ -18,6 +18,21 @@
 	<meta property="og:image" content="{{ blog.image.url }}">
 	<meta property="og:type" content="article">
 
+	{% elif request.resolver_match.url_name == 'service_details_url' %}
+	<meta name="keywords" content="{{ projects_done.keywords }}">
+	<meta name="description" content="{{ projects_done.meta_description }}">
+	<meta property="og:title" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
+	<meta property="og:description" content="{{ projects_done.meta_description }}">
+	<meta property="og:image" content="{% static 'homepage/assets/images/Qtec-mobile-application-development-service.jpg' %}">
+	<meta property="og:type" content="website">
+
+	{% elif request.resolver_match.url_name == 'case_study_details_url' %}
+	<meta name="keywords" content="{{ case_study_details.keywords }}">
+	<meta name="description" content="{{ case_study_details.meta_description }}">
+	<meta property="og:title" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
+	<meta property="og:description" content="{{ case_study_details.meta_description }}">
+	<meta property="og:image" content="{% static 'homepage/assets/images/Qtec-mobile-application-development-service.jpg' %}">
+	<meta property="og:type" content="website">
 	<!-- OPEN-GRAPH META TAGS -->
 
     {% else %}
