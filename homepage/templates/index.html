@@ -1095,7 +1095,11 @@
 							<a href="/blog/{{ blog.slug }}/" class="bloglink">
 								<div class="card-article">
 									<div class="card-article-header">
-										<img src="{{ blog.image.url }}" alt="card-thumbnail">
+										{% if blog.thumbnail %}
+											<img style="object-fit: fill;" src="{{ blog.thumbnail.url }}" alt="card-thumbnail">
+										{% else %}
+											<img style="object-fit: fill;" src="{% static 'images/default.jpg' %}" alt="card-thumbnail">
+										{% endif %}	
 									</div>
 
 									<div class="card-article-body">
