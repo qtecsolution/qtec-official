@@ -61,3 +61,8 @@ class AllBlogView(View):
             blogs = paginator.page(paginator.num_pages)
 
         return render(request, 'blog/all_blogs.html', {'blogs': blogs, 'title': 'ALL BLOGS'})
+
+
+class EBookView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'homepage/e-book.html')
