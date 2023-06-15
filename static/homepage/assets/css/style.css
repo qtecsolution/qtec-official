@@ -163,8 +163,7 @@ html {
   padding: 0;
   box-sizing: inherit;
 }
-*::before,
-*::after {
+*::before, *::after {
   box-sizing: inherit;
 }
 
@@ -259,92 +258,7 @@ video {
   border: 0;
   font: inherit;
 }
-a::-moz-selection,
-abbr::-moz-selection,
-acronym::-moz-selection,
-address::-moz-selection,
-applet::-moz-selection,
-article::-moz-selection,
-aside::-moz-selection,
-audio::-moz-selection,
-b::-moz-selection,
-big::-moz-selection,
-blockquote::-moz-selection,
-button::-moz-selection,
-body::-moz-selection,
-canvas::-moz-selection,
-caption::-moz-selection,
-center::-moz-selection,
-cite::-moz-selection,
-code::-moz-selection,
-dd::-moz-selection,
-del::-moz-selection,
-details::-moz-selection,
-dfn::-moz-selection,
-div::-moz-selection,
-dl::-moz-selection,
-dt::-moz-selection,
-em::-moz-selection,
-embed::-moz-selection,
-fieldset::-moz-selection,
-figcaption::-moz-selection,
-figure::-moz-selection,
-footer::-moz-selection,
-form::-moz-selection,
-h1::-moz-selection,
-h2::-moz-selection,
-h3::-moz-selection,
-h4::-moz-selection,
-h5::-moz-selection,
-h6::-moz-selection,
-header::-moz-selection,
-hgroup::-moz-selection,
-html::-moz-selection,
-i::-moz-selection,
-input::-moz-selection,
-iframe::-moz-selection,
-img::-moz-selection,
-ins::-moz-selection,
-kbd::-moz-selection,
-label::-moz-selection,
-legend::-moz-selection,
-li::-moz-selection,
-mark::-moz-selection,
-menu::-moz-selection,
-main::-moz-selection,
-nav::-moz-selection,
-object::-moz-selection,
-ol::-moz-selection,
-output::-moz-selection,
-option::-moz-selection,
-p::-moz-selection,
-pre::-moz-selection,
-q::-moz-selection,
-ruby::-moz-selection,
-s::-moz-selection,
-samp::-moz-selection,
-section::-moz-selection,
-small::-moz-selection,
-span::-moz-selection,
-strike::-moz-selection,
-strong::-moz-selection,
-sub::-moz-selection,
-summary::-moz-selection,
-select::-moz-selection,
-sup::-moz-selection,
-table::-moz-selection,
-tbody::-moz-selection,
-td::-moz-selection,
-tfoot::-moz-selection,
-th::-moz-selection,
-thead::-moz-selection,
-time::-moz-selection,
-tr::-moz-selection,
-tt::-moz-selection,
-u::-moz-selection,
-ul::-moz-selection,
-var::-moz-selection,
-video::-moz-selection {
+a::-moz-selection, abbr::-moz-selection, acronym::-moz-selection, address::-moz-selection, applet::-moz-selection, article::-moz-selection, aside::-moz-selection, audio::-moz-selection, b::-moz-selection, big::-moz-selection, blockquote::-moz-selection, button::-moz-selection, body::-moz-selection, canvas::-moz-selection, caption::-moz-selection, center::-moz-selection, cite::-moz-selection, code::-moz-selection, dd::-moz-selection, del::-moz-selection, details::-moz-selection, dfn::-moz-selection, div::-moz-selection, dl::-moz-selection, dt::-moz-selection, em::-moz-selection, embed::-moz-selection, fieldset::-moz-selection, figcaption::-moz-selection, figure::-moz-selection, footer::-moz-selection, form::-moz-selection, h1::-moz-selection, h2::-moz-selection, h3::-moz-selection, h4::-moz-selection, h5::-moz-selection, h6::-moz-selection, header::-moz-selection, hgroup::-moz-selection, html::-moz-selection, i::-moz-selection, input::-moz-selection, iframe::-moz-selection, img::-moz-selection, ins::-moz-selection, kbd::-moz-selection, label::-moz-selection, legend::-moz-selection, li::-moz-selection, mark::-moz-selection, menu::-moz-selection, main::-moz-selection, nav::-moz-selection, object::-moz-selection, ol::-moz-selection, output::-moz-selection, option::-moz-selection, p::-moz-selection, pre::-moz-selection, q::-moz-selection, ruby::-moz-selection, s::-moz-selection, samp::-moz-selection, section::-moz-selection, small::-moz-selection, span::-moz-selection, strike::-moz-selection, strong::-moz-selection, sub::-moz-selection, summary::-moz-selection, select::-moz-selection, sup::-moz-selection, table::-moz-selection, tbody::-moz-selection, td::-moz-selection, tfoot::-moz-selection, th::-moz-selection, thead::-moz-selection, time::-moz-selection, tr::-moz-selection, tt::-moz-selection, u::-moz-selection, ul::-moz-selection, var::-moz-selection, video::-moz-selection {
   background: #0876fc;
   color: #ffffff;
 }
@@ -482,20 +396,20 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input[type=number] {
   -moz-appearance: textfield;
 }
 
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
   display: none;
 }
-input[type="search"]::-webkit-search-decoration:focus,
-input[type="search"]::-webkit-search-cancel-button:focus,
-input[type="search"]::-webkit-search-results-button:focus,
-input[type="search"]::-webkit-search-results-decoration:focus {
+input[type=search]::-webkit-search-decoration:focus,
+input[type=search]::-webkit-search-cancel-button:focus,
+input[type=search]::-webkit-search-results-button:focus,
+input[type=search]::-webkit-search-results-decoration:focus {
   outline: none;
 }
 
@@ -514,13 +428,13 @@ textarea {
   color: transparent;
 }
 
-input[type="date"]::before {
+input[type=date]::before {
   content: attr(data-placeholder);
   width: 100%;
 }
 
-input[type="date"]:focus::before,
-input[type="date"]:valid::before {
+input[type=date]:focus::before,
+input[type=date]:valid::before {
   display: none;
 }
 
@@ -609,7 +523,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .header-nav .desktopmenu {
   margin-left: auto;
@@ -703,10 +617,7 @@ select {
   padding: 0.5rem 0.75rem;
   text-transform: uppercase;
 }
-.header-nav
-  .desktoplist
-  .desktopdropdown
-  .dropdownlist-link:hover:not(.active) {
+.header-nav .desktoplist .desktopdropdown .dropdownlist-link:hover:not(.active) {
   color: #0876fc;
 }
 .header-nav .desktoplist .desktopdropdown .dropdownlist-link.active {
@@ -905,7 +816,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .footer-content .footlogo-subscribe .subscribes {
   display: flex;
@@ -923,7 +834,7 @@ select {
 .footer-content .footlogo-subscribe .subscribe {
   background: #edf2f7;
   -webkit-backdrop-filter: blur(0.625rem);
-  backdrop-filter: blur(0.625rem);
+          backdrop-filter: blur(0.625rem);
   display: flex;
   align-items: center;
   padding: 0.3125rem 0.25rem;
@@ -992,7 +903,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .footer-content .footerinfo {
   display: flex;
@@ -1082,9 +993,7 @@ select {
 .footer-content .footerinfo-body .footerlist-link:not([disabled]):hover {
   color: rgb(252, 222, 8);
 }
-.footer-content
-  .footerinfo-body
-  .footerlist-link:not([disabled]):hover::before {
+.footer-content .footerinfo-body .footerlist-link:not([disabled]):hover::before {
   width: 100%;
 }
 .footer-content .footerinfo-body .contactlist {
@@ -1135,9 +1044,7 @@ select {
 .footer-content .footerinfo-body .contactlist-link:not([disabled]):hover {
   color: rgb(252, 222, 8);
 }
-.footer-content
-  .footerinfo-body
-  .contactlist-link:not([disabled]):hover::before {
+.footer-content .footerinfo-body .contactlist-link:not([disabled]):hover::before {
   width: 100%;
 }
 .footer-content .footerinfo-body .contactlist .address {
@@ -1637,8 +1544,7 @@ select {
   0% {
     transform: scale(1);
     opacity: 1;
-    box-shadow: 0 0 0.0625rem rgba(12, 26, 75, 0.24),
-      0 0.1875rem 0.5rem -0.0625rem rgba(50, 50, 71, 0.05);
+    box-shadow: 0 0 0.0625rem rgba(12, 26, 75, 0.24), 0 0.1875rem 0.5rem -0.0625rem rgba(50, 50, 71, 0.05);
   }
   100% {
     transform: scale(1.1);
@@ -1730,10 +1636,6 @@ select {
   }
 }
 
-.feature {
-  height: 100%;
-}
-
 .feature-1,
 .feature-4 {
   background: #f7f9ff;
@@ -1780,7 +1682,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transition: transform 200ms ease-in-out;
 }
 .card-article-header img:not([disabled]):hover {
@@ -1821,7 +1723,6 @@ select {
   font-size: 0.875rem;
   font-weight: normal;
   line-height: 1.7142857143;
-  font-feature-settings: "salt";
 }
 .card-article-body .articledescript .articletext {
   color: #718096;
@@ -1830,7 +1731,6 @@ select {
   font-size: 0.875rem;
   font-weight: normal;
   line-height: 1.7142857143;
-  font-feature-settings: "salt";
 }
 .card-article-body .articlelink {
   color: #2d3748;
@@ -1839,7 +1739,6 @@ select {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.7142857143;
-  font-feature-settings: "salt";
   transition: color 200ms ease-in-out;
 }
 .card-article-body .articlelink:not([disabled]):hover {
@@ -1915,7 +1814,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transition: transform 200ms ease-in-out;
 }
 .card-project-header img:not([disabled]):hover {
@@ -1998,6 +1897,7 @@ select {
   gap: 1.375rem;
   background: #ffffff;
   padding: 1.25rem;
+  height: 100%;
 }
 @media screen and (min-width: 48rem) {
   .feature {
@@ -2128,7 +2028,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .card-technology-title {
   color: #4a5568;
@@ -2184,6 +2084,7 @@ select {
   border-radius: 1rem;
   border-radius: 1rem;
   overflow: hidden;
+  height: 100%;
 }
 .card-blog-thumbnail {
   overflow: hidden;
@@ -2194,7 +2095,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .card-blog-details {
   padding: 1.5rem;
@@ -2482,7 +2383,6 @@ select {
   font-size: 0.875rem;
   font-weight: normal;
   line-height: 1.4285714286;
-  font-feature-settings: "salt";
 }
 .card-opportunities-body .link {
   color: #0876fc;
@@ -2600,7 +2500,6 @@ select {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
-  font-feature-settings: "salt";
   transition: color 200ms ease-in-out;
 }
 .service-body .learnmore:not([disabled]):hover {
@@ -2641,7 +2540,7 @@ select {
   height: 100%;
   transition: transform 200ms ease-in-out;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .card-team-header img:not([disabled]):hover {
   transform: scale(1.1);
@@ -2749,6 +2648,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: 100%;
 }
 @media screen and (min-width: 62rem) {
   .cardanalysis {
@@ -2812,6 +2712,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  height: 100%;
 }
 .cardcommerce-header {
   display: flex;
@@ -2850,7 +2751,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .cardcommerce-body .text {
   color: #4a5568;
@@ -2957,7 +2858,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .card-testimoni .userinfo .detail {
   width: calc(100% - 4.625rem);
@@ -3005,7 +2906,6 @@ select {
   flex-direction: column;
   gap: 1.5rem;
   padding: 1rem;
-  height: 100%;
 }
 @media screen and (min-width: 36rem) {
   .cardbook {
@@ -3029,7 +2929,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .cardbook-header .title {
   font-size: 1rem;
@@ -3042,6 +2942,16 @@ select {
 .cardbook-body {
   color: #718096;
   font-size: 0.8125rem;
+}
+.cardbook-body .text {
+  color: inherit;
+  font: inherit;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  max-height: 5rem;
 }
 
 .cardreview {
@@ -3076,7 +2986,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .cardreview .reviewinfo {
   margin-bottom: 1.25rem;
@@ -3085,6 +2995,12 @@ select {
   color: #718096;
   font-size: 0.875rem;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  max-height: 5.25rem;
 }
 .cardreview .reviwerinfo {
   display: flex;
@@ -3185,7 +3101,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .offcanvas-header .btn-close {
   height: 1.5rem;
@@ -3540,7 +3456,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .error-link {
   width: 12.5rem;
@@ -3570,7 +3486,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .comingsoon-info .comingsoon-text {
   color: #0876fc;
@@ -3590,8 +3506,7 @@ select {
 =======================================================**/
 .pagination {
   gap: 0.125rem;
-  box-shadow: 0 0 0.0625rem rgba(12, 26, 75, 0.24),
-    0 0.1875rem 0.5rem -0.0625rem rgba(50, 50, 71, 0.05);
+  box-shadow: 0 0 0.0625rem rgba(12, 26, 75, 0.24), 0 0.1875rem 0.5rem -0.0625rem rgba(50, 50, 71, 0.05);
 }
 .pagination .page-item.active .page-link {
   background: #0876fc;
@@ -3600,8 +3515,7 @@ select {
 .pagination .page-item:not(:first-child) .page-link {
   margin-left: 0;
 }
-.pagination .page-item:first-child .page-link,
-.pagination .page-item:last-child .page-link {
+.pagination .page-item:first-child .page-link, .pagination .page-item:last-child .page-link {
   border-radius: 0rem;
   border-radius: 0rem;
 }
@@ -3843,8 +3757,7 @@ select {
     right: 3rem;
   }
 }
-.swiper-button-next,
-.swiper-button-prev {
+.swiper-button-next, .swiper-button-prev {
   background: transparent;
   border: none;
   height: 1.75rem;
@@ -3857,8 +3770,7 @@ select {
   top: auto;
   margin-top: 0;
 }
-.swiper-button-next .icon,
-.swiper-button-prev .icon {
+.swiper-button-next .icon, .swiper-button-prev .icon {
   height: 1.75rem;
   width: 1.75rem;
   display: flex;
@@ -3866,37 +3778,33 @@ select {
   justify-content: center;
   overflow: hidden;
 }
-.swiper-button-next .icon svg,
-.swiper-button-prev .icon svg {
+.swiper-button-next .icon svg, .swiper-button-prev .icon svg {
   width: 100%;
   height: 100%;
 }
-.swiper-button-next .icon svg path,
-.swiper-button-prev .icon svg path {
+.swiper-button-next .icon svg path, .swiper-button-prev .icon svg path {
   fill: #4a5568;
 }
-.swiper-button-next::after,
-.swiper-button-prev::after {
+.swiper-button-next::after, .swiper-button-prev::after {
   width: 0;
   height: 0;
   content: "";
   display: none;
 }
-.swiper-button-next:not([disabled]):hover .icon svg path,
-.swiper-button-prev:not([disabled]):hover .icon svg path {
+.swiper-button-next:not([disabled]):hover .icon svg path, .swiper-button-prev:not([disabled]):hover .icon svg path {
   fill: #0876fc;
 }
 
 .swiper-slide {
   flex-shrink: 1;
+  height: 100%;
 }
 
 /**=======================================================**
                         ABOUT-BANNER START
 **=======================================================**/
 .about-banner {
-  background: url(../images/about/about-banner.webp) no-repeat center
-    center/cover;
+  background: url(../images/about/about-banner.webp) no-repeat center center/cover;
   position: relative;
 }
 .about-banner-content {
@@ -4136,7 +4044,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 /**=======================================================**
@@ -4209,7 +4117,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transition: transform 200ms ease-in-out;
 }
 .aboutgallery-body .gallery-images .primary-image img:not([disabled]):hover,
@@ -4399,8 +4307,7 @@ select {
                     BLOG BANNER START
 **=======================================================**/
 .blogbanner {
-  background: url(../images/blog/blog-hero-bg.webp) no-repeat center
-    center/cover;
+  background: url(../images/blog/blog-hero-bg.webp) no-repeat center center/cover;
   min-height: 30vh;
   position: relative;
   display: flex;
@@ -4570,7 +4477,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   transition: transform 200ms ease-in-out;
 }
 .blogdetails-thumbnail img:not([disabled]):hover {
@@ -4655,21 +4562,12 @@ select {
     gap: 1.5rem;
   }
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .authorinfo {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .authorinfo {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .authorinfo
-  .authorname {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .authorinfo .authorname {
   font-family: "Titillium Web";
   font-style: normal;
   font-size: 0.875rem;
@@ -4678,12 +4576,7 @@ select {
   color: #718096;
 }
 @media screen and (min-width: 48rem) {
-  .blogdetails
-    .bloginfo
-    .blogdescriptions-header
-    .authorinfo-shareinfo
-    .authorinfo
-    .authorname {
+  .blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .authorinfo .authorname {
     font-family: "Titillium Web";
     font-style: normal;
     font-size: 1rem;
@@ -4691,12 +4584,7 @@ select {
     line-height: 1.625;
   }
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .authorinfo
-  .date {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .authorinfo .date {
   font-family: "Titillium Web";
   font-style: normal;
   font-size: 0.875rem;
@@ -4704,21 +4592,12 @@ select {
   line-height: 1.7142857143;
   color: #718096;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sharetitle {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sharetitle {
   font-family: "Titillium Web";
   font-style: normal;
   font-size: 0.75rem;
@@ -4726,12 +4605,7 @@ select {
   line-height: 1.6666666667;
   color: #718096;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -4739,25 +4613,14 @@ select {
   align-items: center;
   gap: 0.5rem;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist-link {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist-link {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 0.25rem;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist-link
-  .icon {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist-link .icon {
   height: 2.75rem;
   width: 2.75rem;
   padding: 0.875rem;
@@ -4769,35 +4632,14 @@ select {
   background: rgba(157, 157, 157, 0.04);
   transition: all 200ms ease-in-out;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist-link
-  .icon
-  svg {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist-link .icon svg {
   width: 100%;
   height: 100%;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist-link
-  .icon
-  svg
-  path {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist-link .icon svg path {
   transition: all 200ms ease-in-out;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist-link
-  .text {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist-link .text {
   font-family: "Titillium Web";
   font-style: normal;
   font-size: 0.75rem;
@@ -4807,33 +4649,13 @@ select {
   text-align: center;
   transition: all 200ms ease-in-out;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist-link:not([disabled]):hover
-  .icon {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist-link:not([disabled]):hover .icon {
   background: #d2e6fe;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist-link:not([disabled]):hover
-  .icon
-  svg
-  path {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist-link:not([disabled]):hover .icon svg path {
   fill: #0876fc;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-header
-  .authorinfo-shareinfo
-  .shareinfo
-  .sociallist-link:not([disabled]):hover
-  .text {
+.blogdetails .bloginfo .blogdescriptions-header .authorinfo-shareinfo .shareinfo .sociallist-link:not([disabled]):hover .text {
   color: #0876fc;
 }
 .blogdetails .bloginfo .blogdescriptions .divider {
@@ -4873,12 +4695,7 @@ select {
   flex-direction: column;
   gap: 0.25rem;
 }
-.blogdetails
-  .bloginfo
-  .blogdescriptions-body
-  .detail
-  .description
-  .descriptiontext {
+.blogdetails .bloginfo .blogdescriptions-body .detail .description .descriptiontext {
   font-family: "Titillium Web";
   font-style: normal;
   font-size: 1rem;
@@ -4887,12 +4704,7 @@ select {
   color: #718096;
 }
 @media screen and (min-width: 48rem) {
-  .blogdetails
-    .bloginfo
-    .blogdescriptions-body
-    .detail
-    .description
-    .descriptiontext {
+  .blogdetails .bloginfo .blogdescriptions-body .detail .description .descriptiontext {
     font-family: "Titillium Web";
     font-style: normal;
     font-size: 1.125rem;
@@ -5071,7 +4883,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   position: relative;
   z-index: 2;
 }
@@ -5186,7 +4998,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transition: transform 200ms ease-in-out;
 }
 .client-requirements .requirements-thumbnail img:not([disabled]):hover {
@@ -5380,7 +5192,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 /**=======================================================**
@@ -5451,8 +5263,7 @@ select {
   flex-direction: column;
   gap: 2.5rem;
   text-align: center;
-  background: url(../images/subscribe/subscribeBg.svg) no-repeat center
-    center/cover;
+  background: url(../images/subscribe/subscribeBg.svg) no-repeat center center/cover;
   padding: 3rem 0.5rem 4rem;
 }
 @media screen and (min-width: 62rem) {
@@ -5519,7 +5330,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .career-hero-content {
   display: flex;
@@ -5815,8 +5626,7 @@ select {
     order: 0;
   }
 }
-.career-banner-content .career-thumbnail svg,
-.career-banner-content .career-thumbnail img {
+.career-banner-content .career-thumbnail svg, .career-banner-content .career-thumbnail img {
   width: 100%;
   height: 100%;
 }
@@ -6242,12 +6052,7 @@ select {
   padding: 0.375rem 1.25rem;
   transition: all 200ms ease-in-out;
 }
-.career-apply
-  .apply-body
-  .applyform
-  .inputbox
-  .upload-info
-  .btn-choose:not([disabled]):hover {
+.career-apply .apply-body .applyform .inputbox .upload-info .btn-choose:not([disabled]):hover {
   background: #505780;
   color: #e4ecf7;
 }
@@ -6538,12 +6343,10 @@ select {
   font-weight: 500;
   line-height: 1;
   padding: 0.96875rem 1rem;
-  background: #ffffff
-    url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_102_11830' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='11' height='11'%3E%3Cpath d='M4.98252 7.65869L1.68511 3.89022C1.29615 3.4457 1.61184 2.75 2.20251 2.75H8.79733C9.388 2.75 9.70369 3.4457 9.31473 3.89022L6.01732 7.65869C5.74341 7.97173 5.25643 7.97173 4.98252 7.65869Z' fill='black'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_102_11830)'%3E%3Crect width='11' height='11' fill='%23B5B5BD'/%3E%3C/g%3E%3C/svg%3E%0A")
-    no-repeat center right 3%;
+  background: #ffffff url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_102_11830' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='11' height='11'%3E%3Cpath d='M4.98252 7.65869L1.68511 3.89022C1.29615 3.4457 1.61184 2.75 2.20251 2.75H8.79733C9.388 2.75 9.70369 3.4457 9.31473 3.89022L6.01732 7.65869C5.74341 7.97173 5.25643 7.97173 4.98252 7.65869Z' fill='black'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_102_11830)'%3E%3Crect width='11' height='11' fill='%23B5B5BD'/%3E%3C/g%3E%3C/svg%3E%0A") no-repeat center right 3%;
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 .contactform .forminfo .inputbox .selectfield option {
   color: #000000;
@@ -6900,14 +6703,13 @@ select {
   gap: 1rem;
   background: #ffffff;
   -webkit-backdrop-filter: blur(0.625rem);
-  backdrop-filter: blur(0.625rem);
+          backdrop-filter: blur(0.625rem);
   border: solid 0.0625rem #e2e8f0;
   border-radius: 1rem;
   border-radius: 1rem;
   padding: 1.5rem 1.5rem 1rem;
   filter: drop-shadow(0 0 0.0625rem rgba(12, 26, 75, 0.24));
-  box-shadow: 0 0 0.0625rem rgba(12, 26, 75, 0.24),
-    0 0.1875rem 0.5rem -0.0625rem rgba(50, 50, 71, 0.05);
+  box-shadow: 0 0 0.0625rem rgba(12, 26, 75, 0.24), 0 0.1875rem 0.5rem -0.0625rem rgba(50, 50, 71, 0.05);
 }
 @media screen and (min-width: 36rem) {
   .homebanner-descriptions .card-banner {
@@ -7149,7 +6951,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   filter: grayscale(1);
   transition: all 200ms ease-in-out;
 }
@@ -7235,7 +7037,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 @media screen and (min-width: 36rem) {
   .homevideo .videobox {
@@ -7320,11 +7122,7 @@ select {
   padding: 0;
   background: transparent;
 }
-.ourservices-body
-  .services
-  .accordion
-  .nav.nav-tabs
-  .nav-link:hover:not(.active) {
+.ourservices-body .services .accordion .nav.nav-tabs .nav-link:hover:not(.active) {
   border-radius: 0rem;
   border-radius: 0rem;
   filter: none;
@@ -7343,7 +7141,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transition: transform 200ms ease-in-out;
 }
 .ourservices-body .tab-content .tab-thumbnail img:not([disabled]):hover {
@@ -7569,7 +7367,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .products .products-description {
   display: flex;
@@ -7588,7 +7386,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .products .products-description .squarelogo {
   height: 12.375rem;
@@ -7602,7 +7400,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .products .products-description .prodinfo {
   max-width: 100%;
@@ -7956,7 +7754,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .serviceadvantage-details {
   display: flex;
@@ -8129,7 +7927,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .serviceconsider .cardconsider {
   display: flex;
@@ -8500,10 +8298,7 @@ select {
     width: 26.875rem;
   }
 }
-.servicedeveloped .list-group-item.active.analysis,
-.servicedeveloped .list-group-item.active.development,
-.servicedeveloped .list-group-item.active.testing,
-.servicedeveloped .list-group-item.active.maintenance {
+.servicedeveloped .list-group-item.active.analysis, .servicedeveloped .list-group-item.active.development, .servicedeveloped .list-group-item.active.testing, .servicedeveloped .list-group-item.active.maintenance {
   opacity: 1;
 }
 .servicedeveloped .list-group-item:hover:not(.active) {
@@ -8991,7 +8786,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .servicebusiness .business {
   display: flex;
@@ -9227,7 +9022,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .recentwork .recentproject {
   display: flex;
@@ -9368,8 +9163,7 @@ select {
                     DETAILS BANNER START
 **=======================================================**/
 .details-banner {
-  background: url(../images/service-details/banner.webp) no-repeat center
-    center/cover;
+  background: url(../images/service-details/banner.webp) no-repeat center center/cover;
   min-height: 100vh;
   position: relative;
   display: flex;
@@ -9387,13 +9181,9 @@ select {
   }
 }
 .details-banner-content .cardbanner {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
   -webkit-backdrop-filter: blur(1.125rem);
-  backdrop-filter: blur(1.125rem);
+          backdrop-filter: blur(1.125rem);
   padding: 1.25rem;
   position: relative;
   display: flex;
@@ -9452,14 +9242,10 @@ select {
   }
 }
 .details-banner-content .cardbanner .btn-expl {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
   color: #ffffff;
   -webkit-backdrop-filter: blur(1.125rem);
-  backdrop-filter: blur(1.125rem);
+          backdrop-filter: blur(1.125rem);
   font-family: "Titillium Web";
   font-style: normal;
   font-size: 0.875rem;
@@ -9592,7 +9378,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .whatcando-body .thumborder .thumbbox .whatcanthumb img:not([disabled]):hover {
   transform: scale(1.05);
@@ -9721,7 +9507,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   position: relative;
   z-index: 100;
 }
@@ -9837,7 +9623,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .ourtechnologies .technologiesuse .techbox .technology-1 {
   background: rgba(255, 245, 0, 0.3);
@@ -10020,7 +9806,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
 }
 .ourclients-body .client-1 {
   background: rgba(232, 182, 235, 0.2);
@@ -10286,7 +10072,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   position: relative;
   z-index: 2;
 }
@@ -10370,7 +10156,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .servicesec-title {
   color: #4a5568;
@@ -10506,7 +10292,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .servicesec.servgap {
   margin-bottom: 3rem;
@@ -10686,7 +10472,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .servicedata-body {
   display: flex;
@@ -10725,7 +10511,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .servicedata-body .accessibility-header .text {
   color: #ffffff;
@@ -10879,7 +10665,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 /**=======================================================**
@@ -11218,7 +11004,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 /**=======================================================**
@@ -11642,7 +11428,7 @@ select {
 .servicepolicy .policy-thumbnail img {
   width: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .servicepolicy .policy-thumb {
   width: 100%;
@@ -11656,7 +11442,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .servicepolicy .policy-details {
   display: flex;
@@ -11943,7 +11729,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .designservice-details {
   display: flex;
@@ -12172,8 +11958,7 @@ select {
   width: 1rem;
   overflow: hidden;
 }
-.servicefaq-body .accordion-button .plusminus::before,
-.servicefaq-body .accordion-button .plusminus::after {
+.servicefaq-body .accordion-button .plusminus::before, .servicefaq-body .accordion-button .plusminus::after {
   content: "";
   display: block;
   background: #4a5568;
@@ -12325,7 +12110,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-  object-fit: contain;
+     object-fit: contain;
   position: relative;
   z-index: 100;
 }
@@ -12470,7 +12255,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .inthisbook {
@@ -12614,7 +12399,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .keytopics-detail .topics {
   display: flex;
@@ -12673,7 +12458,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .authorsection .detail {
   display: flex;
@@ -12692,7 +12477,7 @@ select {
 }
 .authorsection .detail .authorinfo {
   padding-bottom: 2.5rem;
-  border-bottom: solid 0.0625rem #dde4e9;
+  border-bottom: solid 0.0625rem #DDE4E9;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -12713,12 +12498,12 @@ select {
   }
 }
 .authorsection .detail .authorinfo .text {
-  color: #f7f7f7;
+  color: #F7F7F7;
   font-size: 1rem;
   line-height: 1.6;
 }
 .authorsection .detail .authortext {
-  color: #f7f7f7;
+  color: #F7F7F7;
   font-size: 1rem;
 }
 .authorsection .icon {
@@ -12849,7 +12634,7 @@ select {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .getbook-body .detail {
   display: flex;
