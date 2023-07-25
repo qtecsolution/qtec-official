@@ -273,8 +273,8 @@ class ServiceDetailsProject(models.Model):
 @receiver(post_save, sender=Blog)
 @receiver(post_save, sender=WhatProjectHaveWeDone)
 def slug_generator(sender, instance, created, **kwargs):
-    if created and sender == WhatProjectHaveWeDone:
-        CaseStudyDetails.objects.create(project_we_have_done=instance)
+    # if created and sender == WhatProjectHaveWeDone:
+    #     CaseStudyDetails.objects.create(project_we_have_done=instance)
     if instance.slug is None:
         slug_object = SlugGeneratorMixin()
         slug = slug_object.unique_slug_generator(instance)
