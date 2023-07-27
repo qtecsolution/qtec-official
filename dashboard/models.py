@@ -88,6 +88,12 @@ ACTIVE_STATUS = (
     (CLOSED, 'Closed')
 )
 
+STATUS_TYPE = (
+    ('PENDING','Pending'),
+    ('PROCCESSING','Proccessing'),
+    ('CONFIRMED','Confirmed'),
+    ('REJECTED','Rejected')
+)
 
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
@@ -319,3 +325,48 @@ class WhatPeopleSay(models.Model):
     image = models.ImageField(upload_to='what-people-say/')
     description = models.TextField()
     priority = models.PositiveSmallIntegerField()
+
+
+
+
+
+class Service(models.Model):
+    name = models.CharField(max_length=100,null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name= 'Service'
+        verbose_name_plural = 'Services'
+
+
+
+class AugmantationBudget(models.Model):
+    name = models.CharField(max_length=100,null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name= 'Augmantation Budget'
+        verbose_name_plural = 'Augmantation Budgets'
+
+
+class AugmentationService(models.Model):
+    name = models.CharField(max_length=100, blank=True, null= True)
+    company = models.CharField(max_length=250, blank=True, null= True)
+    phone = models.CharField(max_length=50, blank=True, null= True)
+    email = models.EmailField(blank=True, null= True)
+    services = models.ForeignKey(Service, on_delete=models.CASCADE, blank= True, null=True)
+    status = models.CharField(max_length=100,choices=STATUS_TYPE,default='PENDING')
+    budget = models.ForeignKey(AugmantationBudget,on_delete=models.CASCADE, blank=True, null=True) 
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Augmentation Service'
+        verbose_name_plural = 'Augmentation Services'
+

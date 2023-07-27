@@ -10,7 +10,7 @@ from homepage.views.index_view import IndexView, CaseStudyView
 from homepage.views.product_view import ProductsView
 from homepage.views.service_view import ServiceView, ServiceDetailsView
 from homepage.views.technologies_view import TechnologiesView
-
+from homepage.views.augmentation_sevice_view import augmentation_service
 app_name = 'homepage'
 
 urlpatterns = [
@@ -48,5 +48,7 @@ urlpatterns = [
     path('blog/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
 
     path('e-book/', EBookView.as_view(), name="e_book_view"),
+    
+    path('staff-augmentation/',augmentation_service, name="staff_augmentation" )
 
 ]
