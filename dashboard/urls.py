@@ -1,4 +1,5 @@
 from django.urls import path
+from dashboard.views.augmentation_view import AugmentationServicesView
 from dashboard.views.already_done_view import AlreadyDoneView, CaseStudyEditView, KeyFeatureView
 from dashboard.views.authenticate_view import AuthenticationView
 from dashboard.views.blog_view import BlogAuthorView, BlogCategoryView, BlogView, HandleBlogView
@@ -103,6 +104,11 @@ urlpatterns= [
     path('what-people-say-create/', WhatPeopleSayView.as_view(), name="create_what_people_say_url"),
     path('what-people-say-update/<int:id>', WhatPeopleSayView.as_view(), name="update_what_people_say_url"),
     path('what-people-say-delete/', WhatPeopleSayView.as_view(), name="delete_what_people_say_url"),
+
+    # augmentation services
+    path('augmentation-services/', AugmentationServicesView.as_view(), name="augmentation_services_url"),
+    path('augmentation-service-status/', AugmentationServicesView.as_view(), name= 'augmentation_service_status_change_url'),
+
     
     
         

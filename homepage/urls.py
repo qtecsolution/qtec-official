@@ -2,7 +2,7 @@ from django.urls import path
 
 
 from homepage.views.about_us_view import AboutUsView
-from homepage.views.blog_view import BlogsView, BlogDetails, AllBlogView, EBookView
+from homepage.views.blog_view import BlogsView, BlogDetails, AllBlogView
 from homepage.views.career_view import CareerView, CareerDetailsView
 from homepage.views.case_study_view import CaseStudyDetailsView
 from homepage.views.contact_us_view import ContactUs
@@ -11,6 +11,7 @@ from homepage.views.product_view import ProductsView
 from homepage.views.service_view import ServiceView, ServiceDetailsView
 from homepage.views.technologies_view import TechnologiesView
 from homepage.views.augmentation_sevice_view import augmentation_service
+from homepage.views.ebooK_download_view import download_book
 app_name = 'homepage'
 
 urlpatterns = [
@@ -47,8 +48,9 @@ urlpatterns = [
     path('blogs/', BlogsView.as_view(), name="blog_url"),
     path('blog/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
 
-    path('e-book/', EBookView.as_view(), name="e_book_view"),
+#     path('e-book/', EBookView.as_view(), name="e_book_view"),
     
-    path('staff-augmentation/',augmentation_service, name="staff_augmentation" )
+    path('staff-augmentation/',augmentation_service, name="staff_augmentation" ),
+    path('e-book/', download_book, name="e_book_view"),
 
 ]

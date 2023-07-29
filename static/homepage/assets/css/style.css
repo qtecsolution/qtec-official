@@ -1458,7 +1458,6 @@ select {
   width: 100%;
   border-radius: 0.5rem;
   border-radius: 0.5rem;
-  text-align: center;
   transition: all 200ms ease-in-out;
 }
 @media screen and (min-width: 36rem) {
@@ -1485,7 +1484,6 @@ select {
   font-weight: 600;
   line-height: 1;
   padding: 1rem;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1560,6 +1558,66 @@ select {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.btn-hire {
+  background: #0876fc;
+  color: #ffffff;
+  border: solid 0.125rem #0876fc;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  min-width: 9.375rem;
+  height: 3.75rem;
+  transition: all 200ms ease-in-out;
+}
+.btn-hire:not([disabled]):hover {
+  background: #ffffff;
+  color: #0876fc;
+}
+
+.btn-learnmore {
+  background: #ffffff;
+  border: solid 0.125rem #0876fc;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  height: 3.75rem;
+  transition: all 200ms ease-in-out;
+}
+.btn-learnmore .icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.btn-learnmore .icon svg {
+  width: 100%;
+  height: 100%;
+}
+.btn-learnmore .text {
+  color: #0876fc;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.btn-learnmore:not([disabled]):hover {
+  background: #0876fc;
+}
+.btn-learnmore:not([disabled]):hover .icon svg path {
+  stroke: #ffffff;
+}
+.btn-learnmore:not([disabled]):hover .text {
+  color: #ffffff;
 }
 
 /**=====================================================**
@@ -2665,20 +2723,12 @@ select {
 }
 @media screen and (min-width: 48rem) {
   .cardanalysis .analysistitle {
-    font-family: "Titillium Web";
-    font-style: normal;
     font-size: 1.75rem;
-    font-weight: 600;
-    line-height: 1.3571428571;
   }
 }
 @media screen and (min-width: 62rem) {
   .cardanalysis .analysistitle {
-    font-family: "Titillium Web";
-    font-style: normal;
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 1.25;
+    font-size: 2.5rem;
   }
 }
 .cardanalysis .analysistext {
@@ -2942,16 +2992,15 @@ select {
 .cardbook-body {
   color: #718096;
   font-size: 0.8125rem;
-}
-.cardbook-body .text {
-  color: inherit;
-  font: inherit;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 4;
-  max-height: 5rem;
+}
+.cardbook-body .text {
+  color: inherit;
+  font: inherit;
 }
 
 .cardreview {
@@ -2990,17 +3039,16 @@ select {
 }
 .cardreview .reviewinfo {
   margin-bottom: 1.25rem;
-}
-.cardreview .reviewinfo .reviewtext {
-  color: #718096;
-  font-size: 0.875rem;
-  line-height: 1.5;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 4;
-  max-height: 5.25rem;
+}
+.cardreview .reviewinfo .reviewtext {
+  color: #718096;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 .cardreview .reviwerinfo {
   display: flex;
@@ -12239,6 +12287,11 @@ select {
   justify-content: center;
   width: 100%;
 }
+.ebook-banner .banner-detail .hireinfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
 .ebook-banner .banner-thumb {
   width: 100%;
   display: flex;
@@ -12653,4 +12706,1041 @@ select {
 }
 .getbook-body .detail .text {
   color: #718096;
+}
+
+.staffrequirements {
+  padding-bottom: 5rem;
+}
+.staffrequirements-content {
+  display: flex;
+  flex-direction: column;
+}
+.staffrequirements-header {
+  background: linear-gradient(135deg, #43CBFF 0%, #9708CC 100%);
+  min-height: 18.75rem;
+}
+@media screen and (min-width: 62rem) {
+  .staffrequirements-header {
+    min-height: 31.25rem;
+  }
+}
+.staffrequirements-header .titlebox {
+  max-width: 43.75rem;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 0rem;
+}
+@media screen and (min-width: 48rem) {
+  .staffrequirements-header .titlebox {
+    padding: 5rem 0rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .staffrequirements-header .titlebox {
+    padding: 6.25rem 0rem;
+  }
+}
+.staffrequirements-header .titlebox .title {
+  color: #ffffff;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media screen and (min-width: 48rem) {
+  .staffrequirements-header .titlebox .title {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .staffrequirements-header .titlebox .title {
+    font-size: 2.5rem;
+  }
+}
+.staffrequirements-body {
+  padding-bottom: 6.25rem;
+  margin-top: -6.25rem;
+}
+@media screen and (min-width: 62rem) {
+  .staffrequirements-body {
+    margin-top: -12.5rem;
+  }
+}
+.staffrequirements-body .cardrequirement {
+  background: #ffffff;
+  border: solid 0.0625rem #EBEEFC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem 3rem;
+  text-align: center;
+  height: 100%;
+}
+.staffrequirements-body .cardrequirement-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.staffrequirements-body .cardrequirement-header .thumbnail {
+  height: 10.3125rem;
+  width: 10.3125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.staffrequirements-body .cardrequirement-header .thumbnail img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.staffrequirements-body .cardrequirement-header .requiretitle {
+  color: #4a5568;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+@media screen and (min-width: 62rem) {
+  .staffrequirements-body .cardrequirement-header .requiretitle {
+    font-size: 1.5rem;
+  }
+}
+.staffrequirements-body .cardrequirement-body .text {
+  color: #4a5568;
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
+@media screen and (min-width: 62rem) {
+  .staffrequirements-body .cardrequirement-body .text {
+    font-size: 0.9375rem;
+  }
+}
+
+.staffcontent {
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 62rem) {
+  .staffcontent {
+    padding-bottom: 8.75rem;
+  }
+}
+.staffcontent .thumb {
+  width: 100%;
+  height: 15.625rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 48rem) {
+  .staffcontent .thumb {
+    height: 21.875rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .staffcontent .thumb {
+    height: 31.25rem;
+  }
+}
+.staffcontent .thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+  z-index: 100;
+}
+.staffcontent .thumb .thumbshade {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #43CBFF 0%, #9708CC 100%);
+  bottom: -2.5rem;
+  right: -2.5rem;
+  z-index: 1;
+}
+.staffcontent .descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.staffcontent .descriptions .title {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3333333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+@media screen and (min-width: 48rem) {
+  .staffcontent .descriptions .title {
+    font-size: 1.75rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .staffcontent .descriptions .title {
+    font-size: 2.5rem;
+  }
+}
+.staffcontent .descriptions .infos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 30rem;
+}
+.staffcontent .descriptions .infos .text {
+  color: #4a5568;
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
+@media screen and (min-width: 62rem) {
+  .staffcontent .descriptions .infos .text {
+    font-size: 0.9375rem;
+  }
+}
+.staffcontent .descriptions .infos .link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.staffcontent .descriptions .infos .link .text {
+  color: #0876fc;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.staffcontent .descriptions .infos .link .icon {
+  height: 2.25rem;
+  width: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hireme {
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 62rem) {
+  .hireme {
+    padding-bottom: 8.75rem;
+  }
+}
+.hireme-detail {
+  border: dashed 0.125rem #002DF8;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+@media screen and (min-width: 48rem) {
+  .hireme-detail {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .hireme-detail {
+    padding: 3rem;
+  }
+}
+.hireme-detail .leftcontent {
+  width: 100%;
+}
+@media screen and (min-width: 48rem) {
+  .hireme-detail .leftcontent {
+    width: calc(100% - 11.375rem);
+  }
+}
+.hireme-detail .leftcontent .title {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media screen and (min-width: 36rem) {
+  .hireme-detail .leftcontent .title {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .hireme-detail .leftcontent .title {
+    font-size: 2rem;
+  }
+}
+.hireme-detail .rightcontent .link {
+  background: #ffffff;
+  color: #0876fc;
+  border: solid 0.125rem #0876fc;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  width: 100%;
+  height: 3.75rem;
+  text-align: center;
+  transition: all 200ms ease-in-out;
+}
+@media screen and (min-width: 36rem) {
+  .hireme-detail .rightcontent .link {
+    width: 9.375rem;
+  }
+}
+.hireme-detail .rightcontent .link:not([disabled]):hover {
+  background: #0876fc;
+  color: #ffffff;
+}
+
+.whychoose {
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 62rem) {
+  .whychoose {
+    padding-bottom: 8.75rem;
+  }
+}
+.whychoose-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.whychoose-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+.whychoose-header .icon {
+  width: 6.0625rem;
+  height: siez(3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.whychoose-header .icon svg {
+  width: 100%;
+  height: 100%;
+}
+.whychoose-header .titlebox {
+  max-width: 35rem;
+}
+.whychoose-header .titlebox .title {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media screen and (min-width: 48rem) {
+  .whychoose-header .titlebox .title {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .whychoose-header .titlebox .title {
+    font-size: 2.5rem;
+  }
+}
+.whychoose-header .titlebox .title span {
+  color: #7A44D7;
+  font: inherit;
+}
+.whychoose-body .card-whychoose {
+  background: #ffffff;
+}
+.whychoose-body .card-whychoose-header {
+  position: relative;
+  height: 12.5rem;
+  display: flex;
+  align-items: center;
+}
+.whychoose-body .card-whychoose-header .cardcount {
+  color: rgba(74, 85, 104, 0.05);
+  font-size: 12.5rem;
+  font-weight: 700;
+  position: absolute;
+  left: 0rem;
+}
+@media screen and (min-width: 62rem) {
+  .whychoose-body .card-whychoose-header .cardcount {
+    font-size: 15rem;
+  }
+}
+.whychoose-body .card-whychoose-header .cardcount::-moz-selection {
+  background: transparent;
+  color: rgba(74, 85, 104, 0.05);
+}
+.whychoose-body .card-whychoose-header .cardcount::selection {
+  background: transparent;
+  color: rgba(74, 85, 104, 0.05);
+}
+.whychoose-body .card-whychoose-header .title {
+  color: #4a5568;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  margin: 4rem 0rem 0rem 0.625rem;
+}
+@media screen and (min-width: 62rem) {
+  .whychoose-body .card-whychoose-header .title {
+    font-size: 1.5rem;
+  }
+}
+.whychoose-body .card-whychoose-body .text {
+  color: #4a5568;
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
+@media screen and (min-width: 62rem) {
+  .whychoose-body .card-whychoose-body .text {
+    font-size: 0.9375rem;
+  }
+}
+
+.workview {
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 62rem) {
+  .workview {
+    padding-bottom: 8.75rem;
+  }
+}
+.workview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.workview-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.workview-header .icon {
+  width: 6.0625rem;
+  height: siez(3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.workview-header .icon svg {
+  width: 100%;
+  height: 100%;
+}
+.workview-header .title {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media screen and (min-width: 48rem) {
+  .workview-header .title {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .workview-header .title {
+    font-size: 2.5rem;
+  }
+}
+.workview-header .title span {
+  color: #7A44D7;
+  font: inherit;
+}
+.workview-header .info .text {
+  color: #4a5568;
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
+@media screen and (min-width: 62rem) {
+  .workview-header .info .text {
+    font-size: 0.9375rem;
+  }
+}
+.workview-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.workview-body .workthumb {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  max-height: 13.75rem;
+}
+@media screen and (min-width: 48rem) {
+  .workview-body .workthumb {
+    max-height: 20rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .workview-body .workthumb {
+    max-height: 26.25rem;
+  }
+}
+.workview-body .workthumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 200ms ease-in-out;
+}
+.workview-body .workthumb img:not([disabled]):hover {
+  transform: scale(1.05);
+}
+.workview-body .link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.workview-body .link .icon {
+  height: 2.25rem;
+  width: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.workview-body .link .text {
+  color: #0876fc;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.collaborate {
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 62rem) {
+  .collaborate {
+    padding-bottom: 8.75rem;
+  }
+}
+.collaborate-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.collaborate-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+.collaborate-header .icon {
+  width: 6.0625rem;
+  height: siez(3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.collaborate-header .icon svg {
+  width: 100%;
+  height: 100%;
+}
+.collaborate-header .titlebox {
+  max-width: 46.875rem;
+}
+.collaborate-header .title {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media screen and (min-width: 48rem) {
+  .collaborate-header .title {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .collaborate-header .title {
+    font-size: 2.5rem;
+  }
+}
+.collaborate-header .title span {
+  color: #7A44D7;
+  font: inherit;
+}
+.collaborate-header .info .text {
+  color: #4a5568;
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
+@media screen and (min-width: 62rem) {
+  .collaborate-header .info .text {
+    font-size: 0.9375rem;
+  }
+}
+.collaborate-body .card-collaborate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.5rem;
+  text-align: center;
+}
+.collaborate-body .card-collaborate-icon {
+  width: 12.5rem;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.collaborate-body .card-collaborate-icon img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.collaborate-body .card-collaborate .title {
+  color: #4a5568;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+@media screen and (min-width: 62rem) {
+  .collaborate-body .card-collaborate .title {
+    font-size: 1.5rem;
+  }
+}
+
+.usetools {
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 62rem) {
+  .usetools {
+    padding-bottom: 8.75rem;
+  }
+}
+.usetools-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.usetools-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+.usetools-header .icon {
+  width: 6.0625rem;
+  height: siez(3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.usetools-header .icon svg {
+  width: 100%;
+  height: 100%;
+}
+.usetools-header .titlebox {
+  max-width: 25rem;
+}
+.usetools-header .title {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media screen and (min-width: 48rem) {
+  .usetools-header .title {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .usetools-header .title {
+    font-size: 2.5rem;
+  }
+}
+.usetools-header .title span {
+  color: #7A44D7;
+  font: inherit;
+}
+.usetools-header .info .text {
+  color: #4a5568;
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
+@media screen and (min-width: 62rem) {
+  .usetools-header .info .text {
+    font-size: 0.9375rem;
+  }
+}
+.usetools-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  max-width: 40.625rem;
+  margin-inline: auto;
+}
+.usetools-body .tool {
+  width: calc(33.3333333333% - 1.5rem);
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+@media screen and (min-width: 48rem) {
+  .usetools-body .tool {
+    width: calc(16.6666666667% - 1.5rem);
+  }
+}
+.usetools-body .tool img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.thinksec {
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 62rem) {
+  .thinksec {
+    padding-bottom: 8.75rem;
+  }
+}
+.thinksec-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+.thinksec-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.thinksec-header .icon {
+  width: 6.0625rem;
+  height: siez(3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.thinksec-header .icon svg {
+  width: 100%;
+  height: 100%;
+}
+.thinksec-header .title {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media screen and (min-width: 48rem) {
+  .thinksec-header .title {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .thinksec-header .title {
+    font-size: 2.5rem;
+  }
+}
+.thinksec-header .title span {
+  color: #7A44D7;
+  font: inherit;
+}
+.thinksec-header .info .text {
+  color: #4a5568;
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
+@media screen and (min-width: 62rem) {
+  .thinksec-header .info .text {
+    font-size: 0.9375rem;
+  }
+}
+.thinksec-body .thinkform {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.thinksec-body .thinkform .inputfield {
+  border: solid 0.0625rem #e2e8f0;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  color: #2d3748;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.71875rem 1rem;
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+.thinksec-body .thinkform .inputfield::-moz-placeholder {
+  color: #b5b5bd;
+}
+.thinksec-body .thinkform .inputfield::placeholder {
+  color: #b5b5bd;
+}
+.thinksec-body .thinkform .inputfield:focus {
+  border-color: #0876fc;
+  outline: none;
+}
+.thinksec-body .thinkform .servicebox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.thinksec-body .thinkform .servicebox .title {
+  color: #4a5568;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+}
+@media screen and (min-width: 62rem) {
+  .thinksec-body .thinkform .servicebox .title {
+    font-size: 1.5rem;
+  }
+}
+.thinksec-body .thinkform .servicebox .services {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.thinksec-body .thinkform .servicebox .services .myservice label {
+  border: solid 0.0625rem #e2e8f0;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  color: #b5b5bd;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.71875rem 1rem;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.thinksec-body .thinkform .servicebox .services .myservice input[type=radio]:checked ~ label {
+  border-color: #0876fc;
+  color: #0876fc;
+}
+.thinksec-body .thinkform .btn-mysubmit {
+  background: #0876fc;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  width: 9.375rem;
+  height: 3rem;
+  text-align: center;
+  transition: all 200ms ease-in-out;
+}
+.thinksec-body .thinkform .btn-mysubmit:not([disabled]):hover {
+  background: #002DF8;
+  color: #ffffff;
+}
+.thinksec-body .mailthumb {
+  width: 100%;
+  height: 20.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.thinksec-body .mailthumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.secbusiness {
+  padding-bottom: 5rem;
+}
+@media screen and (min-width: 62rem) {
+  .secbusiness {
+    padding-bottom: 8.75rem;
+  }
+}
+.secbusiness .secbusinessinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.secbusiness .secbusinessinfo-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.secbusiness .secbusinessinfo-head .title {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media screen and (min-width: 48rem) {
+  .secbusiness .secbusinessinfo-head .title {
+    font-size: 2rem;
+  }
+}
+@media screen and (min-width: 62rem) {
+  .secbusiness .secbusinessinfo-head .title {
+    font-size: 2.5rem;
+  }
+}
+.secbusiness .secbusinessinfo-head .info {
+  max-width: 37.5rem;
+}
+.secbusiness .secbusinessinfo-head .info .text {
+  color: #4a5568;
+  font-size: 0.8125rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+}
+@media screen and (min-width: 62rem) {
+  .secbusiness .secbusinessinfo-head .info .text {
+    font-size: 0.9375rem;
+  }
+}
+.secbusiness .secbusinessinfo-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.secbusiness .secbusinessinfo-body .link {
+  background: #0876fc;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  width: 9.375rem;
+  height: 3rem;
+  text-align: center;
+  transition: all 200ms ease-in-out;
+}
+.secbusiness .secbusinessinfo-body .link:not([disabled]):hover {
+  background: #002DF8;
+  color: #ffffff;
+}
+.secbusiness .secbusinessinfo-body p {
+  color: #2A374E;
+  font-size: 0.8125rem;
+}
+@media screen and (min-width: 62rem) {
+  .secbusiness .secbusinessinfo-body p {
+    font-size: 0.9375rem;
+  }
+}
+.secbusiness .secbusinessinfo-body p a {
+  color: inherit;
+  font: inherit;
+  transition: all 200ms ease-in-out;
+}
+.secbusiness .secbusinessinfo-body p a:not([disabled]):hover {
+  color: #002DF8;
+}
+.secbusiness .businessthumb {
+  width: 100%;
+  height: 20.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.secbusiness .businessthumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }

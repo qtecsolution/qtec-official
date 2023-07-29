@@ -373,44 +373,50 @@ homepage/assets/images
             <h4 class="title">
             An Entrepreneur's Guide to Develop Software for Business
             </h4>
-
-            <form class="contactform">
-            <div class="forminfo">
-                <div class="row g-4">
-                <div class="col-lg-6 col-12">
-                    <div class="inputbox">
-                    <input type="text" class="inputfield" placeholder="Write your name" id="name" autocomplete="off">
-
-                    <p class="error-message">This field is required</p>
+            
+            <form class="contactform" method="post" action="{% url 'homepage:e_book_view' %}">
+                {% csrf_token %}
+                <div class="forminfo">
+                    <div class="row g-4">
+                        <div class="col-lg-6 col-12">
+                            <div class="inputbox">
+                                {{ form.user_name.label_tag }}
+                                {{ form.user_name }}
+                                {% if form.user_name.errors %}
+                                    <p class="error-message">{{ form.user_name.errors.as_text }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-6 col-12">
+                            <div class="inputbox">
+                                {{ form.phone_number.label_tag }}
+                                {{ form.phone_number }}
+                                {% if form.phone_number.errors %}
+                                    <p class="error-message">{{ form.phone_number.errors.as_text }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-6 col-12">
+                            <div class="inputbox">
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <p class="error-message">{{ form.email.errors.as_text }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-6 col-12">
+                            <div class="formsubmit">
+                                <button id="submit-message" class="btn-submit" type="submit">Download</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="col-lg-6 col-12">
-                    <div class="inputbox">
-                    <input type="tel" class="inputfield" placeholder="Write your phone number" id="phonenumber" autocomplete="off">
-
-                    <p class="error-message">Invailed Phone Number</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-12">
-                    <div class="inputbox">
-                    <input type="tel" class="inputfield" placeholder="Write your mail" id="email" autocomplete="off">
-
-                    <p class="error-message">Invailed Email</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-12">
-                    <div class="formsubmit">
-                    <button id="submit-message" class="btn-submit" type="button">
-                        Download
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div>
             </form>
+            
 
             <p class="text">
             An email will be send with the download link. Don’t forget to post your reviews.
@@ -419,6 +425,29 @@ homepage/assets/images
         </div>
     </div>
     </div>
+</div>
+<div class="position-fixed bottom-0 start-0 p-10" style="z-index: 11;height: 30; width: 50; margin: 5px;">
+  <div id="subscribeToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="subscribeinfo">
+        <div class="left">
+          <div class="icon">
+            <!-- Your SVG icon code here -->
+          </div>
+        </div>
+
+        <div class="detail">
+          <!-- Use Django template tags to render dynamic content -->
+          <h5 class="title">{{ dynamic_message.title }}</h5>
+          <p class="message">{{ dynamic_message.message }}</p>
+        </div>
+      </div>
+
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
+        <!-- Your SVG close icon code here -->
+      </button>
+    </div>
+  </div>
 </div>
 </div>
 </section>
