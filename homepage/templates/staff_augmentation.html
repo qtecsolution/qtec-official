@@ -689,8 +689,8 @@
                 <div class="services">
                   {%for service in services %}
                   <div class="myservice">
-                    <input value="{{service.id}}" type="radio" name="service" id="service-1" hidden>
-                    <label for="service-1">
+                    <input value="{{service.id}}" type="radio" name="service" id="service-{{service.id}}" hidden>
+                    <label for="service-{{service.id}}">
                       {{service.name}}
                     </label>
                   </div>
@@ -704,8 +704,8 @@
                 <div class="services">
                   {%for budget in budgets %}
                   <div class="myservice">
-                    <input value="{{budget.id}}" type="radio" name="budget" id="budget-1" hidden>
-                    <label for="budget-1">
+                    <input value="{{budget.id}}" type="radio" name="budget" id="budget-{{budget.id}}" hidden>
+                    <label for="budget-{{budget.id}}">
                       ${{budget.name}}
                     </label>
                   </div>

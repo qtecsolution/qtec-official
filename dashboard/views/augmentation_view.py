@@ -11,7 +11,7 @@ class AugmentationServicesView(View):
             "augmentation_services" : augmentation_services,
             "status": STATUS_TYPE
         }
-        return render(request, 'augmentation_service.html', context)
+        return render(request, 'augmentation_service/augmentation_service.html', context)
 
     def post(self, request):
         obj = AugmentationService.objects.get(id=request.POST.get('id'))

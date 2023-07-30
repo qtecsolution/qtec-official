@@ -40,10 +40,22 @@
                                             {% for item in status %}
                                                 <option {% if item.0 == augmentation_service.status %} selected {% endif %} value="{{ item.0 }}">{{ item.1 }}</option>
                                             {% endfor %}
-                                        </select>
-                                        
+                                        </select>                                        
                                     </td>
-
+                                    <th>
+                                        <div class="form-group row">
+                                            <div cclass="">
+                                                <form action=""method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{item.id}}" name="id">
+                                                    <button title="Delete Item" onclick="check()"  class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form> 
+                                            </div >
+                                            <div class="col-5">
+                                                <a title="Edit" href="" class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></a>
+                                            </div>
+                                        </div>                                         
+                                    </th>                                  
                                 </tr>
                                 {% endfor %}
                                 

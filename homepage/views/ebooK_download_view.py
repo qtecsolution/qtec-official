@@ -11,7 +11,7 @@ def download_book(request):
             form.save()
             to_email = form.cleaned_data.get('email')
 
-            subject = "Thanks for downloading the book"
+            subject = 'Download Your Free eBook: "An Entrepreneur\'s Guide to Develop Software for Business"'
             from_email = settings.EMAIL_HOST_USER
             recipient_list = [to_email]
             message = "Click this link to download the book: http://127.0.0.1:8000/static/book/demo.pdf"
