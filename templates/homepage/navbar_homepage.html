@@ -56,6 +56,11 @@
 							  <div class="desktopdropdown">
 								<ul class="dropdownlist">
 								  <li class="dropdownlist-item">
+									<a href="{% url 'homepage:staff_augmentation'  %}" class="dropdownlist-link {% if request.resolver_match.url_name == 'staff_augmentation' %} active {% endif %}">
+										 Staff Augmentation
+									</a>
+								  </li>
+								  <li class="dropdownlist-item">
 									<a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="dropdownlist-link {% if request.resolver_match.kwargs.slug == 'ui-ux-design'%} active {% endif %}">
 									  UI /UX Design
 									</a>
@@ -73,12 +78,6 @@
 								  <li class="dropdownlist-item">
 									<a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="dropdownlist-link {% if request.resolver_match.kwargs.slug == 'ecommerce-solutions'%} active {% endif %}">
 									  E-commerce Development
-									</a>
-								  </li>
-								  <li class="dropdownlist-item">
-									<a href="{% url 'homepage:staff_augmentation'  %}" class="dropdownlist-link {% if request.resolver_match.url_name == 'staff_augmentation' %} active {% endif %}
-									">
-									  Staff Augmentation
 									</a>
 								  </li>
 								</ul>
@@ -173,6 +172,9 @@
 							data-bs-parent="#accordionDropdown"
 						  >
 							<div class="accordion-body">
+							  <a href="/staff-augmentation/" class="servicelink {% if request.resolver_match.url_name == 'staff_augmentation' %} active {% endif %}">
+									Staff Augmentation
+							  </a>
 							  <a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'ui-ux-design'%} active {% endif %}">
 								UI /UX Design 
 							  </a>
@@ -184,10 +186,7 @@
 							  </a>
 							  <a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'ecommerce-solutions'%} active {% endif %}">
 								E-commerce Development
-							  </a>
-							  <a href="/staff-augmentation/" class="servicelink {% if request.resolver_match.url_name == 'staff_augmentation' %} active {% endif %}">
-								Staff Augmentation
-							  </a>
+							  </a>							  
 							</div>
 						  </div>
 						</div>
