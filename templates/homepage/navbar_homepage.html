@@ -185,6 +185,9 @@
 							  <a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'ecommerce-solutions'%} active {% endif %}">
 								E-commerce Development
 							  </a>
+							  <a href="/staff-augmentation/" class="servicelink {% if request.resolver_match.url_name == 'staff_augmentation' %} active {% endif %}">
+								Staff Augmentation
+							  </a>
 							</div>
 						  </div>
 						</div>
