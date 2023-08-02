@@ -3727,7 +3727,250 @@ select {
   box-shadow: none;
   outline: none;
 }
+/* SUBSCRIBE-TOAST START
+=======================================================**/
+#thinkToast,
+#successToast {
+  background: #ffffff;
+  box-shadow: 0 0.625rem 4.375rem rgba(0, 0, 0, 0.0015);
+  border-radius: 0.625rem;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  border: none;
+}
+#thinkToast .toast-body,
+#successToast .toast-body {
+  position: relative;
+  padding: 0rem;
+}
+#thinkToast .toast-body .thinkinfo,
+#successToast .toast-body .thinkinfo {
+  display: flex;
+}
+#thinkToast .toast-body .thinkinfo .left,
+#successToast .toast-body .thinkinfo .left {
+  width: 15%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.5rem 0rem;
+}
+#thinkToast .toast-body .thinkinfo .left::after,
+#successToast .toast-body .thinkinfo .left::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 50% 50% 0/0 100% 100% 0;
+  transform: scaleX(1.5);
+  background: #ebfbf6;
+}
+#thinkToast .toast-body .thinkinfo .left .icon,
+#successToast .toast-body .thinkinfo .left .icon {
+  position: relative;
+  z-index: 100;
+  background: #8dc640;
+  height: 2.25rem;
+  width: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.625rem;
+  border-radius: 0.625rem;
+}
+#thinkToast .toast-body .thinkinfo .left .icon svg,
+#successToast .toast-body .thinkinfo .left .icon svg {
+  width: 100%;
+  height: 100%;
+}
+#thinkToast .toast-body .thinkinfo .left .icon svg path,
+#successToast .toast-body .thinkinfo .left .icon svg path {
+  fill: #ffffff;
+}
+#thinkToast .toast-body .thinkinfo .detail,
+#successToast .toast-body .thinkinfo .detail {
+  width: 85%;
+  padding: 1.5rem;
+}
+#thinkToast .toast-body .thinkinfo .detail .title,
+#successToast .toast-body .thinkinfo .detail .title {
+  color: #2d3748;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.6666666667;
+}
+#thinkToast .toast-body .thinkinfo .detail .message,
+#successToast .toast-body .thinkinfo .detail .message {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: normal;
+  line-height: 1.3333333333;
+}
+#thinkToast .toast-body .btn-close,
+#successToast .toast-body .btn-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #f7f7fc;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem;
+  overflow: hidden;
+  opacity: 1;
+}
+#thinkToast .toast-body .btn-close svg,
+#successToast .toast-body .btn-close svg {
+  width: 100%;
+  height: 100%;
+}
+#thinkToast .toast-body .btn-close svg path,
+#successToast .toast-body .btn-close svg path {
+  stroke: #a0aec0;
+}
+#thinkToast .toast-body .btn-close:not([disabled]):hover svg path,
+#successToast .toast-body .btn-close:not([disabled]):hover svg path {
+  stroke: #ff3e3e;
+}
+#thinkToast .toast-body .btn-close:focus,
+#successToast .toast-body .btn-close:focus {
+  box-shadow: none;
+  outline: none;
+}
 
+
+/* EBOOK-TOAST START
+=======================================================**/
+#ebookToast,
+#successToast {
+  background: #ffffff;
+  box-shadow: 0 0.625rem 4.375rem rgba(0, 0, 0, 0.0015);
+  border-radius: 0.625rem;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  border: none;
+}
+#ebookToast .toast-body,
+#successToast .toast-body {
+  position: relative;
+  padding: 0rem;
+}
+#ebookToast .toast-body .thinkinfo,
+#successToast .toast-body .thinkinfo {
+  display: flex;
+}
+#ebookToast .toast-body .thinkinfo .left,
+#ebookToast .toast-body .thinkinfo .left {
+  width: 15%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.5rem 0rem;
+}
+#ebookToast .toast-body .thinkinfo .left::after,
+#successToast .toast-body .thinkinfo .left::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 50% 50% 0/0 100% 100% 0;
+  transform: scaleX(1.5);
+  background: #ebfbf6;
+}
+#ebookToast .toast-body .thinkinfo .left .icon,
+#successToast .toast-body .thinkinfo .left .icon {
+  position: relative;
+  z-index: 100;
+  background: #8dc640;
+  height: 2.25rem;
+  width: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.625rem;
+  border-radius: 0.625rem;
+}
+#ebookToast .toast-body .thinkinfo .left .icon svg,
+#successToast .toast-body .thinkinfo .left .icon svg {
+  width: 100%;
+  height: 100%;
+}
+#ebookToast .toast-body .thinkinfo .left .icon svg path,
+#successToast .toast-body .thinkinfo .left .icon svg path {
+  fill: #ffffff;
+}
+#ebookToast .toast-body .thinkinfo .detail,
+#successToast .toast-body .thinkinfo .detail {
+  width: 85%;
+  padding: 1.5rem;
+}
+#ebookToast .toast-body .thinkinfo .detail .title,
+#successToast .toast-body .thinkinfo .detail .title {
+  color: #2d3748;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.6666666667;
+}
+#ebookToast .toast-body .thinkinfo .detail .message,
+#successToast .toast-body .thinkinfo .detail .message {
+  color: #4a5568;
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: normal;
+  line-height: 1.3333333333;
+}
+#ebookToast .toast-body .btn-close,
+#successToast .toast-body .btn-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #f7f7fc;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem;
+  overflow: hidden;
+  opacity: 1;
+}
+#ebookToast .toast-body .btn-close svg,
+#successToast .toast-body .btn-close svg {
+  width: 100%;
+  height: 100%;
+}
+#ebookToast .toast-body .btn-close svg path,
+#successToast .toast-body .btn-close svg path {
+  stroke: #a0aec0;
+}
+#ebookToast .toast-body .btn-close:not([disabled]):hover svg path,
+#successToast .toast-body .btn-close:not([disabled]):hover svg path {
+  stroke: #ff3e3e;
+}
+#ebookToast .toast-body .btn-close:focus,
+#successToast .toast-body .btn-close:focus {
+  box-shadow: none;
+  outline: none;
+}
 /**=====================================================**
                   SUBSCRIBE-TOAST START
 =======================================================**/

@@ -97,7 +97,57 @@
       });
     }
 </script>
+<script type="text/javascript">
+  $(document).on('submit', '#thinkform',function(e){
+    e.preventDefault();
+    $.ajax({
+      type:'POST',
+      url:'{% url "homepage:staff_augmentation_create" %}',
+      data:{
+        name:$('#name').val(),
+        company:$('#company').val(),
+        phone:$('#phone').val(),
+        email:$('#email').val(),
+        // budget-{{budget.id}}
+        service:$('input[name="service"]:checked').val(),
+        budget: $('input[name="budget"]:checked').val(),
+        description: $('#description').val(),
+        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function(response){
+        $('#toastTitle').text(response.message)
+        e.target.reset();
+        let toastThink = document.getElementById('thinkToast');
+        let toast = new bootstrap.Toast(toastThink);
+        toast.show();
+      },
+    })
+  })
 
+</script>
+<script type="text/javascript">
+  $(document).on('submit', '#ebook_form',function(e){
+    e.preventDefault();
+    $.ajax({
+      type:'POST',
+      url:'{% url "homepage:req_to_download_book" %}',
+      data:{
+        user_name:$('#downloader_name').val(),
+        phone_number:$('#downloader_phone').val(),
+        email:$('#downloader_email').val(),
+        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function(response){
+        $('#ebook_toast_title').text(response.notify)
+        e.target.reset();
+        let toastEbook = document.getElementById('ebookToast');
+        let toast = new bootstrap.Toast(toastEbook);
+        toast.show();
+      },
+    })
+  })
+
+</script>
 </body>
 
 </html>

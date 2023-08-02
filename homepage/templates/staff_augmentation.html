@@ -26,7 +26,7 @@
           </div>
 
           <div class="hireinfo">
-            <a href="#" class="btn-hire">Hire Now</a>
+            <a href="#thinksec" class="btn-hire">Hire Now</a>
             <a href="#" class="btn-learnmore">
               <span class="icon">
                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -633,7 +633,7 @@
 <!--========== USETOOLS-SECTION END ============-->
 
 <!--========== THINK-SECTION START ============-->
-<section class="thinksec">
+<section id="thinksec" class="thinksec">
   <div class="container">
     <div class="thinksec-content">
       <div class="thinksec-header">
@@ -655,36 +655,36 @@
       <div class="thinksec-body">
         <div class="row g-4">
           <div class="col-lg-8">
-            <form method="POST" class="thinkform">
+            <form id="thinkform" action="#" class="thinkform">
               {% csrf_token %}
               <div class="row g-4">
                 <div class="col-lg-6">
                   <div class="inputbox">
-                    <input name="name" type="text" placeholder="Your name*" class="inputfield">
+                    <input id="name" name="name" type="text" placeholder="Your name*" class="inputfield" required>
                   </div>
                 </div>
 
                 <div class="col-lg-6">
                   <div class="inputbox">
-                    <input name="company" type="text" placeholder="Company name" class="inputfield">
+                    <input id="company" name="company" type="text" placeholder="Company name" class="inputfield" required>
                   </div>
                 </div>
                 
                 <div class="col-lg-6">
                   <div class="inputbox">
-                    <input name="phone" type="tel" placeholder="Contact number" class="inputfield">
+                    <input id="phone" name="phone" type="tel" placeholder="Contact number" class="inputfield" required>
                   </div>
                 </div>
 
                 <div class="col-lg-6">
                   <div class="inputbox">
-                    <input name="email" type="email" placeholder="Email*" class="inputfield">
+                    <input id="email" name="email" type="email" placeholder="Email*" class="inputfield" required>
                   </div>
                 </div>
               </div>
 
               <div class="servicebox">
-                <h5 class="title">Services</h5>
+                <h5 class="title">Services*</h5>
 
                 <div class="services">
                   {%for service in services %}
@@ -699,14 +699,14 @@
               </div>
 
               <div class="servicebox">
-                <h5 class="title">Approximate Budget</h5>
+                <h5 class="title">Approximate Budget*</h5>
 
                 <div class="services">
                   {%for budget in budgets %}
                   <div class="myservice">
                     <input value="{{budget.id}}" type="radio" name="budget" id="budget-{{budget.id}}" hidden>
                     <label for="budget-{{budget.id}}">
-                      ${{budget.name}}
+                      {{budget.name}}
                     </label>
                   </div>
                   {% endfor %}
@@ -714,11 +714,11 @@
               </div>
 
               <div class="messagebox">
-                <textarea name="description" class="inputfield" placeholder="Tell us more about your project" rows="6"></textarea>
+                <textarea id="description" name="description" class="inputfield" placeholder="Tell us more about your project" rows="6"></textarea>
               </div>
 
               <div class="submitbox">
-                <button type="submit" class="btn-mysubmit">Submit</button>
+                <input type="submit" class="btn-mysubmit">
               </div>
             </form>
           </div>
@@ -770,5 +770,35 @@
   </div>
 </section>
 <!--========== BUSINESS-SECTION END ============-->
+
+<!-- FORM SUBMISSION TOAST START -->
+<div  class="position-fixed bottom-0 start-0 p-10" style="z-index: 11;height: 30; width: 50; margin: 5px;">
+  <div id="thinkToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="thinkinfo">
+        <div class="left">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+              <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+              <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="detail">
+          <h5 id="toastTitle" class="title"></h5>
+          <p id="toastMessage" class="message">Your request has been submitted successfully</p>
+        </div>
+      </div>
+
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- FORM SUBMISSION TOAST END -->
 
 {% endblock %}

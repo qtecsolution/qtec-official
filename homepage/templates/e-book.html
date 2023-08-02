@@ -374,43 +374,37 @@ homepage/assets/images
             An Entrepreneur's Guide to Develop Software for Business
             </h4>
             
-            <form class="contactform" method="post" action="{% url 'homepage:e_book_view' %}">
+            <form id="ebook_form" class="contactform" action="#">
                 {% csrf_token %}
                 <div class="forminfo">
                     <div class="row g-4">
                         <div class="col-lg-6 col-12">
                             <div class="inputbox">
-                                {{ form.user_name.label_tag }}
-                                {{ form.user_name }}
-                                {% if form.user_name.errors %}
-                                    <p class="error-message">{{ form.user_name.errors.as_text }}</p>
-                                {% endif %}
-                            </div>
+                                <input id="downloader_name" type="text" class="inputfield" placeholder="Write your name" id="name" autocomplete="off">
+      
+                                <p class="error-message">This field is required</p>
+                              </div>
                         </div>
             
                         <div class="col-lg-6 col-12">
                             <div class="inputbox">
-                                {{ form.phone_number.label_tag }}
-                                {{ form.phone_number }}
-                                {% if form.phone_number.errors %}
-                                    <p class="error-message">{{ form.phone_number.errors.as_text }}</p>
-                                {% endif %}
-                            </div>
+                                <input id="downloader_phone" type="tel" class="inputfield" placeholder="Write your phone number" id="phonenumber" autocomplete="off">
+      
+                                <p class="error-message">Invailed Phone Number</p>
+                              </div>
                         </div>
             
                         <div class="col-lg-6 col-12">
                             <div class="inputbox">
-                                {{ form.email.label_tag }}
-                                {{ form.email }}
-                                {% if form.email.errors %}
-                                    <p class="error-message">{{ form.email.errors.as_text }}</p>
-                                {% endif %}
-                            </div>
+                                <input id="downloader_email" type="tel" class="inputfield" placeholder="Write your mail" id="email" autocomplete="off">
+      
+                                <p class="error-message">Invailed Email</p>
+                              </div>
                         </div>
             
                         <div class="col-lg-6 col-12">
                             <div class="formsubmit">
-                                <button id="submit-message" class="btn-submit" type="submit">Download</button>
+                                <input class="btn-submit" type="submit">
                             </div>
                         </div>
                     </div>
@@ -426,31 +420,36 @@ homepage/assets/images
     </div>
     </div>
 </div>
-<div class="position-fixed bottom-0 start-0 p-10" style="z-index: 11;height: 30; width: 50; margin: 5px;">
-  <div id="subscribeToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-body">
-      <div class="subscribeinfo">
-        <div class="left">
-          <div class="icon">
-            <!-- Your SVG icon code here -->
-          </div>
-        </div>
-
-        <div class="detail">
-          <!-- Use Django template tags to render dynamic content -->
-          <h5 class="title">{{ dynamic_message.title }}</h5>
-          <p class="message">{{ dynamic_message.message }}</p>
-        </div>
-      </div>
-
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
-        <!-- Your SVG close icon code here -->
-      </button>
-    </div>
-  </div>
-</div>
 </div>
 </section>
+<!-- FORM SUBMISSION TOAST -->
+<div  class="position-fixed bottom-0 start-0 p-10" style="z-index: 11;height: 30; width: 50; margin: 5px;">
+    <div id="ebookToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body">
+        <div class="thinkinfo">
+          <div class="left">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+              </svg>
+            </div>
+          </div>
+  
+          <div class="detail">
+            <h5 id="ebook_toast_title" class="title"></h5>
+            <p id="ebook_toast_message" class="message">We have send a mail with the download link in your email.</p>
+          </div>
+        </div>
+  
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 <!--========== GET-THE-BOOK END ============-->
 
 {% endblock %}

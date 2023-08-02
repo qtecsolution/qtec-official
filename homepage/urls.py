@@ -10,8 +10,8 @@ from homepage.views.index_view import IndexView, CaseStudyView
 from homepage.views.product_view import ProductsView
 from homepage.views.service_view import ServiceView, ServiceDetailsView
 from homepage.views.technologies_view import TechnologiesView
-from homepage.views.augmentation_sevice_view import augmentation_service
-from homepage.views.ebooK_download_view import download_book
+from homepage.views.augmentation_sevice_view import augmentation_service, augmentation_service_create
+from homepage.views.ebooK_download_view import download_book, req_to_download_book
 app_name = 'homepage'
 
 urlpatterns = [
@@ -51,6 +51,11 @@ urlpatterns = [
 #     path('e-book/', EBookView.as_view(), name="e_book_view"),
     
     path('staff-augmentation/',augmentation_service, name="staff_augmentation" ),
+    path('staff-augmentation-create/', augmentation_service_create, name="staff_augmentation_create"),
+    
+    
     path('e-book/', download_book, name="e_book_view"),
+    path('e-book-download/', req_to_download_book, name="req_to_download_book"),
+
 
 ]
