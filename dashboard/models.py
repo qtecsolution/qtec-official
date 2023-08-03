@@ -126,6 +126,7 @@ class TechnologyFeatures(models.Model):
 class WhatProjectHaveWeDone(models.Model):
     name = models.CharField(max_length=150)
     image = models.ImageField(upload_to='project_done/')
+    video = models.CharField(max_length=500, null=True, blank=True)
     technology = models.ManyToManyField(Technologies)
     slug = models.SlugField(null=True, blank=True)
     project_type = MultiSelectField(choices=PROJECT_TYPE)
