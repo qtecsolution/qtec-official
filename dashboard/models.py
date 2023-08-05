@@ -8,6 +8,8 @@ from django.dispatch import receiver
 from dashboard.utils import SlugGeneratorMixin
 from langdetect import detect
 
+from .filters.youtube_link_filters import extract_video_id
+
 TEXT = 1
 TEXT_WITH_VIDEO = 2
 BLOG_TYPE = (
@@ -139,7 +141,25 @@ class WhatProjectHaveWeDone(models.Model):
     @property
     def split_technology(self):
         return self.technology.split(',')
+    
+    @property
+    def video_id(self):
+        if self.video:
+            return extract_video_id(self.video)
+        return None
 
+    @video_id.setter
+    def video_id(self, value):
+        if value:
+            self.video = f'https://www.youtube.com/embed/{value}'
+        else:
+            self.video = None
+
+    def save(self, *args, **kwargs):
+        if self.video:
+            self.video = f'https://www.youtube.com/embed/'+extract_video_id(self.video)
+
+        super().save(*args, **kwargs)
 
 class CaseStudyDetails(models.Model):
     project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
