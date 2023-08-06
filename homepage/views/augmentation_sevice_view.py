@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 def augmentation_service(request):
     services = Service.objects.all()
     budgets = AugmantationBudget.objects.all()
-    title = "Dedicated Software Team"
+    title = "STAFF AUGMENTATION"
     return render(request, 'staff_augmentation.html', {'services': services, 'budgets': budgets, 'title': title})
 
 def augmentation_service_create(request):
