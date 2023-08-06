@@ -110,6 +110,8 @@ urlpatterns= [
     path('augmentation-service-status/', AugmentationServicesView.as_view(), name= 'augmentation_service_status_change_url'),
     path('augmentation-service-create/', AugmentationServicesView.as_view(), name="create_augmentation_service_url"),
     # path('augmentation-service-create/', WhatPeopleSayView.as_view(), name="create_what_people_say_url"),
+    path('delete-augmentation-service/', AugmentationServicesView.as_view(), name="delete_augmentation_url"),
+
 
 
 

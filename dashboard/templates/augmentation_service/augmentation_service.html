@@ -26,6 +26,7 @@
                                     <th>Services</th> 
                                     <th>Budget</th> 
                                     <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                                 {% for augmentation_service in augmentation_services %}
                                 <tr id="augmentation_service_{{ augmentation_service.id }}">
@@ -40,7 +41,16 @@
                                                 <option {% if item.0 == augmentation_service.status %} selected {% endif %} value="{{ item.0 }}">{{ item.1 }}</option>
                                             {% endfor %}
                                         </select>                                        
-                                    </td>                                 
+                                    </td>      
+                                    <td>
+                                        <div class="form-group">
+                                                <form action="{% url 'dashboard:delete_augmentation_url' %}"method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{augmentation_service.id}}" name="id">
+                                                    <button title="Delete Item" onclick="check()"  class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>                           
                                 </tr>
                                 {% endfor %}
                                 
@@ -83,5 +93,22 @@ function augmentation_service_status(id){
 }
 
 </script>
+<script>
+    csrf = '{{ csrf_token }}';
+    function check(){
+        if (confirm("Do you want to delete?") == true) {
+            return true;
+        } else {
+            //cancle the from submission 
+            $(this).submit(function(e){
+                e.preventDefault();
+                location.reload()
+                return  false;
+            })
+            
+        }
+    }
+    
+    </script>
 
 {% endblock %}
