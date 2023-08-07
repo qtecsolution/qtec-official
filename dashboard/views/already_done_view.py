@@ -31,7 +31,7 @@ class AlreadyDoneView(View):
             what_Done.name = data.get('name')
             technology_id = data.getlist('technology')
             what_Done.image = request.FILES.get('image')
-            what_Done.name = data.get('video')
+            what_Done.video = data.get('video')
             what_Done.project_type = data.getlist('project_type')
             what_Done.priority = data.get('priority')
             what_Done.meta_description = data.get('meta_description')
