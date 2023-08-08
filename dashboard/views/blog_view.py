@@ -86,13 +86,18 @@ class BlogView(View):
         obj.blog_author_id = data.get('blog_author')
         obj.blog_category_id = data.get('blog_category')
         obj.description = data.get('description')
+        obj.meta_description = data.get('meta_description')
+        obj.keywords = data.get('keywords')
         obj.og_description = data.get('og_description')
         image = request.FILES.get('image')
+        thumbnail = request.FILES.get('thumbnail')
         obj.alt_text = data.get('alt_text');
         obj.title = data.get('title')
         url = data.get('url')
         if image:
             obj.image = image
+        if thumbnail:
+            obj.thumbnail = thumbnail
         obj.tags = data.get('tags')
         if flag=='created':
             obj.created_at =  date.today()
@@ -121,7 +126,7 @@ class HandleBlogView(View):
             'top_4_blog': top_4_blog,
             'highlight_blog':highlight_blog,
         }
-
+        
         return render(request, 'handle_blog.html', context)
 
     def post(self, request):
@@ -159,6 +164,7 @@ class BlogAuthorView(View):
             blog_author = BlogAuthor()
             blog_author.name = data.get('name')
             blog_author.qualification = data.get('qualification')
+            blog_author.bio = data.get('bio')
             blog_author.image = request.FILES.get('image')
             blog_author.save()
             messages.success(request, 'Data save successful!')
@@ -177,6 +183,7 @@ class BlogAuthorView(View):
             blog_author = BlogAuthor.objects.filter(id=request_id).first()
             blog_author.name = data.get('name')
             blog_author.qualification = data.get('qualification')
+            blog_author.bio = data.get('bio')
             image = request.FILES.get('image')
 
             if image:

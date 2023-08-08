@@ -45,7 +45,9 @@
 						</li>
 
 						<li class="desktoplist-item">
-							<a href="{% url 'homepage:product_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a>
+							{% comment %} <a href="{% url 'homepage:product_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'product_url' %} active {% endif %}">Products</a> {% endcomment %}
+							
+							<a href="{% url 'homepage:case_study_list_url' %}" class="desktoplist-link {% if request.resolver_match.url_name == 'case_study_list_url' %} active {% endif %}">Case Studies</a>
 						</li>
 
 						<li class="desktoplist-item">
@@ -53,6 +55,11 @@
 			  
 							  <div class="desktopdropdown">
 								<ul class="dropdownlist">
+								  <li class="dropdownlist-item">
+									<a href="{% url 'homepage:staff_augmentation'  %}" class="dropdownlist-link {% if request.resolver_match.url_name == 'staff_augmentation' %} active {% endif %}">
+										 Staff Augmentation
+									</a>
+								  </li>
 								  <li class="dropdownlist-item">
 									<a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="dropdownlist-link {% if request.resolver_match.kwargs.slug == 'ui-ux-design'%} active {% endif %}">
 									  UI /UX Design
@@ -165,6 +172,9 @@
 							data-bs-parent="#accordionDropdown"
 						  >
 							<div class="accordion-body">
+							  <a href="/staff-augmentation/" class="servicelink {% if request.resolver_match.url_name == 'staff_augmentation' %} active {% endif %}">
+									Staff Augmentation
+							  </a>
 							  <a href="{% url 'homepage:service_details_url' 'ui-ux-design' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'ui-ux-design'%} active {% endif %}">
 								UI /UX Design 
 							  </a>
@@ -176,7 +186,7 @@
 							  </a>
 							  <a href="{% url 'homepage:service_details_url' 'ecommerce-solutions' %}" class="servicelink {% if request.resolver_match.kwargs.slug == 'ecommerce-solutions'%} active {% endif %}">
 								E-commerce Development
-							  </a>
+							  </a>							  
 							</div>
 						  </div>
 						</div>

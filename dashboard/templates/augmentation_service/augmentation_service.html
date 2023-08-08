@@ -1,0 +1,114 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="" id="">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h5>Staff in Augmentation Services</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="augmentation_list" class="table table-borderless table-striped table-hover">
+                                <tr>
+                                    <th>Name </th>
+                                    <th>Company </th>
+                                    <th>Email</th>
+                                    <th>Services</th> 
+                                    <th>Budget</th> 
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                {% for augmentation_service in augmentation_services %}
+                                <tr id="augmentation_service_{{ augmentation_service.id }}">
+                                    <td>{{ augmentation_service.name }}</td>
+                                    <td>{{ augmentation_service.company }}</td>
+                                    <td>{{ augmentation_service.email }}</td>
+                                    <td>{{ augmentation_service.services }}</td>
+                                    <td>{{ augmentation_service.budget }}</td>
+                                    <td>
+                                        <select title="change status" id="augmentation_service_change_status_id_{{ augmentation_service.id }}" onchange="augmentation_service_status('{{ augmentation_service.id }}')">
+                                            {% for item in status %}
+                                                <option {% if item.0 == augmentation_service.status %} selected {% endif %} value="{{ item.0 }}">{{ item.1 }}</option>
+                                            {% endfor %}
+                                        </select>                                        
+                                    </td>      
+                                    <td>
+                                        <div class="form-group">
+                                                <form action="{% url 'dashboard:delete_augmentation_url' %}"method="POST" >
+                                                    {% csrf_token %}
+                                                    <input type="hidden" value="{{augmentation_service.id}}" name="id">
+                                                    <button title="Delete Item" onclick="check()"  class="btn btn-icon btn-sm btn-outline-primary" ><i class="fa fa-trash"></i></button>
+                                                </form>
+                                        </div>
+                                    </td>                           
+                                </tr>
+                                {% endfor %}
+                                
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+csrf = '{{ csrf_token }}';
+function augmentation_service_status(id){
+    let url =  "{% url 'dashboard:augmentation_service_status_change_url' %}";
+    status = $("#augmentation_service_change_status_id_"+id).val()
+    $.ajax({
+        url: url,
+        data: {'id': id,'status' : status, 'csrfmiddlewaretoken': csrf},
+        type: "POST",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-CSRFToken", getCookie("csrftoken"));
+        },
+        success: function (data) {
+            toastr.success('Status change successfully');
+        },
+        error: function (data) {
+            alert("")
+            console.log(data);
+        }
+    });
+}
+
+</script>
+<script>
+    csrf = '{{ csrf_token }}';
+    function check(){
+        if (confirm("Do you want to delete?") == true) {
+            return true;
+        } else {
+            //cancle the from submission 
+            $(this).submit(function(e){
+                e.preventDefault();
+                location.reload()
+                return  false;
+            })
+            
+        }
+    }
+    
+    </script>
+
+{% endblock %}

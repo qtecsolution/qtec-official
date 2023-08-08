@@ -27,6 +27,7 @@
                                     <th>Id </th>
                                     <th>Name</th>
                                     <th>Qualification</th>
+                                    <th>Bio</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
@@ -35,6 +36,7 @@
                                     <td>{{ author.id }}</td>
                                     <td>{{ author.name }}</td>
                                     <td>{{ author.qualification }}</td>
+                                    <td>{{ author.bio }}</td>
                                     <td>
                                         {% if author.image %}
                                         <div>
@@ -81,6 +83,12 @@
                                                                     <label for="qualification" class="col-sm-4 col-form-label">Qualification</label>
                                                                     <div class="col-sm-8">
                                                                         <textarea   class="form-control" name="qualification">{{ author.qualification }}</textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="bio" class="col-sm-4 col-form-label">Bio</label>
+                                                                    <div class="col-sm-8">
+                                                                        <textarea   class="form-control" name="bio">{{ author.bio }}</textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
@@ -143,6 +151,12 @@
                                         <label for="qualification" class="col-sm-4 col-form-label">Qualification </label>
                                         <div class="col-sm-8">
                                             <textarea   class="form-control" name="qualification"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="bio" class="col-sm-4 col-form-label">Bio</label>
+                                        <div class="col-sm-8">
+                                            <textarea   class="form-control" name="bio"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">

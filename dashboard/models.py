@@ -8,6 +8,8 @@ from django.dispatch import receiver
 from dashboard.utils import SlugGeneratorMixin
 from langdetect import detect
 
+from .filters.youtube_link_filters import extract_video_id
+
 TEXT = 1
 TEXT_WITH_VIDEO = 2
 BLOG_TYPE = (
@@ -88,6 +90,12 @@ ACTIVE_STATUS = (
     (CLOSED, 'Closed')
 )
 
+STATUS_TYPE = (
+    ('PENDING','Pending'),
+    ('PROCCESSING','Proccessing'),
+    ('CONFIRMED','Confirmed'),
+    ('REJECTED','Rejected')
+)
 
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
@@ -96,14 +104,18 @@ class Technologies(models.Model):
     image = models.ImageField(upload_to='technologies')
     technology_details_title = models.CharField(max_length=100)
     technology_detail_description = models.TextField()
-    technology_detail_thumbnail = models.ImageField(upload_to='technologies/', null=True, blank=True)
+    technology_detail_thumbnail = models.ImageField(
+        upload_to='technologies/', null=True, blank=True)
     why_this_technologies_title = models.CharField(max_length=100)
     why_this_technologies_description = models.TextField()
-    why_this_technologies_image = models.ImageField(upload_to='technologies/', null=True, blank=True)
+    why_this_technologies_image = models.ImageField(
+        upload_to='technologies/', null=True, blank=True)
     why_choice_title = models.CharField(max_length=200)
     why_choice_description = models.TextField()
-    why_choice_image = models.ImageField(upload_to='technologies/', null=True, blank=True)
-    technology_features = models.ManyToManyField("TechnologyFeatures", related_name="technologies")
+    why_choice_image = models.ImageField(
+        upload_to='technologies/', null=True, blank=True)
+    technology_features = models.ManyToManyField(
+        "TechnologyFeatures", related_name="technologies")
     display = models.BooleanField(default=True)
 
 
@@ -116,28 +128,54 @@ class TechnologyFeatures(models.Model):
 class WhatProjectHaveWeDone(models.Model):
     name = models.CharField(max_length=150)
     image = models.ImageField(upload_to='project_done/')
+    video = models.CharField(max_length=500, null=True, blank=True)
     technology = models.ManyToManyField(Technologies)
     slug = models.SlugField(null=True, blank=True)
     project_type = MultiSelectField(choices=PROJECT_TYPE)
     priority = models.PositiveSmallIntegerField(default=0, null=True)
     display = models.BooleanField(default=True)
     homepage = models.BooleanField(default=True)
+    meta_description = models.TextField(null=True)
+    keywords = models.TextField(null=True)
 
     @property
     def split_technology(self):
         return self.technology.split(',')
+    
+    @property
+    def video_id(self):
+        if self.video:
+            return extract_video_id(self.video)
+        return None
 
+    @video_id.setter
+    def video_id(self, value):
+        if value:
+            self.video = f'https://www.youtube.com/embed/{value}'
+        else:
+            self.video = None
+
+    def save(self, *args, **kwargs):
+        if self.video:
+            self.video = f'https://www.youtube.com/embed/'+extract_video_id(self.video)
+
+        super().save(*args, **kwargs)
 
 class CaseStudyDetails(models.Model):
     project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
                                                 on_delete=models.CASCADE)
     case_study_about = models.TextField(null=True, blank=True)
-    case_study_image = models.ImageField(upload_to='case_study_image/', null=True, blank=True)
+    case_study_image = models.ImageField(
+        upload_to='case_study_image/', null=True, blank=True)
     client_requirement = models.TextField(null=True, blank=True)
-    requirements_thumbnail = models.ImageField(upload_to='case_study/', null=True, blank=True)
+    requirements_thumbnail = models.ImageField(
+        upload_to='case_study/', null=True, blank=True)
     how_we_build_it = models.TextField(null=True, blank=True)
-    how_we_build_image = models.ImageField(upload_to='how_we_build/', null=True, blank=True)
+    how_we_build_image = models.ImageField(
+        upload_to='how_we_build/', null=True, blank=True)
     technology = models.ManyToManyField(Technologies)
+    meta_description = models.TextField(null=True)
+    keywords = models.TextField(null=True)
 
 
 class KeyFeature(models.Model):
@@ -151,12 +189,14 @@ class KeyFeature(models.Model):
 class Subscribe(models.Model):
     email = models.CharField(max_length=200)
     date = models.DateTimeField(default=datetime.now)
-    status = models.PositiveSmallIntegerField(choices=SUBSCRIBE_STATUS, default=OPT_IN)
+    status = models.PositiveSmallIntegerField(
+        choices=SUBSCRIBE_STATUS, default=OPT_IN)
 
 
 class BlogAuthor(models.Model):
     name = models.CharField(max_length=100)
     qualification = models.TextField(blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='blog/author/', blank=True, null=True)
 
     def __str__(self):
@@ -172,13 +212,20 @@ class BlogCategory(models.Model):
 
 
 class Blog(models.Model):
-    blog_author = models.ForeignKey(BlogAuthor, null=True, related_name='blogs', on_delete=models.CASCADE)
-    blog_category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE, null=True)
-    slug = models.SlugField(null=True, allow_unicode=True, unique=True, blank=True)
+    blog_author = models.ForeignKey(
+        BlogAuthor, null=True, related_name='blogs', on_delete=models.CASCADE)
+    blog_category = models.ForeignKey(
+        BlogCategory, on_delete=models.CASCADE, null=True)
+    slug = models.SlugField(
+        null=True, allow_unicode=True, unique=True, blank=True)
     title = models.TextField()
     description = models.TextField()
     og_description = models.TextField(null=True)
+    meta_description = models.TextField(null=True)
+    keywords = models.TextField(null=True)
     image = models.ImageField(upload_to='blog/')
+    thumbnail = models.ImageField(
+        upload_to='blog/thumbnail/', null=True, blank=True)
     alt_text = models.CharField(max_length=250, null=True, default=True)
     tags = models.TextField(null=True, blank=True)
     created_at = models.DateField(auto_now_add=True, null=True)
@@ -199,13 +246,15 @@ class LetsTalk(models.Model):
     phone_number = models.CharField(max_length=30)
     budget = models.PositiveSmallIntegerField(choices=BUDGET)
     message = models.TextField(null=True)
-    status = models.PositiveSmallIntegerField(choices=LETS_TAlK_STATUS, default=PENDING)
+    status = models.PositiveSmallIntegerField(
+        choices=LETS_TAlK_STATUS, default=PENDING)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 class HandleBlog(models.Model):
     top_4_blog = models.ManyToManyField(Blog)
-    highlight_blog = models.ForeignKey(Blog, related_name='handle_blog', on_delete=models.CASCADE, null=True)
+    highlight_blog = models.ForeignKey(
+        Blog, related_name='handle_blog', on_delete=models.CASCADE, null=True)
 
 
 class ApplyForThisPosition(models.Model):
@@ -215,7 +264,8 @@ class ApplyForThisPosition(models.Model):
     upload_cv = models.FileField(upload_to='apply_for_this_position/')
     current_opportunities = models.ForeignKey("CurrentOpportunities", on_delete=models.CASCADE,
                                               related_name='apply_for_positions')
-    status = models.PositiveSmallIntegerField(choices=APPLY_STATUS, default=UNSEEN)
+    status = models.PositiveSmallIntegerField(
+        choices=APPLY_STATUS, default=UNSEEN)
     date = models.DateTimeField(auto_now_add=True)
 
 
@@ -223,7 +273,8 @@ class CurrentOpportunities(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='opportunities/', null=True)
     slug = models.SlugField(null=True, allow_unicode=True, blank=True)
-    applicant_type = models.PositiveSmallIntegerField(choices=APPLICENT_STATUS, default=FULL_TIME)
+    applicant_type = models.PositiveSmallIntegerField(
+        choices=APPLICENT_STATUS, default=FULL_TIME)
     number_of_vacancy = models.PositiveIntegerField()
     deadline = models.DateField()
     description = models.TextField()
@@ -295,3 +346,56 @@ class WhatPeopleSay(models.Model):
     image = models.ImageField(upload_to='what-people-say/')
     description = models.TextField()
     priority = models.PositiveSmallIntegerField()
+
+
+
+
+
+class Service(models.Model):
+    name = models.CharField(max_length=100,null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name= 'Service'
+        verbose_name_plural = 'Services'
+
+
+
+class AugmantationBudget(models.Model):
+    name = models.CharField(max_length=100,null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name= 'Augmantation Budget'
+        verbose_name_plural = 'Augmantation Budgets'
+
+
+class AugmentationService(models.Model):
+    name = models.CharField(max_length=100, blank=True, null= True)
+    company = models.CharField(max_length=250, blank=True, null= True)
+    phone = models.CharField(max_length=50, blank=True, null= True)
+    email = models.EmailField(blank=True, null= True)
+    services = models.ForeignKey(Service, on_delete=models.CASCADE, blank= True, null=True)
+    status = models.CharField(max_length=100,choices=STATUS_TYPE,default='PENDING')
+    budget = models.ForeignKey(AugmantationBudget,on_delete=models.CASCADE, blank=True, null=True) 
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Augmentation Service'
+        verbose_name_plural = 'Augmentation Services'
+
+
+class BookDownloader(models.Model):
+    user_name = models.CharField(max_length=128)
+    phone_number = models.CharField(max_length=11)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.user_name

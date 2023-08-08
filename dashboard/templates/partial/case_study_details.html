@@ -95,6 +95,14 @@
                                                     {% endfor %}
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                <label>Meta Description</label>
+                                                <textarea  class="form-control" name="meta_description" >{{ case_study.meta_description|safe }}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Keywords</label>
+                                                <textarea  class="form-control" name="keywords" >{{ case_study.keywords|safe }}</textarea>
+                                            </div>
                                             <button name="save" value="Save&list" class="btn btn-default float-right" type="submit">
                                                 <i class="fa fa-plus-circle"></i>
                                                 Save

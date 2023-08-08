@@ -304,7 +304,7 @@
 															<div  class="service-buttons">
 																<button onclick="location.href='{% url 'homepage:contact_us_url' %}'" class="btn-service">Discuss for your project</button>
 
-																<a onclick="location.href='{% url 'homepage:service_details_url' 'e-commerce-solutions' %}'"  class="btn-text">
+																<a onclick="location.href='{% url 'homepage:service_details_url' 'ecommerce-solutions' %}'"  class="btn-text">
 																	<span class="text">App that we have already build</span>
 
 																	<span class="icon">
@@ -1095,7 +1095,11 @@
 							<a href="/blog/{{ blog.slug }}/" class="bloglink">
 								<div class="card-article">
 									<div class="card-article-header">
-										<img src="{{ blog.image.url }}" alt="card-thumbnail">
+										{% if blog.thumbnail %}
+											<img style="object-fit: fill;" src="{{ blog.thumbnail.url }}" alt="card-thumbnail">
+										{% else %}
+											<img style="object-fit: fill;" src="{% static 'images/default.jpg' %}" alt="card-thumbnail">
+										{% endif %}	
 									</div>
 
 									<div class="card-article-body">

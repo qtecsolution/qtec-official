@@ -1,6 +1,5 @@
 {% extends 'homepage/base_homepage.html' %}
 {% load static %}
-
 {% block content %}
 <!--========== CASESTUDY-BANNER-START ============-->
 <section class="casestudy-banner">
@@ -33,7 +32,30 @@
 </section>
 <!--========== CASESTUDY-BANNER-END ==============-->
 
-	
+	<!--========== CASE-STUDY-VIDEO-SECTION-START ============-->
+	<!-- <section class="homevideo">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-12 mx-md-auto">						
+							<iframe width="560" height="315" src="{{we_have_done.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</section> -->
+	{% if we_have_done.video %}
+	<section class="casestudyvideo">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-12 mx-md-auto">
+					<div class="videobox">
+						<iframe width="966px" height="580px" src="{{we_have_done.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endif %}
+	<!--========== CASE-STUDY-VIDEO-SECTION-END ==============-->	
 
 	<!--========== CLIENT-REQUIREMENTS START ============-->
 	<section class="client-requirements">

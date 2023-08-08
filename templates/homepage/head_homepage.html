@@ -3,22 +3,43 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
+	
 	<meta name="author" content="Qtec Solution Limited">
-	<meta name="keywords" content="Software development company, flutter team, django team, python team, remote team, remote software development team, remote flutter team, remote django team, remote flutter team, remote ui ux team, ui ux outsource, dhaka based software company, company like Brain Station 23, Company like DataSoft, Company like Gigster, Company like Audacity IT Solution, Company like Reve Systems">
+	
 	<meta property="og:locale" content="en_US">
 	<!-- OPEN-GRAPH META TAGS -->
 
     {% if request.resolver_match.url_name == 'blog_details_url' %}
+	<meta name="keywords" content="{{ blog.keywords }}">
+	<meta name="description" content="{{ blog.meta_description }}">
+	
 	<meta property="og:title" content="{{ blog.title }}">
-	<meta property="og:description" content="{{ blog.og_description }}">
+	<meta property="og:description" content="{{ blog.meta_description }}">
 	<meta property="og:image" content="{{ blog.image.url }}">
 	<meta property="og:type" content="article">
 
+	{% elif request.resolver_match.url_name == 'service_details_url' %}
+	<meta name="keywords" content="{{ projects_done.keywords }}">
+	<meta name="description" content="{{ projects_done.meta_description }}">
+	<meta property="og:title" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
+	<meta property="og:description" content="{{ projects_done.meta_description }}">
+	<meta property="og:image" content="{% static 'homepage/assets/images/Qtec-mobile-application-development-service.jpg' %}">
+	<meta property="og:type" content="website">
+
+	{% elif request.resolver_match.url_name == 'case_study_details_url' %}
+	<meta name="keywords" content="{{ case_study_details.keywords }}">
+	<meta name="description" content="{{ case_study_details.meta_description }}">
+	<meta property="og:title" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
+	<meta property="og:description" content="{{ case_study_details.meta_description }}">
+	<meta property="og:image" content="{% static 'homepage/assets/images/Qtec-mobile-application-development-service.jpg' %}">
+	<meta property="og:type" content="website">
 	<!-- OPEN-GRAPH META TAGS -->
 
     {% else %}
-
+	<meta name="description" 
+	content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
+	<meta name="keywords" 
+	content="Software development company, flutter team, django team, python team, remote team, remote software development team, remote flutter team, remote django team, remote flutter team, remote ui ux team, ui ux outsource, dhaka based software company, company like Brain Station 23, Company like DataSoft, Company like Gigster, Company like Audacity IT Solution, Company like Reve Systems">
 	<meta property="og:title" content="Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development">
 	<meta property="og:description" content="Qtec Solution Limited Software Development company delivers enterprise applications in planned time based on the requirements by the finest software developers, ui ux designers and devops and fully managed service.">
 	<meta property="og:image" content="{% static 'homepage/assets/images/Qtec-mobile-application-development-service.jpg' %}">
@@ -30,7 +51,8 @@
 		{% if title == 'Home' %}
 			Qtec Solution Limited - Fully managed Software Development team for Software Solutions Development, Machine Learning, UI UX Design, Android and iOS mobile application development
 		{% elif title == 'BLOG DETAILS' %}
-		  {{ blog.title }} - Qtec Solution Limited
+		  {% comment %} {{ blog.title }} - Qtec Solution Limited {% endcomment %}
+		  {{ blog.title }}
 		{% else %}
 			{{ title }} - Qtec Solution Limited	
 		{% endif %}

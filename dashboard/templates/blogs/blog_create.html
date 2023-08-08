@@ -30,7 +30,7 @@
                                          data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Blog Author <small style="color: red">*</small> </label>
                                                         <select required  name="blog_author" class="form-control"
@@ -50,7 +50,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <div class="form-group">
                                                         <label>Title <small style="color: red">*</small> </label>
                                                         <input required class="form-control" type="text" name="title" id=""> 
@@ -63,9 +63,11 @@
                                                                 
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label>Alt Text </label>
-                                                                <input  name="alt_text" class="form-control" >
+                                                                <label>Thumbnail<small style="color: red">*</small> </label>
+                                                                <input type="file"  required name="thumbnail" class="form-control" >
+                                                                
                                                             </div>
+                                                            
 
                                                         </div>
                                                     </div>
@@ -80,6 +82,10 @@
                                                         <label>OG Description<small style="color: red">*</small> </label>
                                                         <textarea  required name="og_description" class="form-control" ></textarea>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label>Alt Text </label>
+                                                        <input  name="alt_text" class="form-control" >
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -89,6 +95,17 @@
                                                     <div class="form-group">
                                                         <label>Url <small style="color: red">*</small> </label>
                                                         <input type="text"  required name="url" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Meta Description<small style="color: red"></small> </label>
+                                                        <textarea class="form-control" type="text" 
+                                                        name="meta_description" id="blog_meta_description"> </textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Keywords<small style="color: red">*</small> </label>
+                                                        <input type="text"  required name="keywords" class="form-control" >
                                                     </div>
                                                 </div>
                                             </div>
