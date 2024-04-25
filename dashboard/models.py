@@ -157,9 +157,14 @@ class WhatProjectHaveWeDone(models.Model):
 
     def save(self, *args, **kwargs):
         if self.video:
-            self.video = f'https://www.youtube.com/embed/'+extract_video_id(self.video)
+            video_id = extract_video_id(self.video)
+            if video_id:
+                self.video = f'https://www.youtube.com/embed/{video_id}'
+            else:
+                self.video = None
 
         super().save(*args, **kwargs)
+
 
 class CaseStudyDetails(models.Model):
     project_we_have_done = models.OneToOneField(WhatProjectHaveWeDone, related_name='case_study_details',
