@@ -5262,6 +5262,15 @@ select {
   letter-spacing: 0.015rem;
   text-align: justify;
 }
+.requirements-body b span {
+  font-weight: bold !important;
+}
+.articledescript p span span {
+  color : #0d6efd !important;
+}
+.description p span strong {
+  font-weight: bold !important;
+}
 @media screen and (min-width: 48rem) {
   .client-requirements .requirements-text {
     font-family: "Titillium Web";
