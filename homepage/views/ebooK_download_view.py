@@ -24,7 +24,10 @@ def req_to_download_book(request):
         recipient_list = [to_email]
         message =f"""Dear {to_name},
 
-        We hope this email finds you well! As a fellow entrepreneur, we believe you'll find immense value in our latest eBook titled "An Entrepreneur's Guide to Develop Software for Business." Whether you're just starting your business or looking to enhance your existing operations, this comprehensive guide is designed to provide you with valuable insights and strategies to leverage the power of software development for your business growth.
+        We hope this email finds you well! As a fellow entrepreneur, we believe you'll find immense value in our latest
+        eBook titled "An Entrepreneur's Guide to Develop Software for Business." Whether you're just starting your business 
+        or looking to enhance your existing operations, this comprehensive guide is designed to provide you with valuable 
+        insights and strategies to leverage the power of software development for your business growth.
 
         In this eBook, you will discover:
 
@@ -39,7 +42,8 @@ def req_to_download_book(request):
 
         To download your complimentary copy of "An Entrepreneur's Guide to Develop Software for Business," simply click on the link below:
 
-        http://127.0.0.1:8000/static/book/demo.pdf"
+        
+        {request.build_absolute_uri('/static/ebook/QSL_Ebook_1.pdf')}"
 
         We genuinely believe that this eBook can make a significant impact on your business journey, and we're thrilled to share it with you. Feel free to share this offer with your fellow entrepreneurs or anyone who might find it valuable.
 

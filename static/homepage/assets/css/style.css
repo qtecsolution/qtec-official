@@ -175,7 +175,6 @@ applet,
 article,
 aside,
 audio,
-b,
 big,
 blockquote,
 button,
@@ -235,7 +234,6 @@ section,
 small,
 span,
 strike,
-strong,
 sub,
 summary,
 select,
@@ -12534,7 +12532,7 @@ select {
 }
 @media screen and (min-width: 68.75rem) {
   .ebook-banner {
-    min-height: calc(100vh - 6.25rem);
+    min-height: calc(100vh - 13.25rem);
   }
 }
 .ebook-banner .banner-detail {
@@ -12606,7 +12604,7 @@ select {
 }
 @media screen and (min-width: 62rem) {
   .inthisbook {
-    padding: 6.25rem 0rem 0rem;
+    padding: 2.5rem 0rem 0rem;
   }
 }
 .inthisbook-content {
