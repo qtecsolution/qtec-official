@@ -202,6 +202,9 @@
 					  <li class="mobilelist-item">
 						<a href="{% url 'homepage:blog_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'blog_url' %} active {% endif %}">Blog</a>
 					  </li>
+					  <li class="mobilelist-item">
+						<a href="{% url 'homepage:e_book_view' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'e_book_view' %} active {% endif %}">E-book</a>
+					  </li>
 	  
 					  <li class="mobilelist-item">
 						<a href="{% url 'homepage:contact_us_url' %}" class="mobilelist-link {% if request.resolver_match.url_name == 'contact_us_url' %} active {% endif %}">Contact Us</a>
