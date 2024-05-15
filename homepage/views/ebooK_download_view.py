@@ -1,9 +1,11 @@
-from django.shortcuts import render,HttpResponseRedirect
-# JSONResponse import 
+from django.shortcuts import render, HttpResponseRedirect
+# JSONResponse import
 from django.http import JsonResponse
+from dashboard.models import BookDownloader
 from qtec_official import settings
 from django.core.mail import send_mail, EmailMessage
 from homepage.forms.ebook_form import Book_Download_Form
+
 
 def download_book(request):
     title = 'Ebook'
@@ -12,7 +14,7 @@ def download_book(request):
 
 # def req_to_download_book(request):
 #     if request.method == 'POST':
-#         user_name = request.POST['user_name']        
+#         user_name = request.POST['user_name']
 #         phone_number = request.POST['phone_number']
 #         email = request.POST['email']
 
@@ -25,8 +27,8 @@ def download_book(request):
 #         message =f"""Dear {to_name},
 
 #         We hope this email finds you well! As a fellow entrepreneur, we believe you'll find immense value in our latest
-#         eBook titled "An Entrepreneur's Guide to Develop Software for Business." Whether you're just starting your business 
-#         or looking to enhance your existing operations, this comprehensive guide is designed to provide you with valuable 
+#         eBook titled "An Entrepreneur's Guide to Develop Software for Business." Whether you're just starting your business
+#         or looking to enhance your existing operations, this comprehensive guide is designed to provide you with valuable
 #         insights and strategies to leverage the power of software development for your business growth.
 
 #         In this eBook, you will discover:
@@ -42,7 +44,7 @@ def download_book(request):
 
 #         To download your complimentary copy of "An Entrepreneur's Guide to Develop Software for Business," simply click on the link below:
 
-        
+
 #         {request.build_absolute_uri('/static/ebook/QSL_Ebook_1.pdf')}"
 
 #         We genuinely believe that this eBook can make a significant impact on your business journey, and we're thrilled to share it with you. Feel free to share this offer with your fellow entrepreneurs or anyone who might find it valuable.
@@ -52,7 +54,7 @@ def download_book(request):
 #         Thank you for being a part of our entrepreneurial community. We wish you all the best in your business endeavors.
 
 #         Best regards,
-#         Qtec Solution Limited """    
+#         Qtec Solution Limited """
 
 #         send_mail(subject, message, from_email, recipient_list)
 #         notify ="Thank You"+ " " + to_name
@@ -60,17 +62,23 @@ def download_book(request):
 
 def req_to_download_book(request):
     if request.method == 'POST':
-        user_name = request.POST['user_name']        
+        user_name = request.POST['user_name']
         phone_number = request.POST['phone_number']
         email = request.POST['email']
-
+        # save to Book Downloader
+        try:
+            BookDownloader.objects.create(
+                user_name=user_name, phone_number=phone_number, email=email)
+        except Exception as e:
+            print(e)
+            pass
         to_email = request.POST.get('email')
         to_name = request.POST.get('user_name')
 
         subject = 'Download Your Free eBook: "An Entrepreneur\'s Guide to Develop Software for Business"'
         from_email = settings.EMAIL_HOST_USER
         recipient_list = [to_email]
-        
+
         message = f"""Dear {to_name},
 
         We hope this email finds you well! As a fellow entrepreneur, we believe you'll find immense value in our latest
@@ -100,11 +108,12 @@ def req_to_download_book(request):
         Qtec Solution Limited"""
 
         # Create an email message object
-        email_message = EmailMessage(subject, message, from_email, recipient_list)
-        
+        email_message = EmailMessage(
+            subject, message, from_email, recipient_list)
+
         # Path to the eBook file
         ebook_path = settings.BASE_DIR / 'static' / 'ebook' / 'QSL_Ebook_1.pdf'
-        
+
         # Attach the eBook file
         email_message.attach_file(ebook_path)
 
