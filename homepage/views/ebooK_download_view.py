@@ -78,6 +78,7 @@ def req_to_download_book(request):
         subject = 'Download Your Free eBook: "An Entrepreneur\'s Guide to Develop Software for Business"'
         from_email = settings.EMAIL_HOST_USER
         recipient_list = [to_email]
+        cc_email = [settings.EMAIL_HOST_USER]
 
         message = f"""Dear {to_name},
 
@@ -109,7 +110,7 @@ def req_to_download_book(request):
 
         # Create an email message object
         email_message = EmailMessage(
-            subject, message, from_email, recipient_list)
+            subject, message, from_email, recipient_list, cc=cc_email)
 
         # Path to the eBook file
         ebook_path = settings.BASE_DIR / 'static' / 'ebook' / 'QSL_Ebook_1.pdf'
