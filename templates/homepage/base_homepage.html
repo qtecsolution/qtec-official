@@ -147,6 +147,12 @@
         let toast = new bootstrap.Toast(toastEbook);
         toast.show();
       },
+      catch: function(error){
+        $('#ebook_toast_title').text(response.notify)
+        let toastEbook = document.getElementById('ebookToast');
+        let toast = new bootstrap.Toast(toastEbook);
+        toast.show();
+      }
     })
   })
 

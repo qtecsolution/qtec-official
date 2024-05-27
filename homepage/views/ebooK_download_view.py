@@ -107,19 +107,22 @@ def req_to_download_book(request):
 
         Best regards,
         Qtec Solution Limited"""
+        try:
+            # Create an email message object
+            email_message = EmailMessage(
+                subject, message, from_email, recipient_list, cc=cc_email)
 
-        # Create an email message object
-        email_message = EmailMessage(
-            subject, message, from_email, recipient_list, cc=cc_email)
+            # Path to the eBook file
+            ebook_path = settings.BASE_DIR / 'static' / 'ebook' / \
+                "An Entrepreneur's Guide To Develop. Software for business(QSL).pdf"
 
-        # Path to the eBook file
-        ebook_path = settings.BASE_DIR / 'static' / 'ebook' / 'QSL_Ebook_1.pdf'
+            # Attach the eBook file
+            email_message.attach_file(ebook_path)
 
-        # Attach the eBook file
-        email_message.attach_file(ebook_path)
+            # Send the email
+            email_message.send()
 
-        # Send the email
-        email_message.send()
-
-        notify = "Thank You " + to_name
-        return JsonResponse({'notify': notify})
+            notify = "Thank You " + to_name
+            return JsonResponse({'notify': notify})
+        except Exception as e:
+            return JsonResponse({'notify': 'An error occurred while sending the email, please try again later', "error": str(e)})
