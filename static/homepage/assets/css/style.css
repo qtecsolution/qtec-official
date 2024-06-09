@@ -5270,6 +5270,10 @@ select {
   opacity: 0.5;
   background: #7c7c7c !important;
 }
+.spinner-border{
+  height: 1rem;
+  width: 1rem;
+}
 
 
 .description p span strong {

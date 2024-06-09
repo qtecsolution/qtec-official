@@ -537,12 +537,13 @@ custom_tags %} {% block content %}
                       <div class="inputbox">
                         <input
                           id="downloader_phone"
-                          type="tel"
+                          type="number"
                           class="inputfield"
                           placeholder="Write your phone number"
                           id="phonenumber"
                           autocomplete="off"
                           required
+                          min="0"
                         />
 
                         <p class="error-message">Invailed Phone Number</p>
@@ -553,7 +554,7 @@ custom_tags %} {% block content %}
                       <div class="inputbox">
                         <input
                           id="downloader_email"
-                          type="tel"
+                          type="email"
                           class="inputfield"
                           placeholder="Write your mail"
                           id="email"
@@ -568,7 +569,12 @@ custom_tags %} {% block content %}
                     <div class="col-lg-6 col-12">
                       <div class="formsubmit">
                         <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                        <input class="btn-submit" type="submit" value="Get The Book" />
+                        <button class="btn-submit" type="submit">
+                          <div id="get-book-spinner" class="spinner-border d-none" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                          Get The Book
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -659,4 +665,18 @@ custom_tags %} {% block content %}
 {% endblock %} {% block script %}
 <script src="{% static 'homepage/assets/js/ebookslider.js' %}"></script>
 <script></script>
+<script>
+  document.getElementById('downloader_phone').addEventListener('input', function (e) {
+    // Remove non-numeric characters
+    this.value = this.value.replace(/\D/g, '');
+  });
+
+  // Prevent non-numeric keys from being typed
+  document.getElementById('downloader_phone').addEventListener('keypress', function (e) {
+    if (e.key < '0' || e.key > '9') {
+      e.preventDefault();
+    }
+  });
+</script>
+
 {% endblock %}
