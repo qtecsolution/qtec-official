@@ -5263,9 +5263,15 @@ select {
 .requirements-body b span {
   font-weight: bold !important;
 }
-.articledescript p span span {
-  /* color : #0d6efd !important; */
+
+.disable-btn{
+  pointer-events: none !important;
+  cursor: not-allowed;
+  opacity: 0.5;
+  background: #7c7c7c !important;
 }
+
+
 .description p span strong {
   font-weight: bold !important;
 }

@@ -131,6 +131,9 @@
 <script type="text/javascript">
   $(document).on('submit', '#ebook_form',function(e){
     e.preventDefault();
+    const $submitButton = $(this).find('.btn-submit');
+        $submitButton.prop('disabled', true);
+        $submitButton.addClass('disable-btn');        
     $.ajax({
       type:'POST',
       url:'{% url "homepage:req_to_download_book" %}',
@@ -146,6 +149,8 @@
         let toastEbook = document.getElementById('ebookToast');
         let toast = new bootstrap.Toast(toastEbook);
         toast.show();
+        $submitButton.prop('disabled', false);
+        $submitButton.removeClass('disable-btn');
       },
       catch: function(error){
         $('#ebook_toast_title').text(response.notify)
