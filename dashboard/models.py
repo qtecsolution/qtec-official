@@ -328,6 +328,20 @@ class TeamMembers(models.Model):
         return self.name
 
 
+class LegalTeamMembers(models.Model):
+    name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='team_members/')
+    designation = models.CharField(max_length=100)
+    github = models.CharField(max_length=100, null=True, blank=True)
+    linkedin = models.CharField(max_length=100, null=True)
+    instagram = models.CharField(max_length=100, null=True, blank=True)
+    gmail = models.EmailField(max_length=100)
+    priority = models.PositiveSmallIntegerField()
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class OurGallery(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField()

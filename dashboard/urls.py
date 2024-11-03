@@ -10,7 +10,7 @@ from dashboard.views.home_clients_view import HomeClientsView
 from dashboard.views.lets_talk_view import LetsTalkView
 from dashboard.views.our_gallery_view import OurGalleryView
 from dashboard.views.subscribe_view import SubscribeView
-from dashboard.views.team_members_view import TeamMembersView
+from dashboard.views.team_members_view import LegalTeamMembersView, TeamMembersView
 from dashboard.views.technologies_view import TechnologiesView
 from dashboard.views.what_people_say_view import WhatPeopleSayView
 
@@ -90,7 +90,12 @@ urlpatterns= [
     path('team-members-delete/', TeamMembersView.as_view(), name="delete_team_member_url"),
     path('team-members-create/', TeamMembersView.as_view(), name="save_team_member_url"),
     path('team-members-update/<int:id>/', TeamMembersView.as_view(), name="update_team_member_url"),
-    
+
+    path('legal-team-members/', LegalTeamMembersView.as_view(), name="legal_members_url"),
+    path('legal-team-members-delete/', LegalTeamMembersView.as_view(), name="delete_legal_member_url"),
+    path('legal-team-members-create/', LegalTeamMembersView.as_view(), name="save_legal_member_url"),
+    path('legal-team-members-update/<int:id>/', LegalTeamMembersView.as_view(), name="update_legal_member_url"),
+
 
     path('our-gallery/', OurGalleryView.as_view(), name="our_gallery_url"),
     path('our-gallery-create/', OurGalleryView.as_view(), name="save_our_gallery_url"),

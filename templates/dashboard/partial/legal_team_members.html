@@ -1,0 +1,9 @@
+<li class="nav-item menu-open">
+  <a
+    href="{% url 'dashboard:legal_members_url' %}"
+    class="nav-link {% if request.resolver_match.url_name in 'legal_members_url, save_legal_member_url, delete_legal_member_url, update_legal_member_url ' %} active {% endif %}"
+  >
+    <i class="nav-icon fas fa-tachometer-alt"></i>
+    <p>Legal Team Members</p>
+  </a>
+</li>
