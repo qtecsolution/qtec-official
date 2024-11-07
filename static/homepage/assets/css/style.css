@@ -1148,6 +1148,27 @@ select {
   color: #ffffff;
 }
 
+.btn-portfolio{
+  background-size: 200%;
+  min-width: 7.5rem;
+  font-family: "Titillium Web";
+  font-style: normal;
+  background: white !important;
+  color: #0876fc !important;
+  padding: .75rem 1.5rem;
+  border-radius: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #0876fc !important;
+  transition: all 200ms ease-in-out;
+  font-weight: 700;
+}
+
+.btn-portfolio:hover{
+  background: linear-gradient(151.47deg, #0876fc 9.01%, #02d7f8 84.28%) !important;
+  color: white !important;
+  border: none !important;
+}
+
 .btn-service {
   background: linear-gradient(151.47deg, #02d7f8 9.01%, #0876fc 84.28%);
   color: #ffffff;
