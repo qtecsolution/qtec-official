@@ -1276,7 +1276,7 @@
 		  ]
 		});
 	});
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('.autoplay.gallery').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
@@ -1286,33 +1286,40 @@
 			cssEase: 'linear',
 			infinite: true,
 			variableWidth: true,
-			rtl: true, // Left to right scrolling
+			rtl: true, // Enables right-to-left scrolling
+			initialSlide: 0, // Ensures the slider starts at the first slide for RTL
 			responsive: [
 				{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1,
-
-				}
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 1,
+					},
 				},
 				{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1
-				}
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1,
+					},
 				},
 				{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-				}
-			]
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
+					},
+				},
+			],
 		});
-	})
+	
+		// Correcting RTL behavior for smooth continuous autoplay
+		$('.autoplay.gallery').on('setPosition', function () {
+			const slides = $(this).find('.slick-slide');
+			slides.css('transform', 'scaleX(-1)');
+			$(this).css('transform', 'scaleX(-1)');
+		});
+	});
 	{% comment %} gallery1 {% endcomment %}
 	$(document).ready(function(){
 		$('.autoplay.gallery1').slick({
