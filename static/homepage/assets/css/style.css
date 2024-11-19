@@ -14063,3 +14063,133 @@ select {
   -o-object-fit: cover;
      object-fit: cover;
 }
+
+
+.hading-text{
+  font-family: Playfair Display, serif;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  line-height: 34px;
+  --tw-text-opacity: 1;
+  color: rgb(32 32 80 / var(--tw-text-opacity));
+}
+
+@media (min-width: 768px){
+  .hading-text{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    line-height: 42px;
+  }
+}
+
+@media (min-width: 1024px){
+  .hading-text{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    line-height: 50px;
+  }
+}
+
+.hading-color-text{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(240 90 43 / var(--tw-text-opacity));
+}
+
+@media (min-width: 768px){
+  .hading-color-text{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px){
+  .hading-color-text{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.img-figure{
+  width: 100%;
+  overflow: hidden;
+}
+.img-figure img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+@keyframes custom_slides {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.custom_logos {
+  overflow: hidden;
+  padding: 30px 0px;
+  white-space: nowrap;
+  position: relative;
+}
+
+.custom_logos:before, .custom_logos:after {
+  position: absolute;
+  top: 0;
+  content: '';
+  width: 250px;
+  height: 100%;
+  z-index: 2;
+}
+
+.custom_logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255,255,255,0), rgb(255, 255, 255));
+}
+
+.custom_logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgb(255, 255, 255));
+}
+
+.custom_logo_items {
+  display: inline-block;
+  animation: 35s custom_slides infinite linear;
+}
+
+.custom_logos:hover .custom_logo_items {
+  animation-play-state: paused;
+}
+
+.custom_logo_items img {
+  height: 100px;
+}
+
