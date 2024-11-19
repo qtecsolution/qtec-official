@@ -74,7 +74,8 @@
 	</section>
 	<!--========== HOME-BANNER-END ==============-->
 	{% comment %} <div class="container"> {% endcomment %}
-	<section class="homeinfo">
+
+	{% comment %} <section class="homeinfo">
 		<div class="container">
 			<div class="titlebox">
 				<h2 class="homeinfo-title">
@@ -97,8 +98,9 @@
 				{% endfor %}
 			</div>
 		</div>
-	</section>
-	<section class="homeinfo">
+	</section> {% endcomment %}
+
+	{% comment %} <section class="homeinfo">
 		<div class="container">
 			<div class="titlebox">
 				<h2 class="homeinfo-title">
@@ -128,7 +130,8 @@
 				{% endfor %}
 			</div>
 		</div>
-	</section>
+	</section> {% endcomment %}
+
 	{% comment %} </div> {% endcomment %}
 	{% comment %} <div> {% endcomment %}
 	<!-- feedback section start -->
@@ -173,7 +176,7 @@
 				<div class="" style="margin-top: 20px;margin-right: 10px">
 					<div class="card-team">
 						<figure class="card-team-header" style="width: 200px; height: 110px;">
-							<img src="/media/{{ item.image }}" alt="team-gallery-thumbnail">
+							<img style="height:50%" src="/media/{{ item.image }}" alt="team-gallery-thumbnail">
 							{% comment %} {% endif %} {% endcomment %}
 						</figure>
 					</div>
