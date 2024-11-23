@@ -7,7 +7,8 @@ from dashboard.models import HomeClients, OurGallery, TeamMembers, WhatPeopleSay
 class IndexView(View):
 
     def get(self, request):
-        project_done_all = WhatProjectHaveWeDone.objects.filter(display=True, homepage= True).order_by("priority").all()
+        project_done_all = WhatProjectHaveWeDone.objects.filter(
+            display=True, homepage=True).order_by("priority").all()
 
         web_project = project_done_all.filter(project_type__icontains='1')
         app_project = project_done_all.filter(project_type__icontains='2')
@@ -20,7 +21,8 @@ class IndexView(View):
         what_people_say = WhatPeopleSay.objects.values()
         members = TeamMembers.objects.order_by('priority').values()
         our_gallery = OurGallery.objects.all().order_by("priority")
-        video_link = YouTubeVideo.objects.filter(page=YouTubeVideo.HOME).first()
+        video_link = YouTubeVideo.objects.filter(
+            page=YouTubeVideo.HOME, display=True).first()
         context = {
             'project_done_exists': project_done_all.exists(),
             'title': "Home",
@@ -42,7 +44,8 @@ class IndexView(View):
 class CaseStudyView(View):
 
     def get(self, request):
-        project_done_all = WhatProjectHaveWeDone.objects.filter(display=True).order_by("priority").all()
+        project_done_all = WhatProjectHaveWeDone.objects.filter(
+            display=True).order_by("priority").all()
 
         web_project = project_done_all.filter(project_type__icontains='1')
         app_project = project_done_all.filter(project_type__icontains='2')
