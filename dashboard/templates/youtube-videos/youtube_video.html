@@ -1,0 +1,114 @@
+{% extends 'dashboard/base_dashboard.html' %} {% block content %}
+
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col">
+      <div class="card mt-3"></div>
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="" id="">
+          <div class="card mt-3">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-9">
+                  <h5>YouTube Video List</h5>
+                </div>
+                <div class="col-md-3">
+                  <a
+                    title="Add Item"
+                    style="margin-left: 200px"
+                    href="{% url 'dashboard:save_youtube_video_url' %}"
+                    class="btn btn-icon btn-sm btn-outline-primary"
+                    ><i class="fas fa-plus-circle"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body table-responsive">
+              <table
+                id="subscriber_list"
+                class="table table-borderless table-striped table-hover"
+              >
+                <tr>
+                  <th>Page</th>
+                  <th>Link</th>
+                  <th>Display</th>
+                  <th>Action</th>
+                </tr>
+                {% for video in youtube_video %}
+                <tr id="video_{{ video.id }}">
+                  <td>{{ video.get_page_display }}</td>
+                  <td>{{ video.video_url }}</td>
+                  <td>
+                    <input onchange="change_swithc('{{ video.id }}')"
+                    class="text-justify" type="checkbox"
+                    data-toggle="switchbutton" {% if video.display == 1 %}
+                    checked {% endif %} data-onstyle="outline-dark"
+                    data-offstyle="outline-primary">
+                  </td>
+                  <td>
+                    <form
+                      action="{% url 'dashboard:delete_youtube_video_url' %}"
+                      method="POST"
+                    >
+                      {% csrf_token %}
+                      <input type="hidden" value="{{ video.id }}" name="id" />
+                      <button
+                        title="Delete Item"
+                        onclick="check()"
+                        class="btn btn-icon btn-sm btn-outline-primary"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </form>
+                    <div class="">
+                      <a
+                        title="Edit Technology"
+                        href="{% url 'dashboard:update_youtube_video_url' video.id %}"
+                        class="btn btn-icon btn-sm btn-outline-primary"
+                        ><i class="fa fa-edit"></i
+                      ></a>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+  csrf = "{{ csrf_token }}";
+  function check() {
+    if (confirm("Do you want to delete?") == true) {
+      return true;
+    } else {
+      //cancle the from submission
+      $(this).submit(function (e) {
+        e.preventDefault();
+        location.reload();
+        return false;
+      });
+    }
+  }
+
+  function change_swithc(id) {
+    let url = "{% url 'dashboard:change_display_youtube_video_url' %}";
+    var data = { id: id, csrfmiddlewaretoken: csrf };
+    $.ajax({
+      url: url,
+      data: data,
+      type: "POST",
+      success: function (data) {
+        toastr.success("Status changed successfully");
+      },
+      error: function (data) {},
+    });
+  }
+</script>
+
+{% endblock %}

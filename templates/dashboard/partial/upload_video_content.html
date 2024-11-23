@@ -1,0 +1,9 @@
+<li class="nav-item menu-open">
+  <a
+    href="{% url 'dashboard:youtube_video_url' %}"
+    class="nav-link {% if request.resolver_match.url_name in 'youtube_video_url, update_youtube_video_url, save_youtube_video_url' %} active {% endif %}"
+  >
+    <i class="nav-icon fas fa-tachometer-alt"></i>
+    <p>Manage Video Content</p>
+  </a>
+</li>

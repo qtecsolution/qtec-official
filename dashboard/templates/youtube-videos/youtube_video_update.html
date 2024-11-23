@@ -1,0 +1,100 @@
+{% extends 'dashboard/base_dashboard.html' %} {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <div class="card">
+        <div class="card-body">
+          <h2 class="text-center">YouTube Video Link Update</h2>
+
+          <!-- Modify the form action URL here -->
+          <form
+            method="POST"
+            action="{% url 'dashboard:update_youtube_video_url' youtube_video.id %}"
+            id="managementadd"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
+            <div id="accordion">
+              <div class="card" style="border: 1px dotted #999">
+                <div
+                  id="collapseOne"
+                  class="collapse show"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordion"
+                >
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label
+                            >YouTube Link
+                            <small style="color: red">*</small></label
+                          >
+                          <input
+                            type="url"
+                            name="video_url"
+                            class="form-control"
+                            value="{{ youtube_video.video_url }}"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label
+                            >Select Page:
+                            <small style="color: red">*</small></label
+                          >
+                          <select name="page" id="page" class="form-control">
+                            {% for value, label in youtube_video.PAGE_CHOICES %}
+                            <option value="{{ value }}"
+                              {% if value == youtube_video.page %}
+                              selected
+                              {% endif %}
+                              >{{ label }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Save Button -->
+            <button
+              name="save"
+              class="btn btn-default float-right"
+              type="submit"
+            >
+              <i class="fa fa-plus-circle"></i> Update Video Link
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  csrf = "{{ csrf_token }}";
+  $(document).ready(function () {
+    $("#technology_features").select2({
+      allowClear: true,
+    });
+  });
+</script>
+{% endblock %}

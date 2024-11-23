@@ -418,3 +418,73 @@ class BookDownloader(models.Model):
 
     def __str__(self):
         return self.user_name
+    
+
+from django.db import models
+
+class YouTubeVideo(models.Model):
+    # Page constants
+    HOME = 1
+    ABOUT_US = 2
+    SERVICES = 3
+    TECHNOLOGIES = 4
+    PROJECTS = 5
+    CLIENTS = 6
+    CONTACT_US = 7
+    OUR_TEAM = 8
+    LEGAL_TEAM = 9
+    OUR_GALLERY = 10
+    WHAT_PEOPLE_SAY = 11
+    CURRENT_OPPORTUNITIES = 12
+    AUGMENTATION_SERVICES = 13
+    BLOG = 14
+
+    PAGE_CHOICES = [
+        (HOME, 'Home'),
+        (ABOUT_US, 'About Us'),
+        (SERVICES, 'Services'),
+        (TECHNOLOGIES, 'Technologies'),
+        (PROJECTS, 'Projects'),
+        (CLIENTS, 'Clients'),
+        (CONTACT_US, 'Contact Us'),
+        (OUR_TEAM, 'Our Team'),
+        (LEGAL_TEAM, 'Legal Team'),
+        (OUR_GALLERY, 'Our Gallery'),
+        (WHAT_PEOPLE_SAY, 'What People Say'),
+        (CURRENT_OPPORTUNITIES, 'Current Opportunities'),
+        (AUGMENTATION_SERVICES, 'Augmentation Services'),
+        (BLOG, 'Blog'),
+    ]
+
+    video_url = models.URLField("YouTube Video URL", max_length=500)
+    page = models.PositiveSmallIntegerField(choices=PAGE_CHOICES, default=HOME)
+    display = models.BooleanField(default=True)
+
+    def extract_video_id(self):
+        """
+        Extracts the YouTube video ID from the video_url.
+        """
+        import re
+        patterns = [
+            r'youtu\.be/(?P<id>[a-zA-Z0-9_-]+)',  # Short URL format
+            r'youtube\.com/watch\?v=(?P<id>[a-zA-Z0-9_-]+)',  # Full URL format
+            r'youtube\.com/embed/(?P<id>[a-zA-Z0-9_-]+)',  # Embed URL format
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, self.video_url)
+            if match:
+                return match.group('id')
+        return None
+
+    @property
+    def embed_url(self):
+        """
+        Returns the embeddable YouTube link.
+        """
+        video_id = self.extract_video_id()
+        if video_id:
+            return f"https://www.youtube.com/embed/{video_id}"
+        return None
+
+    def __str__(self):
+        return f"{self.get_page_display()}: {self.video_url}"

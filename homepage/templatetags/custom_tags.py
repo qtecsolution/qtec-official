@@ -1,3 +1,4 @@
+# import re
 from django import template
 register = template.Library()
 
@@ -49,3 +50,21 @@ def comma_seperator(amount):
     else:
        comma_sep=amount
     return comma_sep
+
+# youtube video id extractor filter
+# @register.filter
+# def extract_id(value):
+#     """
+#     Extracts the YouTube video ID from various URL formats.
+#     """
+#     # Pattern to match YouTube video ID
+#     patterns = [
+#         r'youtu\.be/(?P<id>[a-zA-Z0-9_-]+)',  # Short URL format
+#         r'youtube\.com/watch\?v=(?P<id>[a-zA-Z0-9_-]+)',  # Full URL format
+#         r'youtube\.com/embed/(?P<id>[a-zA-Z0-9_-]+)',  # Embed URL format
+#     ]
+#     for pattern in patterns:
+#         match = re.search(pattern, value)
+#         if match:
+#             return match.group('id')
+#     return value  # Return original value if no match

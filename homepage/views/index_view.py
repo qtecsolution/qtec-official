@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 
-from dashboard.models import HomeClients, OurGallery, TeamMembers, WhatPeopleSay, WhatProjectHaveWeDone, Blog
+from dashboard.models import HomeClients, OurGallery, TeamMembers, WhatPeopleSay, WhatProjectHaveWeDone, Blog, YouTubeVideo
 
 
 class IndexView(View):
@@ -20,6 +20,7 @@ class IndexView(View):
         what_people_say = WhatPeopleSay.objects.values()
         members = TeamMembers.objects.order_by('priority').values()
         our_gallery = OurGallery.objects.all().order_by("priority")
+        video_link = YouTubeVideo.objects.filter(page=YouTubeVideo.HOME).first()
         context = {
             'project_done_exists': project_done_all.exists(),
             'title': "Home",
@@ -32,6 +33,7 @@ class IndexView(View):
             'what_people_say': what_people_say,
             'members': members,
             'our_gallery': our_gallery,
+            'video_link': video_link,
         }
 
         return render(request, 'index.html', context)

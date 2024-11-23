@@ -12,6 +12,7 @@ from dashboard.views.our_gallery_view import OurGalleryView
 from dashboard.views.subscribe_view import SubscribeView
 from dashboard.views.team_members_view import LegalTeamMembersView, TeamMembersView
 from dashboard.views.technologies_view import TechnologiesView
+from dashboard.views.upload_video_content import YoutubeVideoView
 from dashboard.views.what_people_say_view import WhatPeopleSayView
 
 app_name= 'dashboard'
@@ -116,6 +117,14 @@ urlpatterns= [
     path('augmentation-service-create/', AugmentationServicesView.as_view(), name="create_augmentation_service_url"),
     # path('augmentation-service-create/', WhatPeopleSayView.as_view(), name="create_what_people_say_url"),
     path('delete-augmentation-service/', AugmentationServicesView.as_view(), name="delete_augmentation_url"),
+
+    # youtube video link
+    path('youtube-video/create/', YoutubeVideoView.as_view(), name="save_youtube_video_url"),
+    path('youtube-video/update/<int:id>/', YoutubeVideoView.as_view(), name="update_youtube_video_url"),
+    path('youtube-video/delete/', YoutubeVideoView.as_view(), name="delete_youtube_video_url"),
+    path('youtube-video/', YoutubeVideoView.as_view(), name="youtube_video_url"),
+    path('youtube-video/display/', YoutubeVideoView.as_view(), name="change_display_youtube_video_url"),
+
 
 
 
