@@ -26,7 +26,7 @@ class BlogsView(View):
             handle_blog_exists = False
         context = {
             'handle_blog_exists': handle_blog_exists,
-            'title': 'Blogs',
+            'title': 'Articles',
             'highlight_blog': highlight_blog,
             'top_4_blog': top_4_blog,
             'random_blog': random_blog
