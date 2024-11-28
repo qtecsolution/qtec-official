@@ -119,6 +119,7 @@ migrations
 .venv
 env/
 myenv/
+blog/
 venv/
 ENV/
 env.bak/
