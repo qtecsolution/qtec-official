@@ -91,11 +91,12 @@ ACTIVE_STATUS = (
 )
 
 STATUS_TYPE = (
-    ('PENDING','Pending'),
-    ('PROCCESSING','Proccessing'),
-    ('CONFIRMED','Confirmed'),
-    ('REJECTED','Rejected')
+    ('PENDING', 'Pending'),
+    ('PROCCESSING', 'Proccessing'),
+    ('CONFIRMED', 'Confirmed'),
+    ('REJECTED', 'Rejected')
 )
+
 
 class Technologies(models.Model):
     title = models.CharField(max_length=100)
@@ -141,7 +142,7 @@ class WhatProjectHaveWeDone(models.Model):
     @property
     def split_technology(self):
         return self.technology.split(',')
-    
+
     @property
     def video_id(self):
         if self.video:
@@ -342,6 +343,20 @@ class LegalTeamMembers(models.Model):
         return self.name
 
 
+class MarketingTeamMembers(models.Model):
+    name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='team_members/')
+    designation = models.CharField(max_length=100)
+    github = models.CharField(max_length=100, null=True, blank=True)
+    linkedin = models.CharField(max_length=100, null=True)
+    instagram = models.CharField(max_length=100, null=True, blank=True)
+    gmail = models.EmailField(max_length=100)
+    priority = models.PositiveSmallIntegerField()
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class OurGallery(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField()
@@ -367,45 +382,44 @@ class WhatPeopleSay(models.Model):
     priority = models.PositiveSmallIntegerField()
 
 
-
-
-
 class Service(models.Model):
-    name = models.CharField(max_length=100,null=True, blank=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
-        verbose_name= 'Service'
+        verbose_name = 'Service'
         verbose_name_plural = 'Services'
 
 
-
 class AugmantationBudget(models.Model):
-    name = models.CharField(max_length=100,null=True, blank=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
-        verbose_name= 'Augmantation Budget'
+        verbose_name = 'Augmantation Budget'
         verbose_name_plural = 'Augmantation Budgets'
 
 
 class AugmentationService(models.Model):
-    name = models.CharField(max_length=100, blank=True, null= True)
-    company = models.CharField(max_length=250, blank=True, null= True)
-    phone = models.CharField(max_length=50, blank=True, null= True)
-    email = models.EmailField(blank=True, null= True)
-    services = models.ForeignKey(Service, on_delete=models.CASCADE, blank= True, null=True)
-    status = models.CharField(max_length=100,choices=STATUS_TYPE,default='PENDING')
-    budget = models.ForeignKey(AugmantationBudget,on_delete=models.CASCADE, blank=True, null=True) 
+    name = models.CharField(max_length=100, blank=True, null=True)
+    company = models.CharField(max_length=250, blank=True, null=True)
+    phone = models.CharField(max_length=50, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    services = models.ForeignKey(
+        Service, on_delete=models.CASCADE, blank=True, null=True)
+    status = models.CharField(
+        max_length=100, choices=STATUS_TYPE, default='PENDING')
+    budget = models.ForeignKey(
+        AugmantationBudget, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = 'Augmentation Service'
         verbose_name_plural = 'Augmentation Services'
@@ -418,9 +432,7 @@ class BookDownloader(models.Model):
 
     def __str__(self):
         return self.user_name
-    
 
-from django.db import models
 
 class YouTubeVideo(models.Model):
     # Page constants

@@ -1,0 +1,9 @@
+<li class="nav-item menu-open">
+  <a
+    href="{% url 'dashboard:marketing_members_url' %}"
+    class="nav-link {% if request.resolver_match.url_name in 'marketing_members_url, save_marketing_member_url, delete_marketing_member_url, update_marketing_member_url ' %} active {% endif %}"
+  >
+    <i class="nav-icon fas fa-tachometer-alt"></i>
+    <p>Marketing Team Members</p>
+  </a>
+</li>

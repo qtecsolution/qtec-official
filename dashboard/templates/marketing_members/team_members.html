@@ -1,0 +1,117 @@
+{% extends 'dashboard/base_dashboard.html' %} {% block content %}
+
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col">
+      <div class="card mt-3"></div>
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="" id="">
+          <div class="card mt-3">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-9">
+                  <h5>Marketing Members</h5>
+                </div>
+                <div class="col-md-3">
+                  <a
+                    style="margin-left: 200px"
+                    href="{% url 'dashboard:save_marketing_member_url' %}"
+                    class="btn btn-icon btn-sm btn-outline-primary"
+                    ><i class="fas fa-plus-circle"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body table-responsive">
+              <table
+                id="subscriber_list"
+                class="table table-borderless table-striped table-hover"
+              >
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Image</th>
+                  <th>Designation</th>
+                  <th>Gmail</th>
+                  <th>Priority</th>
+                  <th>Action</th>
+                </tr>
+                {% for member in team_members %}
+                <tr id="what_done_{{ item.id }}">
+                  <td>{{ member.id }}</td>
+                  <td>{{ member.name }}</td>
+                  <td>
+                    {% if member.image %}
+                    <div>
+                      <img
+                        style="width: 50px"
+                        src="/media/{{ member.image }}"
+                      />
+                    </div>
+                    {% endif %}
+                  </td>
+                  <td>{{ member.designation }}</td>
+                  <td>{{ member.gmail }}</td>
+                  <td>{{ member.priority }}</td>
+
+                  <th>
+                    <div class="form-group row">
+                      <div cclass="">
+                        <form
+                          action="{% url 'dashboard:delete_marketing_member_url' %}"
+                          method="POST"
+                        >
+                          {% csrf_token %}
+                          <input
+                            type="hidden"
+                            value="{{member.id}}"
+                            name="id"
+                          />
+                          <button
+                            title="Delete Item"
+                            onclick="check()"
+                            class="btn btn-icon btn-sm btn-outline-primary"
+                          >
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </form>
+                      </div>
+                      <div class="col-5">
+                        <a
+                          title="Edit"
+                          href="{% url 'dashboard:update_marketing_member_url' member.id %}"
+                          class="btn btn-icon btn-sm btn-outline-primary"
+                          ><i class="fa fa-edit"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </th>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+  csrf = "{{ csrf_token }}";
+  function check() {
+    if (confirm("Do you want to delete?") == true) {
+      return true;
+    } else {
+      //cancle the from submission
+      $(this).submit(function (e) {
+        e.preventDefault();
+        location.reload();
+        return false;
+      });
+    }
+  }
+</script>
+
+{% endblock %}
