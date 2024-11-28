@@ -45,8 +45,8 @@ urlpatterns = [
          TechnologiesView.as_view(), name="technologies_url"),
 
     path('all-blog/', AllBlogView.as_view(), name="all_blog_url"),
-    path('blogs/', BlogsView.as_view(), name="blog_url"),
-    path('blog/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
+    path('articles/', BlogsView.as_view(), name="blog_url"),
+    path('article/<str:slug>/', BlogDetails.as_view(), name="blog_details_url"),
 
 #     path('e-book/', EBookView.as_view(), name="e_book_view"),
     
